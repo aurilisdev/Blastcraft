@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"sms",
+		"sms",
+		"sms"
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:glass"
+		},
+		"m": {
+			"item": "blastcraft:blastproofwalling"
+		}
+	},
+	"result": {
+		"item": "blastcraft:hardenedbricks",
+		"count": 3
+	}
+}

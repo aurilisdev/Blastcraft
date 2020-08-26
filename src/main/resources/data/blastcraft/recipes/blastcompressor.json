@@ -1,0 +1,26 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"sfs",
+		"pap",
+		"sss"
+	],
+	"key": {
+		"s": {
+			"item": "electrodynamics:platesteel"
+		},
+		"p": {
+			"item": "minecraft:piston"
+		},
+		"a": {
+			"item": "electrodynamics:circuitadvanced"
+		},
+		"f": {
+			"item": "minecraft:furnace"
+		}
+	},
+	"result": {
+		"item": "blastcraft:blastcompressor",
+		"count": 1
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"sms",
+		"sms",
+		"sms"
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:obsidian"
+		},
+		"m": {
+			"item": "blastcraft:hardenedbricks"
+		}
+	},
+	"result": {
+		"item": "blastcraft:rawblastproofwalling",
+		"count": 12
+	}
+}
