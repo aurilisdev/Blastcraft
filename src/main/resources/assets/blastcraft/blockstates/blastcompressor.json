@@ -1,0 +1,20 @@
+{
+	"variants": {
+		"facing=east": {
+			"model": "blastcraft:block/blastcompressor",
+			"y": 0
+		},
+		"facing=north": {
+			"model": "blastcraft:block/blastcompressor",
+			"y": 270
+		},
+		"facing=south": {
+			"model": "blastcraft:block/blastcompressor",
+			"y": 90
+		},
+		"facing=west": {
+			"model": "blastcraft:block/blastcompressor",
+			"y": 180
+		}
+	}
+}

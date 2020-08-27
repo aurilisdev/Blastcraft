@@ -1,10 +1,10 @@
 {
 	"block.blastcraft.blastcompressor": "Blast Compressor",
-	"block.blastcraft.blastcompressorrunning": "Blast Compressor Running",
 	"block.blastcraft.blastproofglass": "Blast Proof Glass",
 	"block.blastcraft.blastproofwalling": "Blast Proof Walling",
 	"block.blastcraft.rawblastproofwalling": "Raw Blast Proof Walling",
 	"block.blastcraft.carbonplatedwalling": "Carbon Plated Walling",
 	"block.blastcraft.hardenedbricks": "Hardened Bricks",
+	"container.blastcompressor": "Blast Compressor",
 	"itemGroup.itemgroupblastcraft": "Blastcraft"
 }
