@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "blastcraft:carbonplatedwalling"
+        },
+        {
+            "item": "minecraft:glass"
+        }
+    ],
+
+	"result": {
+		"item": "blastcraft:carbonplatedwallingglass",
+		"count": 1
+	}
+}

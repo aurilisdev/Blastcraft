@@ -1,9 +1,14 @@
 package blastcraft;
 
+import blastcraft.block.BlockCustomBrickGlass;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -25,6 +30,11 @@ public class Blastcraft {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public static void onClientSetup(FMLClientSetupEvent event) {
+		for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
+			if (block.get() instanceof BlockCustomBrickGlass) {
+				RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout());
+			}
+		}
 	}
 
 	@SubscribeEvent

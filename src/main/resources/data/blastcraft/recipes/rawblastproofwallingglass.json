@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "blastcraft:rawblastproofwalling"
+        },
+        {
+            "item": "minecraft:glass"
+        }
+    ],
+
+	"result": {
+		"item": "blastcraft:rawblastproofwallingglass",
+		"count": 1
+	}
+}
