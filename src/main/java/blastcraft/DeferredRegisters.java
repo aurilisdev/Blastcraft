@@ -38,14 +38,14 @@ public class DeferredRegisters {
 	public static BlockBlastCompressor blockBlastCompressor;
 
 	static {
-		BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 6000000)));
-		BLOCKS.register("rawblastproofwalling", supplier(blockRawBlastproofWalling = new BlockCustomBricks(2, 0)));
-		BLOCKS.register("carbonplatedwalling", supplier(blockCarbonPlatedWalling = new BlockCustomBricks(85, 6000000)));
-		BLOCKS.register("hardenedbricks", supplier(blockHardenedBricks = new BlockCustomBricks(10, 0)));
-		BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomBrickGlass(50, 6000000)));
-		BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomBrickGlass(2, 0)));
-		BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomBrickGlass(85, 6000000)));
-		BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomBrickGlass(10, 0)));
+		BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 18000)));
+		BLOCKS.register("rawblastproofwalling", supplier(blockRawBlastproofWalling = new BlockCustomBricks(2, 50)));
+		BLOCKS.register("carbonplatedwalling", supplier(blockCarbonPlatedWalling = new BlockCustomBricks(85, 12500)));
+		BLOCKS.register("hardenedbricks", supplier(blockHardenedBricks = new BlockCustomBricks(10, 4000)));
+		BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomBrickGlass(50, 18000)));
+		BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomBrickGlass(2, 50)));
+		BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomBrickGlass(85, 12500)));
+		BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomBrickGlass(10, 4000)));
 		BLOCKS.register("blastcompressor", supplier(blockBlastCompressor = new BlockBlastCompressor()));
 		ITEMS.register("blastproofwalling", supplier(new BlockItemDescriptable(blockBlastproofWalling, new Item.Properties().group(References.CORETAB))));
 		ITEMS.register("rawblastproofwalling", supplier(new BlockItemDescriptable(blockRawBlastproofWalling, new Item.Properties().group(References.CORETAB))));
