@@ -38,13 +38,13 @@ public class DeferredRegisters {
 	public static BlockBlastCompressor blockBlastCompressor;
 
 	static {
-		BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 18000)));
+		BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 12500)));
 		BLOCKS.register("rawblastproofwalling", supplier(blockRawBlastproofWalling = new BlockCustomBricks(2, 50)));
-		BLOCKS.register("carbonplatedwalling", supplier(blockCarbonPlatedWalling = new BlockCustomBricks(85, 12500)));
+		BLOCKS.register("carbonplatedwalling", supplier(blockCarbonPlatedWalling = new BlockCustomBricks(85, 18000)));
 		BLOCKS.register("hardenedbricks", supplier(blockHardenedBricks = new BlockCustomBricks(10, 4000)));
-		BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomBrickGlass(50, 18000)));
+		BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomBrickGlass(50, 12500)));
 		BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomBrickGlass(2, 50)));
-		BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomBrickGlass(85, 12500)));
+		BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomBrickGlass(85, 18000)));
 		BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomBrickGlass(10, 4000)));
 		BLOCKS.register("blastcompressor", supplier(blockBlastCompressor = new BlockBlastCompressor()));
 		ITEMS.register("blastproofwalling", supplier(new BlockItemDescriptable(blockBlastproofWalling, new Item.Properties().group(References.CORETAB))));
