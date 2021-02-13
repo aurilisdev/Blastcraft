@@ -1,4 +1,4 @@
-package blastcraft.block;
+package blastcraft.common.block;
 
 import net.minecraft.block.GlassBlock;
 import net.minecraft.block.material.Material;

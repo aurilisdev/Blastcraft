@@ -1,4 +1,4 @@
-package blastcraft.block;
+package blastcraft.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

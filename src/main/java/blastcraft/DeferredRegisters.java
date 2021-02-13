@@ -3,10 +3,10 @@ package blastcraft;
 import com.google.common.base.Supplier;
 import com.google.common.collect.Sets;
 
-import blastcraft.block.BlockBlastCompressor;
-import blastcraft.block.BlockCustomBrickGlass;
-import blastcraft.block.BlockCustomBricks;
-import blastcraft.tile.TileBlastCompressor;
+import blastcraft.common.block.BlockBlastCompressor;
+import blastcraft.common.block.BlockCustomBrickGlass;
+import blastcraft.common.block.BlockCustomBricks;
+import blastcraft.common.tile.TileBlastCompressor;
 import electrodynamics.api.tile.processing.O2OProcessingRecipe;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
 import electrodynamics.common.recipe.MachineRecipes;

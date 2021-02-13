@@ -1,6 +1,8 @@
 package blastcraft;
 
-import blastcraft.block.BlockCustomBrickGlass;
+import blastcraft.common.block.BlockCustomBrickGlass;
+import blastcraft.common.settings.Constants;
+import electrodynamics.api.configuration.ConfigurationHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -21,6 +23,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class Blastcraft {
 
 	public Blastcraft() {
+		ConfigurationHandler.registerConfig(Constants.class);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		DeferredRegisters.BLOCKS.register(bus);
 		DeferredRegisters.ITEMS.register(bus);

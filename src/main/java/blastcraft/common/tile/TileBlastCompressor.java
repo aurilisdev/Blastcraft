@@ -1,6 +1,7 @@
-package blastcraft.tile;
+package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
+import blastcraft.common.settings.Constants;
 import electrodynamics.api.tile.processing.IO2OProcessor;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
 import electrodynamics.common.tile.generic.GenericTileProcessor;
@@ -12,8 +13,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class TileBlastCompressor extends GenericTileProcessor implements IO2OProcessor {
-	public static final double REQUIRED_JOULES_PER_TICK = 100;
-	public static final int REQUIRED_TICKS = 220;
+	public static final int REQUIRED_TICKS = Constants.BLASTCOMPRESSOR_REQUIRED_TICKS;
 
 	public static final int[] SLOTS_UP = new int[] { 0 };
 	public static final int[] SLOTS_DOWN = new int[] { 1 };
@@ -25,7 +25,7 @@ public class TileBlastCompressor extends GenericTileProcessor implements IO2OPro
 
 	@Override
 	public double getJoulesPerTick() {
-		return REQUIRED_JOULES_PER_TICK * currentSpeedMultiplier;
+		return Constants.BLASTCOMPRESSOR_USAGE_PER_TICK * currentSpeedMultiplier;
 	}
 
 	@Override

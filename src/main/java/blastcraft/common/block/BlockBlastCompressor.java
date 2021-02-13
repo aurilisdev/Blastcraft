@@ -1,6 +1,6 @@
-package blastcraft.block;
+package blastcraft.common.block;
 
-import blastcraft.tile.TileBlastCompressor;
+import blastcraft.common.tile.TileBlastCompressor;
 import electrodynamics.common.block.BlockGenericMachine;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.IInventory;
