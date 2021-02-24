@@ -14,36 +14,37 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockCustomBrickGlass extends Block {
 
-	public BlockCustomBrickGlass(float hardness, float resistance) {
-		super(Properties.create(Material.GLASS).setRequiresTool().hardnessAndResistance(hardness, resistance).setOpaque(BlockCustomBrickGlass::isntSolid).notSolid());
-	}
+    public BlockCustomBrickGlass(float hardness, float resistance) {
+	super(Properties.create(Material.GLASS).setRequiresTool().hardnessAndResistance(hardness, resistance)
+		.setOpaque(BlockCustomBrickGlass::isntSolid).notSolid());
+    }
 
-	private static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
-		return false;
-	}
+    private static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
+	return false;
+    }
 
-	@Override
-	@Deprecated
-	public VoxelShape getRayTraceShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		return VoxelShapes.empty();
-	}
+    @Override
+    @Deprecated
+    public VoxelShape getRayTraceShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+	return VoxelShapes.empty();
+    }
 
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	@Deprecated
-	public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
-		return adjacentBlockState.isIn(this) ? true : super.isSideInvisible(state, adjacentBlockState, side);
-	}
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    @Deprecated
+    public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
+	return adjacentBlockState.isIn(this) ? true : super.isSideInvisible(state, adjacentBlockState, side);
+    }
 
-	@OnlyIn(Dist.CLIENT)
-	@Override
-	@Deprecated
-	public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		return 1.0F;
-	}
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    @Deprecated
+    public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos) {
+	return 1.0F;
+    }
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
-		return true;
-	}
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+	return true;
+    }
 }

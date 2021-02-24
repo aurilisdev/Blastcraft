@@ -11,18 +11,18 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public class BlockBlastCompressor extends BlockGenericMachine {
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new TileBlastCompressor();
-	}
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	return new TileBlastCompressor();
+    }
 
-	@Deprecated
-	@Override
-	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		TileEntity tile = worldIn.getTileEntity(pos);
-		if (tile instanceof IInventory) {
-			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tile);
-		}
-		super.onReplaced(state, worldIn, pos, newState, isMoving);
+    @Deprecated
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+	TileEntity tile = worldIn.getTileEntity(pos);
+	if (tile instanceof IInventory) {
+	    InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tile);
 	}
+	super.onReplaced(state, worldIn, pos, newState, isMoving);
+    }
 }

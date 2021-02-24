@@ -13,63 +13,63 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class TileBlastCompressor extends GenericTileProcessor implements IO2OProcessor {
-	public static final int REQUIRED_TICKS = Constants.BLASTCOMPRESSOR_REQUIRED_TICKS;
+    public static final int REQUIRED_TICKS = Constants.BLASTCOMPRESSOR_REQUIRED_TICKS;
 
-	public static final int[] SLOTS_UP = new int[] { 0 };
-	public static final int[] SLOTS_DOWN = new int[] { 1 };
+    public static final int[] SLOTS_UP = new int[] { 0 };
+    public static final int[] SLOTS_DOWN = new int[] { 1 };
 
-	public TileBlastCompressor() {
-		super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
-		addUpgradeSlots(2, 3, 4);
-	}
+    public TileBlastCompressor() {
+	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
+	addUpgradeSlots(2, 3, 4);
+    }
 
-	@Override
-	public double getJoulesPerTick() {
-		return Constants.BLASTCOMPRESSOR_USAGE_PER_TICK * currentSpeedMultiplier;
-	}
+    @Override
+    public double getJoulesPerTick() {
+	return Constants.BLASTCOMPRESSOR_USAGE_PER_TICK * currentSpeedMultiplier;
+    }
 
-	@Override
-	public double getVoltage() {
-		return DEFAULT_BASIC_MACHINE_VOLTAGE * 2;
-	}
+    @Override
+    public double getVoltage() {
+	return DEFAULT_BASIC_MACHINE_VOLTAGE * 2;
+    }
 
-	@Override
-	public int getRequiredTicks() {
-		return REQUIRED_TICKS;
-	}
+    @Override
+    public int getRequiredTicks() {
+	return REQUIRED_TICKS;
+    }
 
-	@Override
-	public int getSizeInventory() {
-		return 5;
-	}
+    @Override
+    public int getSizeInventory() {
+	return 5;
+    }
 
-	@Override
-	public int[] getSlotsForFace(Direction side) {
-		return side == Direction.UP ? SLOTS_UP : side == Direction.DOWN ? SLOTS_DOWN : SLOTS_EMPTY;
-	}
+    @Override
+    public int[] getSlotsForFace(Direction side) {
+	return side == Direction.UP ? SLOTS_UP : side == Direction.DOWN ? SLOTS_DOWN : SLOTS_EMPTY;
+    }
 
-	@Override
-	protected Container createMenu(int id, PlayerInventory player) {
-		return new ContainerO2OProcessor(id, player, this, inventorydata);
-	}
+    @Override
+    protected Container createMenu(int id, PlayerInventory player) {
+	return new ContainerO2OProcessor(id, player, this, inventorydata);
+    }
 
-	@Override
-	public ITextComponent getDisplayName() {
-		return new TranslationTextComponent("container.blastcompressor");
-	}
+    @Override
+    public ITextComponent getDisplayName() {
+	return new TranslationTextComponent("container.blastcompressor");
+    }
 
-	@Override
-	public ItemStack getInput() {
-		return getStackInSlot(0);
-	}
+    @Override
+    public ItemStack getInput() {
+	return getStackInSlot(0);
+    }
 
-	@Override
-	public ItemStack getOutput() {
-		return getStackInSlot(1);
-	}
+    @Override
+    public ItemStack getOutput() {
+	return getStackInSlot(1);
+    }
 
-	@Override
-	public void setOutput(ItemStack stack) {
-		setInventorySlotContents(1, stack);
-	}
+    @Override
+    public void setOutput(ItemStack stack) {
+	setInventorySlotContents(1, stack);
+    }
 }

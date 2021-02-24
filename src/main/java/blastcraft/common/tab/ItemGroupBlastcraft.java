@@ -6,12 +6,12 @@ import net.minecraft.item.ItemStack;
 
 public class ItemGroupBlastcraft extends ItemGroup {
 
-	public ItemGroupBlastcraft(String label) {
-		super(label);
-	}
+    public ItemGroupBlastcraft(String label) {
+	super(label);
+    }
 
-	@Override
-	public ItemStack createIcon() {
-		return new ItemStack(DeferredRegisters.blockBlastproofWalling);
-	}
+    @Override
+    public ItemStack createIcon() {
+	return new ItemStack(DeferredRegisters.blockBlastproofWalling);
+    }
 }

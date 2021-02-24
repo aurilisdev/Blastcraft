@@ -22,25 +22,25 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @EventBusSubscriber(modid = References.ID, bus = Bus.MOD)
 public class Blastcraft {
 
-	public Blastcraft() {
-		ConfigurationHandler.registerConfig(Constants.class);
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		DeferredRegisters.BLOCKS.register(bus);
-		DeferredRegisters.ITEMS.register(bus);
-		DeferredRegisters.TILES.register(bus);
-	}
+    public Blastcraft() {
+	ConfigurationHandler.registerConfig(Constants.class);
+	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+	DeferredRegisters.BLOCKS.register(bus);
+	DeferredRegisters.ITEMS.register(bus);
+	DeferredRegisters.TILES.register(bus);
+    }
 
-	@SubscribeEvent
-	@OnlyIn(Dist.CLIENT)
-	public static void onClientSetup(FMLClientSetupEvent event) {
-		for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
-			if (block.get() instanceof BlockCustomBrickGlass) {
-				RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout());
-			}
-		}
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void onClientSetup(FMLClientSetupEvent event) {
+	for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
+	    if (block.get() instanceof BlockCustomBrickGlass) {
+		RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout());
+	    }
 	}
+    }
 
-	@SubscribeEvent
-	public static void onLoadEvent(FMLLoadCompleteEvent event) {
-	}
+    @SubscribeEvent
+    public static void onLoadEvent(FMLLoadCompleteEvent event) {
+    }
 }
