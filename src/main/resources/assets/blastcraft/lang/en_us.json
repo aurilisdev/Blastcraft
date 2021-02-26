@@ -8,6 +8,8 @@
 	"block.blastcraft.rawblastproofwallingglass": "Raw Blast Proof Walling Glass",
 	"block.blastcraft.carbonplatedwallingglass": "Carbon Plated Walling Glass",
 	"block.blastcraft.hardenedbricksglass": "Hardened Brick Glass",
+	"block.blastcraft.camoflage": "Camoflage",
+	"block.blastcraft.glasspressureplate": "Glass Pressure Plate",
 	"container.blastcompressor": "Blast Compressor",
 	"itemGroup.itemgroupblastcraft": "Blastcraft"
 }

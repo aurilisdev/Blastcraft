@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"gg"
+	],
+	"key": {
+		"g": {
+			"item": "minecraft:glass"
+		}
+	},
+	"result": {
+		"item": "blastcraft:glasspressureplate",
+		"count": 1
+	}
+}

@@ -1,5 +1,6 @@
 package blastcraft;
 
+import blastcraft.client.render.tile.RenderCamoflage;
 import blastcraft.common.block.BlockCustomBrickGlass;
 import blastcraft.common.settings.Constants;
 import electrodynamics.api.configuration.ConfigurationHandler;
@@ -11,6 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -38,6 +40,9 @@ public class Blastcraft {
 		RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout());
 	    }
 	}
+	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockCamoflage, RenderType.getCutout());
+	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.getTranslucent());
+	ClientRegistry.bindTileEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
     }
 
     @SubscribeEvent

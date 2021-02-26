@@ -4,13 +4,19 @@ import com.google.common.base.Supplier;
 import com.google.common.collect.Sets;
 
 import blastcraft.common.block.BlockBlastCompressor;
+import blastcraft.common.block.BlockCamoflage;
 import blastcraft.common.block.BlockCustomBrickGlass;
 import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.tile.TileBlastCompressor;
+import blastcraft.common.tile.TileCamoflage;
 import electrodynamics.api.tile.processing.O2OProcessingRecipe;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
 import electrodynamics.common.recipe.MachineRecipes;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -37,6 +43,8 @@ public class DeferredRegisters {
     public static BlockCustomBrickGlass blockCarbonPlatedWallingGlass;
     public static BlockCustomBrickGlass blockHardenedBricksGlass;
     public static BlockBlastCompressor blockBlastCompressor;
+    public static BlockCamoflage blockCamoflage;
+    public static PressurePlateBlock blockGlassPressurePlate;
 
     static {
 	BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 12500)));
@@ -52,6 +60,11 @@ public class DeferredRegisters {
 	BLOCKS.register("hardenedbricksglass",
 		supplier(blockHardenedBricksGlass = new BlockCustomBrickGlass(10, 4000)));
 	BLOCKS.register("blastcompressor", supplier(blockBlastCompressor = new BlockBlastCompressor()));
+	BLOCKS.register("camoflage", supplier(blockCamoflage = new BlockCamoflage()));
+	BLOCKS.register("glasspressureplate",
+		supplier(blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
+			AbstractBlock.Properties.create(Material.GLASS).doesNotBlockMovement()
+				.hardnessAndResistance(0.5F).sound(SoundType.GLASS))));
 	ITEMS.register("blastproofwalling", supplier(
 		new BlockItemDescriptable(blockBlastproofWalling, new Item.Properties().group(References.CORETAB))));
 	ITEMS.register("rawblastproofwalling", supplier(
@@ -70,10 +83,16 @@ public class DeferredRegisters {
 		new BlockItemDescriptable(blockHardenedBricksGlass, new Item.Properties().group(References.CORETAB))));
 	ITEMS.register("blastcompressor", supplier(
 		new BlockItemDescriptable(blockBlastCompressor, new Item.Properties().group(References.CORETAB))));
+	ITEMS.register("camoflage",
+		supplier(new BlockItemDescriptable(blockCamoflage, new Item.Properties().group(References.CORETAB))));
+	ITEMS.register("glasspressureplate", supplier(
+		new BlockItemDescriptable(blockGlassPressurePlate, new Item.Properties().group(References.CORETAB))));
     }
     public static final RegistryObject<TileEntityType<TileBlastCompressor>> TILE_BLASTCOMPRESSOR = TILES.register(
 	    "blastcompressor",
 	    () -> new TileEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));
+    public static final RegistryObject<TileEntityType<TileCamoflage>> TILE_CAMOFLAGE = TILES.register("camoflage",
+	    () -> new TileEntityType<>(TileCamoflage::new, Sets.newHashSet(blockCamoflage), null));
 
     @SubscribeEvent
     public static void onLoadEvent(FMLLoadCompleteEvent event) {
