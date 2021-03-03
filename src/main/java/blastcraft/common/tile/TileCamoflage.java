@@ -28,7 +28,7 @@ public class TileCamoflage extends GenericTileBase implements ITickableTileBase 
 	super.read(state, compound);
 	String read = compound.getString("blockId");
 	if (!read.equals("null")) {
-	    this.block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
+	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
 	}
     }
 
@@ -37,7 +37,7 @@ public class TileCamoflage extends GenericTileBase implements ITickableTileBase 
 	super.handleUpdatePacket(nbt);
 	String read = nbt.getString("blockId");
 	if (!read.equals("null")) {
-	    this.block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
+	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
 	}
     }
 
