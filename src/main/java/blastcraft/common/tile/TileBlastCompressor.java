@@ -50,7 +50,7 @@ public class TileBlastCompressor extends GenericTileProcessor implements IO2OPro
 
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
-	return new ContainerO2OProcessor(id, player, this, inventorydata);
+	return new ContainerO2OProcessor(id, player, this, getInventoryData());
     }
 
     @Override

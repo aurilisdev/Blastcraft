@@ -33,8 +33,8 @@ public class TileCamoflage extends GenericTileBase implements ITickableTileBase 
     }
 
     @Override
-    public void handleUpdatePacket(CompoundNBT nbt) {
-	super.handleUpdatePacket(nbt);
+    public void readCustomPacket(CompoundNBT nbt) {
+	super.readCustomPacket(nbt);
 	String read = nbt.getString("blockId");
 	if (!read.equals("null")) {
 	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
@@ -44,13 +44,13 @@ public class TileCamoflage extends GenericTileBase implements ITickableTileBase 
     @Override
     public void tick() {
 	if (world.getWorldInfo().getGameTime() % 40 == 0) {
-	    sendUpdatePacket();
+	    sendCustomPacket();
 	}
     }
 
     @Override
-    public CompoundNBT createUpdateTag() {
-	CompoundNBT nbt = super.createUpdateTag();
+    public CompoundNBT writeCustomPacket() {
+	CompoundNBT nbt = super.writeCustomPacket();
 	write(nbt);
 	return nbt;
     }
