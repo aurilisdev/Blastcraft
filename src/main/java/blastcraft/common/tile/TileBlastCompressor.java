@@ -2,74 +2,34 @@ package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
 import blastcraft.common.settings.Constants;
-import electrodynamics.api.tile.processing.IO2OProcessor;
+import electrodynamics.api.tile.electric.CapabilityElectrodynamic;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
-import electrodynamics.common.tile.generic.GenericTileProcessor;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
+import electrodynamics.common.tile.generic.GenericTileTicking;
+import electrodynamics.common.tile.generic.component.ComponentType;
+import electrodynamics.common.tile.generic.component.type.ComponentContainerProvider;
+import electrodynamics.common.tile.generic.component.type.ComponentDirection;
+import electrodynamics.common.tile.generic.component.type.ComponentElectrodynamic;
+import electrodynamics.common.tile.generic.component.type.ComponentInventory;
+import electrodynamics.common.tile.generic.component.type.ComponentPacketHandler;
+import electrodynamics.common.tile.generic.component.type.ComponentProcessor;
+import electrodynamics.common.tile.generic.component.type.ComponentTickable;
 import net.minecraft.util.Direction;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 
-public class TileBlastCompressor extends GenericTileProcessor implements IO2OProcessor {
-    public static final int REQUIRED_TICKS = Constants.BLASTCOMPRESSOR_REQUIRED_TICKS;
-
-    public static final int[] SLOTS_UP = new int[] { 0 };
-    public static final int[] SLOTS_DOWN = new int[] { 1 };
-
+public class TileBlastCompressor extends GenericTileTicking {
     public TileBlastCompressor() {
 	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
-	addUpgradeSlots(2, 3, 4);
-    }
-
-    @Override
-    public double getJoulesPerTick() {
-	return Constants.BLASTCOMPRESSOR_USAGE_PER_TICK * currentSpeedMultiplier;
-    }
-
-    @Override
-    public double getVoltage() {
-	return DEFAULT_BASIC_MACHINE_VOLTAGE * 2;
-    }
-
-    @Override
-    public int getRequiredTicks() {
-	return REQUIRED_TICKS;
-    }
-
-    @Override
-    public int getSizeInventory() {
-	return 5;
-    }
-
-    @Override
-    public int[] getSlotsForFace(Direction side) {
-	return side == Direction.UP ? SLOTS_UP : side == Direction.DOWN ? SLOTS_DOWN : SLOTS_EMPTY;
-    }
-
-    @Override
-    protected Container createMenu(int id, PlayerInventory player) {
-	return new ContainerO2OProcessor(id, player, this, getInventoryData());
-    }
-
-    @Override
-    public ITextComponent getDisplayName() {
-	return new TranslationTextComponent("container.blastcompressor");
-    }
-
-    @Override
-    public ItemStack getInput() {
-	return getStackInSlot(0);
-    }
-
-    @Override
-    public ItemStack getOutput() {
-	return getStackInSlot(1);
-    }
-
-    @Override
-    public void setOutput(ItemStack stack) {
-	setInventorySlotContents(1, stack);
+	addComponent(new ComponentDirection());
+	addComponent(new ComponentInventory().setInventorySize(5).addSlotOnFace(Direction.UP, 0)
+		.addSlotOnFace(Direction.DOWN, 1));
+	addComponent(new ComponentPacketHandler());
+	addComponent(new ComponentTickable());
+	addComponent(new ComponentElectrodynamic(this).setVoltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2)
+		.addRelativeInputDirection(Direction.NORTH));
+	addComponent(new ComponentProcessor(this).addUpgradeSlots(2, 3, 4)
+		.setJoulesPerTick(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
+		.setRequiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS));
+	addComponent(new ComponentContainerProvider("container.blastcompressor")
+		.setCreateMenuFunction((id, player) -> new ContainerO2OProcessor(id, player,
+			getComponent(ComponentType.Inventory), getCoordsArray())));
     }
 }

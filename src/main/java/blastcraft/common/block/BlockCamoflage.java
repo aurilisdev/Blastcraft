@@ -52,13 +52,15 @@ public class BlockCamoflage extends Block implements IWrenchable {
     @OnlyIn(Dist.CLIENT)
     @Deprecated
     public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
-	return adjacentBlockState.isIn(this) ? true : super.isSideInvisible(state, adjacentBlockState, side);
+	return adjacentBlockState.isIn(this) || super.isSideInvisible(state, adjacentBlockState, side);
     }
 
     @Override
+    @Deprecated
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos,
 	    ISelectionContext context) {
-	return state.get(ISWALKTHROUGHABLE) ? super.getShape(state, worldIn, pos, context) : VoxelShapes.empty();
+	return state.get(ISWALKTHROUGHABLE) == Boolean.TRUE ? super.getShape(state, worldIn, pos, context)
+		: VoxelShapes.empty();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -74,6 +76,7 @@ public class BlockCamoflage extends Block implements IWrenchable {
     }
 
     @Override
+    @Deprecated
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 	    Hand handIn, BlockRayTraceResult hit) {
 	ItemStack stack = player.getItemStackFromSlot(

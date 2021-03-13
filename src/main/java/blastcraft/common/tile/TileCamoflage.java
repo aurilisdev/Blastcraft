@@ -1,29 +1,37 @@
 package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
-import electrodynamics.api.tile.ITickableTileBase;
-import electrodynamics.common.tile.generic.GenericTileBase;
+import electrodynamics.common.tile.generic.GenericTileTicking;
+import electrodynamics.common.tile.generic.component.ComponentType;
+import electrodynamics.common.tile.generic.component.type.ComponentPacketHandler;
+import electrodynamics.common.tile.generic.component.type.ComponentTickable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public class TileCamoflage extends GenericTileBase implements ITickableTileBase {
+public class TileCamoflage extends GenericTileTicking {
 
     public Block block = DeferredRegisters.blockCamoflage;
 
+    @Deprecated
     public TileCamoflage() {
 	super(DeferredRegisters.TILE_CAMOFLAGE.get());
+	addComponent(new ComponentTickable().addTickCommon(this::tickCommon));
+	addComponent(new ComponentPacketHandler().addCustomPacketReader(this::readCustomPacket)
+		.addCustomPacketWriter(this::writeCustomPacket));
     }
 
     @Override
+    @Deprecated
     public CompoundNBT write(CompoundNBT compound) {
 	compound.putString("blockId", block == null ? "null" : Registry.BLOCK.getKey(block).toString());
 	return super.write(compound);
     }
 
     @Override
+    @Deprecated
     public void read(BlockState state, CompoundNBT compound) {
 	super.read(state, compound);
 	String read = compound.getString("blockId");
@@ -32,26 +40,22 @@ public class TileCamoflage extends GenericTileBase implements ITickableTileBase 
 	}
     }
 
-    @Override
+    @Deprecated
     public void readCustomPacket(CompoundNBT nbt) {
-	super.readCustomPacket(nbt);
 	String read = nbt.getString("blockId");
 	if (!read.equals("null")) {
 	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
 	}
     }
 
-    @Override
-    public void tick() {
-	if (world.getWorldInfo().getGameTime() % 40 == 0) {
-	    sendCustomPacket();
-	}
+    @Deprecated
+    public void writeCustomPacket(CompoundNBT nbt) {
+	write(nbt);
     }
 
-    @Override
-    public CompoundNBT writeCustomPacket() {
-	CompoundNBT nbt = super.writeCustomPacket();
-	write(nbt);
-	return nbt;
+    public void tickCommon(ComponentTickable component) {
+	if (component.getTicks() % 20 == 0) {
+	    this.<ComponentPacketHandler>getComponent(ComponentType.PacketHandler);
+	}
     }
 }

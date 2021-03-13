@@ -26,10 +26,11 @@ public class RenderCamoflage extends TileEntityRenderer<TileCamoflage> {
     }
 
     @Override
+    @Deprecated
     public void render(TileCamoflage tileEntityIn, float partialTicks, MatrixStack matrixStackIn,
 	    IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
 	if (tileEntityIn.block != null && tileEntityIn.block != DeferredRegisters.blockCamoflage) {
-	    state = tileEntityIn.block.getDefaultState();
+	    RenderCamoflage.state = tileEntityIn.block.getDefaultState();
 	    BlockPos s = tileEntityIn.getPos().offset(Direction.UP);
 	    Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(
 		    tileEntityIn.block.getStateForPlacement(
