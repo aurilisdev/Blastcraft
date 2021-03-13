@@ -4,6 +4,7 @@ import blastcraft.DeferredRegisters;
 import blastcraft.common.settings.Constants;
 import electrodynamics.api.tile.electric.CapabilityElectrodynamic;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
+import electrodynamics.common.recipe.MachineRecipes;
 import electrodynamics.common.tile.generic.GenericTileTicking;
 import electrodynamics.common.tile.generic.component.ComponentType;
 import electrodynamics.common.tile.generic.component.type.ComponentContainerProvider;
@@ -12,6 +13,7 @@ import electrodynamics.common.tile.generic.component.type.ComponentElectrodynami
 import electrodynamics.common.tile.generic.component.type.ComponentInventory;
 import electrodynamics.common.tile.generic.component.type.ComponentPacketHandler;
 import electrodynamics.common.tile.generic.component.type.ComponentProcessor;
+import electrodynamics.common.tile.generic.component.type.ComponentProcessorType;
 import electrodynamics.common.tile.generic.component.type.ComponentTickable;
 import net.minecraft.util.Direction;
 
@@ -27,7 +29,9 @@ public class TileBlastCompressor extends GenericTileTicking {
 		.addRelativeInputDirection(Direction.NORTH));
 	addComponent(new ComponentProcessor(this).addUpgradeSlots(2, 3, 4)
 		.setJoulesPerTick(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
-		.setRequiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS));
+		.setRequiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
+		.setCanProcess(component -> MachineRecipes.canProcess(this))
+		.setProcess(component -> MachineRecipes.process(this)).setType(ComponentProcessorType.ObjectToObject));
 	addComponent(new ComponentContainerProvider("container.blastcompressor")
 		.setCreateMenuFunction((id, player) -> new ContainerO2OProcessor(id, player,
 			getComponent(ComponentType.Inventory), getCoordsArray())));
