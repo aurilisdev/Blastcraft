@@ -4,6 +4,7 @@ import blastcraft.DeferredRegisters;
 import blastcraft.common.settings.Constants;
 import electrodynamics.api.tile.electric.CapabilityElectrodynamic;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
+import electrodynamics.common.item.ItemProcessorUpgrade;
 import electrodynamics.common.recipe.MachineRecipes;
 import electrodynamics.common.tile.generic.GenericTileTicking;
 import electrodynamics.common.tile.generic.component.ComponentType;
@@ -22,7 +23,9 @@ public class TileBlastCompressor extends GenericTileTicking {
 	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
 	addComponent(new ComponentDirection());
 	addComponent(new ComponentInventory().setInventorySize(5).addSlotsOnFace(Direction.UP, 0)
-		.addSlotsOnFace(Direction.DOWN, 1));
+		.addSlotsOnFace(Direction.DOWN, 1).addRelativeSlotsOnFace(Direction.EAST, 1)
+		.addRelativeSlotsOnFace(Direction.WEST, 2).setItemValidPredicate(
+			(slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
 	addComponent(new ComponentPacketHandler());
 	addComponent(new ComponentTickable());
 	addComponent(new ComponentElectrodynamic(this).setVoltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2)
