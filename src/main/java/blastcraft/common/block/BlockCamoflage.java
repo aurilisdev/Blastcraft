@@ -34,8 +34,8 @@ public class BlockCamoflage extends Block implements IWrenchable {
     public static BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
 
     public BlockCamoflage() {
-	super(Properties.create(Material.WOOL).hardnessAndResistance(0.3f, 1.0f).sound(SoundType.CLOTH)
-		.setOpaque(BlockCamoflage::isntSolid).notSolid());
+	super(Properties.create(Material.WOOL).hardnessAndResistance(0.3f, 1.0f).sound(SoundType.CLOTH).setOpaque(BlockCamoflage::isntSolid)
+		.notSolid());
     }
 
     private static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
@@ -57,10 +57,8 @@ public class BlockCamoflage extends Block implements IWrenchable {
 
     @Override
     @Deprecated
-    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos,
-	    ISelectionContext context) {
-	return state.get(ISWALKTHROUGHABLE) == Boolean.TRUE ? super.getShape(state, worldIn, pos, context)
-		: VoxelShapes.empty();
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+	return state.get(ISWALKTHROUGHABLE) == Boolean.TRUE ? super.getShape(state, worldIn, pos, context) : VoxelShapes.empty();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -77,10 +75,9 @@ public class BlockCamoflage extends Block implements IWrenchable {
 
     @Override
     @Deprecated
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-	    Hand handIn, BlockRayTraceResult hit) {
-	ItemStack stack = player.getItemStackFromSlot(
-		handIn == Hand.MAIN_HAND ? EquipmentSlotType.MAINHAND : EquipmentSlotType.OFFHAND);
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn,
+	    BlockRayTraceResult hit) {
+	ItemStack stack = player.getItemStackFromSlot(handIn == Hand.MAIN_HAND ? EquipmentSlotType.MAINHAND : EquipmentSlotType.OFFHAND);
 	if (!stack.isEmpty()) {
 	    Item item = stack.getItem();
 	    if (item instanceof BlockItem) {
@@ -132,8 +129,7 @@ public class BlockCamoflage extends Block implements IWrenchable {
 
     @Override
     public void onPickup(ItemStack arg0, BlockPos arg1, PlayerEntity arg) {
-	arg.world.setBlockState(arg1, arg.world.getBlockState(arg1).with(ISWALKTHROUGHABLE,
-		!arg.world.getBlockState(arg1).get(ISWALKTHROUGHABLE)));
+	arg.world.setBlockState(arg1, arg.world.getBlockState(arg1).with(ISWALKTHROUGHABLE, !arg.world.getBlockState(arg1).get(ISWALKTHROUGHABLE)));
     }
 
     @Override

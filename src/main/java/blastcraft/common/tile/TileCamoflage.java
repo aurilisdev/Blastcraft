@@ -1,10 +1,10 @@
 package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
-import electrodynamics.common.tile.generic.GenericTileTicking;
-import electrodynamics.common.tile.generic.component.ComponentType;
-import electrodynamics.common.tile.generic.component.type.ComponentPacketHandler;
-import electrodynamics.common.tile.generic.component.type.ComponentTickable;
+import electrodynamics.api.tile.GenericTileTicking;
+import electrodynamics.api.tile.components.ComponentType;
+import electrodynamics.api.tile.components.type.ComponentPacketHandler;
+import electrodynamics.api.tile.components.type.ComponentTickable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
@@ -19,8 +19,7 @@ public class TileCamoflage extends GenericTileTicking {
     public TileCamoflage() {
 	super(DeferredRegisters.TILE_CAMOFLAGE.get());
 	addComponent(new ComponentTickable().addTickCommon(this::tickCommon));
-	addComponent(new ComponentPacketHandler().addCustomPacketReader(this::readCustomPacket)
-		.addCustomPacketWriter(this::writeCustomPacket));
+	addComponent(new ComponentPacketHandler().addCustomPacketReader(this::readCustomPacket).addCustomPacketWriter(this::writeCustomPacket));
     }
 
     @Override

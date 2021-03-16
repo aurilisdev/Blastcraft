@@ -1,9 +1,9 @@
 package blastcraft.common.block;
 
 import blastcraft.common.tile.TileBlastCompressor;
+import electrodynamics.api.tile.GenericTile;
+import electrodynamics.api.tile.components.ComponentType;
 import electrodynamics.common.block.BlockGenericMachine;
-import electrodynamics.common.tile.generic.GenericTile;
-import electrodynamics.common.tile.generic.component.ComponentType;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
@@ -22,8 +22,7 @@ public class BlockBlastCompressor extends BlockGenericMachine {
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
 	TileEntity tile = worldIn.getTileEntity(pos);
 	if (tile instanceof GenericTile) {
-	    InventoryHelper.dropInventoryItems(worldIn, pos,
-		    ((GenericTile) tile).getComponent(ComponentType.Inventory));
+	    InventoryHelper.dropInventoryItems(worldIn, pos, ((GenericTile) tile).getComponent(ComponentType.Inventory));
 	}
 	super.onReplaced(state, worldIn, pos, newState, isMoving);
     }

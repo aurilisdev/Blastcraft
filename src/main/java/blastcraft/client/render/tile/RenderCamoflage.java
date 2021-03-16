@@ -27,17 +27,19 @@ public class RenderCamoflage extends TileEntityRenderer<TileCamoflage> {
 
     @Override
     @Deprecated
-    public void render(TileCamoflage tileEntityIn, float partialTicks, MatrixStack matrixStackIn,
-	    IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
+    public void render(TileCamoflage tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn,
+	    int combinedOverlayIn) {
 	if (tileEntityIn.block != null && tileEntityIn.block != DeferredRegisters.blockCamoflage) {
 	    RenderCamoflage.state = tileEntityIn.block.getDefaultState();
 	    BlockPos s = tileEntityIn.getPos().offset(Direction.UP);
-	    Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(
-		    tileEntityIn.block.getStateForPlacement(
-			    new BlockItemUseContext(Minecraft.getInstance().player, Hand.MAIN_HAND, ItemStack.EMPTY,
-				    new BlockRayTraceResult(new Vector3d(s.getX(), s.getY(), s.getZ()), Direction.UP,
-					    s.offset(Direction.DOWN), false))),
-		    matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+	    Minecraft.getInstance().getBlockRendererDispatcher()
+		    .renderBlock(
+			    tileEntityIn.block
+				    .getStateForPlacement(
+					    new BlockItemUseContext(Minecraft.getInstance().player, Hand.MAIN_HAND, ItemStack.EMPTY,
+						    new BlockRayTraceResult(new Vector3d(s.getX(), s.getY(), s.getZ()), Direction.UP,
+							    s.offset(Direction.DOWN), false))),
+			    matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
 	}
     }
 
