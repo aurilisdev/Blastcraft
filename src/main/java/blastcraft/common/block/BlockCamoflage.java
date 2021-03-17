@@ -1,5 +1,8 @@
 package blastcraft.common.block;
 
+import java.util.Arrays;
+import java.util.List;
+
 import blastcraft.common.tile.TileCamoflage;
 import electrodynamics.api.tile.IWrenchable;
 import net.minecraft.block.Block;
@@ -40,6 +43,12 @@ public class BlockCamoflage extends Block implements IWrenchable {
 
     private static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
 	return false;
+    }
+
+    @Override
+    @Deprecated
+    public List<ItemStack> getDrops(BlockState state, net.minecraft.loot.LootContext.Builder builder) {
+	return Arrays.asList(new ItemStack(this));
     }
 
     @Override
@@ -88,7 +97,7 @@ public class BlockCamoflage extends Block implements IWrenchable {
 			if (tile.block != block) {
 			    if (block == this) {
 				worldIn.setBlockState(pos, state.with(PROP, true));
-			    } else if (tile.block == this && block != this) {
+			    } else if (tile.block == this) {
 				worldIn.setBlockState(pos, state.with(PROP, false));
 			    }
 			}
@@ -108,8 +117,9 @@ public class BlockCamoflage extends Block implements IWrenchable {
     }
 
     @Override
+    @Deprecated
     public BlockRenderType getRenderType(BlockState state) {
-	return state.get(PROP) == true ? BlockRenderType.MODEL : BlockRenderType.INVISIBLE;
+	return state.get(PROP) == Boolean.TRUE ? BlockRenderType.MODEL : BlockRenderType.INVISIBLE;
     }
 
     @Override
@@ -118,13 +128,15 @@ public class BlockCamoflage extends Block implements IWrenchable {
     }
 
     @Override
+    @Deprecated
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 	return new TileCamoflage();
     }
 
     @Override
+    @Deprecated
     public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
-	return state.get(ISWALKTHROUGHABLE) ? super.allowsMovement(state, worldIn, pos, type) : true;
+	return !state.get(ISWALKTHROUGHABLE) == Boolean.TRUE || super.allowsMovement(state, worldIn, pos, type);
     }
 
     @Override
@@ -134,5 +146,6 @@ public class BlockCamoflage extends Block implements IWrenchable {
 
     @Override
     public void onRotate(ItemStack arg0, BlockPos arg1, PlayerEntity arg2) {
+	// Doesnt rotate.
     }
 }

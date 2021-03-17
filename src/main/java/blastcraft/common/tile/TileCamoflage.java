@@ -54,7 +54,7 @@ public class TileCamoflage extends GenericTileTicking {
 
     public void tickCommon(ComponentTickable component) {
 	if (component.getTicks() % 20 == 0) {
-	    this.<ComponentPacketHandler>getComponent(ComponentType.PacketHandler);
+	    this.<ComponentPacketHandler>getComponent(ComponentType.PacketHandler).sendCustomPacket();
 	}
     }
 }
