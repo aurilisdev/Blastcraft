@@ -4,7 +4,6 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 
 import blastcraft.DeferredRegisters;
 import blastcraft.common.tile.TileCamoflage;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
@@ -19,8 +18,6 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class RenderCamoflage extends TileEntityRenderer<TileCamoflage> {
 
-    public static BlockState state;
-
     public RenderCamoflage(TileEntityRendererDispatcher rendererDispatcherIn) {
 	super(rendererDispatcherIn);
     }
@@ -30,7 +27,6 @@ public class RenderCamoflage extends TileEntityRenderer<TileCamoflage> {
     public void render(TileCamoflage tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn,
 	    int combinedOverlayIn) {
 	if (tileEntityIn.block != null && tileEntityIn.block != DeferredRegisters.blockCamoflage) {
-	    RenderCamoflage.state = tileEntityIn.block.getDefaultState();
 	    BlockPos s = tileEntityIn.getPos().offset(Direction.UP);
 	    Minecraft.getInstance().getBlockRendererDispatcher()
 		    .renderBlock(
