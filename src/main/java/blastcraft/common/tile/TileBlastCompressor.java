@@ -23,18 +23,17 @@ public class TileBlastCompressor extends GenericTileTicking {
     public TileBlastCompressor() {
 	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
 	addComponent(new ComponentDirection());
-	addComponent(new ComponentInventory().setInventorySize(5).addSlotsOnFace(Direction.UP, 0).addSlotsOnFace(Direction.DOWN, 1)
-		.addRelativeSlotsOnFace(Direction.EAST, 1).addRelativeSlotsOnFace(Direction.WEST, 2)
-		.setItemValidPredicate((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
+	addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
+		.relativeFaceSlots(Direction.WEST, 2)
+		.valid((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
 	addComponent(new ComponentPacketHandler());
-	addComponent(new ComponentTickable().addTickClient(this::tickClient));
-	addComponent(new ComponentElectrodynamic(this).setVoltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2)
-		.addRelativeInputDirection(Direction.NORTH));
-	addComponent(new ComponentProcessor(this).addUpgradeSlots(2, 3, 4).setJoulesPerTick(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
-		.setRequiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).setCanProcess(component -> MachineRecipes.canProcess(this))
-		.setProcess(component -> MachineRecipes.process(this)).setType(ComponentProcessorType.ObjectToObject));
-	addComponent(new ComponentContainerProvider("container.blastcompressor").setCreateMenuFunction(
-		(id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
+	addComponent(new ComponentTickable().tickClient(this::tickClient));
+	addComponent(new ComponentElectrodynamic(this).voltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2).relativeInput(Direction.NORTH));
+	addComponent(new ComponentProcessor(this).upgradeSlots(2, 3, 4).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
+		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).canProcess(component -> MachineRecipes.canProcess(this))
+		.process(component -> MachineRecipes.process(this)).type(ComponentProcessorType.ObjectToObject));
+	addComponent(new ComponentContainerProvider("container.blastcompressor")
+		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
     }
 
     protected void tickClient(ComponentTickable tickable) {

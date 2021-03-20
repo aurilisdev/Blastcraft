@@ -18,8 +18,8 @@ public class TileCamoflage extends GenericTileTicking {
     @Deprecated
     public TileCamoflage() {
 	super(DeferredRegisters.TILE_CAMOFLAGE.get());
-	addComponent(new ComponentTickable().addTickCommon(this::tickCommon));
-	addComponent(new ComponentPacketHandler().addCustomPacketReader(this::readCustomPacket).addCustomPacketWriter(this::writeCustomPacket));
+	addComponent(new ComponentTickable().tickCommon(this::tickCommon));
+	addComponent(new ComponentPacketHandler().customPacketReader(this::readCustomPacket).customPacketWriter(this::writeCustomPacket));
     }
 
     @Override
