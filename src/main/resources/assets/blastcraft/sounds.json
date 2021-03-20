@@ -1,0 +1,9 @@
+{
+	"blastcompressor": {
+		"category": "blocks",
+		"subtitle": "Machine Blast Compressor",
+		"sounds": [
+			"blastcraft:blastcompressor"
+		]
+	}
+}

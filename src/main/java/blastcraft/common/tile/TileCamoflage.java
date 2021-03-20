@@ -15,7 +15,6 @@ public class TileCamoflage extends GenericTileTicking {
 
     public Block block = DeferredRegisters.blockCamoflage;
 
-    @Deprecated
     public TileCamoflage() {
 	super(DeferredRegisters.TILE_CAMOFLAGE.get());
 	addComponent(new ComponentTickable().tickCommon(this::tickCommon));
@@ -23,14 +22,12 @@ public class TileCamoflage extends GenericTileTicking {
     }
 
     @Override
-    @Deprecated
     public CompoundNBT write(CompoundNBT compound) {
 	compound.putString("blockId", block == null ? "null" : Registry.BLOCK.getKey(block).toString());
 	return super.write(compound);
     }
 
     @Override
-    @Deprecated
     public void read(BlockState state, CompoundNBT compound) {
 	super.read(state, compound);
 	String read = compound.getString("blockId");
@@ -39,7 +36,6 @@ public class TileCamoflage extends GenericTileTicking {
 	}
     }
 
-    @Deprecated
     public void readCustomPacket(CompoundNBT nbt) {
 	String read = nbt.getString("blockId");
 	if (!read.equals("null")) {
@@ -47,7 +43,6 @@ public class TileCamoflage extends GenericTileTicking {
 	}
     }
 
-    @Deprecated
     public void writeCustomPacket(CompoundNBT nbt) {
 	write(nbt);
     }

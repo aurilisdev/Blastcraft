@@ -30,6 +30,7 @@ public class Blastcraft {
 	DeferredRegisters.BLOCKS.register(bus);
 	DeferredRegisters.ITEMS.register(bus);
 	DeferredRegisters.TILES.register(bus);
+	DeferredRegisters.SOUNDS.register(bus);
     }
 
     @SubscribeEvent
