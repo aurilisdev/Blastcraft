@@ -21,6 +21,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TileBlastCompressor extends GenericTileTicking {
     public TileBlastCompressor() {
@@ -39,6 +41,7 @@ public class TileBlastCompressor extends GenericTileTicking {
 		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
     }
 
+    @OnlyIn(value = Dist.CLIENT)
     protected void tickClient(ComponentTickable tickable) {
 	boolean running = this.<ComponentProcessor>getComponent(ComponentType.Processor).operatingTicks > 0;
 	if (running && world.rand.nextDouble() < 0.15) {
