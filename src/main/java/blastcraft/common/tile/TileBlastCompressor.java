@@ -1,9 +1,10 @@
 package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
+import blastcraft.SoundRegister;
 import blastcraft.common.settings.Constants;
 import electrodynamics.api.electricity.CapabilityElectrodynamic;
-import electrodynamics.api.sound.DistanceSound;
+import electrodynamics.api.sound.SoundAPI;
 import electrodynamics.api.tile.GenericTileTicking;
 import electrodynamics.api.tile.components.ComponentType;
 import electrodynamics.api.tile.components.type.ComponentContainerProvider;
@@ -17,7 +18,6 @@ import electrodynamics.api.tile.components.type.ComponentTickable;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
 import electrodynamics.common.item.ItemProcessorUpgrade;
 import electrodynamics.common.recipe.MachineRecipes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
@@ -50,8 +50,7 @@ public class TileBlastCompressor extends GenericTileTicking {
 	    world.addParticle(ParticleTypes.SMOKE, pos.getX() + d5, pos.getY() + d6, pos.getZ() + d7, 0.0D, 0.0D, 0.0D);
 	}
 	if (running && tickable.getTicks() % 100 == 0) {
-	    Minecraft.getInstance().getSoundHandler()
-		    .play(new DistanceSound(DeferredRegisters.SOUND_BLASTCOMPRESSOR.get(), SoundCategory.BLOCKS, 1, 1, pos));
+	    SoundAPI.playSound(SoundRegister.SOUND_BLASTCOMPRESSOR.get(), SoundCategory.BLOCKS, 1, 1, pos);
 	}
     }
 }

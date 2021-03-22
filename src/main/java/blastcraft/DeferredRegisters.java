@@ -19,10 +19,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -37,7 +33,6 @@ public class DeferredRegisters {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
     public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, References.ID);
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, References.ID);
     public static BlockCustomBricks blockBlastproofWalling;
     public static BlockCustomBricks blockRawBlastproofWalling;
     public static BlockCustomBricks blockCarbonPlatedWalling;
@@ -87,9 +82,6 @@ public class DeferredRegisters {
 	    () -> new TileEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));
     public static final RegistryObject<TileEntityType<TileCamoflage>> TILE_CAMOFLAGE = TILES.register("camoflage",
 	    () -> new TileEntityType<>(TileCamoflage::new, Sets.newHashSet(blockCamoflage), null));
-    @OnlyIn(value = Dist.CLIENT)
-    public static final RegistryObject<SoundEvent> SOUND_BLASTCOMPRESSOR = SOUNDS.register("blastcompressor",
-	    () -> new SoundEvent(new ResourceLocation(References.ID + ":blastcompressor")));
 
     @SubscribeEvent
     public static void onLoadEvent(FMLLoadCompleteEvent event) {

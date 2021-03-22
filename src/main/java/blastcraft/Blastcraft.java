@@ -32,7 +32,7 @@ public class Blastcraft {
 	DeferredRegisters.ITEMS.register(bus);
 	DeferredRegisters.TILES.register(bus);
 	if (FMLLoader.getDist() == Dist.CLIENT) {
-	    DeferredRegisters.SOUNDS.register(bus);
+	    SoundRegister.SOUNDS.register(bus);
 	}
     }
 
