@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLLoader;
 
 @Mod(References.ID)
 @EventBusSubscriber(modid = References.ID, bus = Bus.MOD)
@@ -30,7 +31,9 @@ public class Blastcraft {
 	DeferredRegisters.BLOCKS.register(bus);
 	DeferredRegisters.ITEMS.register(bus);
 	DeferredRegisters.TILES.register(bus);
-	DeferredRegisters.SOUNDS.register(bus);
+	if (FMLLoader.getDist() == Dist.CLIENT) {
+	    DeferredRegisters.SOUNDS.register(bus);
+	}
     }
 
     @SubscribeEvent

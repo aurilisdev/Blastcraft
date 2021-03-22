@@ -21,6 +21,8 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -85,6 +87,7 @@ public class DeferredRegisters {
 	    () -> new TileEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));
     public static final RegistryObject<TileEntityType<TileCamoflage>> TILE_CAMOFLAGE = TILES.register("camoflage",
 	    () -> new TileEntityType<>(TileCamoflage::new, Sets.newHashSet(blockCamoflage), null));
+    @OnlyIn(value = Dist.CLIENT)
     public static final RegistryObject<SoundEvent> SOUND_BLASTCOMPRESSOR = SOUNDS.register("blastcompressor",
 	    () -> new SoundEvent(new ResourceLocation(References.ID + ":blastcompressor")));
 
