@@ -77,6 +77,7 @@ public class DeferredRegisters {
 	ITEMS.register("camoflage", supplier(new BlockItemDescriptable(blockCamoflage, new Item.Properties().group(References.CORETAB))));
 	ITEMS.register("glasspressureplate",
 		supplier(new BlockItemDescriptable(blockGlassPressurePlate, new Item.Properties().group(References.CORETAB))));
+	BlockItemDescriptable.addDescription(blockBlastCompressor, "|translate|tooltip.blastcompressor.voltage");
     }
     public static final RegistryObject<TileEntityType<TileBlastCompressor>> TILE_BLASTCOMPRESSOR = TILES.register("blastcompressor",
 	    () -> new TileEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));

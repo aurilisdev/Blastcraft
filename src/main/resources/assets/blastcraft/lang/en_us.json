@@ -11,5 +11,6 @@
 	"block.blastcraft.camoflage": "Camoflage",
 	"block.blastcraft.glasspressureplate": "Glass Pressure Plate",
 	"container.blastcompressor": "Blast Compressor",
-	"itemGroup.itemgroupblastcraft": "Blastcraft"
+	"itemGroup.itemgroupblastcraft": "Blastcraft",
+	"tooltip.blastcompressor.voltage": "Voltage: 240 Volts"
 }
