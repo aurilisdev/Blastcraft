@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 
 import blastcraft.DeferredRegisters;
 import blastcraft.common.tile.TileCamoflage;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
@@ -28,14 +29,12 @@ public class RenderCamoflage extends TileEntityRenderer<TileCamoflage> {
 	    int combinedOverlayIn) {
 	if (tileEntityIn.block != null && tileEntityIn.block != DeferredRegisters.blockCamoflage) {
 	    BlockPos s = tileEntityIn.getPos().offset(Direction.UP);
-	    Minecraft.getInstance().getBlockRendererDispatcher()
-		    .renderBlock(
-			    tileEntityIn.block
-				    .getStateForPlacement(
-					    new BlockItemUseContext(Minecraft.getInstance().player, Hand.MAIN_HAND, ItemStack.EMPTY,
-						    new BlockRayTraceResult(new Vector3d(s.getX(), s.getY(), s.getZ()), Direction.UP,
-							    s.offset(Direction.DOWN), false))),
-			    matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+	    BlockState state = tileEntityIn.block
+		    .getStateForPlacement(new BlockItemUseContext(Minecraft.getInstance().player, Hand.MAIN_HAND, ItemStack.EMPTY,
+			    new BlockRayTraceResult(new Vector3d(s.getX(), s.getY(), s.getZ()), Direction.UP, s.offset(Direction.DOWN), false)));
+	    if (state != null) {
+		Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(state, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+	    }
 	}
     }
 
