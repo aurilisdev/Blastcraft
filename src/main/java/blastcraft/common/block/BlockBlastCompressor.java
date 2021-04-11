@@ -1,9 +1,9 @@
 package blastcraft.common.block;
 
 import blastcraft.common.tile.TileBlastCompressor;
-import electrodynamics.api.tile.GenericTile;
-import electrodynamics.api.tile.components.ComponentType;
 import electrodynamics.common.block.BlockGenericMachine;
+import electrodynamics.prefab.tile.GenericTile;
+import electrodynamics.prefab.tile.components.ComponentType;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;

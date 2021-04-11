@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import blastcraft.common.tile.TileCamoflage;
-import electrodynamics.api.tile.IWrenchable;
+import electrodynamics.prefab.tile.IWrenchable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;

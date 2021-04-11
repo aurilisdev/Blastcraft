@@ -3,7 +3,7 @@ package blastcraft;
 import blastcraft.client.render.tile.RenderCamoflage;
 import blastcraft.common.block.BlockCustomBrickGlass;
 import blastcraft.common.settings.Constants;
-import electrodynamics.api.configuration.ConfigurationHandler;
+import electrodynamics.prefab.configuration.ConfigurationHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
