@@ -12,5 +12,8 @@
 	"block.blastcraft.glasspressureplate": "Glass Pressure Plate",
 	"container.blastcompressor": "Blast Compressor",
 	"itemGroup.itemgroupblastcraft": "Blastcraft",
-	"tooltip.blastcompressor.voltage": "Voltage: 240 Volts"
+	"tooltip.blastcompressor.voltage": "Voltage: 240 Volts",
+	
+	"gui.jei.category.blast_compressor":"Blast Compressor",
+	"gui.jei.category.blast_compressor.info.power":"2 kW 240V"
 }
