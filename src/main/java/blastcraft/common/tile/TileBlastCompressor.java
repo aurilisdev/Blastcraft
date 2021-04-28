@@ -33,8 +33,9 @@ public class TileBlastCompressor extends GenericTileTicking {
 	addComponent(new ComponentTickable().tickClient(this::tickClient));
 	addComponent(new ComponentElectrodynamic(this).voltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2).relativeInput(Direction.NORTH));
 	addComponent(new ComponentProcessor(this).upgradeSlots(2, 3, 4).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
-		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).canProcess(component -> MachineRecipes.canProcess(this))
-		.process(component -> MachineRecipes.process(this)).type(ComponentProcessorType.ObjectToObject));
+		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
+		.canProcess(component -> MachineRecipes.canProcess(this, component, getType()))
+		.process(component -> MachineRecipes.process(this, component, getType())).type(ComponentProcessorType.ObjectToObject));
 	addComponent(new ComponentContainerProvider("container.blastcompressor")
 		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
     }
