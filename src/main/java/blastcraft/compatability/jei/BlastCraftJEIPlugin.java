@@ -13,7 +13,6 @@ import electrodynamics.common.recipe.categories.o2o.O2ORecipe;
 import electrodynamics.compatability.jei.ElectrodynamicsJEIPlugin;
 
 import electrodynamics.compatability.jei.recipecategories.psuedorecipes.PsuedoRecipes;
-
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;

@@ -44,8 +44,6 @@ public class TileBlastCompressor extends GenericTileTicking {
 			);	
 		addComponent(new ComponentContainerProvider("container.blastcompressor")
 				.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
-		
-		
 
     }
 
@@ -63,5 +61,3 @@ public class TileBlastCompressor extends GenericTileTicking {
 		if (running && tickable.getTicks() % 100 == 0) {
 		    SoundAPI.playSound(SoundRegister.SOUND_BLASTCOMPRESSOR.get(), SoundCategory.BLOCKS, 1, 1, pos);
 		}
-    }
-}
