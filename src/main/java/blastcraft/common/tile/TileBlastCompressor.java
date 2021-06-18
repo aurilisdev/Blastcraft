@@ -25,39 +25,43 @@ import net.minecraft.util.SoundCategory;
 
 public class TileBlastCompressor extends GenericTileTicking {
     public TileBlastCompressor() {
+
 		super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
 		addComponent(new ComponentDirection());
-		addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
-			.relativeFaceSlots(Direction.WEST, 2)
-			.valid((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
 		addComponent(new ComponentPacketHandler());
 		addComponent(new ComponentTickable().tickClient(this::tickClient));
 		addComponent(new ComponentElectrodynamic(this).voltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2).relativeInput(Direction.NORTH));
+		addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
+				.relativeFaceSlots(Direction.WEST, 2)
+				.valid((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
+		addComponent(
+				new ComponentProcessor(this).upgradeSlots(2, 3, 4)
+					.canProcess(component -> component.canProcessO2ORecipe(component, BlastCompressorRecipe.class, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
+					.process(component -> component.processO2ORecipe(component,BlastCompressorRecipe.class))
+					.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
+					.usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
+					.type(ComponentProcessorType.ObjectToObject)	
+			);	
 		addComponent(new ComponentContainerProvider("container.blastcompressor")
 				.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
 		
-		addComponent(
-			new ComponentProcessor(this).upgradeSlots(2, 3, 4)
-				.canProcess(component -> component.canProcessO2ORecipe(component, BlastCompressorRecipe.class, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
-				.process(component -> component.processO2ORecipe(component,BlastCompressorRecipe.class))
-				.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
-				.usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
-				.type(ComponentProcessorType.ObjectToObject)	
-		);	
+		
+
     }
 
     protected void tickClient(ComponentTickable tickable) {
-	boolean running = this.<ComponentProcessor>getComponent(ComponentType.Processor).operatingTicks > 0;
-	if (running && world.rand.nextDouble() < 0.15) {
-	    Direction direction = this.<ComponentDirection>getComponent(ComponentType.Direction).getDirection();
-	    double d4 = world.rand.nextDouble();
-	    double d5 = direction.getAxis() == Direction.Axis.X ? direction.getXOffset() * (direction.getXOffset() == -1 ? 0 : 1) : d4;
-	    double d6 = world.rand.nextDouble();
-	    double d7 = direction.getAxis() == Direction.Axis.Z ? direction.getZOffset() * (direction.getZOffset() == -1 ? 0 : 1) : d4;
-	    world.addParticle(ParticleTypes.SMOKE, pos.getX() + d5, pos.getY() + d6, pos.getZ() + d7, 0.0D, 0.0D, 0.0D);
-	}
-	if (running && tickable.getTicks() % 100 == 0) {
-	    SoundAPI.playSound(SoundRegister.SOUND_BLASTCOMPRESSOR.get(), SoundCategory.BLOCKS, 1, 1, pos);
-	}
+    	boolean running = this.<ComponentProcessor>getComponent(ComponentType.Processor).operatingTicks > 0;
+		//boolean running = getProcessor(0).operatingTicks > 0;
+    	if (running && world.rand.nextDouble() < 0.15) {
+		    Direction direction = this.<ComponentDirection>getComponent(ComponentType.Direction).getDirection();
+		    double d4 = world.rand.nextDouble();
+		    double d5 = direction.getAxis() == Direction.Axis.X ? direction.getXOffset() * (direction.getXOffset() == -1 ? 0 : 1) : d4;
+		    double d6 = world.rand.nextDouble();
+		    double d7 = direction.getAxis() == Direction.Axis.Z ? direction.getZOffset() * (direction.getZOffset() == -1 ? 0 : 1) : d4;
+		    world.addParticle(ParticleTypes.SMOKE, pos.getX() + d5, pos.getY() + d6, pos.getZ() + d7, 0.0D, 0.0D, 0.0D);
+		}
+		if (running && tickable.getTicks() % 100 == 0) {
+		    SoundAPI.playSound(SoundRegister.SOUND_BLASTCOMPRESSOR.get(), SoundCategory.BLOCKS, 1, 1, pos);
+		}
     }
 }
