@@ -2,12 +2,13 @@ package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
 import blastcraft.SoundRegister;
+import blastcraft.common.recipe.BlastCraftRecipeInit;
+import blastcraft.common.recipe.categories.o2o.specificmachines.BlastCompressorRecipe;
 import blastcraft.common.settings.Constants;
 import electrodynamics.api.electricity.CapabilityElectrodynamic;
 import electrodynamics.api.sound.SoundAPI;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
 import electrodynamics.common.item.ItemProcessorUpgrade;
-import electrodynamics.common.recipe.MachineRecipes;
 import electrodynamics.prefab.tile.GenericTileTicking;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentContainerProvider;
@@ -24,20 +25,27 @@ import net.minecraft.util.SoundCategory;
 
 public class TileBlastCompressor extends GenericTileTicking {
     public TileBlastCompressor() {
-	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
-	addComponent(new ComponentDirection());
-	addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
-		.relativeFaceSlots(Direction.WEST, 2)
-		.valid((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
-	addComponent(new ComponentPacketHandler());
-	addComponent(new ComponentTickable().tickClient(this::tickClient));
-	addComponent(new ComponentElectrodynamic(this).voltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2).relativeInput(Direction.NORTH));
-	addProcessor(new ComponentProcessor(this).upgradeSlots(2, 3, 4).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
-		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
-		.canProcess(component -> MachineRecipes.canProcess(this, component, getType()))
-		.process(component -> MachineRecipes.process(this, component, getType())).type(ComponentProcessorType.ObjectToObject));
-	addComponent(new ComponentContainerProvider("container.blastcompressor")
-		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
+
+		super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
+		addComponent(new ComponentDirection());
+		addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
+			.relativeFaceSlots(Direction.WEST, 2)
+			.valid((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
+		addComponent(new ComponentPacketHandler());
+		addComponent(new ComponentTickable().tickClient(this::tickClient));
+		addComponent(new ComponentElectrodynamic(this).voltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2).relativeInput(Direction.NORTH));
+		addComponent(new ComponentContainerProvider("container.blastcompressor")
+				.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
+		
+		addComponent(
+			new ComponentProcessor(this).upgradeSlots(2, 3, 4)
+				.canProcess(component -> component.canProcessO2ORecipe(component, BlastCompressorRecipe.class, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
+				.process(component -> component.processO2ORecipe(component,BlastCompressorRecipe.class))
+				.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
+				.usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
+				.type(ComponentProcessorType.ObjectToObject)	
+		);	
+
     }
 
     protected void tickClient(ComponentTickable tickable) {

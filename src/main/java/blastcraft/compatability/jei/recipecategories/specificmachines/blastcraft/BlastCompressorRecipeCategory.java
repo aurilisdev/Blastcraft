@@ -5,13 +5,15 @@ import java.util.Arrays;
 
 import blastcraft.DeferredRegisters;
 import electrodynamics.api.References;
-import electrodynamics.compatability.jei.recipecategories.O2OProcessingRecipeCategory;
+import electrodynamics.compatability.jei.recipecategories.O2ORecipeCategory;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class BlastCompressorRecipeCategory extends O2OProcessingRecipeCategory {
+
+public class BlastCompressorRecipeCategory extends O2ORecipeCategory {
+
 
     // JEI Window Parameters
     private static int[] GUIBackground = { 0, 0, 132, 58 };

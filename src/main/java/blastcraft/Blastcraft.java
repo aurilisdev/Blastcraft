@@ -4,6 +4,7 @@ import blastcraft.client.render.tile.RenderCamoflage;
 import blastcraft.common.block.BlockCustomBrickGlass;
 import blastcraft.common.settings.Constants;
 import electrodynamics.prefab.configuration.ConfigurationHandler;
+import blastcraft.common.recipe.BlastCraftRecipeInit;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -30,6 +31,7 @@ public class Blastcraft {
 	DeferredRegisters.BLOCKS.register(bus);
 	DeferredRegisters.ITEMS.register(bus);
 	DeferredRegisters.TILES.register(bus);
+	BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
 	SoundRegister.SOUNDS.register(bus);
     }
 

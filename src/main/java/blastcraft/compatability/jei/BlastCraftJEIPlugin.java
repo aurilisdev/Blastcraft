@@ -1,19 +1,30 @@
 package blastcraft.compatability.jei;
 
+import java.util.Objects;
 import java.util.Set;
+
+
+import com.google.common.collect.ImmutableSet;
 
 import blastcraft.compatability.jei.recipecategories.psuedorecipes.BlastCraftPsuedoRecipes;
 import blastcraft.compatability.jei.recipecategories.specificmachines.blastcraft.BlastCompressorRecipeCategory;
 import electrodynamics.client.screen.ScreenO2OProcessor;
-import electrodynamics.common.recipe.MachineRecipes;
+import electrodynamics.common.recipe.ElectrodynamicsRecipeInit;
+import electrodynamics.common.recipe.categories.o2o.O2ORecipe;
 import electrodynamics.compatability.jei.ElectrodynamicsJEIPlugin;
+
+import electrodynamics.compatability.jei.recipecategories.psuedorecipes.PsuedoRecipes;
+
 import electrodynamics.prefab.tile.processing.O2OProcessingRecipe;
+import blastcraft.common.recipe.BlastCraftRecipeInit;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -39,8 +50,12 @@ public class BlastCraftJEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
 	BlastCraftPsuedoRecipes.addBlastCraftRecipes();
 
+	PsuedoRecipes.addElectrodynamicsRecipes();
+	Minecraft mc = Minecraft.getInstance();
+	ClientWorld world = Objects.requireNonNull(mc.world);
+
 	// Blast Compressor
-	Set<O2OProcessingRecipe> blastCompressorRecipes = MachineRecipes.o2orecipemap.get(blastcraft.DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
+	Set<O2ORecipe> blastCompressorRecipes = ImmutableSet.copyOf(world.getRecipeManager().getRecipesForType(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE));
 
 	registration.addRecipes(blastCompressorRecipes, BlastCompressorRecipeCategory.UID);
 

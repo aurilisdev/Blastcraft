@@ -1,0 +1,12 @@
+{
+    "type":"blastcraft:blast_compressor_recipe",
+
+    "input":{
+        "item":"blastcraft:rawblastproofwalling",
+        "count":1
+    },
+    "output":{
+        "item":"blastcraft:blastproofwalling",
+        "count":1
+    }
+}
