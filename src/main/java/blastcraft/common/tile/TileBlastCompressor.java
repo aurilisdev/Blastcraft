@@ -25,6 +25,7 @@ import net.minecraft.util.SoundCategory;
 
 public class TileBlastCompressor extends GenericTileTicking {
     public TileBlastCompressor() {
+
 		super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
 		addComponent(new ComponentDirection());
 		addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
@@ -44,10 +45,11 @@ public class TileBlastCompressor extends GenericTileTicking {
 				.usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
 				.type(ComponentProcessorType.ObjectToObject)	
 		);	
+
     }
 
     protected void tickClient(ComponentTickable tickable) {
-	boolean running = this.<ComponentProcessor>getComponent(ComponentType.Processor).operatingTicks > 0;
+	boolean running = getProcessor(0).operatingTicks > 0;
 	if (running && world.rand.nextDouble() < 0.15) {
 	    Direction direction = this.<ComponentDirection>getComponent(ComponentType.Direction).getDirection();
 	    double d4 = world.rand.nextDouble();
