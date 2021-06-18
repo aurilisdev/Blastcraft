@@ -10,8 +10,6 @@ import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.tile.TileBlastCompressor;
 import blastcraft.common.tile.TileCamoflage;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
-import electrodynamics.common.recipe.MachineRecipes;
-import electrodynamics.prefab.tile.processing.O2OProcessingRecipe;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
@@ -86,7 +84,7 @@ public class DeferredRegisters {
 
     @SubscribeEvent
     public static void onLoadEvent(FMLLoadCompleteEvent event) {
-	MachineRecipes.registerRecipe(TILE_BLASTCOMPRESSOR.get(), new O2OProcessingRecipe(blockRawBlastproofWalling, blockBlastproofWalling));
+	//MachineRecipes.registerRecipe(TILE_BLASTCOMPRESSOR.get(), new O2OProcessingRecipe(blockRawBlastproofWalling, blockBlastproofWalling));
     }
 
     private static <T extends IForgeRegistryEntry<T>> Supplier<? extends T> supplier(T entry) {
