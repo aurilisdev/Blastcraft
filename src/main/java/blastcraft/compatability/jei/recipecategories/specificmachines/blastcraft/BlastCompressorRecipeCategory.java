@@ -11,9 +11,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-
 public class BlastCompressorRecipeCategory extends O2ORecipeCategory {
-
 
     // JEI Window Parameters
     private static int[] GUIBackground = { 0, 0, 132, 58 };

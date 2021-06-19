@@ -84,7 +84,8 @@ public class DeferredRegisters {
 
     @SubscribeEvent
     public static void onLoadEvent(FMLLoadCompleteEvent event) {
-	//MachineRecipes.registerRecipe(TILE_BLASTCOMPRESSOR.get(), new O2OProcessingRecipe(blockRawBlastproofWalling, blockBlastproofWalling));
+	// MachineRecipes.registerRecipe(TILE_BLASTCOMPRESSOR.get(), new
+	// O2OProcessingRecipe(blockRawBlastproofWalling, blockBlastproofWalling));
     }
 
     private static <T extends IForgeRegistryEntry<T>> Supplier<? extends T> supplier(T entry) {

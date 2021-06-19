@@ -3,17 +3,15 @@ package blastcraft.compatability.jei;
 import java.util.Objects;
 import java.util.Set;
 
-
 import com.google.common.collect.ImmutableSet;
 
+import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.compatability.jei.recipecategories.psuedorecipes.BlastCraftPsuedoRecipes;
 import blastcraft.compatability.jei.recipecategories.specificmachines.blastcraft.BlastCompressorRecipeCategory;
 import electrodynamics.client.screen.ScreenO2OProcessor;
 import electrodynamics.common.recipe.categories.o2o.O2ORecipe;
 import electrodynamics.compatability.jei.ElectrodynamicsJEIPlugin;
-
 import electrodynamics.compatability.jei.recipecategories.psuedorecipes.PsuedoRecipes;
-import blastcraft.common.recipe.BlastCraftRecipeInit;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
@@ -52,7 +50,8 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 	ClientWorld world = Objects.requireNonNull(mc.world);
 
 	// Blast Compressor
-	Set<O2ORecipe> blastCompressorRecipes = ImmutableSet.copyOf(world.getRecipeManager().getRecipesForType(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE));
+	Set<O2ORecipe> blastCompressorRecipes = ImmutableSet
+		.copyOf(world.getRecipeManager().getRecipesForType(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE));
 
 	registration.addRecipes(blastCompressorRecipes, BlastCompressorRecipeCategory.UID);
 
