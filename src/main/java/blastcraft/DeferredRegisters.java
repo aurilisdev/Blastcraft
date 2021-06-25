@@ -84,7 +84,6 @@ public class DeferredRegisters {
 
     @SubscribeEvent
     public static void onLoadEvent(FMLLoadCompleteEvent event) {
-    	
     }
 
     private static <T extends IForgeRegistryEntry<T>> Supplier<? extends T> supplier(T entry) {
