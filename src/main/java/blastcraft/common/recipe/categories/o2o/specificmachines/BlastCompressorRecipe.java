@@ -21,7 +21,7 @@ public class BlastCompressorRecipe extends O2ORecipe {
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-	return BlastCraftRecipeInit.WIRE_MILL_SERIALIZER.get();
+	return BlastCraftRecipeInit.BLAST_COMPRESSOR_SERIALIZER.get();
     }
 
     @Override

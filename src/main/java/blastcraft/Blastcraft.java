@@ -1,9 +1,9 @@
 package blastcraft;
 
 import blastcraft.client.render.tile.RenderCamoflage;
-import blastcraft.common.block.BlockCustomBrickGlass;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.settings.Constants;
+import electrodynamics.common.block.BlockCustomGlass;
 import electrodynamics.prefab.configuration.ConfigurationHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
@@ -39,7 +39,7 @@ public class Blastcraft {
     @OnlyIn(Dist.CLIENT)
     public static void onClientSetup(FMLClientSetupEvent event) {
 	for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
-	    if (block.get() instanceof BlockCustomBrickGlass) {
+	    if (block.get() instanceof BlockCustomGlass) {
 		RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout());
 	    }
 	}

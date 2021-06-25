@@ -5,10 +5,10 @@ import com.google.common.collect.Sets;
 
 import blastcraft.common.block.BlockBlastCompressor;
 import blastcraft.common.block.BlockCamoflage;
-import blastcraft.common.block.BlockCustomBrickGlass;
 import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.tile.TileBlastCompressor;
 import blastcraft.common.tile.TileCamoflage;
+import electrodynamics.common.block.BlockCustomGlass;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -35,10 +35,10 @@ public class DeferredRegisters {
     public static BlockCustomBricks blockRawBlastproofWalling;
     public static BlockCustomBricks blockCarbonPlatedWalling;
     public static BlockCustomBricks blockHardenedBricks;
-    public static BlockCustomBrickGlass blockBlastproofWallingGlass;
-    public static BlockCustomBrickGlass blockRawBlastproofWallingGlass;
-    public static BlockCustomBrickGlass blockCarbonPlatedWallingGlass;
-    public static BlockCustomBrickGlass blockHardenedBricksGlass;
+    public static BlockCustomGlass blockBlastproofWallingGlass;
+    public static BlockCustomGlass blockRawBlastproofWallingGlass;
+    public static BlockCustomGlass blockCarbonPlatedWallingGlass;
+    public static BlockCustomGlass blockHardenedBricksGlass;
     public static BlockBlastCompressor blockBlastCompressor;
     public static BlockCamoflage blockCamoflage;
     public static PressurePlateBlock blockGlassPressurePlate;
@@ -48,10 +48,10 @@ public class DeferredRegisters {
 	BLOCKS.register("rawblastproofwalling", supplier(blockRawBlastproofWalling = new BlockCustomBricks(2, 50)));
 	BLOCKS.register("carbonplatedwalling", supplier(blockCarbonPlatedWalling = new BlockCustomBricks(85, 18000)));
 	BLOCKS.register("hardenedbricks", supplier(blockHardenedBricks = new BlockCustomBricks(10, 4000)));
-	BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomBrickGlass(50, 12500)));
-	BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomBrickGlass(2, 50)));
-	BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomBrickGlass(85, 18000)));
-	BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomBrickGlass(10, 4000)));
+	BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
+	BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));
+	BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomGlass(85, 18000)));
+	BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomGlass(10, 4000)));
 	BLOCKS.register("blastcompressor", supplier(blockBlastCompressor = new BlockBlastCompressor()));
 	BLOCKS.register("camoflage", supplier(blockCamoflage = new BlockCamoflage()));
 	BLOCKS.register("glasspressureplate", supplier(blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
@@ -84,8 +84,6 @@ public class DeferredRegisters {
 
     @SubscribeEvent
     public static void onLoadEvent(FMLLoadCompleteEvent event) {
-	// MachineRecipes.registerRecipe(TILE_BLASTCOMPRESSOR.get(), new
-	// O2OProcessingRecipe(blockRawBlastproofWalling, blockBlastproofWalling));
     }
 
     private static <T extends IForgeRegistryEntry<T>> Supplier<? extends T> supplier(T entry) {
