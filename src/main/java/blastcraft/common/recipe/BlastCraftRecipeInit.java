@@ -23,6 +23,6 @@ public class BlastCraftRecipeInit {
     /* RECIPE SERIALIZERS */
 
     // O2O
-    public static final RegistryObject<IRecipeSerializer<?>> BLAST_COMPRESSOR_SERIALIZER = RECIPE_SERIALIZER.register(BlastCompressorRecipe.RECIPE_GROUP,
-	    () -> O2ORecipeTypes.BLAST_COMPRESSOR_JSON_SERIALIZER);
+    public static final RegistryObject<IRecipeSerializer<?>> BLAST_COMPRESSOR_SERIALIZER = RECIPE_SERIALIZER
+	    .register(BlastCompressorRecipe.RECIPE_GROUP, () -> O2ORecipeTypes.BLAST_COMPRESSOR_JSON_SERIALIZER);
 }
