@@ -20,7 +20,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.ResourceLocation;
 
 @JeiPlugin
@@ -37,8 +37,7 @@ public class BlastCraftJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 	// Blast Compressor
-	registration.addRecipeCatalyst(new ItemStack(blastcraft.DeferredRegisters.blockBlastCompressor.getBlock()),
-		BlastCompressorRecipeCategory.UID);
+	registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE,BlastCompressorRecipeCategory.UID);
     }
 
     @Override
@@ -48,11 +47,10 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 	PsuedoRecipes.addElectrodynamicsRecipes();
 	Minecraft mc = Minecraft.getInstance();
 	ClientWorld world = Objects.requireNonNull(mc.world);
+	RecipeManager recipeManager = world.getRecipeManager();
 
 	// Blast Compressor
-	Set<O2ORecipe> blastCompressorRecipes = ImmutableSet
-		.copyOf(world.getRecipeManager().getRecipesForType(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE));
-
+	Set<O2ORecipe> blastCompressorRecipes = ImmutableSet.copyOf(recipeManager.getRecipesForType(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE));
 	registration.addRecipes(blastCompressorRecipes, BlastCompressorRecipeCategory.UID);
 
 	blastcraftInfoTabs(registration);
