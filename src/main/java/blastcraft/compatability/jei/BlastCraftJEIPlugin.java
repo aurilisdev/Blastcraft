@@ -37,7 +37,7 @@ public class BlastCraftJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 	// Blast Compressor
-	registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE,BlastCompressorRecipeCategory.UID);
+	registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE, BlastCompressorRecipeCategory.UID);
     }
 
     @Override
