@@ -136,7 +136,7 @@ public class BlockCamoflage extends Block implements IWrenchable {
     @Override
     @Deprecated
     public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
-	return !state.get(ISWALKTHROUGHABLE) == Boolean.TRUE || super.allowsMovement(state, worldIn, pos, type);
+	return !state.get(ISWALKTHROUGHABLE) || super.allowsMovement(state, worldIn, pos, type);
     }
 
     @Override
