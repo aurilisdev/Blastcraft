@@ -6,6 +6,9 @@ import com.google.common.collect.Sets;
 import blastcraft.common.block.BlockBlastCompressor;
 import blastcraft.common.block.BlockCamoflage;
 import blastcraft.common.block.BlockCustomBricks;
+import blastcraft.common.block.BlockSpike;
+import blastcraft.common.block.BlockSpike.BlockSpikeFire;
+import blastcraft.common.block.BlockSpike.BlockSpikePoison;
 import blastcraft.common.tile.TileBlastCompressor;
 import blastcraft.common.tile.TileCamoflage;
 import electrodynamics.common.block.BlockCustomGlass;
@@ -42,6 +45,9 @@ public class DeferredRegisters {
     public static BlockBlastCompressor blockBlastCompressor;
     public static BlockCamoflage blockCamoflage;
     public static PressurePlateBlock blockGlassPressurePlate;
+    public static BlockSpike blockSpike;
+    public static BlockSpikeFire blockSpikeFire;
+    public static BlockSpikePoison blockSpikePoison;
 
     static {
 	BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 12500)));
@@ -56,6 +62,9 @@ public class DeferredRegisters {
 	BLOCKS.register("camoflage", supplier(blockCamoflage = new BlockCamoflage()));
 	BLOCKS.register("glasspressureplate", supplier(blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
 		AbstractBlock.Properties.create(Material.GLASS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.GLASS))));
+	BLOCKS.register("spike", supplier(blockSpike = new BlockSpike()));
+	BLOCKS.register("spikefire", supplier(blockSpikeFire = new BlockSpikeFire()));
+	BLOCKS.register("spikepoison", supplier(blockSpikePoison = new BlockSpikePoison()));
 	ITEMS.register("blastproofwalling",
 		supplier(new BlockItemDescriptable(blockBlastproofWalling, new Item.Properties().group(References.CORETAB))));
 	ITEMS.register("rawblastproofwalling",
@@ -75,6 +84,9 @@ public class DeferredRegisters {
 	ITEMS.register("camoflage", supplier(new BlockItemDescriptable(blockCamoflage, new Item.Properties().group(References.CORETAB))));
 	ITEMS.register("glasspressureplate",
 		supplier(new BlockItemDescriptable(blockGlassPressurePlate, new Item.Properties().group(References.CORETAB))));
+	ITEMS.register("spike", supplier(new BlockItemDescriptable(blockSpike, new Item.Properties().group(References.CORETAB))));
+	ITEMS.register("spikefire", supplier(new BlockItemDescriptable(blockSpikeFire, new Item.Properties().group(References.CORETAB))));
+	ITEMS.register("spikepoison", supplier(new BlockItemDescriptable(blockSpikePoison, new Item.Properties().group(References.CORETAB))));
 	BlockItemDescriptable.addDescription(blockBlastCompressor, "|translate|tooltip.blastcompressor.voltage");
     }
     public static final RegistryObject<TileEntityType<TileBlastCompressor>> TILE_BLASTCOMPRESSOR = TILES.register("blastcompressor",

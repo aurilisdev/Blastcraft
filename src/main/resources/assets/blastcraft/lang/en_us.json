@@ -10,10 +10,12 @@
 	"block.blastcraft.hardenedbricksglass": "Hardened Brick Glass",
 	"block.blastcraft.camoflage": "Camoflage",
 	"block.blastcraft.glasspressureplate": "Glass Pressure Plate",
+	"block.blastcraft.spike": "Spike",
+	"block.blastcraft.spikefire": "Fire Spike",
+	"block.blastcraft.spikepoison": "Poison Spike",
 	"container.blastcompressor": "Blast Compressor",
 	"itemGroup.itemgroupblastcraft": "Blastcraft",
 	"tooltip.blastcompressor.voltage": "Voltage: 240 Volts",
-	
 	"gui.jei.category.blast_compressor":"Blast Compressor",
 	"gui.jei.category.blast_compressor.info.power":"2 kW 240V"
 }
