@@ -44,6 +44,9 @@ public class Blastcraft {
 	    }
 	}
 	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockCamoflage, RenderType.getCutout());
+	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockSpike, RenderType.getCutout());
+	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.getCutout());
+	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.getCutout());
 	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.getTranslucent());
 	ClientRegistry.bindTileEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
     }
