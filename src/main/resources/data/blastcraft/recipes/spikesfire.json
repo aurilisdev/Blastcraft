@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "blastcraft:spike"
+        },
+        {
+            "item": "minecraft:fire_charge"
+        }
+    ],
+
+	"result": {
+		"item": "blastcraft:spikefire",
+		"count": 1
+	}
+}
