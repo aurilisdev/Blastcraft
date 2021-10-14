@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"cgc",
+		"bbb"
+	],
+	"key": {
+		"g": {
+			"item": "minecraft:grass"
+		},
+		"c": {
+			"item": "minecraft:cactus"
+		}
+		,
+		"b": {
+			"tag": "forge:plates/bronze"
+		}
+	},
+	"result": {
+		"item": "blastcraft:spike",
+		"count": 6
+	}
+}
