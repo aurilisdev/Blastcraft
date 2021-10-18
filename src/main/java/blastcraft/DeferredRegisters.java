@@ -1,5 +1,8 @@
 package blastcraft;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.google.common.base.Supplier;
 import com.google.common.collect.Sets;
 
@@ -9,6 +12,7 @@ import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.block.BlockSpike;
 import blastcraft.common.block.BlockSpike.BlockSpikeFire;
 import blastcraft.common.block.BlockSpike.BlockSpikePoison;
+import blastcraft.common.block.SubtypeBrick;
 import blastcraft.common.tile.TileBlastCompressor;
 import blastcraft.common.tile.TileCamoflage;
 import electrodynamics.common.block.BlockCustomGlass;
@@ -34,10 +38,7 @@ public class DeferredRegisters {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
     public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, References.ID);
-    public static BlockCustomBricks blockBlastproofWalling;
-    public static BlockCustomBricks blockRawBlastproofWalling;
-    public static BlockCustomBricks blockCarbonPlatedWalling;
-    public static BlockCustomBricks blockHardenedBricks;
+    public static final HashMap<SubtypeBrick, ArrayList<BlockCustomBricks>> bricksMap = new HashMap<>();
     public static BlockCustomGlass blockBlastproofWallingGlass;
     public static BlockCustomGlass blockRawBlastproofWallingGlass;
     public static BlockCustomGlass blockCarbonPlatedWallingGlass;
@@ -50,10 +51,30 @@ public class DeferredRegisters {
     public static BlockSpikePoison blockSpikePoison;
 
     static {
-	BLOCKS.register("blastproofwalling", supplier(blockBlastproofWalling = new BlockCustomBricks(50, 12500)));
-	BLOCKS.register("rawblastproofwalling", supplier(blockRawBlastproofWalling = new BlockCustomBricks(2, 50)));
-	BLOCKS.register("carbonplatedwalling", supplier(blockCarbonPlatedWalling = new BlockCustomBricks(85, 18000)));
-	BLOCKS.register("hardenedbricks", supplier(blockHardenedBricks = new BlockCustomBricks(10, 4000)));
+	for (SubtypeBrick type : SubtypeBrick.values()) {
+	    ArrayList<BlockCustomBricks> bricks = new ArrayList<>();
+	    bricksMap.put(type, bricks);
+	    BlockCustomBricks brick = new BlockCustomBricks(50, 12500);
+	    bricks.add(brick);
+	    BLOCKS.register("blastproofwalling" + type.tag(), supplier(brick));
+	    ITEMS.register("blastproofwalling" + type.tag(),
+		    supplier(new BlockItemDescriptable(brick, new Item.Properties().group(References.CORETAB))));
+	    brick = new BlockCustomBricks(2, 50);
+	    bricks.add(brick);
+	    BLOCKS.register("rawblastproofwalling" + type.tag(), supplier(brick));
+	    ITEMS.register("rawblastproofwalling" + type.tag(),
+		    supplier(new BlockItemDescriptable(brick, new Item.Properties().group(References.CORETAB))));
+	    brick = new BlockCustomBricks(85, 18000);
+	    bricks.add(brick);
+	    BLOCKS.register("carbonplatedwalling" + type.tag(), supplier(brick));
+	    ITEMS.register("carbonplatedwalling" + type.tag(),
+		    supplier(new BlockItemDescriptable(brick, new Item.Properties().group(References.CORETAB))));
+	    brick = new BlockCustomBricks(10, 4000);
+	    bricks.add(brick);
+	    BLOCKS.register("hardenedbricks" + type.tag(), supplier(brick));
+	    ITEMS.register("hardenedbricks" + type.tag(),
+		    supplier(new BlockItemDescriptable(brick, new Item.Properties().group(References.CORETAB))));
+	}
 	BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
 	BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));
 	BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomGlass(85, 18000)));
@@ -65,13 +86,7 @@ public class DeferredRegisters {
 	BLOCKS.register("spike", supplier(blockSpike = new BlockSpike()));
 	BLOCKS.register("spikefire", supplier(blockSpikeFire = new BlockSpikeFire()));
 	BLOCKS.register("spikepoison", supplier(blockSpikePoison = new BlockSpikePoison()));
-	ITEMS.register("blastproofwalling",
-		supplier(new BlockItemDescriptable(blockBlastproofWalling, new Item.Properties().group(References.CORETAB))));
-	ITEMS.register("rawblastproofwalling",
-		supplier(new BlockItemDescriptable(blockRawBlastproofWalling, new Item.Properties().group(References.CORETAB))));
-	ITEMS.register("carbonplatedwalling",
-		supplier(new BlockItemDescriptable(blockCarbonPlatedWalling, new Item.Properties().group(References.CORETAB))));
-	ITEMS.register("hardenedbricks", supplier(new BlockItemDescriptable(blockHardenedBricks, new Item.Properties().group(References.CORETAB))));
+
 	ITEMS.register("blastproofwallingglass",
 		supplier(new BlockItemDescriptable(blockBlastproofWallingGlass, new Item.Properties().group(References.CORETAB))));
 	ITEMS.register("rawblastproofwallingglass",

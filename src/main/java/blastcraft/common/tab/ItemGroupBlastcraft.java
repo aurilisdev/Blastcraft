@@ -1,6 +1,7 @@
 package blastcraft.common.tab;
 
 import blastcraft.DeferredRegisters;
+import blastcraft.common.block.SubtypeBrick;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -12,6 +13,6 @@ public class ItemGroupBlastcraft extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-	return new ItemStack(DeferredRegisters.blockBlastproofWalling);
+	return new ItemStack(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0));
     }
 }
