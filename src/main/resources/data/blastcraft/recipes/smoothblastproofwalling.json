@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "blastcraft:blastproofwallingbig"
+		}
+	],
+	"result": {
+		"item": "blastcraft:blastproofwallingsmooth",
+		"count": 1
+	}
+}
