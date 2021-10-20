@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "blastcraft:hardenedbricks"
+	},
+	"result": "blastcraft:hardenedbrickssmooth",
+	"experience": 1.0,
+	"cookingtime": 200
+}

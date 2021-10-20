@@ -1,12 +1,16 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"bb",
+		"bb"
+	],
+	"key": {
+		"b": {
 			"item": "blastcraft:hardenedbricks"
 		}
-	],
+	},
 	"result": {
 		"item": "blastcraft:hardenedbricksbig",
-		"count": 1
+		"count": 4
 	}
 }
