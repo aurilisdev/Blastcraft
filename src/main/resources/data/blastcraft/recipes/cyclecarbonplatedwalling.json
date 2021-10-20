@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "blastcraft:carbonplatedwallingpolished"
+		}
+	],
+	"result": {
+		"item": "blastcraft:carbonplatedwalling",
+		"count": 1
+	}
+}

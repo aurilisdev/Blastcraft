@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "blastcraft:hardenedbrickssmooth"
+		}
+	],
+	"result": {
+		"item": "blastcraft:hardenedbrickspolished",
+		"count": 1
+	}
+}
