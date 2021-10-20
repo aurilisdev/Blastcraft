@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:stonecutting",
+	"ingredient": {
+		"item": "blastcraft:carbonplatedwallingsmooth"
+	},
+	"result": "blastcraft:carbonplatedwalling",
+	"count": 1
+}
