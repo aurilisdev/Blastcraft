@@ -4,12 +4,12 @@ import blastcraft.common.tile.TileBlastCompressor;
 import electrodynamics.common.block.BlockGenericMachine;
 import electrodynamics.prefab.tile.GenericTile;
 import electrodynamics.prefab.tile.components.ComponentType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.Containers;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.Containers;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class BlockBlastCompressor extends BlockGenericMachine {
     @Override

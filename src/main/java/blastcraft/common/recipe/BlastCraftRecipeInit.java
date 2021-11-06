@@ -5,7 +5,7 @@ import blastcraft.common.recipe.categories.o2o.specificmachines.BlastCompressorR
 import electrodynamics.common.recipe.ElectrodynamicsRecipeInit;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 

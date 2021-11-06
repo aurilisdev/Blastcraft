@@ -3,11 +3,11 @@ package blastcraft.common.recipe.categories.o2o.specificmachines;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import electrodynamics.common.recipe.categories.o2o.O2ORecipe;
 import electrodynamics.common.recipe.recipeutils.CountableIngredient;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.Registry;
 
 public class BlastCompressorRecipe extends O2ORecipe {
 

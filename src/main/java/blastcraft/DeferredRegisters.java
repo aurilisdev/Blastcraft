@@ -17,18 +17,18 @@ import blastcraft.common.tile.TileBlastCompressor;
 import blastcraft.common.tile.TileCamoflage;
 import electrodynamics.common.block.BlockCustomGlass;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -72,8 +72,7 @@ public class DeferredRegisters {
 	    brick = new BlockCustomBricks(10, 4000);
 	    bricks.add(brick);
 	    BLOCKS.register("hardenedbricks" + type.tag(), supplier(brick));
-	    ITEMS.register("hardenedbricks" + type.tag(),
-		    supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
+	    ITEMS.register("hardenedbricks" + type.tag(), supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
 	}
 	BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
 	BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));

@@ -19,8 +19,8 @@ import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import electrodynamics.prefab.tile.components.type.ComponentProcessor;
 import electrodynamics.prefab.tile.components.type.ComponentProcessorType;
 import electrodynamics.prefab.tile.components.type.ComponentTickable;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 
 public class TileBlastCompressor extends GenericTileTicking {
