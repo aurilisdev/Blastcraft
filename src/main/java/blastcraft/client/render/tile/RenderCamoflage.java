@@ -1,39 +1,39 @@
 package blastcraft.client.render.tile;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import blastcraft.DeferredRegisters;
 import blastcraft.common.tile.TileCamoflage;
-import net.minecraft.block.BlockState;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
-public class RenderCamoflage extends TileEntityRenderer<TileCamoflage> {
+public class RenderCamoflage extends BlockEntityRenderer<TileCamoflage> {
 
-    public RenderCamoflage(TileEntityRendererDispatcher rendererDispatcherIn) {
+    public RenderCamoflage(BlockEntityRenderDispatcher rendererDispatcherIn) {
 	super(rendererDispatcherIn);
     }
 
     @Override
     @Deprecated
-    public void render(TileCamoflage tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn,
+    public void render(TileCamoflage tileEntityIn, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int combinedLightIn,
 	    int combinedOverlayIn) {
 	if (tileEntityIn.block != null && tileEntityIn.block != DeferredRegisters.blockCamoflage) {
-	    BlockPos s = tileEntityIn.getPos().offset(Direction.UP);
+	    BlockPos s = tileEntityIn.getBlockPos().relative(Direction.UP);
 	    BlockState state = tileEntityIn.block
-		    .getStateForPlacement(new BlockItemUseContext(Minecraft.getInstance().player, Hand.MAIN_HAND, ItemStack.EMPTY,
-			    new BlockRayTraceResult(new Vector3d(s.getX(), s.getY(), s.getZ()), Direction.UP, s.offset(Direction.DOWN), false)));
+		    .getStateForPlacement(new BlockPlaceContext(Minecraft.getInstance().player, InteractionHand.MAIN_HAND, ItemStack.EMPTY,
+			    new BlockHitResult(new Vec3(s.getX(), s.getY(), s.getZ()), Direction.UP, s.relative(Direction.DOWN), false)));
 	    if (state != null) {
-		Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(state, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+		Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
 	    }
 	}
     }

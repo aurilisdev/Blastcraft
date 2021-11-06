@@ -5,9 +5,9 @@ import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.settings.Constants;
 import electrodynamics.common.block.BlockCustomGlass;
 import electrodynamics.prefab.configuration.ConfigurationHandler;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,14 +40,14 @@ public class Blastcraft {
     public static void onClientSetup(FMLClientSetupEvent event) {
 	for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
 	    if (block.get() instanceof BlockCustomGlass) {
-		RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout());
+		ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
 	    }
 	}
-	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockCamoflage, RenderType.getCutout());
-	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockSpike, RenderType.getCutout());
-	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.getCutout());
-	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.getCutout());
-	RenderTypeLookup.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.getTranslucent());
+	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockCamoflage, RenderType.cutout());
+	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpike, RenderType.cutout());
+	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.cutout());
+	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.cutout());
+	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.translucent());
 	ClientRegistry.bindTileEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
     }
 

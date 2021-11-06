@@ -5,11 +5,11 @@ import electrodynamics.prefab.tile.GenericTileTicking;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import electrodynamics.prefab.tile.components.type.ComponentTickable;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Registry;
 
 public class TileCamoflage extends GenericTileTicking {
 
@@ -23,31 +23,31 @@ public class TileCamoflage extends GenericTileTicking {
 
     @Override
     @Deprecated
-    public CompoundNBT write(CompoundNBT compound) {
+    public CompoundTag save(CompoundTag compound) {
 	compound.putString("blockId", block == null ? "null" : Registry.BLOCK.getKey(block).toString());
-	return super.write(compound);
+	return super.save(compound);
     }
 
     @Override
     @Deprecated
-    public void read(BlockState state, CompoundNBT compound) {
-	super.read(state, compound);
+    public void load(BlockState state, CompoundTag compound) {
+	super.load(state, compound);
 	String read = compound.getString("blockId");
 	if (!read.equals("null")) {
-	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
+	    block = Registry.BLOCK.get(new ResourceLocation(read));
 	}
     }
 
     @Deprecated
-    public void readCustomPacket(CompoundNBT nbt) {
+    public void readCustomPacket(CompoundTag nbt) {
 	String read = nbt.getString("blockId");
 	if (!read.equals("null")) {
-	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
+	    block = Registry.BLOCK.get(new ResourceLocation(read));
 	}
     }
 
-    public void writeCustomPacket(CompoundNBT nbt) {
-	write(nbt);
+    public void writeCustomPacket(CompoundTag nbt) {
+	save(nbt);
     }
 
     public void tickCommon(ComponentTickable component) {
