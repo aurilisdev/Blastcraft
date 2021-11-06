@@ -19,14 +19,15 @@ import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import electrodynamics.prefab.tile.components.type.ComponentProcessor;
 import electrodynamics.prefab.tile.components.type.ComponentProcessorType;
 import electrodynamics.prefab.tile.components.type.ComponentTickable;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class TileBlastCompressor extends GenericTileTicking {
-    public TileBlastCompressor() {
-
-	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
+    public TileBlastCompressor(BlockPos worldPosition, BlockState blockState) {
+	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get(), worldPosition, blockState);
 	addComponent(new ComponentDirection());
 	addComponent(new ComponentPacketHandler());
 	addComponent(new ComponentTickable().tickClient(this::tickClient));

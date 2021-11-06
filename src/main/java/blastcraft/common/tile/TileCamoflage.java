@@ -5,6 +5,7 @@ import electrodynamics.prefab.tile.GenericTileTicking;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import electrodynamics.prefab.tile.components.type.ComponentTickable;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -15,8 +16,8 @@ public class TileCamoflage extends GenericTileTicking {
 
     public Block block = DeferredRegisters.blockCamoflage;
 
-    public TileCamoflage() {
-	super(DeferredRegisters.TILE_CAMOFLAGE.get());
+    public TileCamoflage(BlockPos worldPosition, BlockState blockState) {
+	super(DeferredRegisters.TILE_CAMOFLAGE.get(), worldPosition, blockState);
 	addComponent(new ComponentTickable().tickCommon(this::tickCommon));
 	addComponent(new ComponentPacketHandler().customPacketReader(this::readCustomPacket).customPacketWriter(this::writeCustomPacket));
     }
@@ -30,8 +31,8 @@ public class TileCamoflage extends GenericTileTicking {
 
     @Override
     @Deprecated
-    public void load(BlockState state, CompoundTag compound) {
-	super.load(state, compound);
+    public void load(CompoundTag compound) {
+	super.load(compound);
 	String read = compound.getString("blockId");
 	if (!read.equals("null")) {
 	    block = Registry.BLOCK.get(new ResourceLocation(read));

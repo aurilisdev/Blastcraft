@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,7 +19,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fmlclient.registry.ClientRegistry;
 import net.minecraftforge.fmllegacy.RegistryObject;
 
 @Mod(References.ID)
@@ -48,7 +48,13 @@ public class Blastcraft {
 	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.cutout());
 	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.cutout());
 	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.translucent());
-	ClientRegistry.bindTileEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
+    }
+
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void registerEntities(EntityRenderersEvent.RegisterRenderers event) {
+	event.registerBlockEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
+
     }
 
     @SubscribeEvent

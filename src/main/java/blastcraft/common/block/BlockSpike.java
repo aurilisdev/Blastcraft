@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolType;
 
@@ -19,7 +20,7 @@ public class BlockSpike extends Block {
     }
 
     @Override
-    public void stepOn(Level worldIn, BlockPos pos, Entity entityIn) {
+    public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
 	if (entityIn instanceof LivingEntity) {
 	    entityIn.hurt(DamageSource.CACTUS, 2f);
 	}
@@ -27,7 +28,7 @@ public class BlockSpike extends Block {
 
     public static class BlockSpikeFire extends BlockSpike {
 	@Override
-	public void stepOn(Level worldIn, BlockPos pos, Entity entityIn) {
+	public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
 	    if (entityIn instanceof LivingEntity) {
 		entityIn.setSecondsOnFire(10);
 		entityIn.hurt(DamageSource.CACTUS, 1f);
@@ -37,9 +38,9 @@ public class BlockSpike extends Block {
 
     public static class BlockSpikePoison extends BlockSpike {
 	@Override
-	public void stepOn(Level worldIn, BlockPos pos, Entity entityIn) {
-	    if (entityIn instanceof LivingEntity) {
-		((LivingEntity) entityIn).addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
+	public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
+	    if (entityIn instanceof LivingEntity l) {
+		l.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
 		entityIn.hurt(DamageSource.CACTUS, 1f);
 	    }
 	}

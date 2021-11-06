@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import blastcraft.common.tile.TileCamoflage;
+import electrodynamics.prefab.tile.GenericTileTicking;
 import electrodynamics.prefab.tile.IWrenchable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,10 +17,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -32,7 +36,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockCamoflage extends Block implements IWrenchable {
+public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
     public static BooleanProperty PROP = BooleanProperty.create("isself");
     public static BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
 
@@ -121,14 +125,19 @@ public class BlockCamoflage extends Block implements IWrenchable {
     }
 
     @Override
-    public boolean hasTileEntity(BlockState state) {
-	return true;
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+	return new TileCamoflage(pos, state);
     }
 
     @Override
-    @Deprecated
-    public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-	return new TileCamoflage();
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level lvl, BlockState state, BlockEntityType<T> type) {
+	return this::tick;
+    }
+
+    public <T extends BlockEntity> void tick(Level lvl, BlockPos pos, BlockState state, T t) {
+	if (t instanceof GenericTileTicking tick) {
+	    tick.tick();
+	}
     }
 
     @Override

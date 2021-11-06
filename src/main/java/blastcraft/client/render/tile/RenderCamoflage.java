@@ -6,8 +6,8 @@ import blastcraft.DeferredRegisters;
 import blastcraft.common.tile.TileCamoflage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -17,10 +17,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class RenderCamoflage extends BlockEntityRenderer<TileCamoflage> {
+public class RenderCamoflage implements BlockEntityRenderer<TileCamoflage> {
 
-    public RenderCamoflage(BlockEntityRenderDispatcher rendererDispatcherIn) {
-	super(rendererDispatcherIn);
+    public RenderCamoflage(BlockEntityRendererProvider.Context context) {
     }
 
     @Override
