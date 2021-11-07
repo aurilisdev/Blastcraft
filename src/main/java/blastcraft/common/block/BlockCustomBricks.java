@@ -9,13 +9,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.storage.loot.LootContext.Builder;
-import net.minecraftforge.common.ToolType;
 
 public class BlockCustomBricks extends GlassBlock {
 
     public BlockCustomBricks(float hardness, float resistance) {
-	super(Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(hardness,
-		resistance));
+	super(Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(hardness, resistance));
     }
 
     @Override

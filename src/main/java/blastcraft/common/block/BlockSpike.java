@@ -11,12 +11,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.ToolType;
 
 public class BlockSpike extends Block {
 
     public BlockSpike() {
-	super(Properties.of(Material.METAL).strength(1F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE).noCollission());
+	super(Properties.of(Material.METAL).strength(1F).sound(SoundType.METAL).noCollission());
     }
 
     @Override
