@@ -49,33 +49,33 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public List<ItemStack> getDrops(BlockState state, net.minecraft.world.level.storage.loot.LootContext.Builder builder) {
 	return Arrays.asList(new ItemStack(this));
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public VoxelShape getVisualShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
 	return Shapes.empty();
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
 	return adjacentBlockState.is(this) || super.skipRendering(state, adjacentBlockState, side);
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 	return state.getValue(ISWALKTHROUGHABLE) == Boolean.TRUE ? super.getShape(state, worldIn, pos, context) : Shapes.empty();
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
 	return 1.0F;
     }
@@ -86,7 +86,7 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
 	ItemStack stack = player.getItemBySlot(handIn == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
 	if (!stack.isEmpty()) {
@@ -119,7 +119,7 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public RenderShape getRenderShape(BlockState state) {
 	return state.getValue(PROP) == Boolean.TRUE ? RenderShape.MODEL : RenderShape.INVISIBLE;
     }
@@ -141,7 +141,7 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = false, since = "Overriden method is deprecated")
     public boolean isPathfindable(BlockState state, BlockGetter worldIn, BlockPos pos, PathComputationType type) {
 	return !state.getValue(ISWALKTHROUGHABLE) || super.isPathfindable(state, worldIn, pos, type);
     }
