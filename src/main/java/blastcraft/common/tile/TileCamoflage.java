@@ -23,14 +23,12 @@ public class TileCamoflage extends GenericTileTicking {
     }
 
     @Override
-    @Deprecated
     public CompoundTag save(CompoundTag compound) {
 	compound.putString("blockId", block == null ? "null" : Registry.BLOCK.getKey(block).toString());
 	return super.save(compound);
     }
 
     @Override
-    @Deprecated
     public void load(CompoundTag compound) {
 	super.load(compound);
 	String read = compound.getString("blockId");
@@ -39,7 +37,6 @@ public class TileCamoflage extends GenericTileTicking {
 	}
     }
 
-    @Deprecated
     public void readCustomPacket(CompoundTag nbt) {
 	String read = nbt.getString("blockId");
 	if (!read.equals("null")) {

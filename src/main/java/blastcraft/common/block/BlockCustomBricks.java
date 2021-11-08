@@ -17,7 +17,6 @@ public class BlockCustomBricks extends GlassBlock {
     }
 
     @Override
-    @Deprecated
     public List<ItemStack> getDrops(BlockState state, Builder builder) {
 	return Arrays.asList(new ItemStack(this));
     }

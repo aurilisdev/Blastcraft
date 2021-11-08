@@ -23,7 +23,6 @@ public class RenderCamoflage implements BlockEntityRenderer<TileCamoflage> {
     }
 
     @Override
-    @Deprecated
     public void render(TileCamoflage tileEntityIn, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int combinedLightIn,
 	    int combinedOverlayIn) {
 	if (tileEntityIn.block != null && tileEntityIn.block != DeferredRegisters.blockCamoflage) {

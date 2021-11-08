@@ -18,7 +18,6 @@ public class BlockBlastCompressor extends BlockGenericMachine {
     }
 
     @Override
-    @Deprecated
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
 	BlockEntity tile = worldIn.getBlockEntity(pos);
 	if (tile instanceof GenericTile g) {
