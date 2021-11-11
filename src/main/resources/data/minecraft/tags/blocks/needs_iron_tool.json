@@ -1,0 +1,25 @@
+{
+	"replace": false,
+	"values": [
+		"blastcraft:blastproofwalling",
+		"blastcraft:blastproofwallingbig",
+		"blastcraft:blastproofwallingglass",
+		"blastcraft:blastproofwallingpolished",
+		"blastcraft:blastproofwallingsmooth",
+		"blastcraft:carbonplatedwalling",
+		"blastcraft:carbonplatedwallingbig",
+		"blastcraft:carbonplatedwallingglass",
+		"blastcraft:carbonplatedwallingpolished",
+		"blastcraft:carbonplatedwallingsmooth",
+		"blastcraft:hardenedbricks",
+		"blastcraft:hardenedbricksbig",
+		"blastcraft:hardenedbricksglass",
+		"blastcraft:hardenedbrickspolished",
+		"blastcraft:hardenedbrickssmooth",
+		"blastcraft:rawblastproofwalling",
+		"blastcraft:rawblastproofwallingbig",
+		"blastcraft:rawblastproofwallingglass",
+		"blastcraft:rawblastproofwallingpolished",
+		"blastcraft:rawblastproofwallingsmooth"
+	]
+}
