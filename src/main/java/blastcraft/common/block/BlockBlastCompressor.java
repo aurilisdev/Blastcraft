@@ -1,7 +1,7 @@
 package blastcraft.common.block;
 
 import blastcraft.common.tile.TileBlastCompressor;
-import electrodynamics.common.block.BlockGenericMachine;
+import electrodynamics.prefab.block.GenericMachineBlock;
 import electrodynamics.prefab.tile.GenericTile;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentInventory;
@@ -11,10 +11,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockBlastCompressor extends BlockGenericMachine {
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-	return new TileBlastCompressor(pos, state);
+public class BlockBlastCompressor extends GenericMachineBlock {
+
+    public BlockBlastCompressor() {
+	super(TileBlastCompressor::new);
     }
 
     @Override
