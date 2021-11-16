@@ -3,11 +3,14 @@ package blastcraft.common.block;
 import electrodynamics.api.ISubtype;
 
 public enum SubtypeBrick implements ISubtype {
-    base, smooth, polished, big;
+    base,
+    smooth,
+    polished,
+    big;
 
     @Override
     public String tag() {
-	return name().equals("base") ? "" : name();
+	return "base".equals(name()) ? "" : name();
     }
 
     @Override

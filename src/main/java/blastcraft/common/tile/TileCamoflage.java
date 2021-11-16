@@ -32,14 +32,14 @@ public class TileCamoflage extends GenericTile {
     public void load(CompoundTag compound) {
 	super.load(compound);
 	String read = compound.getString("blockId");
-	if (!read.equals("null")) {
+	if (!"null".equals(read)) {
 	    block = Registry.BLOCK.get(new ResourceLocation(read));
 	}
     }
 
     public void readCustomPacket(CompoundTag nbt) {
 	String read = nbt.getString("blockId");
-	if (!read.equals("null")) {
+	if (!"null".equals(read)) {
 	    block = Registry.BLOCK.get(new ResourceLocation(read));
 	}
     }
