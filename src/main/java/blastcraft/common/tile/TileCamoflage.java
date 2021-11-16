@@ -1,7 +1,7 @@
 package blastcraft.common.tile;
 
 import blastcraft.DeferredRegisters;
-import electrodynamics.prefab.tile.GenericTileTicking;
+import electrodynamics.prefab.tile.GenericTile;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import electrodynamics.prefab.tile.components.type.ComponentTickable;
@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TileCamoflage extends GenericTileTicking {
+public class TileCamoflage extends GenericTile {
 
     public Block block = DeferredRegisters.blockCamoflage;
 

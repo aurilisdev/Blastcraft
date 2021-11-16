@@ -9,7 +9,7 @@ import electrodynamics.api.electricity.CapabilityElectrodynamic;
 import electrodynamics.api.sound.SoundAPI;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
 import electrodynamics.common.item.ItemProcessorUpgrade;
-import electrodynamics.prefab.tile.GenericTileTicking;
+import electrodynamics.prefab.tile.GenericTile;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentContainerProvider;
 import electrodynamics.prefab.tile.components.type.ComponentDirection;
@@ -25,7 +25,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TileBlastCompressor extends GenericTileTicking {
+public class TileBlastCompressor extends GenericTile {
     public TileBlastCompressor(BlockPos worldPosition, BlockState blockState) {
 	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get(), worldPosition, blockState);
 	addComponent(new ComponentDirection());
