@@ -1,11 +1,7 @@
 package blastcraft.common.block;
 
-import java.util.Arrays;
-import java.util.List;
-
 import blastcraft.common.tile.TileCamoflage;
-import electrodynamics.prefab.tile.GenericTileTicking;
-import electrodynamics.prefab.tile.IWrenchable;
+import electrodynamics.prefab.block.GenericEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -17,13 +13,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -36,7 +29,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
+public class BlockCamoflage extends GenericEntityBlock {
     public static BooleanProperty PROP = BooleanProperty.create("isself");
     public static BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
 
@@ -46,11 +39,6 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
 
     private static boolean isntSolid(BlockState state, BlockGetter reader, BlockPos pos) {
 	return false;
-    }
-
-    @Override
-    public List<ItemStack> getDrops(BlockState state, net.minecraft.world.level.storage.loot.LootContext.Builder builder) {
-	return Arrays.asList(new ItemStack(this));
     }
 
     @Override
@@ -114,7 +102,7 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
 
     @Override
     public RenderShape getRenderShape(BlockState state) {
-	return state.getValue(PROP) == Boolean.TRUE ? RenderShape.MODEL : RenderShape.INVISIBLE;
+	return state.getValue(PROP) == Boolean.TRUE ? super.getRenderShape(state) : RenderShape.INVISIBLE;
     }
 
     @Override
@@ -123,29 +111,18 @@ public class BlockCamoflage extends BaseEntityBlock implements IWrenchable {
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level lvl, BlockState state, BlockEntityType<T> type) {
-	return this::tick;
-    }
-
-    public <T extends BlockEntity> void tick(Level lvl, BlockPos pos, BlockState state, T t) {
-	if (t instanceof GenericTileTicking tick) {
-	    tick.tick();
-	}
-    }
-
-    @Override
     public boolean isPathfindable(BlockState state, BlockGetter worldIn, BlockPos pos, PathComputationType type) {
 	return !state.getValue(ISWALKTHROUGHABLE) || super.isPathfindable(state, worldIn, pos, type);
     }
 
     @Override
-    public void onPickup(ItemStack arg0, BlockPos arg1, Player arg) {
-	arg.level.setBlockAndUpdate(arg1,
-		arg.level.getBlockState(arg1).setValue(ISWALKTHROUGHABLE, !arg.level.getBlockState(arg1).getValue(ISWALKTHROUGHABLE)));
+    public void onPickup(ItemStack stack, BlockPos pos, Player player) {
+	player.level.setBlockAndUpdate(pos,
+		player.level.getBlockState(pos).setValue(ISWALKTHROUGHABLE, !player.level.getBlockState(pos).getValue(ISWALKTHROUGHABLE)));
     }
 
     @Override
-    public void onRotate(ItemStack arg0, BlockPos arg1, Player arg2) {
+    public void onRotate(ItemStack stack, BlockPos pos, Player player) {
 	// Doesnt rotate.
     }
 }
