@@ -1,7 +1,7 @@
-package blastcraft.common.recipe.categories.o2o.specificmachines;
+package blastcraft.common.recipe.categories.item2item.specificmachines;
 
 import blastcraft.common.recipe.BlastCraftRecipeInit;
-import electrodynamics.common.recipe.categories.o2o.O2ORecipe;
+import electrodynamics.common.recipe.categories.item2item.Item2ItemRecipe;
 import electrodynamics.common.recipe.recipeutils.CountableIngredient;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -9,14 +9,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 
-public class BlastCompressorRecipe extends O2ORecipe {
+public class BlastCompressorRecipe extends Item2ItemRecipe {
 
     public static final String RECIPE_GROUP = "blast_compressor_recipe";
     public static final String MOD_ID = blastcraft.References.ID;
     public static final ResourceLocation RECIPE_ID = new ResourceLocation(MOD_ID, RECIPE_GROUP);
 
-    public BlastCompressorRecipe(ResourceLocation id, CountableIngredient input, ItemStack output) {
-	super(id, input, output);
+    public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] inputs, ItemStack output) {
+    	super(id, inputs, output);
     }
 
     @Override
