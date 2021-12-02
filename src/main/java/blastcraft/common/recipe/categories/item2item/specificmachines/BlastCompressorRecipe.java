@@ -16,7 +16,7 @@ public class BlastCompressorRecipe extends Item2ItemRecipe {
     public static final ResourceLocation RECIPE_ID = new ResourceLocation(MOD_ID, RECIPE_GROUP);
 
     public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] inputs, ItemStack output) {
-    	super(id, inputs, output);
+	super(id, inputs, output);
     }
 
     @Override
