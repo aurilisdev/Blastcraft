@@ -3,7 +3,6 @@ package blastcraft.common.tile;
 import blastcraft.DeferredRegisters;
 import blastcraft.SoundRegister;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
-import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.common.settings.Constants;
 import electrodynamics.api.electricity.CapabilityElectrodynamic;
 import electrodynamics.api.sound.SoundAPI;
@@ -48,10 +47,9 @@ public class TileBlastCompressor extends GenericTile {
 		.slotSizes(inputSlots, outputSize, itemBiSize, upgradeSlots, inputBucketSlots, outputBucketSlots, processorCount, inputPerProc)
 		.valid(getPredicate(inputSlots, outputSize, itemBiSize, inputBucketSlots + outputBucketSlots, upgradeSlots, invSize)));
 	addProcessor(new ComponentProcessor(this).setProcessorNumber(0)
-		.canProcess(component -> component.canProcessItem2ItemRecipe(component, BlastCompressorRecipe.class,
-			BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
-		.process(component -> component.processItem2ItemRecipe(component, BlastCompressorRecipe.class))
-		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK));
+		.canProcess(component -> component.canProcessItem2ItemRecipe(component, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
+		.process(component -> component.processItem2ItemRecipe(component)).requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
+		.usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK));
 	addComponent(new ComponentContainerProvider("container.blastcompressor")
 		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
     }
