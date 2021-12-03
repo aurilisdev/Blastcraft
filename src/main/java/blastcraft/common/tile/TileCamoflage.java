@@ -23,9 +23,9 @@ public class TileCamoflage extends GenericTile {
     }
 
     @Override
-    public CompoundTag save(CompoundTag compound) {
+    public void saveAdditional(CompoundTag compound) {
 	compound.putString("blockId", block == null ? "null" : Registry.BLOCK.getKey(block).toString());
-	return super.save(compound);
+	super.saveAdditional(compound);
     }
 
     @Override
