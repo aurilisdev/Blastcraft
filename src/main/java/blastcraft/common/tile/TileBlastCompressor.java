@@ -48,8 +48,8 @@ public class TileBlastCompressor extends GenericTile {
 		.valid(getPredicate(inputSlots, outputSize, itemBiSize, inputBucketSlots + outputBucketSlots, upgradeSlots, invSize)));
 	addProcessor(new ComponentProcessor(this).setProcessorNumber(0)
 		.canProcess(component -> component.canProcessItem2ItemRecipe(component, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
-		.process(component -> component.processItem2ItemRecipe(component)).requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS)
-		.usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK));
+		.process(component -> component.processItem2ItemRecipe(component))
+		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK));
 	addComponent(new ComponentContainerProvider("container.blastcompressor")
 		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
     }
