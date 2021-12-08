@@ -34,11 +34,7 @@ public class BlockCamoflage extends GenericEntityBlock {
     public static BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
 
     public BlockCamoflage() {
-	super(Properties.of(Material.WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor(BlockCamoflage::isntSolid).noOcclusion());
-    }
-
-    private static boolean isntSolid(BlockState state, BlockGetter reader, BlockPos pos) {
-	return false;
+	super(Properties.of(Material.WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
     }
 
     @Override
