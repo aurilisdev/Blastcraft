@@ -4,7 +4,7 @@ import blastcraft.DeferredRegisters;
 import blastcraft.SoundRegister;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.settings.Constants;
-import electrodynamics.api.electricity.CapabilityElectrodynamic;
+import electrodynamics.api.capability.electrodynamic.CapabilityElectrodynamic;
 import electrodynamics.api.sound.SoundAPI;
 import electrodynamics.common.inventory.container.ContainerO2OProcessor;
 import electrodynamics.prefab.tile.GenericTile;
