@@ -1,4 +1,4 @@
-package blastcraft.compatability.jei;
+package blastcraft.compatibility.jei;
 
 import java.util.Objects;
 import java.util.Set;
@@ -6,10 +6,10 @@ import java.util.Set;
 import com.google.common.collect.ImmutableSet;
 
 import blastcraft.common.recipe.BlastCraftRecipeInit;
-import blastcraft.compatability.jei.recipecategories.item2item.specificmachines.BlastCompressorRecipeCategory;
+import blastcraft.compatibility.jei.recipecategories.item2item.specificmachines.BlastCompressorRecipeCategory;
 import electrodynamics.client.screen.ScreenO2OProcessor;
 import electrodynamics.common.recipe.categories.item2item.Item2ItemRecipe;
-import electrodynamics.compatability.jei.ElectrodynamicsJEIPlugin;
+import electrodynamics.compatibility.jei.ElectrodynamicsJEIPlugin;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
