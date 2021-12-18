@@ -13,16 +13,16 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BlockBlastCompressor extends GenericMachineBlock {
 
-    public BlockBlastCompressor() {
-	super(TileBlastCompressor::new);
-    }
-
-    @Override
-    public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-	BlockEntity tile = worldIn.getBlockEntity(pos);
-	if (tile instanceof GenericTile g) {
-	    Containers.dropContents(worldIn, pos, g.<ComponentInventory>getComponent(ComponentType.Inventory));
+	public BlockBlastCompressor() {
+		super(TileBlastCompressor::new);
 	}
-	super.onRemove(state, worldIn, pos, newState, isMoving);
-    }
+
+	@Override
+	public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+		BlockEntity tile = worldIn.getBlockEntity(pos);
+		if (tile instanceof GenericTile g) {
+			Containers.dropContents(worldIn, pos, g.<ComponentInventory>getComponent(ComponentType.Inventory));
+		}
+		super.onRemove(state, worldIn, pos, newState, isMoving);
+	}
 }

@@ -6,6 +6,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 
 public class Item2ItemRecipeTypes {
 
-    public static final RecipeSerializer<BlastCompressorRecipe> BLAST_COMPRESSOR_JSON_SERIALIZER = new Item2ItemRecipeSerializer<>(
-	    BlastCompressorRecipe.class);
+	public static final RecipeSerializer<BlastCompressorRecipe> BLAST_COMPRESSOR_JSON_SERIALIZER = new Item2ItemRecipeSerializer<>(
+			BlastCompressorRecipe.class);
 }

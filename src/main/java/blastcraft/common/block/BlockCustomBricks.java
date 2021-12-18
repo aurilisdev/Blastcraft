@@ -12,13 +12,13 @@ import net.minecraft.world.level.storage.loot.LootContext.Builder;
 
 public class BlockCustomBricks extends GlassBlock {
 
-    public BlockCustomBricks(float hardness, float resistance) {
-	super(Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(hardness, resistance));
-    }
+	public BlockCustomBricks(float hardness, float resistance) {
+		super(Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(hardness, resistance));
+	}
 
-    @Override
-    public List<ItemStack> getDrops(BlockState state, Builder builder) {
-	return Arrays.asList(new ItemStack(this));
-    }
+	@Override
+	public List<ItemStack> getDrops(BlockState state, Builder builder) {
+		return Arrays.asList(new ItemStack(this));
+	}
 
 }

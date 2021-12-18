@@ -35,84 +35,84 @@ import net.minecraftforge.registries.RegistryObject;
 
 @EventBusSubscriber(modid = References.ID, bus = Bus.MOD)
 public class DeferredRegisters {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
-    public static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, References.ID);
-    public static final HashMap<SubtypeBrick, ArrayList<BlockCustomBricks>> bricksMap = new HashMap<>();
-    public static BlockCustomGlass blockBlastproofWallingGlass;
-    public static BlockCustomGlass blockRawBlastproofWallingGlass;
-    public static BlockCustomGlass blockCarbonPlatedWallingGlass;
-    public static BlockCustomGlass blockHardenedBricksGlass;
-    public static BlockBlastCompressor blockBlastCompressor;
-    public static BlockCamoflage blockCamoflage;
-    public static PressurePlateBlock blockGlassPressurePlate;
-    public static BlockSpike blockSpike;
-    public static BlockSpikeFire blockSpikeFire;
-    public static BlockSpikePoison blockSpikePoison;
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
+	public static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, References.ID);
+	public static final HashMap<SubtypeBrick, ArrayList<BlockCustomBricks>> bricksMap = new HashMap<>();
+	public static BlockCustomGlass blockBlastproofWallingGlass;
+	public static BlockCustomGlass blockRawBlastproofWallingGlass;
+	public static BlockCustomGlass blockCarbonPlatedWallingGlass;
+	public static BlockCustomGlass blockHardenedBricksGlass;
+	public static BlockBlastCompressor blockBlastCompressor;
+	public static BlockCamoflage blockCamoflage;
+	public static PressurePlateBlock blockGlassPressurePlate;
+	public static BlockSpike blockSpike;
+	public static BlockSpikeFire blockSpikeFire;
+	public static BlockSpikePoison blockSpikePoison;
 
-    static {
-	for (SubtypeBrick type : SubtypeBrick.values()) {
-	    ArrayList<BlockCustomBricks> bricks = new ArrayList<>();
-	    bricksMap.put(type, bricks);
-	    BlockCustomBricks brick = new BlockCustomBricks(50, 12500);
-	    bricks.add(brick);
-	    BLOCKS.register("blastproofwalling" + type.tag(), supplier(brick));
-	    ITEMS.register("blastproofwalling" + type.tag(),
-		    supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
-	    brick = new BlockCustomBricks(2, 50);
-	    bricks.add(brick);
-	    BLOCKS.register("rawblastproofwalling" + type.tag(), supplier(brick));
-	    ITEMS.register("rawblastproofwalling" + type.tag(),
-		    supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
-	    brick = new BlockCustomBricks(85, 18000);
-	    bricks.add(brick);
-	    BLOCKS.register("carbonplatedwalling" + type.tag(), supplier(brick));
-	    ITEMS.register("carbonplatedwalling" + type.tag(),
-		    supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
-	    brick = new BlockCustomBricks(10, 4000);
-	    bricks.add(brick);
-	    BLOCKS.register("hardenedbricks" + type.tag(), supplier(brick));
-	    ITEMS.register("hardenedbricks" + type.tag(), supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
+	static {
+		for (SubtypeBrick type : SubtypeBrick.values()) {
+			ArrayList<BlockCustomBricks> bricks = new ArrayList<>();
+			bricksMap.put(type, bricks);
+			BlockCustomBricks brick = new BlockCustomBricks(50, 12500);
+			bricks.add(brick);
+			BLOCKS.register("blastproofwalling" + type.tag(), supplier(brick));
+			ITEMS.register("blastproofwalling" + type.tag(),
+					supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
+			brick = new BlockCustomBricks(2, 50);
+			bricks.add(brick);
+			BLOCKS.register("rawblastproofwalling" + type.tag(), supplier(brick));
+			ITEMS.register("rawblastproofwalling" + type.tag(),
+					supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
+			brick = new BlockCustomBricks(85, 18000);
+			bricks.add(brick);
+			BLOCKS.register("carbonplatedwalling" + type.tag(), supplier(brick));
+			ITEMS.register("carbonplatedwalling" + type.tag(),
+					supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
+			brick = new BlockCustomBricks(10, 4000);
+			bricks.add(brick);
+			BLOCKS.register("hardenedbricks" + type.tag(), supplier(brick));
+			ITEMS.register("hardenedbricks" + type.tag(), supplier(new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
+		}
+		BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
+		BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));
+		BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomGlass(85, 18000)));
+		BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomGlass(10, 4000)));
+		BLOCKS.register("blastcompressor", supplier(blockBlastCompressor = new BlockBlastCompressor()));
+		BLOCKS.register("camoflage", supplier(blockCamoflage = new BlockCamoflage()));
+		BLOCKS.register("glasspressureplate", supplier(blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
+				BlockBehaviour.Properties.of(Material.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS))));
+		BLOCKS.register("spike", supplier(blockSpike = new BlockSpike()));
+		BLOCKS.register("spikefire", supplier(blockSpikeFire = new BlockSpikeFire()));
+		BLOCKS.register("spikepoison", supplier(blockSpikePoison = new BlockSpikePoison()));
+
+		ITEMS.register("blastproofwallingglass",
+				supplier(new BlockItemDescriptable(blockBlastproofWallingGlass, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("rawblastproofwallingglass",
+				supplier(new BlockItemDescriptable(blockRawBlastproofWallingGlass, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("carbonplatedwallingglass",
+				supplier(new BlockItemDescriptable(blockCarbonPlatedWallingGlass, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("hardenedbricksglass",
+				supplier(new BlockItemDescriptable(blockHardenedBricksGlass, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("blastcompressor", supplier(new BlockItemDescriptable(blockBlastCompressor, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("camoflage", supplier(new BlockItemDescriptable(blockCamoflage, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("glasspressureplate",
+				supplier(new BlockItemDescriptable(blockGlassPressurePlate, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("spike", supplier(new BlockItemDescriptable(blockSpike, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("spikefire", supplier(new BlockItemDescriptable(blockSpikeFire, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("spikepoison", supplier(new BlockItemDescriptable(blockSpikePoison, new Item.Properties().tab(References.CORETAB))));
+		BlockItemDescriptable.addDescription(blockBlastCompressor, "|translate|tooltip.blastcompressor.voltage");
 	}
-	BLOCKS.register("blastproofwallingglass", supplier(blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
-	BLOCKS.register("rawblastproofwallingglass", supplier(blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));
-	BLOCKS.register("carbonplatedwallingglass", supplier(blockCarbonPlatedWallingGlass = new BlockCustomGlass(85, 18000)));
-	BLOCKS.register("hardenedbricksglass", supplier(blockHardenedBricksGlass = new BlockCustomGlass(10, 4000)));
-	BLOCKS.register("blastcompressor", supplier(blockBlastCompressor = new BlockBlastCompressor()));
-	BLOCKS.register("camoflage", supplier(blockCamoflage = new BlockCamoflage()));
-	BLOCKS.register("glasspressureplate", supplier(blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
-		BlockBehaviour.Properties.of(Material.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS))));
-	BLOCKS.register("spike", supplier(blockSpike = new BlockSpike()));
-	BLOCKS.register("spikefire", supplier(blockSpikeFire = new BlockSpikeFire()));
-	BLOCKS.register("spikepoison", supplier(blockSpikePoison = new BlockSpikePoison()));
+	public static final RegistryObject<BlockEntityType<TileBlastCompressor>> TILE_BLASTCOMPRESSOR = TILES.register("blastcompressor",
+			() -> new BlockEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));
+	public static final RegistryObject<BlockEntityType<TileCamoflage>> TILE_CAMOFLAGE = TILES.register("camoflage",
+			() -> new BlockEntityType<>(TileCamoflage::new, Sets.newHashSet(blockCamoflage), null));
 
-	ITEMS.register("blastproofwallingglass",
-		supplier(new BlockItemDescriptable(blockBlastproofWallingGlass, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("rawblastproofwallingglass",
-		supplier(new BlockItemDescriptable(blockRawBlastproofWallingGlass, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("carbonplatedwallingglass",
-		supplier(new BlockItemDescriptable(blockCarbonPlatedWallingGlass, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("hardenedbricksglass",
-		supplier(new BlockItemDescriptable(blockHardenedBricksGlass, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("blastcompressor", supplier(new BlockItemDescriptable(blockBlastCompressor, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("camoflage", supplier(new BlockItemDescriptable(blockCamoflage, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("glasspressureplate",
-		supplier(new BlockItemDescriptable(blockGlassPressurePlate, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("spike", supplier(new BlockItemDescriptable(blockSpike, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("spikefire", supplier(new BlockItemDescriptable(blockSpikeFire, new Item.Properties().tab(References.CORETAB))));
-	ITEMS.register("spikepoison", supplier(new BlockItemDescriptable(blockSpikePoison, new Item.Properties().tab(References.CORETAB))));
-	BlockItemDescriptable.addDescription(blockBlastCompressor, "|translate|tooltip.blastcompressor.voltage");
-    }
-    public static final RegistryObject<BlockEntityType<TileBlastCompressor>> TILE_BLASTCOMPRESSOR = TILES.register("blastcompressor",
-	    () -> new BlockEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));
-    public static final RegistryObject<BlockEntityType<TileCamoflage>> TILE_CAMOFLAGE = TILES.register("camoflage",
-	    () -> new BlockEntityType<>(TileCamoflage::new, Sets.newHashSet(blockCamoflage), null));
+	@SubscribeEvent
+	public static void onLoadEvent(FMLLoadCompleteEvent event) {
+	}
 
-    @SubscribeEvent
-    public static void onLoadEvent(FMLLoadCompleteEvent event) {
-    }
-
-    private static <T extends IForgeRegistryEntry<T>> Supplier<? extends T> supplier(T entry) {
-	return () -> entry;
-    }
+	private static <T extends IForgeRegistryEntry<T>> Supplier<? extends T> supplier(T entry) {
+		return () -> entry;
+	}
 }

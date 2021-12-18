@@ -30,95 +30,95 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockCamoflage extends GenericEntityBlock {
-    public static BooleanProperty PROP = BooleanProperty.create("isself");
-    public static BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
+	public static BooleanProperty PROP = BooleanProperty.create("isself");
+	public static BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
 
-    public BlockCamoflage() {
-	super(Properties.of(Material.WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
-    }
-
-    @Override
-    public VoxelShape getVisualShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
-	return Shapes.empty();
-    }
-
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
-	return adjacentBlockState.is(this) || super.skipRendering(state, adjacentBlockState, side);
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-	return state.getValue(ISWALKTHROUGHABLE) == Boolean.TRUE ? super.getShape(state, worldIn, pos, context) : Shapes.empty();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
-	return 1.0F;
-    }
-
-    @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
-	return true;
-    }
-
-    @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-	ItemStack stack = player.getItemBySlot(handIn == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
-	if (!stack.isEmpty()) {
-	    Item item = stack.getItem();
-	    if (item instanceof BlockItem blockItem) {
-		Block block = blockItem.getBlock();
-		if (block.getRenderShape(block.defaultBlockState()) == RenderShape.MODEL) {
-		    TileCamoflage tile = (TileCamoflage) worldIn.getBlockEntity(pos);
-		    if (tile != null) {
-			if (tile.block != block) {
-			    if (block == this) {
-				worldIn.setBlockAndUpdate(pos, state.setValue(PROP, true));
-			    } else if (tile.block == this) {
-				worldIn.setBlockAndUpdate(pos, state.setValue(PROP, false));
-			    }
-			}
-			tile.block = block;
-		    }
-		}
-	    }
+	public BlockCamoflage() {
+		super(Properties.of(Material.WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
 	}
-	return InteractionResult.SUCCESS;
-    }
 
-    @Override
-    protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-	super.createBlockStateDefinition(builder);
-	builder.add(PROP);
-	builder.add(ISWALKTHROUGHABLE);
-    }
+	@Override
+	public VoxelShape getVisualShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
+		return Shapes.empty();
+	}
 
-    @Override
-    public RenderShape getRenderShape(BlockState state) {
-	return state.getValue(PROP) == Boolean.TRUE ? super.getRenderShape(state) : RenderShape.INVISIBLE;
-    }
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
+		return adjacentBlockState.is(this) || super.skipRendering(state, adjacentBlockState, side);
+	}
 
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-	return new TileCamoflage(pos, state);
-    }
+	@Override
+	public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		return state.getValue(ISWALKTHROUGHABLE) == Boolean.TRUE ? super.getShape(state, worldIn, pos, context) : Shapes.empty();
+	}
 
-    @Override
-    public boolean isPathfindable(BlockState state, BlockGetter worldIn, BlockPos pos, PathComputationType type) {
-	return !state.getValue(ISWALKTHROUGHABLE) || super.isPathfindable(state, worldIn, pos, type);
-    }
+	@OnlyIn(Dist.CLIENT)
+	@Override
+	public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
+		return 1.0F;
+	}
 
-    @Override
-    public void onPickup(ItemStack stack, BlockPos pos, Player player) {
-	player.level.setBlockAndUpdate(pos,
-		player.level.getBlockState(pos).setValue(ISWALKTHROUGHABLE, !player.level.getBlockState(pos).getValue(ISWALKTHROUGHABLE)));
-    }
+	@Override
+	public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+		return true;
+	}
 
-    @Override
-    public void onRotate(ItemStack stack, BlockPos pos, Player player) {
-	// Doesnt rotate.
-    }
+	@Override
+	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+		ItemStack stack = player.getItemBySlot(handIn == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+		if (!stack.isEmpty()) {
+			Item item = stack.getItem();
+			if (item instanceof BlockItem blockItem) {
+				Block block = blockItem.getBlock();
+				if (block.getRenderShape(block.defaultBlockState()) == RenderShape.MODEL) {
+					TileCamoflage tile = (TileCamoflage) worldIn.getBlockEntity(pos);
+					if (tile != null) {
+						if (tile.block != block) {
+							if (block == this) {
+								worldIn.setBlockAndUpdate(pos, state.setValue(PROP, true));
+							} else if (tile.block == this) {
+								worldIn.setBlockAndUpdate(pos, state.setValue(PROP, false));
+							}
+						}
+						tile.block = block;
+					}
+				}
+			}
+		}
+		return InteractionResult.SUCCESS;
+	}
+
+	@Override
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(PROP);
+		builder.add(ISWALKTHROUGHABLE);
+	}
+
+	@Override
+	public RenderShape getRenderShape(BlockState state) {
+		return state.getValue(PROP) == Boolean.TRUE ? super.getRenderShape(state) : RenderShape.INVISIBLE;
+	}
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new TileCamoflage(pos, state);
+	}
+
+	@Override
+	public boolean isPathfindable(BlockState state, BlockGetter worldIn, BlockPos pos, PathComputationType type) {
+		return !state.getValue(ISWALKTHROUGHABLE) || super.isPathfindable(state, worldIn, pos, type);
+	}
+
+	@Override
+	public void onPickup(ItemStack stack, BlockPos pos, Player player) {
+		player.level.setBlockAndUpdate(pos,
+				player.level.getBlockState(pos).setValue(ISWALKTHROUGHABLE, !player.level.getBlockState(pos).getValue(ISWALKTHROUGHABLE)));
+	}
+
+	@Override
+	public void onRotate(ItemStack stack, BlockPos pos, Player player) {
+		// Doesnt rotate.
+	}
 }

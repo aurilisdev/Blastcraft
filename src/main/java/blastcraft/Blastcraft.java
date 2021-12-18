@@ -25,39 +25,39 @@ import net.minecraftforge.registries.RegistryObject;
 @EventBusSubscriber(modid = References.ID, bus = Bus.MOD)
 public class Blastcraft {
 
-    public Blastcraft() {
-	ConfigurationHandler.registerConfig(Constants.class);
-	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-	DeferredRegisters.BLOCKS.register(bus);
-	DeferredRegisters.ITEMS.register(bus);
-	DeferredRegisters.TILES.register(bus);
-	BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
-	SoundRegister.SOUNDS.register(bus);
-    }
-
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public static void onClientSetup(FMLClientSetupEvent event) {
-	for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
-	    if (block.get() instanceof BlockCustomGlass) {
-		ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
-	    }
+	public Blastcraft() {
+		ConfigurationHandler.registerConfig(Constants.class);
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		DeferredRegisters.BLOCKS.register(bus);
+		DeferredRegisters.ITEMS.register(bus);
+		DeferredRegisters.TILES.register(bus);
+		BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
+		SoundRegister.SOUNDS.register(bus);
 	}
-	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockCamoflage, RenderType.cutout());
-	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpike, RenderType.cutout());
-	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.cutout());
-	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.cutout());
-	ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.translucent());
-    }
 
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public static void registerEntities(EntityRenderersEvent.RegisterRenderers event) {
-	event.registerBlockEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
+	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
+	public static void onClientSetup(FMLClientSetupEvent event) {
+		for (RegistryObject<Block> block : DeferredRegisters.BLOCKS.getEntries()) {
+			if (block.get() instanceof BlockCustomGlass) {
+				ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
+			}
+		}
+		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockCamoflage, RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpike, RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.translucent());
+	}
 
-    }
+	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
+	public static void registerEntities(EntityRenderersEvent.RegisterRenderers event) {
+		event.registerBlockEntityRenderer(DeferredRegisters.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
 
-    @SubscribeEvent
-    public static void onLoadEvent(FMLLoadCompleteEvent event) {
-    }
+	}
+
+	@SubscribeEvent
+	public static void onLoadEvent(FMLLoadCompleteEvent event) {
+	}
 }

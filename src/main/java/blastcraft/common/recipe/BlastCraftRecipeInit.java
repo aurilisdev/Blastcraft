@@ -11,18 +11,18 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlastCraftRecipeInit {
 
-    public static DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS,
-	    blastcraft.References.ID);
+	public static DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS,
+			blastcraft.References.ID);
 
-    /* RECIPE TYPES */
+	/* RECIPE TYPES */
 
-    // ITEM2ITEM
-    public static final RecipeType<BlastCompressorRecipe> BLAST_COMPRESSOR_TYPE = ElectrodynamicsRecipeInit
-	    .registerType(BlastCompressorRecipe.RECIPE_ID);
+	// ITEM2ITEM
+	public static final RecipeType<BlastCompressorRecipe> BLAST_COMPRESSOR_TYPE = ElectrodynamicsRecipeInit
+			.registerType(BlastCompressorRecipe.RECIPE_ID);
 
-    /* RECIPE SERIALIZERS */
+	/* RECIPE SERIALIZERS */
 
-    // O2O
-    public static final RegistryObject<RecipeSerializer<?>> BLAST_COMPRESSOR_SERIALIZER = RECIPE_SERIALIZER
-	    .register(BlastCompressorRecipe.RECIPE_GROUP, () -> Item2ItemRecipeTypes.BLAST_COMPRESSOR_JSON_SERIALIZER);
+	// O2O
+	public static final RegistryObject<RecipeSerializer<?>> BLAST_COMPRESSOR_SERIALIZER = RECIPE_SERIALIZER
+			.register(BlastCompressorRecipe.RECIPE_GROUP, () -> Item2ItemRecipeTypes.BLAST_COMPRESSOR_JSON_SERIALIZER);
 }
