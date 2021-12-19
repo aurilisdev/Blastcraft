@@ -19,10 +19,10 @@ public class BlastCompressorRecipe extends Item2ItemRecipe {
 	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] inputs, ItemStack output) {
 		super(id, inputs, output);
 	}
-	
+
 	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] input, ItemStack output, ProbableItem[] itemBiproducts) {
-    	super(id, input, output, itemBiproducts);
-    }
+		super(id, input, output, itemBiproducts);
+	}
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
