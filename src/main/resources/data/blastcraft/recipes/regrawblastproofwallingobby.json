@@ -7,14 +7,14 @@
 	],
 	"key": {
 		"s": {
-			"item": "minecraft:obsidian"
+			"item": "electrodynamics:concreteregular"
 		},
 		"m": {
-			"item": "minecraft:bricks"
+			"item": "blastcraft:hardenedbricks"
 		}
 	},
 	"result": {
-		"item": "blastcraft:hardenedbricks",
-		"count": 6
+		"item": "blastcraft:rawblastproofwalling",
+		"count": 3
 	}
 }

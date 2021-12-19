@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"cmc",
+		"cmc",
+		"cmc"
+	],
+	"key": {
+		"c": {
+			"item": "minecraft:obsidian"
+		},
+		"m": {
+			"item": "minecraft:bricks"
+		}
+	},
+	"result": {
+		"item": "blastcraft:hardenedbricks",
+		"count": 6
+	}
+}
