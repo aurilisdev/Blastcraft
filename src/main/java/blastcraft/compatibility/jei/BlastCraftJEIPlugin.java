@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableSet;
 
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.compatibility.jei.recipecategories.item2item.specificmachines.BlastCompressorRecipeCategory;
-import electrodynamics.client.screen.ScreenO2OProcessor;
+import electrodynamics.client.screen.tile.ScreenO2OProcessor;
 import electrodynamics.common.recipe.categories.item2item.Item2ItemRecipe;
 import electrodynamics.compatibility.jei.ElectrodynamicsJEIPlugin;
 import mezz.jei.api.IModPlugin;
