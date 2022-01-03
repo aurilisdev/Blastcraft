@@ -101,7 +101,7 @@ public class DeferredRegisters {
 		ITEMS.register("spike", supplier(new BlockItemDescriptable(blockSpike, new Item.Properties().tab(References.CORETAB))));
 		ITEMS.register("spikefire", supplier(new BlockItemDescriptable(blockSpikeFire, new Item.Properties().tab(References.CORETAB))));
 		ITEMS.register("spikepoison", supplier(new BlockItemDescriptable(blockSpikePoison, new Item.Properties().tab(References.CORETAB))));
-		BlockItemDescriptable.addDescription(blockBlastCompressor, "|translate|tooltip.blastcompressor.voltage");
+		BlockItemDescriptable.addDescription(blockBlastCompressor, "|translate|tooltip.voltage.240");
 	}
 	public static final RegistryObject<BlockEntityType<TileBlastCompressor>> TILE_BLASTCOMPRESSOR = TILES.register("blastcompressor",
 			() -> new BlockEntityType<>(TileBlastCompressor::new, Sets.newHashSet(blockBlastCompressor), null));

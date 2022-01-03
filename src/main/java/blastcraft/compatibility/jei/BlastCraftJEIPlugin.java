@@ -26,12 +26,11 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation(blastcraft.References.ID, "blastc_jei_plugin");
+		return new ResourceLocation(blastcraft.References.ID, "jei");
 	}
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		// Blast Compressor
 		registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE, BlastCompressorRecipeCategory.UID);
 	}
 
@@ -49,7 +48,6 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
-		// Blast Compressor
 		registration.addRecipeCategories(new BlastCompressorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 

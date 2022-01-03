@@ -1,6 +1,7 @@
 package blastcraft.compatibility.jei.recipecategories.item2item.specificmachines;
 
 import blastcraft.DeferredRegisters;
+import blastcraft.common.settings.Constants;
 import electrodynamics.api.References;
 import electrodynamics.compatibility.jei.ElectrodynamicsJEIPlugin;
 import electrodynamics.compatibility.jei.recipecategories.item2item.Item2ItemRecipeCategory;
@@ -25,13 +26,13 @@ public class BlastCompressorRecipeCategory extends Item2ItemRecipeCategory {
 
 	private static ArrowRightAnimatedWrapper ANIM_ARROW = new ArrowRightAnimatedWrapper(41, 23);
 
-	private static PowerLabelWrapper POWER_LABEL = new PowerLabelWrapper(2, 48);
+	private static PowerLabelWrapper POWER_LABEL = new PowerLabelWrapper(2, 48, Constants.BLASTCOMPRESSOR_USAGE_PER_TICK, 240);
 	private static BiproductPercentWrapper ITEM_LABEL = new BiproductPercentWrapper(100, 40, false);
 
 	private static int ANIM_TIME = 50;
 
 	private static String MOD_ID = References.ID;
-	private static String RECIPE_GROUP = "blast_compressor";
+	private static String RECIPE_GROUP = "blastcompressor";
 
 	public static ItemStack INPUT_MACHINE = new ItemStack(DeferredRegisters.blockBlastCompressor);
 
