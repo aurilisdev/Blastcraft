@@ -45,7 +45,7 @@ public class TileCamoflage extends GenericTile {
 	}
 
 	public void writeCustomPacket(CompoundTag nbt) {
-		save(nbt);
+		saveAdditional(nbt);
 	}
 
 	public void tickCommon(ComponentTickable component) {
