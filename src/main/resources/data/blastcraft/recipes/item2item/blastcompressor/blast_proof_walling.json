@@ -12,6 +12,7 @@
         "item":"blastcraft:blastproofwalling",
         "count":1
     },
+    "experience" : 0.1,
 	"itembi" : {
 		"count" : 1, 
 		"0" : {
