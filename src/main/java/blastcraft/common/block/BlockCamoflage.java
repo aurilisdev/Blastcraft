@@ -113,8 +113,7 @@ public class BlockCamoflage extends GenericEntityBlock {
 
 	@Override
 	public void onPickup(ItemStack stack, BlockPos pos, Player player) {
-		player.level.setBlockAndUpdate(pos,
-				player.level.getBlockState(pos).setValue(ISWALKTHROUGHABLE, !player.level.getBlockState(pos).getValue(ISWALKTHROUGHABLE)));
+		player.level.setBlockAndUpdate(pos, player.level.getBlockState(pos).setValue(ISWALKTHROUGHABLE, !player.level.getBlockState(pos).getValue(ISWALKTHROUGHABLE)));
 	}
 
 	@Override

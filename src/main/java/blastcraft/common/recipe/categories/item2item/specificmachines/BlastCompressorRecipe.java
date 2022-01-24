@@ -20,8 +20,7 @@ public class BlastCompressorRecipe extends Item2ItemRecipe {
 		super(id, inputs, output, experience);
 	}
 
-	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] input, ItemStack output, ProbableItem[] itemBiproducts,
-			double experience) {
+	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] input, ItemStack output, ProbableItem[] itemBiproducts, double experience) {
 		super(id, input, output, itemBiproducts, experience);
 	}
 
