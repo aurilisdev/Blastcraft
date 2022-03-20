@@ -35,9 +35,9 @@ public class TileBlastCompressor extends GenericTile {
 		addProcessor(new ComponentProcessor(this).setProcessorNumber(0).canProcess(component -> component.canProcessItem2ItemRecipe(component, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE)).process(component -> component.processItem2ItemRecipe(component)).requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK));
 		addComponent(new ComponentContainerProvider("container.blastcompressor").createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
 	}
-	
+
 	protected void tickServer(ComponentTickable tick) {
-		InventoryUtils.handleExpereinceUpgrade(this);
+		InventoryUtils.handleExperienceUpgrade(this);
 	}
 
 	protected void tickClient(ComponentTickable tickable) {
