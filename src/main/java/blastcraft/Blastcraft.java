@@ -1,8 +1,10 @@
 package blastcraft;
 
+import blastcraft.client.guidebook.ModuleBlastcraft;
 import blastcraft.client.render.tile.RenderCamoflage;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.settings.Constants;
+import electrodynamics.client.guidebook.ScreenGuidebook;
 import electrodynamics.common.block.BlockCustomGlass;
 import electrodynamics.prefab.configuration.ConfigurationHandler;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -48,6 +50,7 @@ public class Blastcraft {
 		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikeFire, RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockSpikePoison, RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(DeferredRegisters.blockGlassPressurePlate, RenderType.translucent());
+		ScreenGuidebook.addGuidebookModule(new ModuleBlastcraft());
 	}
 
 	@SubscribeEvent
