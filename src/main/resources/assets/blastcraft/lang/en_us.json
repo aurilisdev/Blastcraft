@@ -28,5 +28,21 @@
 	"container.blastcompressor": "Blast Compressor",
 	"itemGroup.itemgroupblastcraft": "Blastcraft",
 	"tooltip.voltage.240": "Voltage: 240 Volts",
+	
+	"guidebook.blastcraft.moduletitle" : "Blastcraft",
+	
+	"guidebook.blastcraft.chapter.blocks" : "Blocks",
+	"guidebook.blastcraft.chapter.blocks.camtitle" : "Camoflage",
+	"guidebook.blastcraft.chapter.blocks.p1l1" : "    Camoflage can be disguised ", 
+    "guidebook.blastcraft.chapter.blocks.p1l2" : "as any block in the game by    ",
+    "guidebook.blastcraft.chapter.blocks.p1l3" : "right-clicking on it with said ",
+    "guidebook.blastcraft.chapter.blocks.p1l4" : "block in hand. Note, it will only",
+    "guidebook.blastcraft.chapter.blocks.p1l5" : "copy the appearance of the     ",
+    "guidebook.blastcraft.chapter.blocks.p1l6" : "block, and none of its other   ",
+    "guidebook.blastcraft.chapter.blocks.p1l7" : "properties!                    ",
+    "guidebook.blastcraft.chapter.blocks.tier" : "Tier: %s",
+    "guidebook.blastcraft.chapter.blocks.resistance" : "Resistance: %s",
+    
+	
 	"jei.guilabel.power" : "%1$sV %2$skW"
 }
