@@ -36,7 +36,7 @@ public class DeferredRegisters {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
 	public static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, References.ID);
-	public static final HashMap<SubtypeBrick, ArrayList<Supplier<Block>>> bricksMap = new HashMap<>();
+	public static final HashMap<SubtypeBrick, ArrayList<RegistryObject<Block>>> bricksMap = new HashMap<>();
 	public static BlockCustomGlass blockBlastproofWallingGlass;
 	public static BlockCustomGlass blockRawBlastproofWallingGlass;
 	public static BlockCustomGlass blockCarbonPlatedWallingGlass;
@@ -50,24 +50,20 @@ public class DeferredRegisters {
 
 	static {
 		for (SubtypeBrick type : SubtypeBrick.values()) {
-			ArrayList<Supplier<Block>> bricks = new ArrayList<>();
-			Supplier<Block> brick = supplier(() -> new BlockCustomBricks(50, 12500));
+			ArrayList<RegistryObject<Block>> bricks = new ArrayList<>();
 			bricksMap.put(type, bricks);
-			bricks.add(brick);
-			BLOCKS.register("blastproofwalling" + type.tag(), brick);
-			ITEMS.register("blastproofwalling" + type.tag(), supplier(() -> new BlockItemDescriptable(brick, new Item.Properties().tab(References.CORETAB))));
-			Supplier<Block> brick1 = supplier(() -> new BlockCustomBricks(2, 50));
-			bricks.add(brick1);
-			BLOCKS.register("rawblastproofwalling" + type.tag(), brick1);
-			ITEMS.register("rawblastproofwalling" + type.tag(), supplier(() -> new BlockItemDescriptable(brick1, new Item.Properties().tab(References.CORETAB))));
-			Supplier<Block> brick2 = supplier(() -> new BlockCustomBricks(85, 18000));
-			bricks.add(brick2);
-			BLOCKS.register("carbonplatedwalling" + type.tag(), brick2);
-			ITEMS.register("carbonplatedwalling" + type.tag(), supplier(() -> new BlockItemDescriptable(brick2, new Item.Properties().tab(References.CORETAB))));
-			Supplier<Block> brick3 = supplier(() -> new BlockCustomBricks(10, 4000));
-			bricks.add(brick3);
-			BLOCKS.register("hardenedbricks" + type.tag(), brick3);
-			ITEMS.register("hardenedbricks" + type.tag(), supplier(() -> new BlockItemDescriptable(brick3, new Item.Properties().tab(References.CORETAB))));
+			RegistryObject<Block> obj = BLOCKS.register("blastproofwalling" + type.tag(), () -> new BlockCustomBricks(50, 12500));
+			bricks.add(obj);
+			ITEMS.register("blastproofwalling" + type.tag(), supplier(() -> new BlockItemDescriptable(() -> obj.get(), new Item.Properties().tab(References.CORETAB))));
+			RegistryObject<Block> obj1 = BLOCKS.register("rawblastproofwalling" + type.tag(), () -> new BlockCustomBricks(2, 50));
+			bricks.add(obj1);
+			ITEMS.register("rawblastproofwalling" + type.tag(), supplier(() -> new BlockItemDescriptable(() -> obj1.get(), new Item.Properties().tab(References.CORETAB))));
+			RegistryObject<Block> obj2 = BLOCKS.register("carbonplatedwalling" + type.tag(), () -> new BlockCustomBricks(85, 18000));
+			bricks.add(obj2);
+			ITEMS.register("carbonplatedwalling" + type.tag(), supplier(() -> new BlockItemDescriptable(() -> obj2.get(), new Item.Properties().tab(References.CORETAB))));
+			RegistryObject<Block> obj3 = BLOCKS.register("hardenedbricks" + type.tag(), () -> new BlockCustomBricks(10, 4000));
+			bricks.add(obj3);
+			ITEMS.register("hardenedbricks" + type.tag(), supplier(() -> new BlockItemDescriptable(() -> obj3.get(), new Item.Properties().tab(References.CORETAB))));
 		}
 		BLOCKS.register("blastproofwallingglass", supplier(() -> blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
 		BLOCKS.register("rawblastproofwallingglass", supplier(() -> blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));
