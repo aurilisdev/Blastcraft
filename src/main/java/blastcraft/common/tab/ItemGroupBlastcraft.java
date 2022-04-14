@@ -13,6 +13,6 @@ public class ItemGroupBlastcraft extends CreativeModeTab {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0));
+		return new ItemStack(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0).get());
 	}
 }

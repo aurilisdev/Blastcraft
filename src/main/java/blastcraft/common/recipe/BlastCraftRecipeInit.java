@@ -3,6 +3,7 @@ package blastcraft.common.recipe;
 import blastcraft.common.recipe.categories.item2item.Item2ItemRecipeTypes;
 import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import electrodynamics.common.recipe.ElectrodynamicsRecipeInit;
+import electrodynamics.common.recipe.ElectrodynamicsRecipeInit.CustomRecipeType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,7 +17,7 @@ public class BlastCraftRecipeInit {
 	/* RECIPE TYPES */
 
 	// ITEM2ITEM
-	public static final RecipeType<BlastCompressorRecipe> BLAST_COMPRESSOR_TYPE = ElectrodynamicsRecipeInit.registerType(BlastCompressorRecipe.RECIPE_ID);
+	public static final RegistryObject<RecipeType<BlastCompressorRecipe>> BLAST_COMPRESSOR_TYPE = ElectrodynamicsRecipeInit.RECIPE_TYPES.register(BlastCompressorRecipe.RECIPE_GROUP, () -> new CustomRecipeType<>());
 
 	/* RECIPE SERIALIZERS */
 

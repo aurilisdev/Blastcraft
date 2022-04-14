@@ -1,14 +1,12 @@
 package blastcraft.compatibility.jei;
 
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-
-import com.google.common.collect.ImmutableSet;
 
 import blastcraft.common.recipe.BlastCraftRecipeInit;
+import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.compatibility.jei.recipecategories.item2item.specificmachines.BlastCompressorRecipeCategory;
 import electrodynamics.client.screen.tile.ScreenO2OProcessor;
-import electrodynamics.common.recipe.categories.item2item.Item2ItemRecipe;
 import electrodynamics.compatibility.jei.ElectrodynamicsJEIPlugin;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -31,7 +29,7 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE, BlastCompressorRecipeCategory.UID);
+		registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE, BlastCompressorRecipeCategory.RECIPE_TYPE);
 	}
 
 	@Override
@@ -41,8 +39,8 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 		RecipeManager recipeManager = world.getRecipeManager();
 
 		// Blast Compressor
-		Set<Item2ItemRecipe> blastCompressorRecipes = ImmutableSet.copyOf(recipeManager.getAllRecipesFor(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE));
-		registration.addRecipes(blastCompressorRecipes, BlastCompressorRecipeCategory.UID);
+		List<BlastCompressorRecipe> blastCompressorRecipes = recipeManager.getAllRecipesFor(BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE.get());
+		registration.addRecipes(BlastCompressorRecipeCategory.RECIPE_TYPE, blastCompressorRecipes);
 
 	}
 
@@ -53,7 +51,7 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 
 	@Override
 	public void registerGuiHandlers(IGuiHandlerRegistration registry) {
-		registry.addRecipeClickArea(ScreenO2OProcessor.class, 48, 35, 22, 15, ElectrodynamicsJEIPlugin.O2O_CLICK_AREAS.toArray(new ResourceLocation[ElectrodynamicsJEIPlugin.O2O_CLICK_AREAS.size()]));
+		registry.addRecipeClickArea(ScreenO2OProcessor.class, 48, 35, 22, 15, ElectrodynamicsJEIPlugin.O2O_CLICK_AREAS.toArray(new mezz.jei.api.recipe.RecipeType[ElectrodynamicsJEIPlugin.O2O_CLICK_AREAS.size()]));
 	}
 
 }

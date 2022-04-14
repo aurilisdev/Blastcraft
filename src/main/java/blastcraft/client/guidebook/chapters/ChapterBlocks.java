@@ -69,13 +69,13 @@ public class ChapterBlocks extends Chapter {
 				//
 				new ItemWrapperObject[] {
 						//
-						new ItemWrapperObject(15, 50, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(3))),
+						new ItemWrapperObject(15, 50, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(3).get())),
 						//
-						new ItemWrapperObject(15, 85, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(2))),
+						new ItemWrapperObject(15, 85, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(2).get())),
 						//
-						new ItemWrapperObject(15, 120, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(1))),
+						new ItemWrapperObject(15, 120, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(1).get())),
 						//
-						new ItemWrapperObject(15, 155, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0))), }));
+						new ItemWrapperObject(15, 155, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0).get())), }));
 
 		return pages;
 	}
