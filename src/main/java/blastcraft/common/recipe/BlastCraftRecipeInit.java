@@ -17,7 +17,7 @@ public class BlastCraftRecipeInit {
 	/* RECIPE TYPES */
 
 	// ITEM2ITEM
-	public static final RegistryObject<RecipeType<BlastCompressorRecipe>> BLAST_COMPRESSOR_TYPE = ElectrodynamicsRecipeInit.RECIPE_TYPES.register(BlastCompressorRecipe.RECIPE_GROUP, () -> new CustomRecipeType<>());
+	public static final RegistryObject<RecipeType<BlastCompressorRecipe>> BLAST_COMPRESSOR_TYPE = ElectrodynamicsRecipeInit.RECIPE_TYPES.register(BlastCompressorRecipe.RECIPE_GROUP, CustomRecipeType::new);
 
 	/* RECIPE SERIALIZERS */
 
