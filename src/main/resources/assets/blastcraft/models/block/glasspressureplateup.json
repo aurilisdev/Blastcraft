@@ -1,6 +1,7 @@
 {
-	"parent": "minecraft:block/pressure_plate_up",
-	"textures": {
-		"texture": "blastcraft:block/trans"
-	}
+  "parent" : "minecraft:block/pressure_plate_up",
+  "render_type" : "minecraft:translucent",
+  "textures" : {
+    "texture" : "blastcraft:block/trans"
+  }
 }

@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "blastcraft:block/hardenedbricksglass"
+  "parent" : "minecraft:block/cube_all",
+  "render_type" : "minecraft:cutout",
+  "textures" : {
+    "all" : "blastcraft:block/hardenedbricksglass"
   }
 }

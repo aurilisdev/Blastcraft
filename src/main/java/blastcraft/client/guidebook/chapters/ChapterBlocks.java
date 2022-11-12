@@ -3,8 +3,8 @@ package blastcraft.client.guidebook.chapters;
 import java.util.ArrayList;
 import java.util.List;
 
-import blastcraft.DeferredRegisters;
 import blastcraft.common.block.SubtypeBrick;
+import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.api.item.ItemUtils;
 import electrodynamics.client.guidebook.utils.ItemWrapperObject;
 import electrodynamics.client.guidebook.utils.TextWrapperObject;
@@ -14,7 +14,7 @@ import net.minecraft.ChatFormatting;
 
 public class ChapterBlocks extends Chapter {
 
-	private static final ItemWrapperObject LOGO = new ItemWrapperObject(17, 60, 2.0F, ItemUtils.fromBlock(DeferredRegisters.blockCamoflage));
+	private static final ItemWrapperObject LOGO = new ItemWrapperObject(17, 60, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.blockCamoflage));
 
 	@Override
 	protected List<Page> genPages() {
@@ -39,7 +39,7 @@ public class ChapterBlocks extends Chapter {
 				new TextWrapperObject(10, 140, 4210752, "guidebook.blastcraft.chapter.blocks.p1l7") },
 				new ItemWrapperObject[] {
 						//
-						new ItemWrapperObject(17, 50, 2.0F, ItemUtils.fromBlock(DeferredRegisters.blockCamoflage)) }));
+						new ItemWrapperObject(17, 50, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.blockCamoflage)) }));
 
 		pages.add(new Page(new TextWrapperObject[] {
 				//
@@ -69,13 +69,13 @@ public class ChapterBlocks extends Chapter {
 				//
 				new ItemWrapperObject[] {
 						//
-						new ItemWrapperObject(15, 50, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(3).get())),
+						new ItemWrapperObject(15, 50, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.bricksMap.get(SubtypeBrick.base).get(3).get())),
 						//
-						new ItemWrapperObject(15, 85, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(2).get())),
+						new ItemWrapperObject(15, 85, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.bricksMap.get(SubtypeBrick.base).get(2).get())),
 						//
-						new ItemWrapperObject(15, 120, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(1).get())),
+						new ItemWrapperObject(15, 120, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.bricksMap.get(SubtypeBrick.base).get(1).get())),
 						//
-						new ItemWrapperObject(15, 155, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0).get())), }));
+						new ItemWrapperObject(15, 155, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.bricksMap.get(SubtypeBrick.base).get(0).get())), }));
 
 		return pages;
 	}

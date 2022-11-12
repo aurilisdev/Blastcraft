@@ -1,6 +1,7 @@
 package blastcraft.common.tile;
 
-import blastcraft.DeferredRegisters;
+import blastcraft.registers.BlastcraftBlockTypes;
+import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.prefab.tile.GenericTile;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
@@ -14,10 +15,10 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileCamoflage extends GenericTile {
 
-	public Block block = DeferredRegisters.blockCamoflage;
+	public Block block = BlastcraftBlocks.blockCamoflage;
 
 	public TileCamoflage(BlockPos worldPosition, BlockState blockState) {
-		super(DeferredRegisters.TILE_CAMOFLAGE.get(), worldPosition, blockState);
+		super(BlastcraftBlockTypes.TILE_CAMOFLAGE.get(), worldPosition, blockState);
 		addComponent(new ComponentTickable().tickCommon(this::tickCommon));
 		addComponent(new ComponentPacketHandler().customPacketReader(this::readCustomPacket).customPacketWriter(this::writeCustomPacket));
 	}

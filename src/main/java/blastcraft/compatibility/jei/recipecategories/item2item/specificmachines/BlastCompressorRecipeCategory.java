@@ -1,8 +1,8 @@
 package blastcraft.compatibility.jei.recipecategories.item2item.specificmachines;
 
-import blastcraft.DeferredRegisters;
 import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.common.settings.Constants;
+import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.api.References;
 import electrodynamics.compatibility.jei.ElectrodynamicsJEIPlugin;
 import electrodynamics.compatibility.jei.recipecategories.item2item.Item2ItemRecipeCategory;
@@ -36,7 +36,7 @@ public class BlastCompressorRecipeCategory extends Item2ItemRecipeCategory<Blast
 	private static String MOD_ID = References.ID;
 	private static String RECIPE_GROUP = "blastcompressor";
 
-	public static ItemStack INPUT_MACHINE = new ItemStack(DeferredRegisters.blockBlastCompressor);
+	public static ItemStack INPUT_MACHINE = new ItemStack(BlastcraftBlocks.blockBlastCompressor);
 
 	public static ResourceLocation UID = new ResourceLocation(MOD_ID, RECIPE_GROUP);
 	public static final RecipeType<BlastCompressorRecipe> RECIPE_TYPE = RecipeType.create(References.ID, BlastCompressorRecipe.RECIPE_GROUP, BlastCompressorRecipe.class);
@@ -55,7 +55,6 @@ public class BlastCompressorRecipeCategory extends Item2ItemRecipeCategory<Blast
 		return RECIPE_TYPE;
 	}
 
-	@Override
 	public ResourceLocation getUid() {
 		return UID;
 	}

@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/tinted_cross",
-  "textures": {
-    "cross": "blastcraft:block/spikefire"
+  "parent" : "minecraft:block/tinted_cross",
+  "render_type" : "minecraft:cutout",
+  "textures" : {
+    "cross" : "blastcraft:block/spikefire"
   }
 }
