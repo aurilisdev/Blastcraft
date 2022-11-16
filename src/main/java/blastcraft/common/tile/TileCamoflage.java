@@ -20,7 +20,7 @@ public class TileCamoflage extends GenericTile {
 	public TileCamoflage(BlockPos worldPosition, BlockState blockState) {
 		super(BlastcraftBlockTypes.TILE_CAMOFLAGE.get(), worldPosition, blockState);
 		addComponent(new ComponentTickable().tickCommon(this::tickCommon));
-		addComponent(new ComponentPacketHandler().customPacketReader(this::readCustomPacket).customPacketWriter(this::writeCustomPacket));
+		addComponent(new ComponentPacketHandler().addCustomPacketReader(this::readCustomPacket).addCustomPacketWriter(this::writeCustomPacket));
 	}
 
 	@Override
