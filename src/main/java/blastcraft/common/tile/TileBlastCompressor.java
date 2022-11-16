@@ -41,7 +41,7 @@ public class TileBlastCompressor extends GenericTile {
 	}
 
 	protected void tickClient(ComponentTickable tickable) {
-		boolean running = getProcessor(0).operatingTicks > 0;
+		boolean running = getProcessor(0).operatingTicks.get() > 0;
 		if (running && level.random.nextDouble() < 0.15) {
 			Direction direction = this.<ComponentDirection>getComponent(ComponentType.Direction).getDirection();
 			double d4 = level.random.nextDouble();
