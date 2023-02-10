@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:glass"
+    },
+    {
+      "tag": "forge:hardened_blocks/blastproof_walls"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:blastproofwallingglass"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "blastcraft:blast_compressor_recipe",
+  "experience": 0.10000000149011612,
+  "itembi": {
+    "0": {
+      "chance": 0.3,
+      "count": 1,
+      "item": "minecraft:gunpowder"
+    },
+    "count": 1
+  },
+  "iteminputs": {
+    "0": {
+      "count": 1,
+      "tag": "forge:hardened_blocks/raw_blastproof_walls"
+    },
+    "count": 1
+  },
+  "output": {
+    "count": 1,
+    "item": "blastcraft:blastproofwalling"
+  },
+  "ticks": 220,
+  "usagepertick": 100.0
+}

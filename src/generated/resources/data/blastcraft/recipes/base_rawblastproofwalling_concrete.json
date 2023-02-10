@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "tag": "forge:hardened_blocks/concretes"
+    },
+    "H": {
+      "tag": "forge:hardened_blocks/hardened_bricks"
+    }
+  },
+  "pattern": [
+    "CHC",
+    "CHC",
+    "CHC"
+  ],
+  "result": {
+    "count": 3,
+    "item": "blastcraft:rawblastproofwalling"
+  }
+}

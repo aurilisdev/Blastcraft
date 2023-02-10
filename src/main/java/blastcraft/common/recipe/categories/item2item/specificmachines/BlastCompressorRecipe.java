@@ -15,12 +15,12 @@ public class BlastCompressorRecipe extends Item2ItemRecipe {
 	public static final String MOD_ID = blastcraft.References.ID;
 	public static final ResourceLocation RECIPE_ID = new ResourceLocation(MOD_ID, RECIPE_GROUP);
 
-	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] inputs, ItemStack output, double experience) {
-		super(id, inputs, output, experience);
+	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] inputs, ItemStack output, double experience, int ticks, double usagePerTick) {
+		super(id, inputs, output, experience, ticks, usagePerTick);
 	}
 
-	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] input, ItemStack output, ProbableItem[] itemBiproducts, double experience) {
-		super(id, input, output, itemBiproducts, experience);
+	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] input, ItemStack output, ProbableItem[] itemBiproducts, double experience, int ticks, double usagePerTick) {
+		super(id, input, output, itemBiproducts, experience, ticks, usagePerTick);
 	}
 
 	@Override

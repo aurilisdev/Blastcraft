@@ -9,5 +9,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlastcraftSounds {
 	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, References.ID);
-	public static final RegistryObject<SoundEvent> SOUND_BLASTCOMPRESSOR = SOUNDS.register("blastcompressor", () -> new SoundEvent(new ResourceLocation(References.ID + ":blastcompressor")));
+	
+	public static final RegistryObject<SoundEvent> SOUND_BLASTCOMPRESSOR = sound("blastcompressor");
+	
+	
+	private static RegistryObject<SoundEvent> sound(String name) {
+		return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(References.ID + ":" + name)));
+	}
+	
 }

@@ -3,14 +3,16 @@ package blastcraft.client.guidebook.chapters;
 import java.util.ArrayList;
 import java.util.List;
 
-import blastcraft.common.block.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeBrick;
+import blastcraft.prefab.utils.TextUtils;
 import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.api.item.ItemUtils;
 import electrodynamics.client.guidebook.utils.ItemWrapperObject;
 import electrodynamics.client.guidebook.utils.TextWrapperObject;
 import electrodynamics.client.guidebook.utils.components.Chapter;
 import electrodynamics.client.guidebook.utils.components.Page;
+import electrodynamics.prefab.utilities.ItemUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.MutableComponent;
 
 public class ChapterBlocks extends Chapter {
 
@@ -22,50 +24,50 @@ public class ChapterBlocks extends Chapter {
 
 		pages.add(new Page(new TextWrapperObject[] {
 				//
-				new TextWrapperObject(45, 53, 4210752, "guidebook.blastcraft.chapter.blocks.camtitle").setTextStyles(ChatFormatting.UNDERLINE),
+				new TextWrapperObject(45, 53, 4210752, TextUtils.guidebook("chapter.blocks.camtitle").withStyle(ChatFormatting.UNDERLINE)),
 				//
-				new TextWrapperObject(10, 80, 4210752, "guidebook.blastcraft.chapter.blocks.p1l1"),
+				new TextWrapperObject(10, 80, 4210752, TextUtils.guidebook("chapter.blocks.p1l1")),
 				//
-				new TextWrapperObject(10, 90, 4210752, "guidebook.blastcraft.chapter.blocks.p1l2"),
+				new TextWrapperObject(10, 90, 4210752, TextUtils.guidebook("chapter.blocks.p1l2")),
 				//
-				new TextWrapperObject(10, 100, 4210752, "guidebook.blastcraft.chapter.blocks.p1l3"),
+				new TextWrapperObject(10, 100, 4210752, TextUtils.guidebook("chapter.blocks.p1l3")),
 				//
-				new TextWrapperObject(10, 110, 4210752, "guidebook.blastcraft.chapter.blocks.p1l4"),
+				new TextWrapperObject(10, 110, 4210752, TextUtils.guidebook("chapter.blocks.p1l4")),
 				//
-				new TextWrapperObject(10, 120, 4210752, "guidebook.blastcraft.chapter.blocks.p1l5"),
+				new TextWrapperObject(10, 120, 4210752, TextUtils.guidebook("chapter.blocks.p1l5")),
 				//
-				new TextWrapperObject(10, 130, 4210752, "guidebook.blastcraft.chapter.blocks.p1l6"),
+				new TextWrapperObject(10, 130, 4210752, TextUtils.guidebook("chapter.blocks.p1l6")),
 				//
-				new TextWrapperObject(10, 140, 4210752, "guidebook.blastcraft.chapter.blocks.p1l7") },
+				new TextWrapperObject(10, 140, 4210752, TextUtils.guidebook("chapter.blocks.p1l7")) },
 				new ItemWrapperObject[] {
 						//
 						new ItemWrapperObject(17, 50, 2.0F, ItemUtils.fromBlock(BlastcraftBlocks.blockCamoflage)) }));
 
 		pages.add(new Page(new TextWrapperObject[] {
 				//
-				new TextWrapperObject(45, 47, 4210752, "block.blastcraft.hardenedbricks"),
+				new TextWrapperObject(45, 47, 4210752, TextUtils.block("hardenedbricks")),
 				//
-				new TextWrapperObject(45, 57, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 1),
+				new TextWrapperObject(45, 57, 4210752, TextUtils.guidebook("chapter.blocks.tier", 1)),
 				//
-				new TextWrapperObject(45, 67, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 50),
+				new TextWrapperObject(45, 67, 4210752, TextUtils.guidebook("chapter.blocks.resistance", 50)),
 				//
-				new TextWrapperObject(45, 83, 4210752, "block.blastcraft.carbonplatedwalling"),
+				new TextWrapperObject(45, 83, 4210752, TextUtils.block("carbonplatedwalling")),
 				//
-				new TextWrapperObject(45, 93, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 2),
+				new TextWrapperObject(45, 93, 4210752, TextUtils.guidebook("chapter.blocks.tier", 2)),
 				//
-				new TextWrapperObject(45, 103, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 4000),
+				new TextWrapperObject(45, 103, 4210752, TextUtils.guidebook("chapter.blocks.resistance", 4000)),
 				//
-				new TextWrapperObject(45, 117, 4210752, "block.blastcraft.rawblastproofwalling"),
+				new TextWrapperObject(45, 117, 4210752, TextUtils.block("rawblastproofwalling")),
 				//
-				new TextWrapperObject(45, 127, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 3),
+				new TextWrapperObject(45, 127, 4210752, TextUtils.guidebook("chapter.blocks.tier", 3)),
 				//
-				new TextWrapperObject(45, 137, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 12000),
+				new TextWrapperObject(45, 137, 4210752, TextUtils.guidebook("chapter.blocks.resistance", 12000)),
 				//
-				new TextWrapperObject(45, 153, 4210752, "block.blastcraft.blastproofwalling"),
+				new TextWrapperObject(45, 153, 4210752, TextUtils.block("blastproofwalling")),
 				//
-				new TextWrapperObject(45, 163, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 4),
+				new TextWrapperObject(45, 163, 4210752, TextUtils.guidebook("chapter.blocks.tier", 4)),
 				//
-				new TextWrapperObject(45, 173, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 18000), },
+				new TextWrapperObject(45, 173, 4210752, TextUtils.guidebook("chapter.blocks.resistance", 18000)), },
 				//
 				new ItemWrapperObject[] {
 						//
@@ -86,8 +88,8 @@ public class ChapterBlocks extends Chapter {
 	}
 
 	@Override
-	public String getTitleKey() {
-		return "guidebook.blastcraft.chapter.blocks";
+	public MutableComponent getTitle() {
+		return TextUtils.guidebook("chapter.blocks");
 	}
 
 }

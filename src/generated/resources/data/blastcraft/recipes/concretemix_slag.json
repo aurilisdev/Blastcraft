@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gravel"
+    },
+    "M": {
+      "tag": "forge:slag"
+    },
+    "S": {
+      "tag": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "GMG",
+    "SGS"
+  ],
+  "result": {
+    "count": 4,
+    "item": "blastcraft:concretemix"
+  }
+}
