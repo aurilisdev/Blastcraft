@@ -4,6 +4,7 @@ import blastcraft.client.guidebook.ModuleBlastcraft;
 import blastcraft.client.render.tile.RenderCamoflage;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.settings.Constants;
+import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.BlastcraftBlockTypes;
 import blastcraft.registers.UnifiedBlastcraftRegister;
 import electrodynamics.client.guidebook.ScreenGuidebook;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -29,6 +31,11 @@ public class Blastcraft {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		UnifiedBlastcraftRegister.register(bus);
 		BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
+	}
+	
+	@SubscribeEvent
+	public static void onCommonSetup(FMLCommonSetupEvent event) {
+		BlastcraftTags.init();
 	}
 
 	@SubscribeEvent

@@ -1,6 +1,6 @@
 package blastcraft.common.tab;
 
-import blastcraft.common.block.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeBrick;
 import blastcraft.registers.BlastcraftBlocks;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;

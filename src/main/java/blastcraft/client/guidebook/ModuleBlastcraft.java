@@ -5,9 +5,11 @@ import java.util.List;
 
 import blastcraft.References;
 import blastcraft.client.guidebook.chapters.ChapterBlocks;
+import blastcraft.prefab.utils.TextUtils;
 import electrodynamics.client.guidebook.utils.ImageWrapperObject;
 import electrodynamics.client.guidebook.utils.components.Chapter;
 import electrodynamics.client.guidebook.utils.components.Module;
+import net.minecraft.network.chat.MutableComponent;
 
 public class ModuleBlastcraft extends Module {
 
@@ -26,8 +28,8 @@ public class ModuleBlastcraft extends Module {
 	}
 
 	@Override
-	public String getTitleCat() {
-		return References.ID;
+	public MutableComponent getTitle() {
+		return TextUtils.guidebook(References.ID);
 	}
 
 	@Override

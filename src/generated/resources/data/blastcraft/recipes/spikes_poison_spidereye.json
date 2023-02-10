@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "ballistix"
+      }
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "blastcraft:spike"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:spikepoison"
+  }
+}

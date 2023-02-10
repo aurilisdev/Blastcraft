@@ -4,6 +4,7 @@ import static electrodynamics.registers.UnifiedElectrodynamicsRegister.supplier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import blastcraft.References;
 import blastcraft.common.block.BlockBlastCompressor;
@@ -12,7 +13,11 @@ import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.block.BlockSpike;
 import blastcraft.common.block.BlockSpike.BlockSpikeFire;
 import blastcraft.common.block.BlockSpike.BlockSpikePoison;
-import blastcraft.common.block.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeConcrete;
+import blastcraft.common.block.subtype.SubtypeWalling;
+import blastcraft.common.block.subtype.SubtypeWallingGlass;
+import electrodynamics.api.ISubtype;
 import electrodynamics.common.block.BlockCustomGlass;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
@@ -25,11 +30,10 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlastcraftBlocks {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
+	
 	public static final HashMap<SubtypeBrick, ArrayList<RegistryObject<Block>>> bricksMap = new HashMap<>();
-	public static BlockCustomGlass blockBlastproofWallingGlass;
-	public static BlockCustomGlass blockRawBlastproofWallingGlass;
-	public static BlockCustomGlass blockCarbonPlatedWallingGlass;
-	public static BlockCustomGlass blockHardenedBricksGlass;
+	public static final HashMap<ISubtype, RegistryObject<Block>> SUBTYPEBLOCKREGISTER_MAPPINGS = new HashMap<>();
+	
 	public static BlockBlastCompressor blockBlastCompressor;
 	public static BlockCamoflage blockCamoflage;
 	public static PressurePlateBlock blockGlassPressurePlate;
@@ -40,19 +44,19 @@ public class BlastcraftBlocks {
 		for (SubtypeBrick type : SubtypeBrick.values()) {
 			ArrayList<RegistryObject<Block>> bricks = new ArrayList<>();
 			bricksMap.put(type, bricks);
-			RegistryObject<Block> obj = BLOCKS.register("blastproofwalling" + type.tag(), () -> new BlockCustomBricks(50, 12500));
-			bricks.add(obj);
-			RegistryObject<Block> obj1 = BLOCKS.register("rawblastproofwalling" + type.tag(), () -> new BlockCustomBricks(2, 50));
-			bricks.add(obj1);
-			RegistryObject<Block> obj2 = BLOCKS.register("carbonplatedwalling" + type.tag(), () -> new BlockCustomBricks(85, 18000));
-			bricks.add(obj2);
-			RegistryObject<Block> obj3 = BLOCKS.register("hardenedbricks" + type.tag(), () -> new BlockCustomBricks(10, 4000));
-			bricks.add(obj3);
+			for(SubtypeWalling wall : SubtypeWalling.values()) {
+				bricks.add(BLOCKS.register(wall.tag() + type.tag(), () -> new BlockCustomBricks(wall.hardness, wall.resistance)));
+			}
 		}
-		BLOCKS.register("blastproofwallingglass", supplier(() -> blockBlastproofWallingGlass = new BlockCustomGlass(50, 12500)));
-		BLOCKS.register("rawblastproofwallingglass", supplier(() -> blockRawBlastproofWallingGlass = new BlockCustomGlass(2, 50)));
-		BLOCKS.register("carbonplatedwallingglass", supplier(() -> blockCarbonPlatedWallingGlass = new BlockCustomGlass(85, 18000)));
-		BLOCKS.register("hardenedbricksglass", supplier(() -> blockHardenedBricksGlass = new BlockCustomGlass(10, 4000)));
+		
+		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+			SUBTYPEBLOCKREGISTER_MAPPINGS.put(glass, BLOCKS.register(glass.tag(), supplier(() -> new BlockCustomGlass(glass.hardness, glass.resistance))));
+		}
+		
+		for(SubtypeConcrete concrete : SubtypeConcrete.values()) {
+			SUBTYPEBLOCKREGISTER_MAPPINGS.put(concrete, BLOCKS.register(concrete.tag(), () -> new BlockCustomBricks(concrete.hardness, concrete.resistance)));
+		}
+		
 		BLOCKS.register("blastcompressor", supplier(() -> blockBlastCompressor = new BlockBlastCompressor()));
 		BLOCKS.register("camoflage", supplier(() -> blockCamoflage = new BlockCamoflage()));
 		BLOCKS.register("glasspressureplate", supplier(() -> blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS))));
@@ -61,4 +65,39 @@ public class BlastcraftBlocks {
 		BLOCKS.register("spikepoison", supplier(() -> blockSpikePoison = new BlockSpikePoison()));
 
 	}
+	
+	
+	public static Block getWallForType(SubtypeWalling wall, SubtypeBrick brick) {
+		return bricksMap.get(brick).get(wall.ordinal()).get();
+	}
+	
+	public static Block[] getAllWalls(SubtypeWalling wall) {
+		
+		Block[] blocks = new Block[SubtypeBrick.values().length];
+		
+		int wallingOrdinal = wall.ordinal();
+		int i = 0;
+		for(SubtypeBrick brick : SubtypeBrick.values()) {
+			
+			blocks[i] = bricksMap.get(brick).get(wallingOrdinal).get();
+			i++;
+		}
+		
+		return blocks;
+		
+		
+	}
+	
+	public static Block[] getAllBlockForSubtype(ISubtype[] values) {
+		List<Block> list = new ArrayList<>();
+		for (ISubtype value : values) {
+			list.add(SUBTYPEBLOCKREGISTER_MAPPINGS.get(value).get());
+		}
+		return list.toArray(new Block[] {});
+	}
+
+	public static Block getBlock(ISubtype value) {
+		return SUBTYPEBLOCKREGISTER_MAPPINGS.get(value).get();
+	}
+	
 }
