@@ -18,13 +18,12 @@ import net.minecraft.data.recipes.RecipeProvider;
 public class BlastcraftRecipeProvider extends RecipeProvider {
 
 	public final List<AbstractRecipeGenerator> GENERATORS = new ArrayList<>();
-	
-	
+
 	public BlastcraftRecipeProvider(DataGenerator gen) {
 		super(gen);
 		addRecipes();
 	}
-	
+
 	public void addRecipes() {
 		GENERATORS.add(new BlastcraftCraftingTableRecipes());
 		GENERATORS.add(new BlastcraftSmeltingRecipes());
@@ -36,11 +35,9 @@ public class BlastcraftRecipeProvider extends RecipeProvider {
 
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-		for(AbstractRecipeGenerator generator : GENERATORS) {
+		for (AbstractRecipeGenerator generator : GENERATORS) {
 			generator.addRecipes(consumer);
 		}
 	}
-
-
 
 }

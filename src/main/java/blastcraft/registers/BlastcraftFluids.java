@@ -9,13 +9,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BlastcraftFluids {
 
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, References.ID);
-	
+
 	public static FluidConcrete fluidConcrete;
-	
+
 	static {
-		
+
 		FLUIDS.register("fluidconcrete", () -> fluidConcrete = new FluidConcrete());
-		
+
 	}
-	
+
 }

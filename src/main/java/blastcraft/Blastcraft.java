@@ -32,7 +32,7 @@ public class Blastcraft {
 		UnifiedBlastcraftRegister.register(bus);
 		BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
 	}
-	
+
 	@SubscribeEvent
 	public static void onCommonSetup(FMLCommonSetupEvent event) {
 		BlastcraftTags.init();

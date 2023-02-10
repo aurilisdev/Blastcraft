@@ -19,7 +19,7 @@ public class UnifiedBlastcraftRegister {
 		BlastcraftBlockTypes.BLOCK_ENTITY_TYPES.register(bus);
 		BlastcraftSounds.SOUNDS.register(bus);
 	}
-	
+
 	static {
 		BlockItemDescriptable.addDescription(() -> blockBlastCompressor, TextUtils.tooltip("voltage.240"));
 	}

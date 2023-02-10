@@ -18,31 +18,30 @@ public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvi
 
 	@Override
 	protected void addTables() {
-		
-		for(SubtypeBrick brick : SubtypeBrick.values()) {
-			for(RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
+
+		for (SubtypeBrick brick : SubtypeBrick.values()) {
+			for (RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
 				addSimpleBlock(reg.get());
 			}
 		}
-		
-		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+
+		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(glass));
 		}
-		
-		for(SubtypeConcrete concrete : SubtypeConcrete.values()) {
+
+		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(concrete));
 		}
-		
+
 		addSimpleBlock(BlastcraftBlocks.blockGlassPressurePlate);
 		addSimpleBlock(BlastcraftBlocks.blockCamoflage);
-		
+
 		addSimpleBlock(BlastcraftBlocks.blockSpike);
 		addSimpleBlock(BlastcraftBlocks.blockSpikeFire);
 		addSimpleBlock(BlastcraftBlocks.blockSpikePoison);
-		
+
 		addIETable(BlastcraftBlocks.blockBlastCompressor, BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR);
-		
+
 	}
-	
 
 }

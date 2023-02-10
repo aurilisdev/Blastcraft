@@ -52,7 +52,7 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 			addBlock(BlastcraftBlocks.getBlock(SubtypeWallingGlass.rawblastproofwalling), "Raw Blast Proof Walling Glass");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeWallingGlass.carbonplatedwalling), "Carbon Plated Walling Glass");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeWallingGlass.hardenedbricks), "Hardened Brick Glass");
-			
+
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.regular), "Reinforced Concrete");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.bricks), "Reinforced Concrete Bricks");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.tile), "Reinforced Concrete Tile");
@@ -63,9 +63,9 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 			addBlock(BlastcraftBlocks.blockSpike, "Spike");
 			addBlock(BlastcraftBlocks.blockSpikeFire, "Fire Spike");
 			addBlock(BlastcraftBlocks.blockSpikePoison, "Poison Spike");
-			
+
 			addItem(BlastcraftItems.ITEM_CONCRETEMIX, "Blastcrete");
-			
+
 			addFluid(BlastcraftFluids.fluidConcrete, "Concrete Slurry");
 
 			addContainer("blastcompressor", "Blast Compressor");

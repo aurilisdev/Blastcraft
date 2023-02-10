@@ -6,8 +6,8 @@ public enum SubtypeConcrete implements ISubtype {
 	regular,
 	tile,
 	bricks;
-	
-	public final float hardness= 50;
+
+	public final float hardness = 50;
 	public final float resistance = 1200;
 
 	@Override

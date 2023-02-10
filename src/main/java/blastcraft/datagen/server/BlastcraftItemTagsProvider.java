@@ -38,13 +38,13 @@ public class BlastcraftItemTagsProvider extends ItemTagsProvider {
 		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.carbonplatedwalling)) {
 			carbonPlatedWalls = carbonPlatedWalls.add(block.asItem());
 		}
-		
+
 		TagAppender<Item> hardenedBricks = tag(BlastcraftTags.Items.HARDENED_BRICKS);
 
 		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.hardenedbricks)) {
 			hardenedBricks = hardenedBricks.add(block.asItem());
 		}
-		
+
 		TagAppender<Item> concretes = tag(BlastcraftTags.Items.CONCRETES);
 
 		for (Block block : BlastcraftBlocks.getAllBlockForSubtype(SubtypeConcrete.values())) {

@@ -16,7 +16,7 @@ public class BlastcraftItemModelsProvider extends ElectrodynamicsItemModelsProvi
 	protected void registerModels() {
 
 		layeredItem(BlastcraftItems.ITEM_CONCRETEMIX, Parent.GENERATED, itemLoc(name(BlastcraftItems.ITEM_CONCRETEMIX)));
-		
+
 	}
 
 }

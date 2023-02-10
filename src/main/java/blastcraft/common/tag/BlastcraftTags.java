@@ -44,7 +44,7 @@ public class BlastcraftTags {
 		public static final TagKey<Block> BLASTPROOF_WALLS = forgeTag("hardened_blocks/blastproof_walls");
 		public static final TagKey<Block> CARBON_PLATED_WALLS = forgeTag("hardened_blocks/carbon_plated_walls");
 		public static final TagKey<Block> CONCRETES = forgeTag("hardened_blocks/concretes");
-		
+
 		private static void init() {
 
 		}
@@ -54,22 +54,21 @@ public class BlastcraftTags {
 		}
 
 	}
-	
+
 	public static class Fluids {
-		
+
 		public static final TagKey<Fluid> CONCRETE = forgeTag(FluidConcrete.FORGE_TAG);
-		
+
 		private static void init() {
 
 			ItemCanister.addTag(CONCRETE);
-			
+
 		}
 
 		private static TagKey<Fluid> forgeTag(String name) {
 			return FluidTags.create(new ResourceLocation("forge", name));
 		}
 
-		
 	}
 
 }

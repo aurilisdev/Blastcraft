@@ -9,9 +9,7 @@ import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.BlastcraftBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.TagsProvider.TagAppender;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -25,41 +23,38 @@ public class BlastcraftBlockTagsProvider extends BlockTagsProvider {
 	@Override
 	protected void addTags() {
 
-		TagAppender<Block> pickaxe = tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlastcraftBlocks.blockGlassPressurePlate, BlastcraftBlocks.blockBlastCompressor, BlastcraftBlocks.blockCamoflage, BlastcraftBlocks.blockSpike, 
-				BlastcraftBlocks.blockSpikeFire, BlastcraftBlocks.blockSpikePoison);
+		TagAppender<Block> pickaxe = tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlastcraftBlocks.blockGlassPressurePlate, BlastcraftBlocks.blockBlastCompressor, BlastcraftBlocks.blockCamoflage, BlastcraftBlocks.blockSpike, BlastcraftBlocks.blockSpikeFire, BlastcraftBlocks.blockSpikePoison);
 
-		for(SubtypeBrick brick : SubtypeBrick.values()) {
-			for(RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
+		for (SubtypeBrick brick : SubtypeBrick.values()) {
+			for (RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
 				pickaxe = pickaxe.add(reg.get());
 			}
 		}
-		
-		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+
+		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
 			pickaxe = pickaxe.add(BlastcraftBlocks.getBlock(glass));
 		}
-		
-		for(SubtypeConcrete concrete : SubtypeConcrete.values()) {
+
+		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
 			pickaxe = pickaxe.add(BlastcraftBlocks.getBlock(concrete));
 		}
-		
-		
-		TagAppender<Block> minableWithStone = tag(BlockTags.NEEDS_STONE_TOOL).add(BlastcraftBlocks.blockGlassPressurePlate, BlastcraftBlocks.blockBlastCompressor, BlastcraftBlocks.blockCamoflage, BlastcraftBlocks.blockSpike, 
-				BlastcraftBlocks.blockSpikeFire, BlastcraftBlocks.blockSpikePoison);
-		
-		for(SubtypeBrick brick : SubtypeBrick.values()) {
-			for(RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
+
+		TagAppender<Block> minableWithStone = tag(BlockTags.NEEDS_STONE_TOOL).add(BlastcraftBlocks.blockGlassPressurePlate, BlastcraftBlocks.blockBlastCompressor, BlastcraftBlocks.blockCamoflage, BlastcraftBlocks.blockSpike, BlastcraftBlocks.blockSpikeFire, BlastcraftBlocks.blockSpikePoison);
+
+		for (SubtypeBrick brick : SubtypeBrick.values()) {
+			for (RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
 				minableWithStone = minableWithStone.add(reg.get());
 			}
 		}
-		
-		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+
+		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
 			minableWithStone = minableWithStone.add(BlastcraftBlocks.getBlock(glass));
 		}
-		
-		for(SubtypeConcrete concrete : SubtypeConcrete.values()) {
+
+		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
 			minableWithStone = minableWithStone.add(BlastcraftBlocks.getBlock(concrete));
 		}
-		
+
 		TagAppender<Block> blastproofWalls = tag(BlastcraftTags.Blocks.BLASTPROOF_WALLS);
 
 		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.blastproofwalling)) {
@@ -77,13 +72,13 @@ public class BlastcraftBlockTagsProvider extends BlockTagsProvider {
 		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.carbonplatedwalling)) {
 			carbonPlatedWalls = carbonPlatedWalls.add(block);
 		}
-		
+
 		TagAppender<Block> hardenedBricks = tag(BlastcraftTags.Blocks.HARDENED_BRICKS);
 
 		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.hardenedbricks)) {
 			hardenedBricks = hardenedBricks.add(block);
 		}
-		
+
 		tag(BlastcraftTags.Blocks.CONCRETES).add(BlastcraftBlocks.getAllBlockForSubtype(SubtypeConcrete.values()));
 
 	}

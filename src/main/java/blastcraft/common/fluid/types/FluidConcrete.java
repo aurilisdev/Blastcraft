@@ -21,5 +21,5 @@ public class FluidConcrete extends FluidNonPlaceable {
 	public FluidType getFluidType() {
 		return type;
 	}
-	
+
 }

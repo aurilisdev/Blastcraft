@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class TileBlastCompressor extends GenericTile implements ITickableSoundTile {
 
 	private boolean isPlaying = false;
-	
+
 	public TileBlastCompressor(BlockPos worldPosition, BlockState blockState) {
 		super(BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR.get(), worldPosition, blockState);
 		addComponent(new ComponentDirection());

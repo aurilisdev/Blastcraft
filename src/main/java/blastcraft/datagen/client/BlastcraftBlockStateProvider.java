@@ -30,28 +30,27 @@ public class BlastcraftBlockStateProvider extends ElectrodynamicsBlockStateProvi
 			}
 
 		}
-		
-		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
-			
+
+		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+
 			glassBlock(BlastcraftBlocks.getBlock(glass), blockLoc("glass/" + glass.tag()), true);
-			
+
 		}
-		
-		for(SubtypeConcrete concrete : SubtypeConcrete.values()) {
-			
+
+		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
+
 			simpleBlock(BlastcraftBlocks.getBlock(concrete), blockLoc("concrete/" + name(BlastcraftBlocks.getBlock(concrete))), true);
-			
+
 		}
-		
+
 		simpleBlockCustomRenderType(BlastcraftBlocks.blockCamoflage, blockLoc(name(BlastcraftBlocks.blockCamoflage)), new ResourceLocation("cutout"), true);
-		
+
 		pressurePlateBlock(BlastcraftBlocks.blockGlassPressurePlate, blockLoc("trans"), new ResourceLocation("cutout"), true);
-		
+
 		crossBlock(BlastcraftBlocks.blockSpike, blockLoc("spike/" + name(BlastcraftBlocks.blockSpike)), new ResourceLocation("cutout"), true);
 		crossBlock(BlastcraftBlocks.blockSpikeFire, blockLoc("spike/" + name(BlastcraftBlocks.blockSpikeFire)), new ResourceLocation("cutout"), true);
 		crossBlock(BlastcraftBlocks.blockSpikePoison, blockLoc("spike/" + name(BlastcraftBlocks.blockSpikePoison)), new ResourceLocation("cutout"), true);
-		
-		
+
 		horrRotatedBlock(BlastcraftBlocks.blockBlastCompressor, existingBlock(BlastcraftBlocks.blockBlastCompressor), true);
 
 	}

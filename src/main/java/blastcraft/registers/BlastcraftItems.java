@@ -31,21 +31,21 @@ public class BlastcraftItems {
 	static {
 		for (SubtypeBrick type : SubtypeBrick.values()) {
 			ArrayList<RegistryObject<Block>> bricks = BlastcraftBlocks.bricksMap.get(type);
-			for(SubtypeWalling wall : SubtypeWalling.values()) {
+			for (SubtypeWalling wall : SubtypeWalling.values()) {
 				ITEMS.register(wall.tag() + type.tag(), supplier(() -> new BlockItemDescriptable(() -> bricks.get(wall.ordinal()).get(), new Item.Properties().tab(References.CORETAB))));
 			}
 		}
-		
-		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
-			
+
+		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+
 			ITEMS.register(glass.tag(), supplier(() -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(glass), new Item.Properties().tab(References.CORETAB))));
-			
+
 		}
-		
-		for(SubtypeConcrete concrete : SubtypeConcrete.values()) {
-			
+
+		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
+
 			ITEMS.register(concrete.tag(), supplier(() -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(concrete), new Item.Properties().tab(References.CORETAB))));
-			
+
 		}
 
 		ITEMS.register("blastcompressor", supplier(() -> new BlockItemDescriptable(() -> blockBlastCompressor, new Item.Properties().tab(References.CORETAB))));
@@ -54,9 +54,9 @@ public class BlastcraftItems {
 		ITEMS.register("spike", supplier(() -> new BlockItemDescriptable(() -> blockSpike, new Item.Properties().tab(References.CORETAB))));
 		ITEMS.register("spikefire", supplier(() -> new BlockItemDescriptable(() -> blockSpikeFire, new Item.Properties().tab(References.CORETAB))));
 		ITEMS.register("spikepoison", supplier(() -> new BlockItemDescriptable(() -> blockSpikePoison, new Item.Properties().tab(References.CORETAB))));
-		
+
 	}
-	
+
 	public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties().tab(References.CORETAB), TextUtils.tooltip("concretemix").withStyle(ChatFormatting.GRAY)));
-	
+
 }
