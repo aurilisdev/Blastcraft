@@ -6,7 +6,7 @@ import blastcraft.registers.BlastcraftSounds;
 import electrodynamics.api.capability.ElectrodynamicsCapabilities;
 import electrodynamics.common.inventory.container.tile.ContainerO2OProcessor;
 import electrodynamics.prefab.sound.SoundBarrierMethods;
-import electrodynamics.prefab.sound.utils.ITickableSoundTile;
+import electrodynamics.prefab.sound.utils.ITickableSound;
 import electrodynamics.prefab.tile.GenericTile;
 import electrodynamics.prefab.tile.components.ComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentContainerProvider;
@@ -21,7 +21,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TileBlastCompressor extends GenericTile implements ITickableSoundTile {
+public class TileBlastCompressor extends GenericTile implements ITickableSound {
 
 	private boolean isPlaying = false;
 
