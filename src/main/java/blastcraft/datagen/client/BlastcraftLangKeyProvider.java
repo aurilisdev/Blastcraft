@@ -76,16 +76,17 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 			addGuidebook(References.ID, "Blastcraft");
 
 			addGuidebook("chapter.blocks", "Blocks");
-			addGuidebook("chapter.blocks.camtitle", "Camoflage");
-			addGuidebook("chapter.blocks.p1l1", "    Camoflage can be disguised ");
-			addGuidebook("chapter.blocks.p1l2", "as any block in the game by    ");
-			addGuidebook("chapter.blocks.p1l3", "right-clicking on it with said ");
-			addGuidebook("chapter.blocks.p1l4", "block in hand. Note, it will only");
-			addGuidebook("chapter.blocks.p1l5", "copy the appearance of the     ");
-			addGuidebook("chapter.blocks.p1l6", "block, and none of its other   ");
-			addGuidebook("chapter.blocks.p1l7", "properties!                    ");
-			addGuidebook("chapter.blocks.tier", "Tier, %s");
-			addGuidebook("chapter.blocks.resistance", "Resistance, %s");
+			addGuidebook("chapter.blocks.camoflage1", "Camoflage can be disguised as any block in the game by Right-Clicking on it with said block in hand. Note, it will only copy the appearance of the block, and none of its other properties! Camoflage will also allow daylight to pass through it.");
+			addGuidebook("chapter.blocks.blastprooftitle", "Walls");
+			addGuidebook("chapter.blocks.blastproof1", "Blastcraft adds several blast-resistant blocks for you to defend your base with. These include:");
+			addGuidebook("chapter.blocks.hardened", "Hardened");
+			addGuidebook("chapter.blocks.concrete", "Concrete");
+			addGuidebook("chapter.blocks.rawblastproof", "Raw Blastproof");
+			addGuidebook("chapter.blocks.blastproof", "Blastproof");
+			addGuidebook("chapter.blocks.carbonplated", "Carbon Plated");
+			addGuidebook("chapter.blocks.hardness", "Hardness: %s");
+			addGuidebook("chapter.blocks.strength", "Strength: %s");
+			addGuidebook("chapter.blocks.blastproof2", "The blocks also come in several decorative forms, allowing you to be somewhat creative with them!");
 
 		}
 
