@@ -1,7 +1,6 @@
 package blastcraft.common.tag;
 
 import blastcraft.common.fluid.types.FluidConcrete;
-import electrodynamics.common.item.gear.tools.ItemCanister;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -60,8 +59,6 @@ public class BlastcraftTags {
 		public static final TagKey<Fluid> CONCRETE = forgeTag(FluidConcrete.FORGE_TAG);
 
 		private static void init() {
-
-			ItemCanister.addTag(CONCRETE);
 
 		}
 

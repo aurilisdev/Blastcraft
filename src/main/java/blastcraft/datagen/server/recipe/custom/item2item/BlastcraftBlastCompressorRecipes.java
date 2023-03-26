@@ -38,7 +38,7 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
 				//
 				.addItemTagInput(BlastcraftTags.Items.RAW_BLASTPROOF_WALLS, 1)
 				//
-				.addItemBiproduct(new ProbableItem(Items.GUNPOWDER, 1, 0.3))
+				.addItemBiproduct(new ProbableItem(new ItemStack(Items.GUNPOWDER), 0.3))
 				//
 				.complete(consumer);
 
