@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 0.0,
   "ingredient": {
-    "item": "blastcraft:rawblastproofwalling"
+    "item": "blastcraft:rawblastproofwallbase"
   },
-  "result": "blastcraft:rawblastproofwallingsmooth"
+  "result": "blastcraft:rawblastproofwallsmooth"
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "blastcraft:block/blastproofwall/blastproofwallpolished",
+    "side": "blastcraft:block/blastproofwall/blastproofwallpolished",
+    "top": "blastcraft:block/blastproofwall/blastproofwallpolished"
+  }
+}

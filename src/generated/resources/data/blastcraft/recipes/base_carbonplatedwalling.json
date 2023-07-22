@@ -5,7 +5,7 @@
       "tag": "minecraft:coals"
     },
     "W": {
-      "tag": "forge:hardened_blocks/blastproof_walls"
+      "tag": "forge:hardened_blocks/solid_blastproof_walls"
     }
   },
   "pattern": [
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "blastcraft:carbonplatedwalling"
+    "item": "blastcraft:carbonplatedwallbase"
   }
 }

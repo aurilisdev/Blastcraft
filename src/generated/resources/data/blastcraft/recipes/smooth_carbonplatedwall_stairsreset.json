@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:carbonplatedwallsmooth_stairs"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:carbonplatedwallsmooth"
+  }
+}

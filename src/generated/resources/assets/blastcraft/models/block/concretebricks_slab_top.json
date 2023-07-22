@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "blastcraft:block/concrete/concretebricks",
+    "side": "blastcraft:block/concrete/concretebricks",
+    "top": "blastcraft:block/concrete/concretebricks"
+  }
+}

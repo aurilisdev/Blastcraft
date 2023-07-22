@@ -3,11 +3,10 @@ package blastcraft.datagen.server.recipe.custom.item2item;
 import java.util.function.Consumer;
 
 import blastcraft.References;
-import blastcraft.common.block.subtype.SubtypeBrick;
-import blastcraft.common.block.subtype.SubtypeWalling;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.tag.BlastcraftTags;
-import blastcraft.registers.BlastcraftBlocks;
+import blastcraft.registers.BlastcraftItems;
 import electrodynamics.common.recipe.recipeutils.ProbableItem;
 import electrodynamics.datagen.utils.recipe.AbstractElectrodynamicsFinishedRecipe.RecipeCategory;
 import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
@@ -34,9 +33,9 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
 	@Override
 	public void addRecipes(Consumer<FinishedRecipe> consumer) {
 
-		newRecipe(new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.base)), 0.1F, 220, 100, "blastproofwalling")
+		newRecipe(new ItemStack(BlastcraftItems.getItem(SubtypeBlastproofWall.base)), 0.1F, 220, 100, "blastproofwalling")
 				//
-				.addItemTagInput(BlastcraftTags.Items.RAW_BLASTPROOF_WALLS, 1)
+				.addItemTagInput(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS, 1)
 				//
 				.addItemBiproduct(new ProbableItem(new ItemStack(Items.GUNPOWDER), 0.3))
 				//

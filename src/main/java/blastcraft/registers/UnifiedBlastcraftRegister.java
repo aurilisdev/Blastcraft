@@ -3,8 +3,8 @@ package blastcraft.registers;
 import static blastcraft.registers.BlastcraftBlocks.blockBlastCompressor;
 
 import blastcraft.References;
-import blastcraft.prefab.utils.TextUtils;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
+import electrodynamics.prefab.utilities.ElectroTextUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -21,7 +21,7 @@ public class UnifiedBlastcraftRegister {
 	}
 
 	static {
-		BlockItemDescriptable.addDescription(() -> blockBlastCompressor, TextUtils.tooltip("voltage.240"));
+		BlockItemDescriptable.addDescription(() -> blockBlastCompressor, ElectroTextUtils.voltageTooltip(240));
 	}
 
 }

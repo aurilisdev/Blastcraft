@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:concreteregular_stairs"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:concreteregular"
+  }
+}

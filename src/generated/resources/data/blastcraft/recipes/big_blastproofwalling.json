@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "B": {
-      "item": "blastcraft:blastproofwalling"
+      "item": "blastcraft:blastproofwallbase"
     }
   },
   "pattern": [
@@ -11,6 +11,6 @@
   ],
   "result": {
     "count": 4,
-    "item": "blastcraft:blastproofwallingbig"
+    "item": "blastcraft:blastproofwallbig"
   }
 }

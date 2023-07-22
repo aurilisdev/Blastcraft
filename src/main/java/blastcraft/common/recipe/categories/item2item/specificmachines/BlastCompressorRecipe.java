@@ -1,5 +1,6 @@
 package blastcraft.common.recipe.categories.item2item.specificmachines;
 
+import blastcraft.References;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
 import electrodynamics.common.recipe.categories.item2item.Item2ItemRecipe;
 import electrodynamics.common.recipe.recipeutils.CountableIngredient;
@@ -14,7 +15,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 public class BlastCompressorRecipe extends Item2ItemRecipe {
 
 	public static final String RECIPE_GROUP = "blast_compressor_recipe";
-	public static final String MOD_ID = blastcraft.References.ID;
+	public static final String MOD_ID = References.ID;
 	public static final ResourceLocation RECIPE_ID = new ResourceLocation(MOD_ID, RECIPE_GROUP);
 
 	public BlastCompressorRecipe(ResourceLocation id, CountableIngredient[] inputs, ItemStack output, double experience, int ticks, double usagePerTick, ProbableItem[] itemBiproducts, ProbableFluid[] fluidBiproudcts, ProbableGas[] gasBiproducts) {

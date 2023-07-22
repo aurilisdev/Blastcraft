@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blastcraft:block/carbonplatedwallbase_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/carbonplatedwallbase"
+    },
+    "type=top": {
+      "model": "blastcraft:block/carbonplatedwallbase_slab_top"
+    }
+  }
+}
