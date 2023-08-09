@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import blastcraft.References;
-import blastcraft.common.block.BlockBlastCompressor;
 import blastcraft.common.block.BlockCamoflage;
 import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.block.BlockCustomSlab;
@@ -20,8 +19,10 @@ import blastcraft.common.block.subtype.SubtypeConcrete;
 import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
+import blastcraft.common.tile.TileBlastCompressor;
 import electrodynamics.api.ISubtype;
 import electrodynamics.common.block.BlockCustomGlass;
+import electrodynamics.prefab.block.GenericMachineBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -37,7 +38,7 @@ public class BlastcraftBlocks {
 
 	public static final HashMap<ISubtype, RegistryObject<Block>> SUBTYPEBLOCKREGISTER_MAPPINGS = new HashMap<>();
 
-	public static BlockBlastCompressor blockBlastCompressor;
+	public static GenericMachineBlock blockBlastCompressor;
 	public static BlockCamoflage blockCamoflage;
 	public static PressurePlateBlock blockGlassPressurePlate;
 	public static BlockSpike blockSpike;
@@ -143,7 +144,7 @@ public class BlastcraftBlocks {
 			
 		}
 
-		BLOCKS.register("blastcompressor", () -> blockBlastCompressor = new BlockBlastCompressor());
+		BLOCKS.register("blastcompressor", () -> blockBlastCompressor = new GenericMachineBlock(TileBlastCompressor::new));
 		BLOCKS.register("camoflage", () -> blockCamoflage = new BlockCamoflage());
 		BLOCKS.register("glasspressureplate", () -> blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS)));
 		BLOCKS.register("spike", () -> blockSpike = new BlockSpike());
