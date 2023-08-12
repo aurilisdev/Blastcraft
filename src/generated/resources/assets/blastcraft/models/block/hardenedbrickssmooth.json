@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "blastcraft:block/smooth/hardenedbrickssmooth"
+    "all": "blastcraft:block/hardenedbricks/hardenedbrickssmooth"
   }
 }

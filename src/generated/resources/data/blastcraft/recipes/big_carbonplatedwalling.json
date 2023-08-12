@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "B": {
-      "item": "blastcraft:carbonplatedwalling"
+      "item": "blastcraft:carbonplatedwallbase"
     }
   },
   "pattern": [
@@ -11,6 +11,6 @@
   ],
   "result": {
     "count": 4,
-    "item": "blastcraft:carbonplatedwallingbig"
+    "item": "blastcraft:carbonplatedwallbig"
   }
 }

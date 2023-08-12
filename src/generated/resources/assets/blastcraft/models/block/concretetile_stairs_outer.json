@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "blastcraft:block/concrete/concretetile",
+    "side": "blastcraft:block/concrete/concretetile",
+    "top": "blastcraft:block/concrete/concretetile"
+  }
+}

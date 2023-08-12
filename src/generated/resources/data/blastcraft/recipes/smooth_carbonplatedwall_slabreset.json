@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:carbonplatedwallsmooth_slab"
+    },
+    {
+      "item": "blastcraft:carbonplatedwallsmooth_slab"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:carbonplatedwallsmooth"
+  }
+}

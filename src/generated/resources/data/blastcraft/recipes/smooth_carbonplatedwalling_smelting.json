@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 0.0,
   "ingredient": {
-    "item": "blastcraft:carbonplatedwalling"
+    "item": "blastcraft:carbonplatedwallbase"
   },
-  "result": "blastcraft:carbonplatedwallingsmooth"
+  "result": "blastcraft:carbonplatedwallsmooth"
 }

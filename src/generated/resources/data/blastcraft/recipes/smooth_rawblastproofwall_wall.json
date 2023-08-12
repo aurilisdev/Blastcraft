@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "blastcraft:rawblastproofwallsmooth"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BBB"
+  ],
+  "result": {
+    "count": 6,
+    "item": "blastcraft:rawblastproofwallsmooth_wall"
+  }
+}

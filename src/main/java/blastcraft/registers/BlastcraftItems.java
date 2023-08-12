@@ -6,57 +6,85 @@ import static blastcraft.registers.BlastcraftBlocks.blockGlassPressurePlate;
 import static blastcraft.registers.BlastcraftBlocks.blockSpike;
 import static blastcraft.registers.BlastcraftBlocks.blockSpikeFire;
 import static blastcraft.registers.BlastcraftBlocks.blockSpikePoison;
-import static electrodynamics.registers.UnifiedElectrodynamicsRegister.supplier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import blastcraft.References;
-import blastcraft.common.block.subtype.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
-import blastcraft.common.block.subtype.SubtypeWalling;
+import blastcraft.common.block.subtype.SubtypeHardenedBricks;
+import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
-import blastcraft.prefab.utils.TextUtils;
+import blastcraft.prefab.utils.BlastcraftTextUtils;
+import electrodynamics.api.ISubtype;
 import electrodynamics.common.blockitem.BlockItemDescriptable;
 import electrodynamics.common.item.ItemDescriptable;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BlastcraftItems {
+	
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
+	
+	public static final HashMap<ISubtype, RegistryObject<Item>> SUBTYPEITEMREGISTER_MAPPINGS = new HashMap<>();
+
 
 	static {
-		for (SubtypeBrick type : SubtypeBrick.values()) {
-			ArrayList<RegistryObject<Block>> bricks = BlastcraftBlocks.bricksMap.get(type);
-			for (SubtypeWalling wall : SubtypeWalling.values()) {
-				ITEMS.register(wall.tag() + type.tag(), supplier(() -> new BlockItemDescriptable(() -> bricks.get(wall.ordinal()).get(), new Item.Properties().tab(References.CORETAB))));
-			}
+		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
+			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties().tab(References.CORETAB))));
+		}
+		
+		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
+			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties().tab(References.CORETAB))));
+		}
+		
+		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
+			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties().tab(References.CORETAB))));
+		}
+		
+		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
+			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties().tab(References.CORETAB))));
 		}
 
 		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
 
-			ITEMS.register(glass.tag(), supplier(() -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(glass), new Item.Properties().tab(References.CORETAB))));
+			SUBTYPEITEMREGISTER_MAPPINGS.put(glass, ITEMS.register(glass.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(glass), new Item.Properties().tab(References.CORETAB))));
 
 		}
 
 		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
 
-			ITEMS.register(concrete.tag(), supplier(() -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(concrete), new Item.Properties().tab(References.CORETAB))));
+			SUBTYPEITEMREGISTER_MAPPINGS.put(concrete, ITEMS.register(concrete.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(concrete), new Item.Properties().tab(References.CORETAB))));
 
 		}
 
-		ITEMS.register("blastcompressor", supplier(() -> new BlockItemDescriptable(() -> blockBlastCompressor, new Item.Properties().tab(References.CORETAB))));
-		ITEMS.register("camoflage", supplier(() -> new BlockItemDescriptable(() -> blockCamoflage, new Item.Properties().tab(References.CORETAB))));
-		ITEMS.register("glasspressureplate", supplier(() -> new BlockItemDescriptable(() -> blockGlassPressurePlate, new Item.Properties().tab(References.CORETAB))));
-		ITEMS.register("spike", supplier(() -> new BlockItemDescriptable(() -> blockSpike, new Item.Properties().tab(References.CORETAB))));
-		ITEMS.register("spikefire", supplier(() -> new BlockItemDescriptable(() -> blockSpikeFire, new Item.Properties().tab(References.CORETAB))));
-		ITEMS.register("spikepoison", supplier(() -> new BlockItemDescriptable(() -> blockSpikePoison, new Item.Properties().tab(References.CORETAB))));
+		ITEMS.register("blastcompressor", () -> new BlockItemDescriptable(() -> blockBlastCompressor, new Item.Properties().tab(References.CORETAB)));
+		ITEMS.register("camoflage", () -> new BlockItemDescriptable(() -> blockCamoflage, new Item.Properties().tab(References.CORETAB)));
+		ITEMS.register("glasspressureplate", () -> new BlockItemDescriptable(() -> blockGlassPressurePlate, new Item.Properties().tab(References.CORETAB)));
+		ITEMS.register("spike", () -> new BlockItemDescriptable(() -> blockSpike, new Item.Properties().tab(References.CORETAB)));
+		ITEMS.register("spikefire", () -> new BlockItemDescriptable(() -> blockSpikeFire, new Item.Properties().tab(References.CORETAB)));
+		ITEMS.register("spikepoison", () -> new BlockItemDescriptable(() -> blockSpikePoison, new Item.Properties().tab(References.CORETAB)));
 
 	}
 
-	public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties().tab(References.CORETAB), TextUtils.tooltip("concretemix").withStyle(ChatFormatting.GRAY)));
+	public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties().tab(References.CORETAB), BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.GRAY)));
+	
+	public static Item[] getAllItemForSubtype(ISubtype[] values) {
+		List<Item> list = new ArrayList<>();
+		for (ISubtype value : values) {
+			list.add(SUBTYPEITEMREGISTER_MAPPINGS.get(value).get());
+		}
+		return list.toArray(new Item[] {});
+	}
+
+	public static Item getItem(ISubtype value) {
+		return SUBTYPEITEMREGISTER_MAPPINGS.get(value).get();
+	}
 
 }

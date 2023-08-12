@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blastcraft:block/hardenedbrickssmooth_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/hardenedbrickssmooth"
+    },
+    "type=top": {
+      "model": "blastcraft:block/hardenedbrickssmooth_slab_top"
+    }
+  }
+}
