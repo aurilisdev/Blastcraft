@@ -13,7 +13,7 @@ public class BlastcraftSounds {
 	public static final RegistryObject<SoundEvent> SOUND_BLASTCOMPRESSOR = sound("blastcompressor");
 
 	private static RegistryObject<SoundEvent> sound(String name) {
-		return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(References.ID + ":" + name)));
+		return SOUNDS.register(name, () -> SoundEvent.createFixedRangeEvent(new ResourceLocation(References.ID + ":" + name), 16.0F));
 	}
 
 }

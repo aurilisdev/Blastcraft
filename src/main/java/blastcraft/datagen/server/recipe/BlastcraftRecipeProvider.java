@@ -11,7 +11,7 @@ import blastcraft.datagen.server.recipe.vanilla.BlastcraftCraftingTableRecipes;
 import blastcraft.datagen.server.recipe.vanilla.BlastcraftSmeltingRecipes;
 import blastcraft.datagen.server.recipe.vanilla.BlastcraftStonecuttingRecipes;
 import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 
@@ -19,8 +19,8 @@ public class BlastcraftRecipeProvider extends RecipeProvider {
 
 	public final List<AbstractRecipeGenerator> GENERATORS = new ArrayList<>();
 
-	public BlastcraftRecipeProvider(DataGenerator gen) {
-		super(gen);
+	public BlastcraftRecipeProvider(PackOutput output) {
+		super(output);
 		addRecipes();
 	}
 
@@ -34,7 +34,7 @@ public class BlastcraftRecipeProvider extends RecipeProvider {
 	}
 
 	@Override
-	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 		for (AbstractRecipeGenerator generator : GENERATORS) {
 			generator.addRecipes(consumer);
 		}

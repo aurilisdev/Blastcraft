@@ -12,5 +12,6 @@
       "name": "concretetile_stairs",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/concretetile_stairs"
 }

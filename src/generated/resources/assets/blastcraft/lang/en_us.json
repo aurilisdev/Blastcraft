@@ -86,6 +86,7 @@
   "block.blastcraft.spikefire": "Fire Spike",
   "block.blastcraft.spikepoison": "Poison Spike",
   "container.blastcompressor": "Blast Compressor",
+  "creativetab.blastcraft.main": "Blastcraft",
   "fluid.blastcraft.fluidconcrete": "Concrete Slurry",
   "guidebook.blastcraft.blastcraft": "Blastcraft",
   "guidebook.blastcraft.chapter.blocks": "Blocks",
@@ -101,7 +102,6 @@
   "guidebook.blastcraft.chapter.blocks.rawblastproof": "Raw Blastproof",
   "guidebook.blastcraft.chapter.blocks.strength": "Strength: %s",
   "item.blastcraft.concretemix": "Blastcrete",
-  "itemGroup.itemgroupblastcraft": "Blastcraft",
   "jei.blast_compressor_recipe": "Blast Compressor",
   "tooltip.blastcraft.concretemix": "What Minecraft is made of"
 }

@@ -12,5 +12,6 @@
       "name": "blastproofwallsmooth_wall",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/blastproofwallsmooth_wall"
 }

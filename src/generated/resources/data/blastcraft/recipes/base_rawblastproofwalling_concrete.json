@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "C": {
       "tag": "forge:hardened_blocks/solid_concretes"
@@ -16,5 +17,6 @@
   "result": {
     "count": 3,
     "item": "blastcraft:rawblastproofwallbase"
-  }
+  },
+  "show_notification": false
 }

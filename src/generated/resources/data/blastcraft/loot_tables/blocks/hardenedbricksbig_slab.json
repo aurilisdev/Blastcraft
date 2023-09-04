@@ -12,5 +12,6 @@
       "name": "hardenedbricksbig_slab",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/hardenedbricksbig_slab"
 }

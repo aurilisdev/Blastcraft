@@ -9,7 +9,7 @@ import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.datagen.client.ElectrodynamicsBlockStateProvider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -18,8 +18,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlastcraftBlockStateProvider extends ElectrodynamicsBlockStateProvider {
 
-	public BlastcraftBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
-		super(gen, exFileHelper, References.ID);
+	public BlastcraftBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+		super(output, exFileHelper, References.ID);
 	}
 
 	@Override

@@ -12,5 +12,6 @@
       "name": "carbonplatedwallpolished_slab",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/carbonplatedwallpolished_slab"
 }

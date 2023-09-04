@@ -12,12 +12,12 @@ import blastcraft.registers.BlastcraftBlocks;
 import blastcraft.registers.BlastcraftFluids;
 import blastcraft.registers.BlastcraftItems;
 import electrodynamics.datagen.client.ElectrodynamicsLangKeyProvider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 
-	public BlastcraftLangKeyProvider(DataGenerator gen, Locale locale) {
-		super(gen, locale, References.ID);
+	public BlastcraftLangKeyProvider(PackOutput output, Locale locale) {
+		super(output, locale, References.ID);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 		case EN_US:
 		default:
 
-			add("itemGroup.itemgroupblastcraft", "Blastcraft");
+			addCreativeTab("main", "Blastcraft");
 
 			addBlock(BlastcraftBlocks.blockBlastCompressor, "Blast Compressor");
 

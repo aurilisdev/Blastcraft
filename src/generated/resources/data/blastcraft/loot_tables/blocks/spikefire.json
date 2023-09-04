@@ -12,5 +12,6 @@
       "name": "spikefire",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/spikefire"
 }

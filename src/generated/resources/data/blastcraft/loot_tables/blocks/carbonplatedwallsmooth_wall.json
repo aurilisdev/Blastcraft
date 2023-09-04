@@ -12,5 +12,6 @@
       "name": "carbonplatedwallsmooth_wall",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/carbonplatedwallsmooth_wall"
 }

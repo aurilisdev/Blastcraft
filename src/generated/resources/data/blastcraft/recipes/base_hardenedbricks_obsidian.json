@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "B": {
       "item": "minecraft:bricks"
@@ -16,5 +17,6 @@
   "result": {
     "count": 6,
     "item": "blastcraft:hardenedbricksbase"
-  }
+  },
+  "show_notification": false
 }

@@ -12,5 +12,6 @@
       "name": "concretebricks_wall",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/concretebricks_wall"
 }

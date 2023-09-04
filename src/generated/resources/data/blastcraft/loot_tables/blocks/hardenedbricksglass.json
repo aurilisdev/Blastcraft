@@ -12,5 +12,6 @@
       "name": "hardenedbricksglass",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/hardenedbricksglass"
 }

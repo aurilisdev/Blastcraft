@@ -12,5 +12,6 @@
       "name": "rawblastproofwallingglass",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/rawblastproofwallingglass"
 }
