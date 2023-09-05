@@ -3,8 +3,8 @@
 	"parent": "block/cube_all",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "blastcraft:model/blastcompressor",
-		"particle": "blastcraft:model/blastcompressor"
+		"0": "blastcraft:block/model/blastcompressor",
+		"particle": "electrodynamics:block/steelcasing"
 	},
 	"elements": [
 		{

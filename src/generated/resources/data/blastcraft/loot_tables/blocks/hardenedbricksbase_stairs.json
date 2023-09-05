@@ -12,5 +12,6 @@
       "name": "hardenedbricksbase_stairs",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/hardenedbricksbase_stairs"
 }

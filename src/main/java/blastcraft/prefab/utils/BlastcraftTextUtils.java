@@ -1,6 +1,7 @@
 package blastcraft.prefab.utils;
 
 import static electrodynamics.prefab.utilities.ElectroTextUtils.BLOCK_BASE;
+import static electrodynamics.prefab.utilities.ElectroTextUtils.CREATIVE_TAB;
 import static electrodynamics.prefab.utilities.ElectroTextUtils.GUIDEBOOK_BASE;
 import static electrodynamics.prefab.utilities.ElectroTextUtils.GUI_BASE;
 import static electrodynamics.prefab.utilities.ElectroTextUtils.JEI_BASE;
@@ -50,6 +51,10 @@ public class BlastcraftTextUtils {
 
 	public static MutableComponent block(String key, Object... additional) {
 		return translated(BLOCK_BASE, key, additional);
+	}
+	
+	public static MutableComponent creativeTab(String key, Object... additional) {
+		return translated(CREATIVE_TAB, key, additional);
 	}
 
 	public static MutableComponent translated(String base, String key, Object... additional) {

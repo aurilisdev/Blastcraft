@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -37,7 +36,7 @@ public class BlockCamoflage extends GenericEntityBlock {
 	public static final BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
 
 	public BlockCamoflage() {
-		super(Properties.of(Material.WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
+		super(Properties.copy(Blocks.WHITE_WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
 	}
 
 	@Override
@@ -173,20 +172,20 @@ public class BlockCamoflage extends GenericEntityBlock {
 	@Override
 	public void onPickup(ItemStack stack, BlockPos pos, Player player) {
 
-		Level world = player.level;
+		Level world = player.level();
 		BlockState state = world.getBlockState(pos);
 
 		if (world.getBlockEntity(pos) instanceof TileCamoflauge camo) {
 			camo.setCamoBlock(Blocks.AIR.defaultBlockState());
 		}
 
-		player.level.setBlockAndUpdate(pos, state.setValue(HASCAMOFLAUGE, false));
+		player.level().setBlockAndUpdate(pos, state.setValue(HASCAMOFLAUGE, false));
 	}
 
 	@Override
 	public void onRotate(ItemStack stack, BlockPos pos, Player player) {
 
-		Level world = player.level;
+		Level world = player.level();
 		BlockState state = world.getBlockState(pos);
 
 		world.setBlockAndUpdate(pos, state.setValue(ISWALKTHROUGHABLE, !state.getValue(ISWALKTHROUGHABLE)));

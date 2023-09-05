@@ -12,5 +12,6 @@
       "name": "rawblastproofwallbase_slab",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/rawblastproofwallbase_slab"
 }

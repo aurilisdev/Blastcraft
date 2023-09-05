@@ -1,5 +1,8 @@
 package blastcraft.datagen.server;
 
+import java.util.List;
+
+import blastcraft.References;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -9,16 +12,16 @@ import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.registers.BlastcraftBlockTypes;
 import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.datagen.server.ElectrodynamicsLootTablesProvider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Block;
 
 public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvider {
 
-	public BlastcraftLootTablesProvider(DataGenerator generator) {
-		super(generator);
+	public BlastcraftLootTablesProvider() {
+		super(References.ID);
 	}
 
 	@Override
-	protected void addTables() {
+	protected void generate() {
 
 		for(SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
@@ -53,6 +56,11 @@ public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvi
 
 		addMachineTable(BlastcraftBlocks.blockBlastCompressor, BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR, true, false, false, true, false);
 
+	}
+	
+	@Override
+	public List<Block> getExcludedBlocks() {
+		return List.of();
 	}
 
 }

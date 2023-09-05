@@ -12,5 +12,6 @@
       "name": "hardenedbrickssmooth_wall",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/hardenedbrickssmooth_wall"
 }

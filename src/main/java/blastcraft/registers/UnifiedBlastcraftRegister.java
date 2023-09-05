@@ -3,7 +3,7 @@ package blastcraft.registers;
 import static blastcraft.registers.BlastcraftBlocks.blockBlastCompressor;
 
 import blastcraft.References;
-import electrodynamics.common.blockitem.BlockItemDescriptable;
+import electrodynamics.common.blockitem.types.BlockItemDescriptable;
 import electrodynamics.prefab.utilities.ElectroTextUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -18,6 +18,7 @@ public class UnifiedBlastcraftRegister {
 		BlastcraftItems.ITEMS.register(bus);
 		BlastcraftBlockTypes.BLOCK_ENTITY_TYPES.register(bus);
 		BlastcraftSounds.SOUNDS.register(bus);
+		BlastcraftCreativeTabs.CREATIVE_TABS.register(bus);
 	}
 
 	static {

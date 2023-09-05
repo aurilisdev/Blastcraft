@@ -12,5 +12,6 @@
       "name": "carbonplatedwallbase_stairs",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/carbonplatedwallbase_stairs"
 }

@@ -12,5 +12,6 @@
       "name": "spike",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/spike"
 }

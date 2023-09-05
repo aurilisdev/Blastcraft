@@ -3,13 +3,13 @@ package blastcraft.datagen.client;
 import blastcraft.References;
 import blastcraft.registers.BlastcraftItems;
 import electrodynamics.datagen.client.ElectrodynamicsItemModelsProvider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlastcraftItemModelsProvider extends ElectrodynamicsItemModelsProvider {
 
-	public BlastcraftItemModelsProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-		super(generator, existingFileHelper, References.ID);
+	public BlastcraftItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+		super(output, existingFileHelper, References.ID);
 	}
 
 	@Override

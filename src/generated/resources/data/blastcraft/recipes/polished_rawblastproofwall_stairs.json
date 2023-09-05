@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "B": {
       "item": "blastcraft:rawblastproofwallpolished"
@@ -13,5 +14,6 @@
   "result": {
     "count": 6,
     "item": "blastcraft:rawblastproofwallpolished_stairs"
-  }
+  },
+  "show_notification": false
 }

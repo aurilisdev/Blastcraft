@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "C": {
       "item": "blastcraft:concretebricks"
@@ -12,5 +13,6 @@
   "result": {
     "count": 4,
     "item": "blastcraft:concretetile"
-  }
+  },
+  "show_notification": false
 }

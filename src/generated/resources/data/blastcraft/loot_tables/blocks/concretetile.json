@@ -12,5 +12,6 @@
       "name": "concretetile",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "blastcraft:blocks/concretetile"
 }
