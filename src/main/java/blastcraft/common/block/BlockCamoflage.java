@@ -91,45 +91,40 @@ public class BlockCamoflage extends GenericEntityBlock {
 			return super.use(state, world, pos, player, hand, hit);
 		}
 
-		if (stack.getItem() instanceof BlockItem blockItem && world.getBlockEntity(pos) instanceof TileCamoflauge camo) {
-
-			Block block = blockItem.getBlock();
-
-			if (block == BlastcraftBlocks.blockCamoflage) {
-				return super.use(state, world, pos, player, hand, hit);
-			}
-
-			BlockPlaceContext newCtx = new BlockPlaceContext(player, hand, stack, hit);
-
-			if (state.getValue(HASCAMOFLAUGE)) {
-
-				if (camo.getCamoBlock().is(block)) {
-					return super.use(state, world, pos, player, hand, hit);
-				} else {
-					if (!world.isClientSide) {
-						camo.setCamoBlock(block.getStateForPlacement(newCtx));
-						world.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
-						world.getChunkSource().getLightEngine().checkBlock(pos);
-					}
-					return InteractionResult.CONSUME;
-				}
-			} else {
-
-				if (!world.isClientSide) {
-					state = state.setValue(HASCAMOFLAUGE, true);
-					camo.setCamoBlock(block.getStateForPlacement(newCtx));
-					world.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
-					world.setBlockAndUpdate(pos, state);
-					world.getChunkSource().getLightEngine().checkBlock(pos);
-				}
-				return InteractionResult.CONSUME;
-			}
-
-		} else {
+		// require block in hand and camo block
+		if (!(stack.getItem() instanceof BlockItem blockItem) || !(world.getBlockEntity(pos) instanceof TileCamoflauge camo)) {
 
 			return super.use(state, world, pos, player, hand, hit);
 
 		}
+		Block block = blockItem.getBlock();
+
+		if (block == BlastcraftBlocks.blockCamoflage) {
+			return super.use(state, world, pos, player, hand, hit);
+		}
+
+		BlockPlaceContext newCtx = new BlockPlaceContext(player, hand, stack, hit);
+
+		if (state.getValue(HASCAMOFLAUGE)) {
+
+			if (camo.getCamoBlock().is(block)) {
+				return super.use(state, world, pos, player, hand, hit);
+			}
+			if (!world.isClientSide) {
+				camo.setCamoBlock(block.getStateForPlacement(newCtx));
+				world.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+				world.getChunkSource().getLightEngine().checkBlock(pos);
+			}
+			return InteractionResult.CONSUME;
+		}
+		if (!world.isClientSide) {
+			state = state.setValue(HASCAMOFLAUGE, true);
+			camo.setCamoBlock(block.getStateForPlacement(newCtx));
+			world.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+			world.setBlockAndUpdate(pos, state);
+			world.getChunkSource().getLightEngine().checkBlock(pos);
+		}
+		return InteractionResult.CONSUME;
 
 	}
 
@@ -160,9 +155,8 @@ public class BlockCamoflage extends GenericEntityBlock {
 
 			if (camo.isCamoAir()) {
 				return super.isPathfindable(state, worldIn, pos, type);
-			} else {
-				return camo.getCamoBlock().isPathfindable(worldIn, pos, type);
 			}
+			return camo.getCamoBlock().isPathfindable(worldIn, pos, type);
 
 		}
 
