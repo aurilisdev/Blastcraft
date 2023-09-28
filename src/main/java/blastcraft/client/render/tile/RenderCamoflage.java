@@ -15,11 +15,11 @@ public class RenderCamoflage extends AbstractTileRenderer<TileCamoflauge> {
 
 	@Override
 	public void render(TileCamoflauge tile, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int combinedLightIn, int combinedOverlayIn) {
-		
-		if(tile.isCamoAir()) {
+
+		if (tile.isCamoAir()) {
 			return;
 		}
-		
+
 		minecraft().getBlockRenderer().renderSingleBlock(tile.getCamoBlock(), matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
 	}
 

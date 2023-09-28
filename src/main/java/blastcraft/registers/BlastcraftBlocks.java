@@ -127,7 +127,7 @@ public class BlastcraftBlocks {
 		}
 
 		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
-			
+
 			switch (concrete) {
 
 			case bricks_wall, regular_wall, tile_wall:
@@ -142,7 +142,7 @@ public class BlastcraftBlocks {
 			default:
 				SUBTYPEBLOCKREGISTER_MAPPINGS.put(concrete, BLOCKS.register(concrete.tag(), () -> new BlockCustomBricks(concrete.hardness, concrete.resistance)));
 			}
-			
+
 		}
 
 		BLOCKS.register("blastcompressor", () -> blockBlastCompressor = new GenericMachineBlock(TileBlastCompressor::new));

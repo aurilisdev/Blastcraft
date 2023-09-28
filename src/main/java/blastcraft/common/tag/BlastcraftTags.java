@@ -25,7 +25,7 @@ public class BlastcraftTags {
 		public static final TagKey<Item> SOLID_BLASTPROOF_WALLS = forgeTag("hardened_blocks/solid_blastproof_walls");
 		public static final TagKey<Item> SOLID_CARBON_PLATED_WALLS = forgeTag("hardened_blocks/solid_carbon_plated_walls");
 		public static final TagKey<Item> SOLID_CONCRETES = forgeTag("hardened_blocks/solid_concretes");
-		
+
 		public static final TagKey<Item> SMOOTH_SOLID_HARDENED_BRICKS = forgeTag("hardened_blocks/smooth_solid_hardened_bricks");
 		public static final TagKey<Item> SMOOTH_SOLID_RAW_BLASTPROOF_WALLS = forgeTag("hardened_blocks/smooth_solid_raw_blastproof_walls");
 		public static final TagKey<Item> SMOOTH_SOLID_BLASTPROOF_WALLS = forgeTag("hardened_blocks/smooth_solid_blastproof_walls");

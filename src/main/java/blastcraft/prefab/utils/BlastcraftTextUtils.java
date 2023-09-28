@@ -52,7 +52,7 @@ public class BlastcraftTextUtils {
 	public static MutableComponent block(String key, Object... additional) {
 		return translated(BLOCK_BASE, key, additional);
 	}
-	
+
 	public static MutableComponent creativeTab(String key, Object... additional) {
 		return translated(CREATIVE_TAB, key, additional);
 	}

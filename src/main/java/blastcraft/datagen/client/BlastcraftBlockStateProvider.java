@@ -147,17 +147,17 @@ public class BlastcraftBlockStateProvider extends ElectrodynamicsBlockStateProvi
 		}
 
 	}
-	
+
 	public void slabBlock(SlabBlock block, ResourceLocation doubleSlabModel, ResourceLocation texture, boolean registerItem) {
 		slabBlock(block, doubleSlabModel, texture);
-		if(registerItem) {
+		if (registerItem) {
 			blockItem(block, existingBlock(block));
 		}
 	}
-	
+
 	public void stairsBlock(StairBlock block, ResourceLocation texture, boolean registerItem) {
 		stairsBlock(block, texture);
-		if(registerItem) {
+		if (registerItem) {
 			blockItem(block, existingBlock(block));
 		}
 	}

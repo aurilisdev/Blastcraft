@@ -139,21 +139,21 @@ public class BlastcraftStonecuttingRecipes extends AbstractRecipeGenerator {
 		/* CONCRETE */
 
 		// REGULAR
-		
+
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.regular), 1).complete(References.ID, "stonecutting_concrete_regular", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.regular_stairs), 1).complete(References.ID, "stonecutting_concrete_regular_stairs", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.regular_wall), 1).complete(References.ID, "stonecutting_concrete_regular_wall", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.regular_slab), 2).complete(References.ID, "stonecutting_concrete_regular_slab", consumer);
-		
+
 		// BRICKS
-		
+
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.bricks), 1).complete(References.ID, "stonecutting_concrete_bricks", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.bricks_stairs), 1).complete(References.ID, "stonecutting_concrete_bricks_stairs", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.bricks_wall), 1).complete(References.ID, "stonecutting_concrete_bricks_wall", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.bricks_slab), 2).complete(References.ID, "stonecutting_concrete_bricks_slab", consumer);
-		
+
 		// TILE
-		
+
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.tile), 1).complete(References.ID, "stonecutting_concrete_tile", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.tile_stairs), 1).complete(References.ID, "stonecutting_concrete_tile_stairs", consumer);
 		ElectrodynamicsSingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.of(BlastcraftTags.Items.SOLID_CONCRETES), BlastcraftItems.getItem(SubtypeConcrete.tile_wall), 1).complete(References.ID, "stonecutting_concrete_tile_wall", consumer);

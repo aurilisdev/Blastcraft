@@ -4,13 +4,25 @@ import electrodynamics.api.ISubtype;
 
 public enum SubtypeHardenedBricks implements ISubtype {
 
-	base, base_wall, base_stairs, base_slab,
+	base,
+	base_wall,
+	base_stairs,
+	base_slab,
 	//
-	big, big_wall, big_stairs, big_slab,
+	big,
+	big_wall,
+	big_stairs,
+	big_slab,
 	//
-	polished, polished_wall, polished_stairs, polished_slab,
+	polished,
+	polished_wall,
+	polished_stairs,
+	polished_slab,
 	//
-	smooth, smooth_wall, smooth_stairs, smooth_slab;
+	smooth,
+	smooth_wall,
+	smooth_stairs,
+	smooth_slab;
 
 	public final float hardness;
 	public final float resistance;

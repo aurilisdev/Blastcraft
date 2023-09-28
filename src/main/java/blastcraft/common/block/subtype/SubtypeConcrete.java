@@ -4,11 +4,20 @@ import electrodynamics.api.ISubtype;
 
 public enum SubtypeConcrete implements ISubtype {
 
-	regular, regular_stairs, regular_wall, regular_slab,
+	regular,
+	regular_stairs,
+	regular_wall,
+	regular_slab,
 	//
-	tile, tile_stairs, tile_wall, tile_slab,
+	tile,
+	tile_stairs,
+	tile_wall,
+	tile_slab,
 	//
-	bricks, bricks_stairs, bricks_wall, bricks_slab;
+	bricks,
+	bricks_stairs,
+	bricks_wall,
+	bricks_slab;
 
 	public final float hardness;
 	public final float resistance;

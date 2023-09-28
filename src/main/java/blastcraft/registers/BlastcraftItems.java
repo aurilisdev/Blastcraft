@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import electrodynamics.common.blockitem.types.BlockItemDescriptable;
 import blastcraft.References;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
@@ -22,6 +21,7 @@ import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
 import electrodynamics.api.ISubtype;
 import electrodynamics.api.creativetab.CreativeTabSupplier;
+import electrodynamics.common.blockitem.types.BlockItemDescriptable;
 import electrodynamics.common.item.ItemDescriptable;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.Item;
@@ -35,25 +35,24 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BlastcraftItems {
-	
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
-	
-	public static final HashMap<ISubtype, RegistryObject<Item>> SUBTYPEITEMREGISTER_MAPPINGS = new HashMap<>();
 
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
+
+	public static final HashMap<ISubtype, RegistryObject<Item>> SUBTYPEITEMREGISTER_MAPPINGS = new HashMap<>();
 
 	static {
 		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
 			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
 		}
-		
+
 		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
 			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
 		}
-		
+
 		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
 			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
 		}
-		
+
 		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
 			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
 		}
@@ -80,7 +79,7 @@ public class BlastcraftItems {
 	}
 
 	public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get(), BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.GRAY)));
-	
+
 	public static Item[] getAllItemForSubtype(ISubtype[] values) {
 		List<Item> list = new ArrayList<>();
 		for (ISubtype value : values) {
@@ -92,7 +91,7 @@ public class BlastcraftItems {
 	public static Item getItem(ISubtype value) {
 		return SUBTYPEITEMREGISTER_MAPPINGS.get(value).get();
 	}
-	
+
 	@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = References.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 	private static class ElectroCreativeRegistry {
 

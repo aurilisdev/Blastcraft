@@ -23,19 +23,19 @@ public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvi
 	@Override
 	protected void generate() {
 
-		for(SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
+		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
 		}
-		
-		for(SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
+
+		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
 		}
-		
-		for(SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
+
+		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
 		}
-		
-		for(SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
+
+		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
 			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
 		}
 
@@ -57,7 +57,7 @@ public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvi
 		addMachineTable(BlastcraftBlocks.blockBlastCompressor, BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR, true, false, false, true, false);
 
 	}
-	
+
 	@Override
 	public List<Block> getExcludedBlocks() {
 		return List.of();

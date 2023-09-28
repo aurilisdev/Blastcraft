@@ -35,7 +35,7 @@ public class BlastcraftItemTagsProvider extends ItemTagsProvider {
 		tag(BlastcraftTags.Items.SOLID_HARDENED_BRICKS).add(BlastcraftItems.getItem(SubtypeHardenedBricks.base), BlastcraftItems.getItem(SubtypeHardenedBricks.big), BlastcraftItems.getItem(SubtypeHardenedBricks.polished), BlastcraftItems.getItem(SubtypeHardenedBricks.smooth));
 
 		tag(BlastcraftTags.Items.SOLID_CONCRETES).add(BlastcraftItems.getItem(SubtypeConcrete.regular), BlastcraftItems.getItem(SubtypeConcrete.bricks), BlastcraftItems.getItem(SubtypeConcrete.tile));
-		
+
 		tag(BlastcraftTags.Items.SMOOTH_SOLID_BLASTPROOF_WALLS).add(BlastcraftItems.getItem(SubtypeBlastproofWall.polished), BlastcraftItems.getItem(SubtypeBlastproofWall.smooth));
 
 		tag(BlastcraftTags.Items.SMOOTH_SOLID_RAW_BLASTPROOF_WALLS).add(BlastcraftItems.getItem(SubtypeRawBlastproofWall.polished), BlastcraftItems.getItem(SubtypeRawBlastproofWall.smooth));

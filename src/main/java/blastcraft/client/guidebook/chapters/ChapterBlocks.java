@@ -36,13 +36,13 @@ public class ChapterBlocks extends Chapter {
 
 	@Override
 	public void addData() {
-		
-		//Camoflage
+
+		// Camoflage
 		pageData.add(new TextWrapperObject(BlastcraftBlocks.blockCamoflage.asItem().getDescription().copy().withStyle(ChatFormatting.BOLD)).setCentered().setSeparateStart());
 		pageData.add(new ItemWrapperObject(7 + ScreenGuidebook.TEXT_WIDTH / 2 - 16, 10, 32, 32, 32, 2.0F, BlastcraftBlocks.blockCamoflage.asItem()));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.camoflage1")).setSeparateStart().setIndentions(1));
-		
-		//Blast resistant walls
+
+		// Blast resistant walls
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastprooftitle").withStyle(ChatFormatting.BOLD)).setCentered().setNewPage());
 		pageData.add(new ItemWrapperObject(7 + ScreenGuidebook.TEXT_WIDTH / 2 - 16, 10, 32, 32, 32, 2.0F, BlastcraftItems.getItem(SubtypeCarbonPlatedWall.base)));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof1")).setSeparateStart().setIndentions(1));
@@ -64,8 +64,7 @@ public class ChapterBlocks extends Chapter {
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeCarbonPlatedWall.base.resistance)).setSeparateStart().setIndentions(1));
 		blankLine();
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof2")).setSeparateStart());
-		
-		
+
 	}
 
 }

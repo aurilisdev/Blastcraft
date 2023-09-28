@@ -36,7 +36,7 @@ public class DataGenerators {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-		
+
 		if (event.includeServer()) {
 
 			generator.addProvider(true, new LootTableProvider(output, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(BlastcraftLootTablesProvider::new, LootContextParamSets.BLOCK))));

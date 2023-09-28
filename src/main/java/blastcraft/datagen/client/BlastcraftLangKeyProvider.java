@@ -126,20 +126,20 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 			addBlock(BlastcraftBlocks.getBlock(SubtypeWallingGlass.carbonplatedwalling), "Carbon Plated Walling Glass");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeWallingGlass.hardenedbricks), "Hardened Brick Glass");
 
-			//CONCRETE
-			
+			// CONCRETE
+
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.regular), "Reinforced Concrete");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.bricks), "Reinforced Concrete Bricks");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.tile), "Reinforced Concrete Tile");
-			
+
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.regular_stairs), "Reinforced Concrete Stairs");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.bricks_stairs), "Reinforced Concrete Brick Stairs");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.tile_stairs), "Reinforced Concrete Tile Stairs");
-			
+
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.regular_wall), "Reinforced Concrete Wall");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.bricks_wall), "Reinforced Concrete Brick Wall");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.tile_wall), "Reinforced Concrete Tile Wall");
-			
+
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.regular_slab), "Reinforced Concrete Slab");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.bricks_slab), "Reinforced Concrete Brick Slab");
 			addBlock(BlastcraftBlocks.getBlock(SubtypeConcrete.tile_slab), "Reinforced Concrete Tile Slab");
