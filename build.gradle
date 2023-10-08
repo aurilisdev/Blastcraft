@@ -16,7 +16,7 @@ libsDirName = "../output"
 distsDirName = "../output"
 
 group = blastcraft_group
-version = blastcraft_version
+version = "${minecraft_version}-" + blastcraft_version
 
 base {
 
