@@ -1,0 +1,4 @@
+> update to 1.20.1
+> update to new Electrodynamics formatting
+> add wall, slab, and stair variants to blastproof walls; slabs have half the resistance of their normal counterpart
+> clean and improve internal code
