@@ -4,7 +4,7 @@ import blastcraft.registers.BlastcraftBlockTypes;
 import electrodynamics.prefab.properties.Property;
 import electrodynamics.prefab.properties.PropertyType;
 import electrodynamics.prefab.tile.GenericTile;
-import electrodynamics.prefab.tile.components.ComponentType;
+import electrodynamics.prefab.tile.components.IComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -42,7 +42,7 @@ public class TileCamoflauge extends GenericTile {
 	public void onPlace(BlockState oldState, boolean isMoving) {
 		super.onPlace(oldState, isMoving);
 		if (!level.isClientSide) {
-			this.<ComponentPacketHandler>getComponent(ComponentType.PacketHandler).sendProperties();
+			this.<ComponentPacketHandler>getComponent(IComponentType.PacketHandler).sendProperties();
 		}
 
 	}
