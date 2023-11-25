@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "blastcraft:block/hardenedbricks/hardenedbrickspolished",
-    "side": "blastcraft:block/hardenedbricks/hardenedbrickspolished",
-    "top": "blastcraft:block/hardenedbricks/hardenedbrickspolished"
-  }
-}

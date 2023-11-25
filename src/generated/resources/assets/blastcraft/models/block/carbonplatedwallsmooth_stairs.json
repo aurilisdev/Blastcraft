@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "blastcraft:block/carbonplatedwall/carbonplatedwallsmooth",
-    "side": "blastcraft:block/carbonplatedwall/carbonplatedwallsmooth",
-    "top": "blastcraft:block/carbonplatedwall/carbonplatedwallsmooth"
-  }
-}

@@ -1,6 +1,6 @@
 package blastcraft.common.tab;
 
-import blastcraft.common.block.subtype.SubtypeBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeBrick;
 import blastcraft.registers.BlastcraftBlocks;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +13,6 @@ public class ItemGroupBlastcraft extends CreativeModeTab {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(BlastcraftBlocks.getBlock(SubtypeBlastproofWall.base));
+		return new ItemStack(BlastcraftBlocks.bricksMap.get(SubtypeBrick.base).get(0).get());
 	}
 }

@@ -12,13 +12,13 @@
   "iteminputs": {
     "0": {
       "count": 1,
-      "tag": "forge:hardened_blocks/solid_raw_blastproof_walls"
+      "tag": "forge:hardened_blocks/raw_blastproof_walls"
     },
     "count": 1
   },
   "output": {
     "count": 1,
-    "item": "blastcraft:blastproofwallbase"
+    "item": "blastcraft:blastproofwalling"
   },
   "ticks": 220,
   "usagepertick": 100.0

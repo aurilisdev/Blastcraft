@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "blastcraft:block/blastproofwall/blastproofwallbase",
-    "side": "blastcraft:block/blastproofwall/blastproofwallbase",
-    "top": "blastcraft:block/blastproofwall/blastproofwallbase"
-  }
-}

@@ -1,15 +1,14 @@
 package blastcraft.datagen.server;
 
-import blastcraft.common.block.subtype.SubtypeBlastproofWall;
-import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
+import blastcraft.common.block.subtype.SubtypeBrick;
 import blastcraft.common.block.subtype.SubtypeConcrete;
-import blastcraft.common.block.subtype.SubtypeHardenedBricks;
-import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.registers.BlastcraftBlockTypes;
 import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.datagen.server.ElectrodynamicsLootTablesProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.RegistryObject;
 
 public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvider {
 
@@ -20,20 +19,10 @@ public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvi
 	@Override
 	protected void addTables() {
 
-		for(SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
-			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
-		}
-		
-		for(SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
-			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
-		}
-		
-		for(SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
-			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
-		}
-		
-		for(SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
-			addSimpleBlock(BlastcraftBlocks.getBlock(wall));
+		for (SubtypeBrick brick : SubtypeBrick.values()) {
+			for (RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
+				addSimpleBlock(reg.get());
+			}
 		}
 
 		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
@@ -51,7 +40,7 @@ public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvi
 		addSimpleBlock(BlastcraftBlocks.blockSpikeFire);
 		addSimpleBlock(BlastcraftBlocks.blockSpikePoison);
 
-		addMachineTable(BlastcraftBlocks.blockBlastCompressor, BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR, true, false, false, true, false);
+		addIETable(BlastcraftBlocks.blockBlastCompressor, BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR);
 
 	}
 

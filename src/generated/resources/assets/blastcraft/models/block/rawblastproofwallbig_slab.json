@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "blastcraft:block/rawblastproofwall/rawblastproofwallbig",
-    "side": "blastcraft:block/rawblastproofwall/rawblastproofwallbig",
-    "top": "blastcraft:block/rawblastproofwall/rawblastproofwallbig"
-  }
-}
