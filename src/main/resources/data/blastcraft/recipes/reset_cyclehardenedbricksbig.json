@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "blastcraft:hardenedbricksbig"
-	},
-	"result": "blastcraft:hardenedbricks",
-	"count": 1
-}

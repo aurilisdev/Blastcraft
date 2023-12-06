@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "blastcraft:glasspressureplate",
+    "blastcraft:blastcompressor",
+    "blastcraft:camoflage",
+    "blastcraft:spike",
+    "blastcraft:spikefire",
+    "blastcraft:spikepoison",
+    "blastcraft:blastproofwalling",
+    "blastcraft:rawblastproofwalling",
+    "blastcraft:carbonplatedwalling",
+    "blastcraft:hardenedbricks",
+    "blastcraft:blastproofwallingsmooth",
+    "blastcraft:rawblastproofwallingsmooth",
+    "blastcraft:carbonplatedwallingsmooth",
+    "blastcraft:hardenedbrickssmooth",
+    "blastcraft:blastproofwallingpolished",
+    "blastcraft:rawblastproofwallingpolished",
+    "blastcraft:carbonplatedwallingpolished",
+    "blastcraft:hardenedbrickspolished",
+    "blastcraft:blastproofwallingbig",
+    "blastcraft:rawblastproofwallingbig",
+    "blastcraft:carbonplatedwallingbig",
+    "blastcraft:hardenedbricksbig",
+    "blastcraft:blastproofwallingglass",
+    "blastcraft:rawblastproofwallingglass",
+    "blastcraft:carbonplatedwallingglass",
+    "blastcraft:hardenedbricksglass"
+  ]
+}

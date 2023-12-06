@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "blastcraft:rawblastproofwalling"
+  },
+  "result": "blastcraft:rawblastproofwallingsmooth",
+  "experience": 0.0,
+  "cookingtime": 100
+}

@@ -1,83 +1,23 @@
 package blastcraft.client.guidebook.chapters;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import blastcraft.DeferredRegisters;
-import blastcraft.common.block.SubtypeBrick;
-import electrodynamics.api.item.ItemUtils;
-import electrodynamics.client.guidebook.utils.ItemWrapperObject;
-import electrodynamics.client.guidebook.utils.TextWrapperObject;
+import blastcraft.common.block.subtype.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeWalling;
+import blastcraft.prefab.utils.BlastcraftTextUtils;
+import blastcraft.registers.BlastcraftBlocks;
+import electrodynamics.client.guidebook.ScreenGuidebook;
 import electrodynamics.client.guidebook.utils.components.Chapter;
-import electrodynamics.client.guidebook.utils.components.Page;
+import electrodynamics.client.guidebook.utils.components.Module;
+import electrodynamics.client.guidebook.utils.pagedata.graphics.ItemWrapperObject;
+import electrodynamics.client.guidebook.utils.pagedata.text.TextWrapperObject;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.MutableComponent;
 
 public class ChapterBlocks extends Chapter {
 
-	private static final ItemWrapperObject LOGO = new ItemWrapperObject(17, 60, 2.0F, ItemUtils.fromBlock(DeferredRegisters.blockCamoflage));
+	private static final ItemWrapperObject LOGO = new ItemWrapperObject(7, 10, 32, 32, 32, 2.0F, BlastcraftBlocks.blockCamoflage.asItem());
 
-	@Override
-	protected List<Page> genPages() {
-		List<Page> pages = new ArrayList<>();
-
-		pages.add(new Page(new TextWrapperObject[] {
-				//
-				new TextWrapperObject(45, 53, 4210752, "guidebook.blastcraft.chapter.blocks.camtitle").setTextStyles(ChatFormatting.UNDERLINE),
-				//
-				new TextWrapperObject(10, 80, 4210752, "guidebook.blastcraft.chapter.blocks.p1l1"),
-				//
-				new TextWrapperObject(10, 90, 4210752, "guidebook.blastcraft.chapter.blocks.p1l2"),
-				//
-				new TextWrapperObject(10, 100, 4210752, "guidebook.blastcraft.chapter.blocks.p1l3"),
-				//
-				new TextWrapperObject(10, 110, 4210752, "guidebook.blastcraft.chapter.blocks.p1l4"),
-				//
-				new TextWrapperObject(10, 120, 4210752, "guidebook.blastcraft.chapter.blocks.p1l5"),
-				//
-				new TextWrapperObject(10, 130, 4210752, "guidebook.blastcraft.chapter.blocks.p1l6"),
-				//
-				new TextWrapperObject(10, 140, 4210752, "guidebook.blastcraft.chapter.blocks.p1l7") },
-				new ItemWrapperObject[] {
-						//
-						new ItemWrapperObject(17, 50, 2.0F, ItemUtils.fromBlock(DeferredRegisters.blockCamoflage)) }));
-
-		pages.add(new Page(new TextWrapperObject[] {
-				//
-				new TextWrapperObject(45, 47, 4210752, "block.blastcraft.hardenedbricks"),
-				//
-				new TextWrapperObject(45, 57, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 1),
-				//
-				new TextWrapperObject(45, 67, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 50),
-				//
-				new TextWrapperObject(45, 83, 4210752, "block.blastcraft.carbonplatedwalling"),
-				//
-				new TextWrapperObject(45, 93, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 2),
-				//
-				new TextWrapperObject(45, 103, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 4000),
-				//
-				new TextWrapperObject(45, 117, 4210752, "block.blastcraft.rawblastproofwalling"),
-				//
-				new TextWrapperObject(45, 127, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 3),
-				//
-				new TextWrapperObject(45, 137, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 12000),
-				//
-				new TextWrapperObject(45, 153, 4210752, "block.blastcraft.blastproofwalling"),
-				//
-				new TextWrapperObject(45, 163, 4210752, "guidebook.blastcraft.chapter.blocks.tier", 4),
-				//
-				new TextWrapperObject(45, 173, 4210752, "guidebook.blastcraft.chapter.blocks.resistance", 18000), },
-				//
-				new ItemWrapperObject[] {
-						//
-						new ItemWrapperObject(15, 50, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(3).get())),
-						//
-						new ItemWrapperObject(15, 85, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(2).get())),
-						//
-						new ItemWrapperObject(15, 120, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(1).get())),
-						//
-						new ItemWrapperObject(15, 155, 2.0F, ItemUtils.fromBlock(DeferredRegisters.bricksMap.get(SubtypeBrick.base).get(0).get())), }));
-
-		return pages;
+	public ChapterBlocks(Module module) {
+		super(module);
 	}
 
 	@Override
@@ -86,8 +26,39 @@ public class ChapterBlocks extends Chapter {
 	}
 
 	@Override
-	public String getTitleKey() {
-		return "guidebook.blastcraft.chapter.blocks";
+	public MutableComponent getTitle() {
+		return BlastcraftTextUtils.guidebook("chapter.blocks");
+	}
+
+	@Override
+	public void addData() {
+		
+		//Camoflage
+		pageData.add(new TextWrapperObject(BlastcraftBlocks.blockCamoflage.asItem().getDescription().copy().withStyle(ChatFormatting.BOLD)).setCentered().setSeparateStart());
+		pageData.add(new ItemWrapperObject(7 + ScreenGuidebook.TEXT_WIDTH / 2 - 16, 10, 32, 32, 32, 2.0F, BlastcraftBlocks.blockCamoflage.asItem()));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.camoflage1")).setSeparateStart().setIndentions(1));
+		
+		//Blast resistant walls
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastprooftitle").withStyle(ChatFormatting.BOLD)).setCentered().setNewPage());
+		pageData.add(new ItemWrapperObject(7 + ScreenGuidebook.TEXT_WIDTH / 2 - 16, 10, 32, 32, 32, 2.0F, BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base).asItem()));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof1")).setSeparateStart().setIndentions(1));
+		blankLine();
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardened").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.hardenedbricks.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.hardenedbricks.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.rawblastproof").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.rawblastproofwalling.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.rawblastproofwalling.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.blastproofwalling.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.blastproofwalling.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.carbonplated").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.carbonplatedwalling.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.carbonplatedwalling.resistance)).setSeparateStart().setIndentions(1));
+		blankLine();
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof2")).setSeparateStart());
+		
+		
 	}
 
 }
