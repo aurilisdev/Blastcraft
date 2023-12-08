@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import blastcraft.References;
 import blastcraft.client.guidebook.ModuleBlastcraft;
 import blastcraft.client.render.tile.RenderCamoflage;
+import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.registers.BlastcraftBlockTypes;
 import blastcraft.registers.BlastcraftBlocks;
 import electrodynamics.client.guidebook.ScreenGuidebook;
@@ -20,6 +21,10 @@ import electrodynamics.client.guidebook.ScreenGuidebook;
 public class ClientRegister {
 
 	public static void setup() {
+		
+		for(SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+			ItemBlockRenderTypes.setRenderLayer(BlastcraftBlocks.getBlock(glass), RenderType.cutout());
+		}
 		
 		ItemBlockRenderTypes.setRenderLayer(BlastcraftBlocks.blockCamoflage, RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(BlastcraftBlocks.blockSpike, RenderType.cutout());
