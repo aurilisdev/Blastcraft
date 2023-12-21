@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "blastcraft:block/hardenedbricks/hardenedbrickspolished"
+    "all": "blastcraft:block/polished/hardenedbrickspolished"
   }
 }

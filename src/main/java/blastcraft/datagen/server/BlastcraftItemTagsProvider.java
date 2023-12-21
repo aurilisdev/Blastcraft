@@ -1,16 +1,15 @@
 package blastcraft.datagen.server;
 
 import blastcraft.References;
-import blastcraft.common.block.subtype.SubtypeBlastproofWall;
-import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
-import blastcraft.common.block.subtype.SubtypeHardenedBricks;
-import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeWalling;
 import blastcraft.common.tag.BlastcraftTags;
-import blastcraft.registers.BlastcraftItems;
+import blastcraft.registers.BlastcraftBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlastcraftItemTagsProvider extends ItemTagsProvider {
@@ -22,23 +21,35 @@ public class BlastcraftItemTagsProvider extends ItemTagsProvider {
 	@Override
 	protected void addTags() {
 
-		tag(BlastcraftTags.Items.SOLID_BLASTPROOF_WALLS).add(BlastcraftItems.getItem(SubtypeBlastproofWall.base), BlastcraftItems.getItem(SubtypeBlastproofWall.big), BlastcraftItems.getItem(SubtypeBlastproofWall.polished), BlastcraftItems.getItem(SubtypeBlastproofWall.smooth));
+		TagAppender<Item> blastproofWalls = tag(BlastcraftTags.Items.BLASTPROOF_WALLS);
 
-		tag(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS).add(BlastcraftItems.getItem(SubtypeRawBlastproofWall.base), BlastcraftItems.getItem(SubtypeRawBlastproofWall.big), BlastcraftItems.getItem(SubtypeRawBlastproofWall.polished), BlastcraftItems.getItem(SubtypeRawBlastproofWall.smooth));
+		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.blastproofwalling)) {
+			blastproofWalls = blastproofWalls.add(block.asItem());
+		}
 
-		tag(BlastcraftTags.Items.SOLID_CARBON_PLATED_WALLS).add(BlastcraftItems.getItem(SubtypeCarbonPlatedWall.base), BlastcraftItems.getItem(SubtypeCarbonPlatedWall.big), BlastcraftItems.getItem(SubtypeCarbonPlatedWall.polished), BlastcraftItems.getItem(SubtypeCarbonPlatedWall.smooth));
+		TagAppender<Item> rawBlastproofWalls = tag(BlastcraftTags.Items.RAW_BLASTPROOF_WALLS);
 
-		tag(BlastcraftTags.Items.SOLID_HARDENED_BRICKS).add(BlastcraftItems.getItem(SubtypeHardenedBricks.base), BlastcraftItems.getItem(SubtypeHardenedBricks.big), BlastcraftItems.getItem(SubtypeHardenedBricks.polished), BlastcraftItems.getItem(SubtypeHardenedBricks.smooth));
+		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.rawblastproofwalling)) {
+			rawBlastproofWalls = rawBlastproofWalls.add(block.asItem());
+		}
 
-		tag(BlastcraftTags.Items.SOLID_CONCRETES).add(BlastcraftItems.getItem(SubtypeConcrete.regular), BlastcraftItems.getItem(SubtypeConcrete.bricks), BlastcraftItems.getItem(SubtypeConcrete.tile));
-		
-		tag(BlastcraftTags.Items.SMOOTH_SOLID_BLASTPROOF_WALLS).add(BlastcraftItems.getItem(SubtypeBlastproofWall.polished), BlastcraftItems.getItem(SubtypeBlastproofWall.smooth));
+		TagAppender<Item> carbonPlatedWalls = tag(BlastcraftTags.Items.CARBON_PLATED_WALLS);
 
-		tag(BlastcraftTags.Items.SMOOTH_SOLID_RAW_BLASTPROOF_WALLS).add(BlastcraftItems.getItem(SubtypeRawBlastproofWall.polished), BlastcraftItems.getItem(SubtypeRawBlastproofWall.smooth));
+		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.carbonplatedwalling)) {
+			carbonPlatedWalls = carbonPlatedWalls.add(block.asItem());
+		}
 
-		tag(BlastcraftTags.Items.SMOOTH_SOLID_CARBON_PLATED_WALLS).add(BlastcraftItems.getItem(SubtypeCarbonPlatedWall.polished), BlastcraftItems.getItem(SubtypeCarbonPlatedWall.smooth));
+		TagAppender<Item> hardenedBricks = tag(BlastcraftTags.Items.HARDENED_BRICKS);
 
-		tag(BlastcraftTags.Items.SMOOTH_SOLID_HARDENED_BRICKS).add(BlastcraftItems.getItem(SubtypeHardenedBricks.polished), BlastcraftItems.getItem(SubtypeHardenedBricks.smooth));
+		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.hardenedbricks)) {
+			hardenedBricks = hardenedBricks.add(block.asItem());
+		}
+
+		TagAppender<Item> concretes = tag(BlastcraftTags.Items.CONCRETES);
+
+		for (Block block : BlastcraftBlocks.getAllBlockForSubtype(SubtypeConcrete.values())) {
+			concretes = concretes.add(block.asItem());
+		}
 
 	}
 

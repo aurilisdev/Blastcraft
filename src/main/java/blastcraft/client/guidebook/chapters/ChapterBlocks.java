@@ -1,13 +1,10 @@
 package blastcraft.client.guidebook.chapters;
 
-import blastcraft.common.block.subtype.SubtypeBlastproofWall;
-import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
+import blastcraft.common.block.subtype.SubtypeBrick;
 import blastcraft.common.block.subtype.SubtypeConcrete;
-import blastcraft.common.block.subtype.SubtypeHardenedBricks;
-import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeWalling;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
 import blastcraft.registers.BlastcraftBlocks;
-import blastcraft.registers.BlastcraftItems;
 import electrodynamics.client.guidebook.ScreenGuidebook;
 import electrodynamics.client.guidebook.utils.components.Chapter;
 import electrodynamics.client.guidebook.utils.components.Module;
@@ -44,24 +41,24 @@ public class ChapterBlocks extends Chapter {
 		
 		//Blast resistant walls
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastprooftitle").withStyle(ChatFormatting.BOLD)).setCentered().setNewPage());
-		pageData.add(new ItemWrapperObject(7 + ScreenGuidebook.TEXT_WIDTH / 2 - 16, 10, 32, 32, 32, 2.0F, BlastcraftItems.getItem(SubtypeCarbonPlatedWall.base)));
+		pageData.add(new ItemWrapperObject(7 + ScreenGuidebook.TEXT_WIDTH / 2 - 16, 10, 32, 32, 32, 2.0F, BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base).asItem()));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof1")).setSeparateStart().setIndentions(1));
 		blankLine();
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardened").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeHardenedBricks.base.hardness)).setSeparateStart().setIndentions(1));
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeHardenedBricks.base.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.hardenedbricks.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.hardenedbricks.resistance)).setSeparateStart().setIndentions(1));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.concrete").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeConcrete.regular.hardness)).setSeparateStart().setIndentions(1));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeConcrete.regular.resistance)).setSeparateStart().setIndentions(1));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.rawblastproof").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeRawBlastproofWall.base.hardness)).setSeparateStart().setIndentions(1));
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeRawBlastproofWall.base.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.rawblastproofwalling.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.rawblastproofwalling.resistance)).setSeparateStart().setIndentions(1));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeBlastproofWall.base.hardness)).setSeparateStart().setIndentions(1));
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeBlastproofWall.base.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.blastproofwalling.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.blastproofwalling.resistance)).setSeparateStart().setIndentions(1));
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.carbonplated").withStyle(ChatFormatting.UNDERLINE)).setSeparateStart());
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeCarbonPlatedWall.base.hardness)).setSeparateStart().setIndentions(1));
-		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeCarbonPlatedWall.base.resistance)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.hardness", SubtypeWalling.carbonplatedwalling.hardness)).setSeparateStart().setIndentions(1));
+		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.strength", SubtypeWalling.carbonplatedwalling.resistance)).setSeparateStart().setIndentions(1));
 		blankLine();
 		pageData.add(new TextWrapperObject(BlastcraftTextUtils.guidebook("chapter.blocks.blastproof2")).setSeparateStart());
 		

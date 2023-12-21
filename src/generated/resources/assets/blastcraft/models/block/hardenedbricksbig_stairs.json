@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "blastcraft:block/hardenedbricks/hardenedbricksbig",
-    "side": "blastcraft:block/hardenedbricks/hardenedbricksbig",
-    "top": "blastcraft:block/hardenedbricks/hardenedbricksbig"
-  }
-}

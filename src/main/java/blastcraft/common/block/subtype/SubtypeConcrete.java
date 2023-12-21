@@ -3,24 +3,12 @@ package blastcraft.common.block.subtype;
 import electrodynamics.api.ISubtype;
 
 public enum SubtypeConcrete implements ISubtype {
+	regular,
+	tile,
+	bricks;
 
-	regular, regular_stairs, regular_wall, regular_slab,
-	//
-	tile, tile_stairs, tile_wall, tile_slab,
-	//
-	bricks, bricks_stairs, bricks_wall, bricks_slab;
-
-	public final float hardness;
-	public final float resistance;
-
-	private SubtypeConcrete(float hardness, float resistance) {
-		this.hardness = hardness;
-		this.resistance = resistance;
-	}
-
-	private SubtypeConcrete() {
-		this(50, 1200);
-	}
+	public final float hardness = 50;
+	public final float resistance = 1200;
 
 	@Override
 	public String tag() {

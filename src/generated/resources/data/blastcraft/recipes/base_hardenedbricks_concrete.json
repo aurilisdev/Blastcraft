@@ -5,7 +5,7 @@
       "item": "minecraft:bricks"
     },
     "C": {
-      "tag": "forge:hardened_blocks/solid_concretes"
+      "tag": "forge:hardened_blocks/concretes"
     }
   },
   "pattern": [
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 6,
-    "item": "blastcraft:hardenedbricksbase"
+    "item": "blastcraft:hardenedbricks"
   }
 }

@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 0.0,
   "ingredient": {
-    "item": "blastcraft:hardenedbricksbase"
+    "item": "blastcraft:hardenedbricks"
   },
   "result": "blastcraft:hardenedbrickssmooth"
 }

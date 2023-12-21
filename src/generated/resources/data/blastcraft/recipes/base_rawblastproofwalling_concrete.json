@@ -2,10 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "C": {
-      "tag": "forge:hardened_blocks/solid_concretes"
+      "tag": "forge:hardened_blocks/concretes"
     },
     "H": {
-      "tag": "forge:hardened_blocks/solid_hardened_bricks"
+      "tag": "forge:hardened_blocks/hardened_bricks"
     }
   },
   "pattern": [
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "blastcraft:rawblastproofwallbase"
+    "item": "blastcraft:rawblastproofwalling"
   }
 }
