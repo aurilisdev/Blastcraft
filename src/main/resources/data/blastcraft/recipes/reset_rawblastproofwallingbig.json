@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "blastcraft:rawblastproofwallingbig"
-	},
-	"result": "blastcraft:rawblastproofwalling",
-	"count": 1
-}

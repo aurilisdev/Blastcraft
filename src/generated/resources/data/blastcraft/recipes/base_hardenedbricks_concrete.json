@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "CBC",
+    "CBC"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "tag": "forge:hardened_blocks/concretes"
+    }
+  },
+  "result": {
+    "item": "blastcraft:hardenedbricks",
+    "count": 6
+  }
+}

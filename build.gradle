@@ -28,9 +28,9 @@ libsDirName = "../output"
 distsDirName = "../output"
 
 def version_minor='2'
-def version_revision='7'
+def version_revision='8'
 def	minecraft_version='1.18.2'
-def version_build='2'
+def version_build='0'
 def version_major='0'
 
 version = minecraft_version+'-'+version_major+'.'+version_minor+'.'+version_revision+'-'+version_build
@@ -83,7 +83,7 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'blastcraft', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'blastcraft', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 blastcraft {
@@ -94,8 +94,10 @@ minecraft {
     }
 }
 
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 dependencies {
-	def Folder = new File("C:/AmpzLibz")
+    def Folder = new File("C:/AmpzLibz")
     if(Folder.exists()) {
         implementation fileTree(Folder)
     }
@@ -103,11 +105,13 @@ dependencies {
     if(Folder2.exists()) {
         implementation fileTree(Folder2)
     }
-	minecraft 'net.minecraftforge:forge:1.18.2-40.1.73'
-    compileOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.1.232:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.1.232")
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.14'
+    compileOnly fg.deobf("mezz.jei:jei-1.18.2-common-api:10.2.1.283")
+    compileOnly fg.deobf("mezz.jei:jei-1.18.2-forge-api:10.2.1.283")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.2.1.283")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+
 
 }
 
@@ -158,15 +162,15 @@ publishing {
 This needs to stay. It's the Maven repository for JEI along with a fallback!
 */
 repositories{
-		mavenCentral()
-	  	maven {
-	   	    name = "Progwml6 maven"
-	   	    url = "https://dvs1.progwml6.com/files/maven/"
-	  	}
-	    maven {
-	       name = "ModMaven"
-	       url = "https://modmaven.k-4u.nl"
-	    }
+    mavenCentral()
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+       name = "ModMaven"
+       url = "https://modmaven.k-4u.nl"
+    }
 }
 
 ext.gittagnew = 'v'+project.version

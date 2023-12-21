@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "blastcraft:blastproofwalling"
+  },
+  "result": "blastcraft:blastproofwallingsmooth",
+  "experience": 0.0,
+  "cookingtime": 200
+}
