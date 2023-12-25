@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OBO",
+    "OBO",
+    "OBO"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bricks"
+    },
+    "O": {
+      "tag": "forge:obsidian"
+    }
+  },
+  "result": {
+    "item": "blastcraft:hardenedbricks",
+    "count": 6
+  }
+}

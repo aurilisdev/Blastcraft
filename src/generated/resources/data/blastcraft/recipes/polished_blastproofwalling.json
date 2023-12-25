@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB",
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "item": "blastcraft:blastproofwallingsmooth"
+    }
+  },
+  "result": {
+    "item": "blastcraft:blastproofwallingpolished",
+    "count": 4
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OHO",
+    "OHO",
+    "OHO"
+  ],
+  "key": {
+    "H": {
+      "tag": "forge:hardened_blocks/hardened_bricks"
+    },
+    "O": {
+      "tag": "forge:obsidian"
+    }
+  },
+  "result": {
+    "item": "blastcraft:rawblastproofwalling",
+    "count": 3
+  }
+}

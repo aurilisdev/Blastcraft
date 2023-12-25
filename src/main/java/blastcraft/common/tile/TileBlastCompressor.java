@@ -1,62 +1,67 @@
 package blastcraft.common.tile;
 
-import blastcraft.DeferredRegisters;
-import blastcraft.SoundRegister;
 import blastcraft.common.recipe.BlastCraftRecipeInit;
-import blastcraft.common.recipe.categories.o2o.specificmachines.BlastCompressorRecipe;
-import blastcraft.common.settings.Constants;
-import electrodynamics.api.electricity.CapabilityElectrodynamic;
-import electrodynamics.api.sound.SoundAPI;
-import electrodynamics.common.inventory.container.ContainerO2OProcessor;
-import electrodynamics.common.item.ItemProcessorUpgrade;
-import electrodynamics.prefab.tile.GenericTileTicking;
-import electrodynamics.prefab.tile.components.ComponentType;
+import blastcraft.registers.BlastcraftBlockTypes;
+import blastcraft.registers.BlastcraftSounds;
+import electrodynamics.api.capability.ElectrodynamicsCapabilities;
+import electrodynamics.common.inventory.container.tile.ContainerO2OProcessor;
+import electrodynamics.prefab.sound.SoundBarrierMethods;
+import electrodynamics.prefab.sound.utils.ITickableSound;
+import electrodynamics.prefab.tile.GenericTile;
+import electrodynamics.prefab.tile.components.IComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentContainerProvider;
-import electrodynamics.prefab.tile.components.type.ComponentDirection;
 import electrodynamics.prefab.tile.components.type.ComponentElectrodynamic;
 import electrodynamics.prefab.tile.components.type.ComponentInventory;
+import electrodynamics.prefab.tile.components.type.ComponentInventory.InventoryBuilder;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import electrodynamics.prefab.tile.components.type.ComponentProcessor;
-import electrodynamics.prefab.tile.components.type.ComponentProcessorType;
 import electrodynamics.prefab.tile.components.type.ComponentTickable;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
 
-public class TileBlastCompressor extends GenericTileTicking {
-    public TileBlastCompressor() {
+public class TileBlastCompressor extends GenericTile implements ITickableSound {
 
-	super(DeferredRegisters.TILE_BLASTCOMPRESSOR.get());
-	addComponent(new ComponentDirection());
-	addComponent(new ComponentPacketHandler());
-	addComponent(new ComponentTickable().tickClient(this::tickClient));
-	addComponent(new ComponentElectrodynamic(this).voltage(CapabilityElectrodynamic.DEFAULT_VOLTAGE * 2).relativeInput(Direction.NORTH));
-	addComponent(new ComponentInventory(this).size(5).faceSlots(Direction.UP, 0).faceSlots(Direction.DOWN, 1).relativeFaceSlots(Direction.EAST, 1)
-		.relativeFaceSlots(Direction.WEST, 2)
-		.valid((slot, stack) -> slot == 0 || slot > 2 && stack.getItem() instanceof ItemProcessorUpgrade));
-	addProcessor(new ComponentProcessor(this).upgradeSlots(2, 3, 4)
-		.canProcess(component -> component.canProcessO2ORecipe(component, BlastCompressorRecipe.class,
-			BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE))
-		.process(component -> component.processO2ORecipe(component, BlastCompressorRecipe.class))
-		.requiredTicks(Constants.BLASTCOMPRESSOR_REQUIRED_TICKS).usage(Constants.BLASTCOMPRESSOR_USAGE_PER_TICK)
-		.type(ComponentProcessorType.ObjectToObject));
-	addComponent(new ComponentContainerProvider("container.blastcompressor")
-		.createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(ComponentType.Inventory), getCoordsArray())));
+	private boolean isPlaying = false;
 
-    }
-
-    protected void tickClient(ComponentTickable tickable) {
-	boolean running = getProcessor(0).operatingTicks > 0;
-	if (running && world.rand.nextDouble() < 0.15) {
-	    Direction direction = this.<ComponentDirection>getComponent(ComponentType.Direction).getDirection();
-	    double d4 = world.rand.nextDouble();
-	    double d5 = direction.getAxis() == Direction.Axis.X ? direction.getXOffset() * (direction.getXOffset() == -1 ? 0 : 1) : d4;
-	    double d6 = world.rand.nextDouble();
-	    double d7 = direction.getAxis() == Direction.Axis.Z ? direction.getZOffset() * (direction.getZOffset() == -1 ? 0 : 1) : d4;
-	    world.addParticle(ParticleTypes.SMOKE, pos.getX() + d5, pos.getY() + d6, pos.getZ() + d7, 0.0D, 0.0D, 0.0D);
+	public TileBlastCompressor() {
+		super(BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR.get());
+		addComponent(new ComponentPacketHandler(this));
+		addComponent(new ComponentTickable(this).tickClient(this::tickClient));
+		addComponent(new ComponentElectrodynamic(this, false, true).voltage(ElectrodynamicsCapabilities.DEFAULT_VOLTAGE * 2).setInputDirections(Direction.NORTH));
+		addComponent(new ComponentInventory(this, InventoryBuilder.newInv().processors(1, 1, 1, 1).upgrades(3)).setDirectionsBySlot(0, Direction.UP, Direction.EAST).setDirectionsBySlot(1, Direction.DOWN, Direction.WEST).setDirectionsBySlot(2, Direction.DOWN, Direction.WEST).validUpgrades(ContainerO2OProcessor.VALID_UPGRADES).valid(machineValidator()));
+		addProcessor(new ComponentProcessor(this).canProcess(component -> component.canProcessItem2ItemRecipe(component, BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE)).process(component -> component.processItem2ItemRecipe(component)));
+		addComponent(new ComponentContainerProvider("container.blastcompressor", this).createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(IComponentType.Inventory), getCoordsArray())));
 	}
-	if (running && tickable.getTicks() % 100 == 0) {
-	    SoundAPI.playSound(SoundRegister.SOUND_BLASTCOMPRESSOR.get(), SoundCategory.BLOCKS, 1, 1, pos);
+
+	protected void tickClient(ComponentTickable tickable) {
+		boolean running = shouldPlaySound();
+		if (running && level.random.nextDouble() < 0.15) {
+			Direction direction = getFacing();
+			double d4 = level.random.nextDouble();
+			double d5 = direction.getAxis() == Direction.Axis.X ? direction.getStepX() * (direction.getStepX() == -1 ? 0 : 1) : d4;
+			double d6 = level.random.nextDouble();
+			double d7 = direction.getAxis() == Direction.Axis.Z ? direction.getStepZ() * (direction.getStepZ() == -1 ? 0 : 1) : d4;
+			level.addParticle(ParticleTypes.SMOKE, worldPosition.getX() + d5, worldPosition.getY() + d6, worldPosition.getZ() + d7, 0.0D, 0.0D, 0.0D);
+		}
+		if (running && !isPlaying) {
+			isPlaying = true;
+			SoundBarrierMethods.playTileSound(BlastcraftSounds.SOUND_BLASTCOMPRESSOR.get(), this, true);
+		}
 	}
-    }
+
+	@Override
+	public void setNotPlaying() {
+		isPlaying = false;
+	}
+
+	@Override
+	public boolean shouldPlaySound() {
+		return isProcessorActive();
+	}
+
+	@Override
+	public int getComparatorSignal() {
+		return isProcessorActive() ? 15 : 0;
+	}
+
 }

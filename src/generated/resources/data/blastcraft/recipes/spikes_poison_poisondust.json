@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:spike"
+    },
+    {
+      "tag": "forge:dusts/poison"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:spikepoison"
+  },
+  "conditions": [
+    {
+      "modid": "ballistix",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

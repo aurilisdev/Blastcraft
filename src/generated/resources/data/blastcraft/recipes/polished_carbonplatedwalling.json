@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB",
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "item": "blastcraft:carbonplatedwallingsmooth"
+    }
+  },
+  "result": {
+    "item": "blastcraft:carbonplatedwallingpolished",
+    "count": 4
+  }
+}

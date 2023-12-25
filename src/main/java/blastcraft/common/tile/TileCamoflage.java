@@ -1,58 +1,53 @@
 package blastcraft.common.tile;
 
-import blastcraft.DeferredRegisters;
-import electrodynamics.prefab.tile.GenericTileTicking;
-import electrodynamics.prefab.tile.components.ComponentType;
+import blastcraft.registers.BlastcraftBlockTypes;
+import electrodynamics.prefab.properties.Property;
+import electrodynamics.prefab.properties.PropertyType;
+import electrodynamics.prefab.tile.GenericTile;
+import electrodynamics.prefab.tile.components.IComponentType;
 import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
-import electrodynamics.prefab.tile.components.type.ComponentTickable;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockRayTraceResult;
 
-public class TileCamoflage extends GenericTileTicking {
+public class TileCamoflage extends GenericTile {
 
-    public Block block = DeferredRegisters.blockCamoflage;
+	public final Property<BlockState> camoflaugedBlock = property(new Property<>(PropertyType.Blockstate, "camoblock", Blocks.AIR.defaultBlockState()).onChange((prop, oldState) -> {
+		level.getChunkSource().getLightEngine().checkBlock(worldPosition);
+	}));
 
-    public TileCamoflage() {
-	super(DeferredRegisters.TILE_CAMOFLAGE.get());
-	addComponent(new ComponentTickable().tickCommon(this::tickCommon));
-	addComponent(new ComponentPacketHandler().customPacketReader(this::readCustomPacket).customPacketWriter(this::writeCustomPacket));
-    }
-
-    @Override
-    @Deprecated
-    public CompoundNBT write(CompoundNBT compound) {
-	compound.putString("blockId", block == null ? "null" : Registry.BLOCK.getKey(block).toString());
-	return super.write(compound);
-    }
-
-    @Override
-    @Deprecated
-    public void read(BlockState state, CompoundNBT compound) {
-	super.read(state, compound);
-	String read = compound.getString("blockId");
-	if (!read.equals("null")) {
-	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
+	public TileCamoflage() {
+		super(BlastcraftBlockTypes.TILE_CAMOFLAGE.get());
+		addComponent(new ComponentPacketHandler(this));
 	}
-    }
 
-    @Deprecated
-    public void readCustomPacket(CompoundNBT nbt) {
-	String read = nbt.getString("blockId");
-	if (!read.equals("null")) {
-	    block = Registry.BLOCK.getOrDefault(new ResourceLocation(read));
+	public void setCamoBlock(BlockState block) {
+		camoflaugedBlock.set(block);
+		setChanged();
 	}
-    }
 
-    public void writeCustomPacket(CompoundNBT nbt) {
-	write(nbt);
-    }
-
-    public void tickCommon(ComponentTickable component) {
-	if (component.getTicks() % 20 == 0) {
-	    this.<ComponentPacketHandler>getComponent(ComponentType.PacketHandler).sendCustomPacket();
+	public BlockState getCamoBlock() {
+		return camoflaugedBlock.get();
 	}
-    }
+
+	public boolean isCamoAir() {
+		return getCamoBlock().isAir();
+	}
+
+	@Override
+	public void onPlace(BlockState oldState, boolean isMoving) {
+		super.onPlace(oldState, isMoving);
+		if (!level.isClientSide) {
+			this.<ComponentPacketHandler>getComponent(IComponentType.PacketHandler).sendProperties();
+		}
+
+	}
+
+	@Override
+	public ActionResultType use(PlayerEntity arg0, Hand arg1, BlockRayTraceResult arg2) {
+		return ActionResultType.PASS;
+	}
 }

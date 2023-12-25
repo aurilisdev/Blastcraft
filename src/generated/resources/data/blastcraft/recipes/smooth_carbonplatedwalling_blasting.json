@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "blastcraft:carbonplatedwalling"
+  },
+  "result": "blastcraft:carbonplatedwallingsmooth",
+  "experience": 0.0,
+  "cookingtime": 100
+}

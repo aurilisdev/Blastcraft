@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CWC",
+    "CWC",
+    "CWC"
+  ],
+  "key": {
+    "C": {
+      "tag": "minecraft:coals"
+    },
+    "W": {
+      "tag": "forge:hardened_blocks/blastproof_walls"
+    }
+  },
+  "result": {
+    "item": "blastcraft:carbonplatedwalling",
+    "count": 3
+  }
+}
