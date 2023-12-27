@@ -305,6 +305,8 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 				.addIngredient(BlastcraftTags.Items.HARDENED_BRICKS)
 				//
 				.complete(References.ID, "reset_hardenedbricks", consumer);
+		
+		addMachines(consumer);
 
 	}
 
