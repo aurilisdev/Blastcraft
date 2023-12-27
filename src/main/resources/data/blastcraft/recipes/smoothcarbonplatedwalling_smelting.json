@@ -1,9 +1,0 @@
-{
-	"type": "minecraft:smelting",
-	"ingredient": {
-		"item": "blastcraft:carbonplatedwalling"
-	},
-	"result": "blastcraft:carbonplatedwallingsmooth",
-	"experience": 1.0,
-	"cookingtime": 200
-}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "forge:hardened_blocks/blastproof_walls"
+  },
+  "result": "blastcraft:blastproofwallingbig",
+  "count": 1
+}

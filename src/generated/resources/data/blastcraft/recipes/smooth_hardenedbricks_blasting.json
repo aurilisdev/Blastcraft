@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "blastcraft:hardenedbricks"
+  },
+  "result": "blastcraft:hardenedbrickssmooth",
+  "experience": 0.0,
+  "cookingtime": 100
+}
