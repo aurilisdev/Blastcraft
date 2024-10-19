@@ -8,7 +8,7 @@ version="${file.jarVersion}" #mandatory
 displayName="Blastcraft" #mandatory
 displayURL="https://github.com/aurilisdev/Blastcraft" #optional
 logoFile="blastcraft.png" #optional
-credits="Thanks to all contributors" #optional
+credits="Thanks to all contributors. Brazil lang file by FITFC." #optional
 authors="aurilisdev" #optional
 description='''
 '''
