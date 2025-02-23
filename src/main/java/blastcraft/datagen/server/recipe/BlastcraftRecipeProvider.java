@@ -20,6 +20,7 @@ public class BlastcraftRecipeProvider extends RecipeProvider {
 
 	public final List<AbstractRecipeGenerator> GENERATORS = new ArrayList<>();
 
+    @SuppressWarnings("unused")
 	private final CompletableFuture<HolderLookup.Provider> lookupProvider;
 
 	public BlastcraftRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
