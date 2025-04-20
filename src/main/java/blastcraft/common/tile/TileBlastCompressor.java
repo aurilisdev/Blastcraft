@@ -34,6 +34,7 @@ public class TileBlastCompressor extends GenericTile implements ITickableSound {
                 .setDirectionsBySlot(2, BlockEntityUtils.MachineDirection.BOTTOM, BlockEntityUtils.MachineDirection.LEFT).validUpgrades(ContainerO2OProcessor.VALID_UPGRADES).valid(machineValidator()));
         addComponent(new ComponentProcessor(this).canProcess((component, procNumber) -> component.canProcessItem2ItemRecipe(procNumber, BlastCraftRecipies.BLAST_COMPRESSOR_TYPE.get())).process(ComponentProcessor::processItem2ItemRecipe));
         addComponent(new ComponentContainerProvider("blastcompressor", this).createMenu((id, player) -> new ContainerO2OProcessor(id, player, getComponent(IComponentType.Inventory), getCoordsArray())));
+        addComponent(new ComponentForgeEnergy(this));
     }
 
     protected void tickClient(ComponentTickable tickable) {
