@@ -1,6 +1,6 @@
 package blastcraft.datagen.client;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -12,13 +12,13 @@ import blastcraft.registers.BlastcraftBlocks;
 import blastcraft.registers.BlastcraftFluids;
 import blastcraft.registers.BlastcraftItems;
 import blastcraft.registers.BlastcraftSounds;
-import electrodynamics.datagen.client.ElectrodynamicsLangKeyProvider;
 import net.minecraft.data.PackOutput;
+import voltaic.datagen.utils.client.BaseLangKeyProvider;
 
-public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
+public class BlastcraftLangKeyProvider extends BaseLangKeyProvider {
 
     public BlastcraftLangKeyProvider(PackOutput output, Locale locale) {
-        super(output, locale, References.ID);
+        super(output, locale, Blastcraft.ID);
     }
 
     @Override
@@ -153,6 +153,11 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
                 addBlock(BlastcraftBlocks.BLOCK_POISONSPIKE, "Poison Spike");
 
                 addItem(BlastcraftItems.ITEM_CONCRETEMIX, "Blastcrete");
+                addItem(BlastcraftItems.ITEM_SPEEDUPGRADE_BASIC, "Basic Speed Upgrade");
+                addItem(BlastcraftItems.ITEM_SPEEDUPGRADE_ADVANCED, "Advanced Speed Upgrade");
+                addItem(BlastcraftItems.ITEM_UPGRADEITEMOUTPUT, "Auto-Ejector Upgrade");
+                addItem(BlastcraftItems.ITEM_UPGRADEITEMINPUT, "Auto-Injector Upgrade");
+                addItem(BlastcraftItems.ITEM_UPGRADERANGE, "Range Upgrade");
 
                 addFluid(BlastcraftFluids.FLUID_CONCRETE, "Concrete Slurry");
 
@@ -160,7 +165,7 @@ public class BlastcraftLangKeyProvider extends ElectrodynamicsLangKeyProvider {
 
                 addTooltip("concretemix", "What Minecraft is made of");
 
-                addGuidebook(References.ID, "Blastcraft");
+                addGuidebook(Blastcraft.ID, "Blastcraft");
 
                 addSubtitle(BlastcraftSounds.SOUND_BLASTCOMPRESSOR, "Blast Compressor Compresses");
 

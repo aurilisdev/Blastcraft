@@ -1,7 +1,7 @@
 package blastcraft.datagen.server.recipe.custom.fluid2item;
 
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeConcrete;
 import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.BlastcraftItems;
@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 public class BlastcraftChemicalCrystallizerRecipes extends ElectrodynamicsChemicalCrystallizerRecipes {
 
     public BlastcraftChemicalCrystallizerRecipes() {
-        super(References.ID);
+        super(Blastcraft.ID);
     }
 
     @Override

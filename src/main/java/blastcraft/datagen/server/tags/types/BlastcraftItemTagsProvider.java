@@ -2,7 +2,7 @@ package blastcraft.datagen.server.tags.types;
 
 import java.util.concurrent.CompletableFuture;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -20,7 +20,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class BlastcraftItemTagsProvider extends ItemTagsProvider {
 
     public BlastcraftItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider provider, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, provider.contentsGetter(), References.ID, existingFileHelper);
+        super(output, lookupProvider, provider.contentsGetter(), Blastcraft.ID, existingFileHelper);
     }
 
     @Override

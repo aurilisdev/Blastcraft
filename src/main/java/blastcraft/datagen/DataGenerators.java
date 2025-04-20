@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.datagen.client.BlastcraftBlockStateProvider;
 import blastcraft.datagen.client.BlastcraftItemModelsProvider;
 import blastcraft.datagen.client.BlastcraftLangKeyProvider;
@@ -12,7 +12,6 @@ import blastcraft.datagen.client.BlastcraftSoundProvider;
 import blastcraft.datagen.server.BlastcraftLootTablesProvider;
 import blastcraft.datagen.server.recipe.BlastcraftRecipeProvider;
 import blastcraft.datagen.server.tags.BlastcraftTagsProvider;
-import electrodynamics.datagen.client.ElectrodynamicsLangKeyProvider.Locale;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -22,8 +21,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import voltaic.datagen.utils.client.BaseLangKeyProvider;
 
-@EventBusSubscriber(modid = References.ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
 	@SubscribeEvent
@@ -47,7 +47,7 @@ public class DataGenerators {
 		if (event.includeClient()) {
 			generator.addProvider(true, new BlastcraftBlockStateProvider(output, helper));
 			generator.addProvider(true, new BlastcraftItemModelsProvider(output, helper));
-			generator.addProvider(true, new BlastcraftLangKeyProvider(output, Locale.EN_US));
+			generator.addProvider(true, new BlastcraftLangKeyProvider(output, BaseLangKeyProvider.Locale.EN_US));
 			generator.addProvider(true, new BlastcraftSoundProvider(output, helper));
 		}
 	}

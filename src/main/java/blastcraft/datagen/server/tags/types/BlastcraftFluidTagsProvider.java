@@ -2,7 +2,7 @@ package blastcraft.datagen.server.tags.types;
 
 import java.util.concurrent.CompletableFuture;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.BlastcraftFluids;
 import net.minecraft.core.HolderLookup;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class BlastcraftFluidTagsProvider extends FluidTagsProvider {
 
 	public BlastcraftFluidTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, References.ID, existingFileHelper);
+		super(output, lookupProvider, Blastcraft.ID, existingFileHelper);
 	}
 
 	@Override

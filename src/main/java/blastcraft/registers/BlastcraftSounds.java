@@ -1,7 +1,6 @@
 package blastcraft.registers;
 
 import blastcraft.Blastcraft;
-import blastcraft.References;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -9,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class BlastcraftSounds {
 
-	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, References.ID);
+	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, Blastcraft.ID);
 
 	public static final DeferredHolder<SoundEvent, SoundEvent> SOUND_BLASTCOMPRESSOR = sound("blastcompressor");
 

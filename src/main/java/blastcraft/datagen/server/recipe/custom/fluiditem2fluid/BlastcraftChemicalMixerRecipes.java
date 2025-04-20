@@ -1,6 +1,6 @@
 package blastcraft.datagen.server.recipe.custom.fluiditem2fluid;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.registers.BlastcraftFluids;
 import blastcraft.registers.BlastcraftItems;
 import electrodynamics.datagen.server.recipe.types.custom.fluiditem2fluid.ElectrodynamicsChemicalMixerRecipes;
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public class BlastcraftChemicalMixerRecipes extends ElectrodynamicsChemicalMixerRecipes {
 
     public BlastcraftChemicalMixerRecipes() {
-        super(References.ID);
+        super(Blastcraft.ID);
     }
 
     @Override

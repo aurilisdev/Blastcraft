@@ -2,7 +2,7 @@ package blastcraft.datagen.server;
 
 import java.util.List;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -11,14 +11,14 @@ import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.registers.BlastcraftBlocks;
 import blastcraft.registers.BlastcraftTiles;
-import electrodynamics.datagen.server.ElectrodynamicsLootTablesProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.Block;
+import voltaic.datagen.utils.server.loottable.BaseLootTablesProvider;
 
-public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvider {
+public class BlastcraftLootTablesProvider extends BaseLootTablesProvider {
 
 	public BlastcraftLootTablesProvider(HolderLookup.Provider provider) {
-		super(References.ID, provider);
+		super(Blastcraft.ID, provider);
 	}
 
 	@Override

@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 
 import blastcraft.common.tile.TileCamoflauge;
 import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.prefab.block.GenericEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -29,6 +28,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import voltaic.prefab.block.GenericEntityBlock;
 
 public class BlockCamoflage extends GenericEntityBlock {
 

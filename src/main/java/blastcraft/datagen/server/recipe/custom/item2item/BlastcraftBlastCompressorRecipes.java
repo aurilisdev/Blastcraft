@@ -1,17 +1,17 @@
 package blastcraft.datagen.server.recipe.custom.item2item;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.BlastcraftItems;
-import electrodynamics.common.recipe.recipeutils.ProbableItem;
-import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
-import electrodynamics.datagen.utils.recipe.builders.ElectrodynamicsRecipeBuilder;
-import electrodynamics.datagen.utils.recipe.builders.Item2ItemBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import voltaic.common.recipe.recipeutils.ProbableItem;
+import voltaic.datagen.utils.server.recipe.AbstractRecipeGenerator;
+import voltaic.datagen.utils.server.recipe.builders.BaseRecipeBuilder;
+import voltaic.datagen.utils.server.recipe.builders.Item2ItemBuilder;
 
 public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
 
@@ -25,7 +25,7 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
     }
 
     public BlastcraftBlastCompressorRecipes() {
-        this(References.ID);
+        this(Blastcraft.ID);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
     }
 
     public Item2ItemBuilder<BlastCompressorRecipe> newRecipe(ItemStack stack, float xp, int ticks, double usagePerTick, String name, String group) {
-        return new Item2ItemBuilder<>(BlastCompressorRecipe::new, stack, ElectrodynamicsRecipeBuilder.RecipeCategory.ITEM_2_ITEM, modID, "blast_compressor/" + name, group, xp, ticks, usagePerTick);
+        return new Item2ItemBuilder<>(BlastCompressorRecipe::new, stack, BaseRecipeBuilder.RecipeCategory.ITEM_2_ITEM, modID, "blast_compressor/" + name, group, xp, ticks, usagePerTick);
     }
 
 }

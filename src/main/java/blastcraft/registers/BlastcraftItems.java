@@ -3,7 +3,7 @@ package blastcraft.registers;
 import java.util.ArrayList;
 import java.util.List;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -11,12 +11,9 @@ import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
-import electrodynamics.api.creativetab.CreativeTabSupplier;
-import electrodynamics.api.registration.BulkDeferredHolder;
-import electrodynamics.common.blockitem.types.BlockItemDescriptable;
-import electrodynamics.common.item.ItemDescriptable;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -25,10 +22,17 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import voltaic.Voltaic;
+import voltaic.api.creativetab.CreativeTabSupplier;
+import voltaic.api.registration.BulkDeferredHolder;
+import voltaic.common.blockitem.BlockItemDescriptable;
+import voltaic.common.item.ItemDescriptable;
+import voltaic.common.item.ItemUpgrade;
+import voltaic.common.item.subtype.SubtypeItemUpgrade;
 
 public class BlastcraftItems {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, References.ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Blastcraft.ID);
 
     public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeHardenedBricks> ITEMS_HARDENEDBRICKS = new BulkDeferredHolder<>(SubtypeHardenedBricks.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
     public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeConcrete> ITEMS_CONCRETE = new BulkDeferredHolder<>(SubtypeConcrete.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CONCRETE.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
@@ -46,7 +50,57 @@ public class BlastcraftItems {
 
     public static final DeferredHolder<Item, Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties(), BlastcraftCreativeTabs.MAIN, BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.DARK_GRAY)));
 
-    @EventBusSubscriber(value = Dist.CLIENT, modid = References.ID, bus = EventBusSubscriber.Bus.MOD)
+    public static final DeferredHolder<Item, ItemUpgrade> ITEM_SPEEDUPGRADE_BASIC = ITEMS.register("upgradebasicspeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.basicspeed, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
+
+    public static final DeferredHolder<Item, ItemUpgrade> ITEM_SPEEDUPGRADE_ADVANCED = ITEMS.register("upgradeadvancedpeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.advancedspeed, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
+
+    public static final DeferredHolder<Item, ItemUpgrade> ITEM_UPGRADEITEMINPUT = ITEMS.register("upgradeiteminput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.iteminput, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
+
+    public static final DeferredHolder<Item, ItemUpgrade> ITEM_UPGRADEITEMOUTPUT = ITEMS.register("upgradeitemoutput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.itemoutput, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
+
+    public static final DeferredHolder<Item, ItemUpgrade> ITEM_UPGRADERANGE = ITEMS.register("upgraderange", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.range, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
+
+    @EventBusSubscriber(value = Dist.CLIENT, modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
     private static class BlastcraftCreativeRegistry {
 
         @SubscribeEvent

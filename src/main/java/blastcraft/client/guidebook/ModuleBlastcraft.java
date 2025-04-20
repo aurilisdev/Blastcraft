@@ -1,12 +1,11 @@
 package blastcraft.client.guidebook;
 
 import blastcraft.Blastcraft;
-import blastcraft.References;
 import blastcraft.client.guidebook.chapters.ChapterBlocks;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
-import electrodynamics.client.guidebook.utils.components.Module;
-import electrodynamics.client.guidebook.utils.pagedata.graphics.ImageWrapperObject;
 import net.minecraft.network.chat.MutableComponent;
+import voltaic.client.guidebook.utils.components.Module;
+import voltaic.client.guidebook.utils.pagedata.graphics.ImageWrapperObject;
 
 public class ModuleBlastcraft extends Module {
 
@@ -19,7 +18,7 @@ public class ModuleBlastcraft extends Module {
 
 	@Override
 	public MutableComponent getTitle() {
-		return BlastcraftTextUtils.guidebook(References.ID);
+		return BlastcraftTextUtils.guidebook(Blastcraft.ID);
 	}
 
 	@Override

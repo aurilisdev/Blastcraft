@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "electrodynamics"
+      }
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "electrodynamics:upgradebasicspeed"
+    },
+    "C": {
+      "tag": "c:ingots/gold"
+    },
+    "G": {
+      "tag": "c:storage_blocks/redstone"
+    },
+    "P": {
+      "tag": "c:ingots/iron"
+    },
+    "W": {
+      "tag": "c:ingots/copper"
+    }
+  },
+  "pattern": [
+    "PGP",
+    "BWB",
+    "CGC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "blastcraft:upgradeadvancedpeed"
+  }
+}
