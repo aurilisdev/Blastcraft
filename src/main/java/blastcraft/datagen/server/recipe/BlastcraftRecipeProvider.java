@@ -10,11 +10,11 @@ import blastcraft.datagen.server.recipe.custom.item2item.BlastcraftBlastCompress
 import blastcraft.datagen.server.recipe.vanilla.BlastcraftCraftingTableRecipes;
 import blastcraft.datagen.server.recipe.vanilla.BlastcraftSmeltingRecipes;
 import blastcraft.datagen.server.recipe.vanilla.BlastcraftStonecuttingRecipes;
-import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import voltaic.datagen.utils.server.recipe.AbstractRecipeGenerator;
 
 public class BlastcraftRecipeProvider extends RecipeProvider {
 

@@ -1,6 +1,6 @@
 package blastcraft.datagen.client;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -8,19 +8,19 @@ import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.Electrodynamics;
-import electrodynamics.datagen.client.ElectrodynamicsBlockStateProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import voltaic.Voltaic;
+import voltaic.datagen.utils.client.BaseBlockstateProvider;
 
-public class BlastcraftBlockStateProvider extends ElectrodynamicsBlockStateProvider {
+public class BlastcraftBlockStateProvider extends BaseBlockstateProvider {
 
 	public BlastcraftBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-		super(output, exFileHelper, References.ID);
+		super(output, exFileHelper, Blastcraft.ID);
 	}
 
 	@Override
@@ -126,13 +126,13 @@ public class BlastcraftBlockStateProvider extends ElectrodynamicsBlockStateProvi
 
 		}
 
-		simpleBlockCustomRenderType(BlastcraftBlocks.BLOCK_CAMOFLAGE, blockLoc(name(BlastcraftBlocks.BLOCK_CAMOFLAGE.get())), Electrodynamics.vanillarl("cutout"), true);
+		simpleBlockCustomRenderType(BlastcraftBlocks.BLOCK_CAMOFLAGE, blockLoc(name(BlastcraftBlocks.BLOCK_CAMOFLAGE.get())), Voltaic.vanillarl("cutout"), true);
 
-		pressurePlateBlock(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE.get(), blockLoc("trans"), Electrodynamics.vanillarl("cutout"), true);
+		pressurePlateBlock(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE.get(), blockLoc("trans"), Voltaic.vanillarl("cutout"), true);
 
-		crossBlock(BlastcraftBlocks.BLOCK_SPIKE, blockLoc("spike/" + name(BlastcraftBlocks.BLOCK_SPIKE.get())), Electrodynamics.vanillarl("cutout"), true);
-		crossBlock(BlastcraftBlocks.BLOCK_FIRESPIKE, blockLoc("spike/" + name(BlastcraftBlocks.BLOCK_FIRESPIKE.get())), Electrodynamics.vanillarl("cutout"), true);
-		crossBlock(BlastcraftBlocks.BLOCK_POISONSPIKE, blockLoc("spike/" + name(BlastcraftBlocks.BLOCK_POISONSPIKE.get())), Electrodynamics.vanillarl("cutout"), true);
+		crossBlock(BlastcraftBlocks.BLOCK_SPIKE, blockLoc("spike/" + name(BlastcraftBlocks.BLOCK_SPIKE.get())), Voltaic.vanillarl("cutout"), true);
+		crossBlock(BlastcraftBlocks.BLOCK_FIRESPIKE, blockLoc("spike/" + name(BlastcraftBlocks.BLOCK_FIRESPIKE.get())), Voltaic.vanillarl("cutout"), true);
+		crossBlock(BlastcraftBlocks.BLOCK_POISONSPIKE, blockLoc("spike/" + name(BlastcraftBlocks.BLOCK_POISONSPIKE.get())), Voltaic.vanillarl("cutout"), true);
 
 		horrRotatedBlock(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR, existingBlock(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR), true);
 

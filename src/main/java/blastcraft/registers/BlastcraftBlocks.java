@@ -1,6 +1,6 @@
 package blastcraft.registers;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.BlockCamoflage;
 import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.block.BlockCustomSlab;
@@ -16,10 +16,6 @@ import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.common.tile.TileBlastCompressor;
-import electrodynamics.api.registration.BulkDeferredHolder;
-import electrodynamics.common.block.BlockCustomGlass;
-import electrodynamics.common.block.voxelshapes.VoxelShapeProvider;
-import electrodynamics.prefab.block.GenericMachineBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -28,10 +24,14 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import voltaic.api.registration.BulkDeferredHolder;
+import voltaic.common.block.BlockCustomGlass;
+import voltaic.common.block.voxelshapes.VoxelShapeProvider;
+import voltaic.prefab.block.GenericMachineBlock;
 
 public class BlastcraftBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, References.ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, Blastcraft.ID);
 
     public static final DeferredHolder<Block, GenericMachineBlock> BLOCK_BLASTCOMPRESSOR = BLOCKS.register("blastcompressor", () -> new GenericMachineBlock(TileBlastCompressor::new, VoxelShapeProvider.DEFAULT));
     public static final DeferredHolder<Block, BlockCamoflage> BLOCK_CAMOFLAGE = BLOCKS.register("camoflage", BlockCamoflage::new);

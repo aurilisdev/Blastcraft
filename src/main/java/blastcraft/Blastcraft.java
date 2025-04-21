@@ -1,11 +1,10 @@
 package blastcraft;
 
-import blastcraft.client.ClientRegister;
+import blastcraft.client.BlastcraftClientRegister;
 import blastcraft.common.block.BlastcraftBlockStates;
-import blastcraft.common.settings.Constants;
+import blastcraft.common.settings.BlastcraftConstants;
 import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.UnifiedBlastcraftRegister;
-import electrodynamics.prefab.configuration.ConfigurationHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -16,13 +15,19 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
+import voltaic.prefab.configuration.ConfigurationHandler;
 
-@Mod(References.ID)
-@EventBusSubscriber(modid = References.ID, bus = EventBusSubscriber.Bus.MOD)
+@Mod(Blastcraft.ID)
+@EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
 public class Blastcraft {
 
+	public static final String ID = "blastcraft";
+	public static final String NAME = "Blastcraft";
+
+	public static final String BALLISTIX_ID = "ballistix";
+
 	public Blastcraft(IEventBus bus) {
-		ConfigurationHandler.registerConfig(Constants.class);
+		ConfigurationHandler.registerConfig(BlastcraftConstants.class);
 		BlastcraftBlockStates.init();
 		UnifiedBlastcraftRegister.register(bus);
 	}
@@ -36,7 +41,7 @@ public class Blastcraft {
 	@OnlyIn(Dist.CLIENT)
 	public static void onClientSetup(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			ClientRegister.setup();
+			BlastcraftClientRegister.setup();
 		});
 	}
 
@@ -45,6 +50,6 @@ public class Blastcraft {
 	}
 
 	public static final ResourceLocation rl(String path) {
-		return ResourceLocation.fromNamespaceAndPath(References.ID, path);
+		return ResourceLocation.fromNamespaceAndPath(Blastcraft.ID, path);
 	}
 }

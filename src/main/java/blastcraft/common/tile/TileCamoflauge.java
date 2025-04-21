@@ -1,10 +1,6 @@
 package blastcraft.common.tile;
 
 import blastcraft.registers.BlastcraftTiles;
-import electrodynamics.prefab.properties.Property;
-import electrodynamics.prefab.properties.PropertyTypes;
-import electrodynamics.prefab.tile.GenericTile;
-import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -14,10 +10,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import voltaic.prefab.properties.types.PropertyTypes;
+import voltaic.prefab.properties.variant.SingleProperty;
+import voltaic.prefab.tile.GenericTile;
+import voltaic.prefab.tile.components.type.ComponentPacketHandler;
 
 public class TileCamoflauge extends GenericTile {
 
-	public final Property<BlockState> camoflaugedBlock = property(new Property<>(PropertyTypes.BLOCK_STATE, "camoblock", Blocks.AIR.defaultBlockState()).onChange((prop, oldState) -> {
+	public final SingleProperty<BlockState> camoflaugedBlock = property(new SingleProperty<>(PropertyTypes.BLOCK_STATE, "camoblock", Blocks.AIR.defaultBlockState()).onChange((prop, oldState) -> {
 		if(level == null) {
 			return;
 		}
@@ -30,12 +30,12 @@ public class TileCamoflauge extends GenericTile {
 	}
 
 	public void setCamoBlock(BlockState block) {
-		camoflaugedBlock.set(block);
+		camoflaugedBlock.setValue(block);
 		setChanged();
 	}
 
 	public BlockState getCamoBlock() {
-		return camoflaugedBlock.get();
+		return camoflaugedBlock.getValue();
 	}
 
 	public boolean isCamoAir() {

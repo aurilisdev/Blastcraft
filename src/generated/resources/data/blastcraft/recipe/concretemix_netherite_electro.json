@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "electrodynamics"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:gravels"
+    },
+    "M": {
+      "tag": "c:dusts/netherite"
+    },
+    "S": {
+      "tag": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "GMG",
+    "SGS"
+  ],
+  "result": {
+    "count": 10,
+    "id": "blastcraft:concretemix"
+  }
+}

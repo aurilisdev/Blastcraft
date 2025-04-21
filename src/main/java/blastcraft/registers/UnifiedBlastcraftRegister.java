@@ -1,9 +1,8 @@
 package blastcraft.registers;
 
-import blastcraft.common.recipe.BlastCraftRecipeInit;
-import electrodynamics.common.blockitem.types.BlockItemDescriptable;
-import electrodynamics.prefab.utilities.ElectroTextUtils;
 import net.neoforged.bus.api.IEventBus;
+import voltaic.common.blockitem.BlockItemDescriptable;
+import voltaic.prefab.utilities.VoltaicTextUtils;
 
 public class UnifiedBlastcraftRegister {
 
@@ -15,12 +14,12 @@ public class UnifiedBlastcraftRegister {
 		BlastcraftTiles.BLOCK_ENTITY_TYPES.register(bus);
 		BlastcraftSounds.SOUNDS.register(bus);
 		BlastcraftCreativeTabs.CREATIVE_TABS.register(bus);
-		BlastCraftRecipeInit.RECIPE_TYPES.register(bus);
-		BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
+		BlastCraftRecipies.RECIPE_TYPES.register(bus);
+		BlastCraftRecipies.RECIPE_SERIALIZER.register(bus);
 	}
 
 	static {
-		BlockItemDescriptable.addDescription(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR, ElectroTextUtils.voltageTooltip(240));
+		BlockItemDescriptable.addDescription(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR, VoltaicTextUtils.voltageTooltip(240));
 	}
 
 }

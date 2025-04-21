@@ -3,16 +3,16 @@ package blastcraft.common.recipe.categories.item2item.specificmachines;
 import java.util.List;
 
 import blastcraft.Blastcraft;
-import blastcraft.common.recipe.BlastCraftRecipeInit;
-import electrodynamics.common.recipe.categories.item2item.Item2ItemRecipe;
-import electrodynamics.common.recipe.recipeutils.CountableIngredient;
-import electrodynamics.common.recipe.recipeutils.ProbableFluid;
-import electrodynamics.common.recipe.recipeutils.ProbableGas;
-import electrodynamics.common.recipe.recipeutils.ProbableItem;
+import blastcraft.registers.BlastCraftRecipies;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import voltaic.common.recipe.categories.item2item.Item2ItemRecipe;
+import voltaic.common.recipe.recipeutils.CountableIngredient;
+import voltaic.common.recipe.recipeutils.ProbableFluid;
+import voltaic.common.recipe.recipeutils.ProbableGas;
+import voltaic.common.recipe.recipeutils.ProbableItem;
 
 public class BlastCompressorRecipe extends Item2ItemRecipe {
 
@@ -25,12 +25,12 @@ public class BlastCompressorRecipe extends Item2ItemRecipe {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return BlastCraftRecipeInit.BLAST_COMPRESSOR_SERIALIZER.get();
+		return BlastCraftRecipies.BLAST_COMPRESSOR_SERIALIZER.get();
 	}
 
 	@Override
 	public RecipeType<?> getType() {
-		return BlastCraftRecipeInit.BLAST_COMPRESSOR_TYPE.get();
+		return BlastCraftRecipies.BLAST_COMPRESSOR_TYPE.get();
 	}
 
 }
