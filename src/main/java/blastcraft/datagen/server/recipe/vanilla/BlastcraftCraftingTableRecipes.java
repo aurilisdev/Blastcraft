@@ -322,7 +322,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 
     }
 
-    private void addMachines(RecipeOutput output) {
+    private static void addMachines(RecipeOutput output) {
 
         ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_BLASTCOMPRESSOR.get(), 1)
                 //
@@ -346,7 +346,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 
     }
 
-    private void addHardenedBricks(RecipeOutput output) {
+    private static void addHardenedBricks(RecipeOutput output) {
 
         // BASE BRICKS
 
@@ -614,7 +614,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 
     }
 
-    private void addRawBlastproofWalls(RecipeOutput output) {
+    private static void addRawBlastproofWalls(RecipeOutput output) {
 
         // BASE BRICKS
 
@@ -882,7 +882,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 
     }
 
-    private void addBlastproofWalls(RecipeOutput output) {
+    private static void addBlastproofWalls(RecipeOutput output) {
 
         // BASE BRICKS
 
@@ -1122,7 +1122,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 
     }
 
-    private void addCarbonPlatedWalls(RecipeOutput output) {
+    private static void addCarbonPlatedWalls(RecipeOutput output) {
 
         // BASE BRICKS
 
@@ -1375,7 +1375,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 .complete(Blastcraft.ID, "reset_carbonplatedwalling", output);
     }
 
-    private void addConcrete(RecipeOutput output) {
+    private static void addConcrete(RecipeOutput output) {
 
         // REGULAR
 
