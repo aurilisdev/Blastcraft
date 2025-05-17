@@ -16,6 +16,7 @@ import voltaic.compatibility.jei.utils.gui.types.BackgroundObject;
 import voltaic.compatibility.jei.utils.gui.types.ItemSlotObject;
 import voltaic.compatibility.jei.utils.label.types.BiproductPercentWrapperElectroRecipe;
 import voltaic.compatibility.jei.utils.label.types.PowerLabelWrapperElectroRecipe;
+import voltaic.compatibility.jei.utils.label.types.TimeLabelWrapperElectroRecipe;
 import voltaic.prefab.screen.component.types.ScreenComponentProgress;
 import voltaic.prefab.screen.component.types.ScreenComponentSlot;
 
@@ -31,7 +32,8 @@ public class BlastCompressorRecipeCategory extends Item2ItemRecipeCategory<Blast
 	public static final ArrowAnimatedObject ANIM_ARROW = new ArrowAnimatedObject(ScreenComponentProgress.ProgressBars.PROGRESS_ARROW_RIGHT, 41, 23, StartDirection.LEFT);
 
 	public static final PowerLabelWrapperElectroRecipe POWER_LABEL = new PowerLabelWrapperElectroRecipe(2, 48, 240);
-	public static final BiproductPercentWrapperElectroRecipe BI_LABEL = new BiproductPercentWrapperElectroRecipe(100, 40, BiproductPercentWrapperElectroRecipe.BiproductType.ITEM, 1);
+	public static final BiproductPercentWrapperElectroRecipe ITEM_LABEL = new BiproductPercentWrapperElectroRecipe(100, 40, BiproductPercentWrapperElectroRecipe.BiproductType.ITEM, 1);
+	public static final TimeLabelWrapperElectroRecipe TIME_LABEL = new TimeLabelWrapperElectroRecipe(130, 48);
 
 	public static final int ANIM_TIME = 50;
 
@@ -45,7 +47,7 @@ public class BlastCompressorRecipeCategory extends Item2ItemRecipeCategory<Blast
 		setInputSlots(guiHelper, INPUT_SLOT);
 		setOutputSlots(guiHelper, OUTPUT_SLOT, BIPRODUCT_SLOT);
 		setAnimatedArrows(guiHelper, ANIM_ARROW);
-		setLabels(POWER_LABEL, BI_LABEL);
+		setLabels(POWER_LABEL, ITEM_LABEL, TIME_LABEL);
 	}
 
 }
