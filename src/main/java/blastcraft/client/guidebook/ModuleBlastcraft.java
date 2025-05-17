@@ -1,16 +1,15 @@
 package blastcraft.client.guidebook;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.client.guidebook.chapters.ChapterBlocks;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
-import electrodynamics.client.guidebook.utils.components.Module;
-import electrodynamics.client.guidebook.utils.pagedata.graphics.ImageWrapperObject;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import voltaic.client.guidebook.utils.components.Module;
+import voltaic.client.guidebook.utils.pagedata.graphics.ImageWrapperObject;
 
 public class ModuleBlastcraft extends Module {
 
-	private static final ImageWrapperObject LOGO = new ImageWrapperObject(0, 0, 0, 0, 32, 32, 32, 32, new ResourceLocation(References.ID, "textures/screen/guidebook/blastcraftlogo.png"));
+	private static final ImageWrapperObject LOGO = new ImageWrapperObject(0, 0, 0, 0, 32, 32, 32, 32, Blastcraft.rl("textures/screen/guidebook/blastcraftlogo.png"));
 
 	@Override
 	public ImageWrapperObject getLogo() {
@@ -19,7 +18,7 @@ public class ModuleBlastcraft extends Module {
 
 	@Override
 	public MutableComponent getTitle() {
-		return BlastcraftTextUtils.guidebook(References.ID);
+		return BlastcraftTextUtils.guidebook(Blastcraft.ID);
 	}
 
 	@Override

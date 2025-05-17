@@ -1,6 +1,6 @@
 package blastcraft.common.block.subtype;
 
-import electrodynamics.api.ISubtype;
+import voltaic.api.ISubtype;
 
 public enum SubtypeBlastproofWall implements ISubtype {
 

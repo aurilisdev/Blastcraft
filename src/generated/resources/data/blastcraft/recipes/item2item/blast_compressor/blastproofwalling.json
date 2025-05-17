@@ -4,8 +4,10 @@
   "itembi": {
     "0": {
       "chance": 0.3,
-      "count": 1,
-      "item": "minecraft:gunpowder"
+      "item": {
+        "Count": 1,
+        "id": "minecraft:gunpowder"
+      }
     },
     "count": 1
   },

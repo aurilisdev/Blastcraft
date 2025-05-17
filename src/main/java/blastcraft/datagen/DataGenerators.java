@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.datagen.client.BlastcraftBlockStateProvider;
 import blastcraft.datagen.client.BlastcraftItemModelsProvider;
 import blastcraft.datagen.client.BlastcraftLangKeyProvider;
@@ -12,7 +12,6 @@ import blastcraft.datagen.client.BlastcraftSoundProvider;
 import blastcraft.datagen.server.BlastcraftLootTablesProvider;
 import blastcraft.datagen.server.recipe.BlastcraftRecipeProvider;
 import blastcraft.datagen.server.tags.BlastcraftTagsProvider;
-import electrodynamics.datagen.client.ElectrodynamicsLangKeyProvider.Locale;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -22,8 +21,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import voltaic.datagen.utils.client.BaseLangKeyProvider.Locale;
 
-@Mod.EventBusSubscriber(modid = References.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Blastcraft.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
 	@SubscribeEvent

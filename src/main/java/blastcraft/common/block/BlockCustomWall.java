@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.WallBlock;
 public class BlockCustomWall extends WallBlock {
 
 	public BlockCustomWall(float resistance, float hardness) {
-		super(Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(hardness, resistance));
+		super(Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().strength(hardness, resistance));
 	}
 
 }

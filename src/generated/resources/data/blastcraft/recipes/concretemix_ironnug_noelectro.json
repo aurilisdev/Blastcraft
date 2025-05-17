@@ -1,12 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "electrodynamics"
+      }
+    }
+  ],
   "key": {
     "G": {
       "tag": "forge:gravel"
     },
     "M": {
-      "tag": "forge:slag"
+      "tag": "forge:nuggets/iron"
     },
     "S": {
       "tag": "minecraft:sand"

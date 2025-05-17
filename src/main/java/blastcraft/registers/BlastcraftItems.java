@@ -1,17 +1,9 @@
 package blastcraft.registers;
 
-import static blastcraft.registers.BlastcraftBlocks.blockBlastCompressor;
-import static blastcraft.registers.BlastcraftBlocks.blockCamoflage;
-import static blastcraft.registers.BlastcraftBlocks.blockGlassPressurePlate;
-import static blastcraft.registers.BlastcraftBlocks.blockSpike;
-import static blastcraft.registers.BlastcraftBlocks.blockSpikeFire;
-import static blastcraft.registers.BlastcraftBlocks.blockSpikePoison;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeConcrete;
@@ -19,99 +11,116 @@ import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
-import electrodynamics.api.ISubtype;
-import electrodynamics.api.creativetab.CreativeTabSupplier;
-import electrodynamics.common.blockitem.types.BlockItemDescriptable;
-import electrodynamics.common.item.ItemDescriptable;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import voltaic.Voltaic;
+import voltaic.api.creativetab.CreativeTabSupplier;
+import voltaic.api.registration.BulkRegistryObject;
+import voltaic.common.blockitem.BlockItemDescriptable;
+import voltaic.common.item.ItemDescriptable;
+import voltaic.common.item.ItemUpgrade;
+import voltaic.common.item.subtype.SubtypeItemUpgrade;
 
 public class BlastcraftItems {
 
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Blastcraft.ID);
 
-	public static final HashMap<ISubtype, RegistryObject<Item>> SUBTYPEITEMREGISTER_MAPPINGS = new HashMap<>();
+    public static final BulkRegistryObject<BlockItemDescriptable, SubtypeHardenedBricks> ITEMS_HARDENEDBRICKS = new BulkRegistryObject<>(SubtypeHardenedBricks.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkRegistryObject<BlockItemDescriptable, SubtypeConcrete> ITEMS_CONCRETE = new BulkRegistryObject<>(SubtypeConcrete.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CONCRETE.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkRegistryObject<BlockItemDescriptable, SubtypeRawBlastproofWall> ITEMS_RAW_BLASTPROOFWALL = new BulkRegistryObject<>(SubtypeRawBlastproofWall.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkRegistryObject<BlockItemDescriptable, SubtypeBlastproofWall> ITEMS_BLASTPROOFWALL = new BulkRegistryObject<>(SubtypeBlastproofWall.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkRegistryObject<BlockItemDescriptable, SubtypeCarbonPlatedWall> ITEMS_CARBONPLATEDWALL = new BulkRegistryObject<>(SubtypeCarbonPlatedWall.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkRegistryObject<BlockItemDescriptable, SubtypeWallingGlass> ITEMS_WALLINGGLASS = new BulkRegistryObject<>(SubtypeWallingGlass.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_WALLINGGLASS.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
 
-	static {
-		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
-			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
-		}
+    public static final RegistryObject<BlockItemDescriptable> ITEM_BLASTCOMPRESSOR = ITEMS.register("blastcompressor", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final RegistryObject<BlockItemDescriptable> ITEM_CAMOFLAGE = ITEMS.register("camoflage", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_CAMOFLAGE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final RegistryObject<BlockItemDescriptable> ITEM_GLASSPRESSUREPLATE = ITEMS.register("glasspressureplate", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final RegistryObject<BlockItemDescriptable> ITEM_SPIKE = ITEMS.register("spike", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_SPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final RegistryObject<BlockItemDescriptable> ITEM_FIRESPIKE = ITEMS.register("spikefire", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_FIRESPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final RegistryObject<BlockItemDescriptable> ITEM_POISONSPIKE = ITEMS.register("spikepoison", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_POISONSPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
 
-		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
-			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
-		}
+    public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties(), BlastcraftCreativeTabs.MAIN, BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.DARK_GRAY)));
 
-		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
-			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
-		}
+    public static final RegistryObject<ItemUpgrade> ITEM_SPEEDUPGRADE_BASIC = ITEMS.register("upgradebasicspeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.basicspeed, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
 
-		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
-			SUBTYPEITEMREGISTER_MAPPINGS.put(wall, ITEMS.register(wall.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(wall), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
-		}
+    public static final RegistryObject<ItemUpgrade> ITEM_SPEEDUPGRADE_ADVANCED = ITEMS.register("upgradeadvancedpeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.advancedspeed, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
 
-		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADEITEMINPUT = ITEMS.register("upgradeiteminput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.iteminput, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
 
-			SUBTYPEITEMREGISTER_MAPPINGS.put(glass, ITEMS.register(glass.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(glass), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
+    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADEITEMOUTPUT = ITEMS.register("upgradeitemoutput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.itemoutput, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
 
-		}
+    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADERANGE = ITEMS.register("upgraderange", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.range, BlastcraftCreativeTabs.MAIN) {
+        @Override
+        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
+            if(Voltaic.isElectroLoaded()) {
+                return;
+            }
+            super.addCreativeModeItems(tab, items);
+        }
+    });
 
-		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
+    @EventBusSubscriber(value = Dist.CLIENT, modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
+    private static class BlastcraftCreativeRegistry {
 
-			SUBTYPEITEMREGISTER_MAPPINGS.put(concrete, ITEMS.register(concrete.tag(), () -> new BlockItemDescriptable(() -> BlastcraftBlocks.getBlock(concrete), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get())));
+        @SubscribeEvent
+        public static void registerItems(BuildCreativeModeTabContentsEvent event) {
 
-		}
+            ITEMS.getEntries().forEach(reg -> {
 
-		ITEMS.register("blastcompressor", () -> new BlockItemDescriptable(() -> blockBlastCompressor, new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get()));
-		ITEMS.register("camoflage", () -> new BlockItemDescriptable(() -> blockCamoflage, new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get()));
-		ITEMS.register("glasspressureplate", () -> new BlockItemDescriptable(() -> blockGlassPressurePlate, new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get()));
-		ITEMS.register("spike", () -> new BlockItemDescriptable(() -> blockSpike, new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get()));
-		ITEMS.register("spikefire", () -> new BlockItemDescriptable(() -> blockSpikeFire, new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get()));
-		ITEMS.register("spikepoison", () -> new BlockItemDescriptable(() -> blockSpikePoison, new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get()));
+                CreativeTabSupplier supplier = (CreativeTabSupplier) reg.get();
 
-	}
+                if (supplier.hasCreativeTab() && supplier.isAllowedInCreativeTab(event.getTab())) {
+                    List<ItemStack> toAdd = new ArrayList<>();
+                    supplier.addCreativeModeItems(event.getTab(), toAdd);
+                    event.acceptAll(toAdd);
+                }
 
-	public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN.get(), BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.GRAY)));
+            });
 
-	public static Item[] getAllItemForSubtype(ISubtype[] values) {
-		List<Item> list = new ArrayList<>();
-		for (ISubtype value : values) {
-			list.add(SUBTYPEITEMREGISTER_MAPPINGS.get(value).get());
-		}
-		return list.toArray(new Item[] {});
-	}
+        }
 
-	public static Item getItem(ISubtype value) {
-		return SUBTYPEITEMREGISTER_MAPPINGS.get(value).get();
-	}
-
-	@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = References.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-	private static class ElectroCreativeRegistry {
-
-		@SubscribeEvent
-		public static void registerItems(BuildCreativeModeTabContentsEvent event) {
-
-			ITEMS.getEntries().forEach(reg -> {
-
-				CreativeTabSupplier supplier = (CreativeTabSupplier) reg.get();
-
-				if (supplier.hasCreativeTab() && supplier.isAllowedInCreativeTab(event.getTab())) {
-					List<ItemStack> toAdd = new ArrayList<>();
-					supplier.addCreativeModeItems(event.getTab(), toAdd);
-					event.acceptAll(toAdd);
-				}
-
-			});
-
-		}
-
-	}
+    }
 
 }

@@ -1,32 +1,37 @@
 package blastcraft;
 
-import blastcraft.client.ClientRegister;
-import blastcraft.common.recipe.BlastCraftRecipeInit;
-import blastcraft.common.settings.Constants;
+import blastcraft.client.BlastcraftClientRegister;
+import blastcraft.common.block.BlastcraftBlockStates;
+import blastcraft.common.settings.BlastcraftConstants;
 import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.UnifiedBlastcraftRegister;
-import electrodynamics.prefab.configuration.ConfigurationHandler;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import voltaic.prefab.configuration.ConfigurationHandler;
 
-@Mod(References.ID)
-@EventBusSubscriber(modid = References.ID, bus = Bus.MOD)
+@Mod(Blastcraft.ID)
+@EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
 public class Blastcraft {
 
+	public static final String ID = "blastcraft";
+	public static final String NAME = "Blastcraft";
+
+	public static final String BALLISTIX_ID = "ballistix";
+
 	public Blastcraft() {
-		ConfigurationHandler.registerConfig(Constants.class);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		ConfigurationHandler.registerConfig(BlastcraftConstants.class);
+		BlastcraftBlockStates.init();
 		UnifiedBlastcraftRegister.register(bus);
-		BlastCraftRecipeInit.RECIPE_SERIALIZER.register(bus);
 	}
 
 	@SubscribeEvent
@@ -38,11 +43,15 @@ public class Blastcraft {
 	@OnlyIn(Dist.CLIENT)
 	public static void onClientSetup(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			ClientRegister.setup();
+			BlastcraftClientRegister.setup();
 		});
 	}
 
 	@SubscribeEvent
 	public static void onLoadEvent(FMLLoadCompleteEvent event) {
+	}
+
+	public static final ResourceLocation rl(String path) {
+		return new ResourceLocation(Blastcraft.ID, path);
 	}
 }

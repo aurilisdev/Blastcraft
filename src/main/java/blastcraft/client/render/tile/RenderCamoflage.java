@@ -3,9 +3,9 @@ package blastcraft.client.render.tile;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import blastcraft.common.tile.TileCamoflauge;
-import electrodynamics.client.render.tile.AbstractTileRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import voltaic.client.render.AbstractTileRenderer;
 
 public class RenderCamoflage extends AbstractTileRenderer<TileCamoflauge> {
 
