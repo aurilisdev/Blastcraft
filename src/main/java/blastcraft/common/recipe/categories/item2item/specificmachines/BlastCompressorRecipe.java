@@ -3,7 +3,7 @@ package blastcraft.common.recipe.categories.item2item.specificmachines;
 import java.util.List;
 
 import blastcraft.Blastcraft;
-import blastcraft.registers.BlastCraftRecipies;
+import blastcraft.registers.BlastcraftRecipies;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -25,12 +25,12 @@ public class BlastCompressorRecipe extends Item2ItemRecipe {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return BlastCraftRecipies.BLAST_COMPRESSOR_SERIALIZER.get();
+		return BlastcraftRecipies.BLAST_COMPRESSOR_SERIALIZER.get();
 	}
 
 	@Override
 	public RecipeType<?> getType() {
-		return BlastCraftRecipies.BLAST_COMPRESSOR_TYPE.get();
+		return BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get();
 	}
 
 }
