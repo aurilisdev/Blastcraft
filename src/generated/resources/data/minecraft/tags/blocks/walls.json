@@ -1,0 +1,23 @@
+{
+  "values": [
+    "blastcraft:blastproofwallingbase_wall",
+    "blastcraft:blastproofwallingbig_wall",
+    "blastcraft:blastproofwallingpolished_wall",
+    "blastcraft:blastproofwallingsmooth_wall",
+    "blastcraft:rawblastproofwallingbase_wall",
+    "blastcraft:rawblastproofwallingbig_wall",
+    "blastcraft:rawblastproofwallingpolished_wall",
+    "blastcraft:rawblastproofwallingsmooth_wall",
+    "blastcraft:carbonplatedwallingbase_wall",
+    "blastcraft:carbonplatedwallingbig_wall",
+    "blastcraft:carbonplatedwallingpolished_wall",
+    "blastcraft:carbonplatedwallingsmooth_wall",
+    "blastcraft:hardenedbricksbase_wall",
+    "blastcraft:hardenedbricksbig_wall",
+    "blastcraft:hardenedbrickspolished_wall",
+    "blastcraft:hardenedbrickssmooth_wall",
+    "blastcraft:concreteregular_wall",
+    "blastcraft:concretebricks_wall",
+    "blastcraft:concretetile_wall"
+  ]
+}

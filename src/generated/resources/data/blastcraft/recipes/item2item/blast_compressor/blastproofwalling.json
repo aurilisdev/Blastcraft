@@ -4,15 +4,17 @@
   "itembi": {
     "0": {
       "chance": 0.3,
-      "count": 1,
-      "item": "minecraft:gunpowder"
+      "item": {
+        "Count": 1,
+        "id": "minecraft:gunpowder"
+      }
     },
     "count": 1
   },
   "iteminputs": {
     "0": {
       "count": 1,
-      "tag": "forge:hardened_blocks/raw_blastproof_walls"
+      "tag": "forge:hardened_blocks/solid_raw_blastproof_walls"
     },
     "count": 1
   },

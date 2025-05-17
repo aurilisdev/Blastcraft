@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blastcraft:block/carbonplatedwallingsmooth_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/carbonplatedwallingsmooth"
+    },
+    "type=top": {
+      "model": "blastcraft:block/carbonplatedwallingsmooth_slab_top"
+    }
+  }
+}

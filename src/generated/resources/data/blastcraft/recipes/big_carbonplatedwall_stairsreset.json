@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:carbonplatedwallingbig_stairs"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:carbonplatedwallingbig"
+  }
+}

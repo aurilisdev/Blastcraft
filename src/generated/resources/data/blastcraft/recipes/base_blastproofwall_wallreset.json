@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:blastproofwallingbase_wall"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:blastproofwalling"
+  }
+}

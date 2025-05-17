@@ -9,9 +9,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -19,7 +19,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BlockSpike extends Block {
 
 	public BlockSpike() {
-		super(Properties.of(Material.METAL).strength(1F).sound(SoundType.METAL).noOcclusion());
+		super(Properties.copy(Blocks.IRON_BLOCK).strength(1F).sound(SoundType.METAL).noOcclusion());
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class BlockSpike extends Block {
 		@Override
 		public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
 			if (entityIn instanceof LivingEntity) {
-				entityIn.setSecondsOnFire(10);
+				entityIn.setRemainingFireTicks(200);
 				entityIn.hurt(DamageSource.CACTUS, 1f);
 			}
 		}

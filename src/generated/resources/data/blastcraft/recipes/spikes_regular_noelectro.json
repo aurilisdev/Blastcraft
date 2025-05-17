@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "electrodynamics"
+      }
+    }
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cactus"
+    },
+    "G": {
+      "item": "minecraft:grass"
+    },
+    "P": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": [
+    "CGC",
+    "PPP"
+  ],
+  "result": {
+    "count": 6,
+    "item": "blastcraft:spike"
+  }
+}
