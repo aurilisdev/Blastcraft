@@ -2,18 +2,18 @@ package blastcraft.datagen.server.recipe.custom.item2item;
 
 import java.util.function.Consumer;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.subtype.SubtypeBlastproofWall;
-import blastcraft.common.recipe.BlastCraftRecipeInit;
 import blastcraft.common.tag.BlastcraftTags;
+import blastcraft.registers.BlastcraftRecipies;
 import blastcraft.registers.BlastcraftItems;
-import electrodynamics.common.recipe.recipeutils.ProbableItem;
-import electrodynamics.datagen.utils.recipe.AbstractElectrodynamicsFinishedRecipe.RecipeCategory;
-import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
-import electrodynamics.datagen.utils.recipe.FinishedRecipeItemOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import voltaic.common.recipe.recipeutils.ProbableItem;
+import voltaic.datagen.utils.server.recipe.AbstractRecipeGenerator;
+import voltaic.datagen.utils.server.recipe.FinishedRecipeBase.RecipeCategory;
+import voltaic.datagen.utils.server.recipe.FinishedRecipeItemOutput;
 
 public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
 
@@ -27,13 +27,13 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
 	}
 
 	public BlastcraftBlastCompressorRecipes() {
-		this(References.ID);
+		this(Blastcraft.ID);
 	}
 
 	@Override
 	public void addRecipes(Consumer<FinishedRecipe> consumer) {
 
-		newRecipe(new ItemStack(BlastcraftItems.getItem(SubtypeBlastproofWall.base)), 0.1F, 220, 100, "blastproofwalling")
+		newRecipe(new ItemStack(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base)), 0.1F, 220, 100, "blastproofwalling")
 				//
 				.addItemTagInput(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS, 1)
 				//
@@ -44,7 +44,7 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
 	}
 
 	public FinishedRecipeItemOutput newRecipe(ItemStack stack, float xp, int ticks, double usagePerTick, String name) {
-		return FinishedRecipeItemOutput.of(BlastCraftRecipeInit.BLAST_COMPRESSOR_SERIALIZER.get(), stack, xp, ticks, usagePerTick).name(RecipeCategory.ITEM_2_ITEM, modID, "blast_compressor/" + name);
+		return FinishedRecipeItemOutput.of(BlastcraftRecipies.BLAST_COMPRESSOR_SERIALIZER.get(), stack, xp, ticks, usagePerTick).name(RecipeCategory.ITEM_2_ITEM, modID, "blast_compressor/" + name);
 	}
 
 }

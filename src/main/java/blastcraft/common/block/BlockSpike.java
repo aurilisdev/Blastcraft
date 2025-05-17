@@ -37,7 +37,7 @@ public class BlockSpike extends Block {
 		@Override
 		public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
 			if (entityIn instanceof LivingEntity) {
-				entityIn.setSecondsOnFire(10);
+				entityIn.setRemainingFireTicks(200);
 				entityIn.hurt(entityIn.damageSources().cactus(), 1f);
 			}
 		}

@@ -1,10 +1,6 @@
 package blastcraft.registers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.common.block.BlockCamoflage;
 import blastcraft.common.block.BlockCustomBricks;
 import blastcraft.common.block.BlockCustomSlab;
@@ -20,150 +16,72 @@ import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.common.tile.TileBlastCompressor;
-import electrodynamics.api.ISubtype;
-import electrodynamics.common.block.BlockCustomGlass;
-import electrodynamics.prefab.block.GenericMachineBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import voltaic.api.registration.BulkRegistryObject;
+import voltaic.common.block.BlockCustomGlass;
+import voltaic.common.block.voxelshapes.VoxelShapeProvider;
+import voltaic.prefab.block.GenericMachineBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class BlastcraftBlocks {
 
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Blastcraft.ID);
 
-	public static final HashMap<ISubtype, RegistryObject<Block>> SUBTYPEBLOCKREGISTER_MAPPINGS = new HashMap<>();
+    public static final RegistryObject<GenericMachineBlock> BLOCK_BLASTCOMPRESSOR = BLOCKS.register("blastcompressor", () -> new GenericMachineBlock(TileBlastCompressor::new, VoxelShapeProvider.DEFAULT));
+    public static final RegistryObject<BlockCamoflage> BLOCK_CAMOFLAGE = BLOCKS.register("camoflage", BlockCamoflage::new);
+    public static final BulkRegistryObject<Block, SubtypeBlastproofWall> BLOCKS_BLASTPROOFWALL = new BulkRegistryObject<>(SubtypeBlastproofWall.values(), subtype -> BLOCKS.register(subtype.tag(), () -> switch (subtype) {
 
-	public static GenericMachineBlock blockBlastCompressor;
-	public static BlockCamoflage blockCamoflage;
-	public static PressurePlateBlock blockGlassPressurePlate;
-	public static BlockSpike blockSpike;
-	public static BlockSpikeFire blockSpikeFire;
-	public static BlockSpikePoison blockSpikePoison;
-	static {
-		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
+                case base_wall, big_wall, polished_wall, smooth_wall -> new BlockCustomWall(subtype.hardness, subtype.resistance);
+                case base_slab, big_slab, polished_slab, smooth_slab -> new BlockCustomSlab(subtype.hardness / 2.0F, subtype.resistance / 2.0F);
+                case base_stairs, big_stairs, polished_stairs, smooth_stairs -> new BlockCustomStairs(() -> BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.valueOf(subtype.name().split("_")[0])).defaultBlockState(), subtype.hardness, subtype.resistance);
+                default -> new BlockCustomBricks(subtype.hardness, subtype.resistance);
+            }
+    ));
+    public static final BulkRegistryObject<Block, SubtypeRawBlastproofWall> BLOCKS_RAW_BLASTPROOFWALL = new BulkRegistryObject<>(SubtypeRawBlastproofWall.values(), subtype -> BLOCKS.register(subtype.tag(), () -> switch (subtype) {
 
-			switch (wall) {
+                case base_wall, big_wall, polished_wall, smooth_wall -> new BlockCustomWall(subtype.hardness, subtype.resistance);
+                case base_slab, big_slab, polished_slab, smooth_slab -> new BlockCustomSlab(subtype.hardness / 2.0F, subtype.resistance / 2.0F);
+                case base_stairs, big_stairs, polished_stairs, smooth_stairs -> new BlockCustomStairs(() -> BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.valueOf(subtype.name().split("_")[0])).defaultBlockState(), subtype.hardness, subtype.resistance);
+                default -> new BlockCustomBricks(subtype.hardness, subtype.resistance);
+            }
+    ));
+    public static final BulkRegistryObject<Block, SubtypeCarbonPlatedWall> BLOCKS_CARBONPLATEDWALL = new BulkRegistryObject<>(SubtypeCarbonPlatedWall.values(), subtype -> BLOCKS.register(subtype.tag(), () -> switch (subtype) {
 
-			case base_wall, big_wall, polished_wall, smooth_wall:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomWall(wall.hardness, wall.resistance)));
-				break;
-			case base_slab, big_slab, polished_slab, smooth_slab:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomSlab(wall.hardness / 2.0F, wall.resistance / 2.0F)));
-				break;
-			case base_stairs, big_stairs, polished_stairs, smooth_stairs:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomStairs(() -> BlastcraftBlocks.getBlock(SubtypeBlastproofWall.valueOf(wall.name().split("_")[0])).defaultBlockState(), wall.hardness, wall.resistance)));
-				break;
-			default:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomBricks(wall.hardness, wall.resistance)));
-			}
+                case base_wall, big_wall, polished_wall, smooth_wall -> new BlockCustomWall(subtype.hardness, subtype.resistance);
+                case base_slab, big_slab, polished_slab, smooth_slab -> new BlockCustomSlab(subtype.hardness / 2.0F, subtype.resistance / 2.0F);
+                case base_stairs, big_stairs, polished_stairs, smooth_stairs -> new BlockCustomStairs(() -> BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.valueOf(subtype.name().split("_")[0])).defaultBlockState(), subtype.hardness, subtype.resistance);
+                default -> new BlockCustomBricks(subtype.hardness, subtype.resistance);
+            }
+    ));
+    public static final BulkRegistryObject<Block, SubtypeHardenedBricks> BLOCKS_HARDENEDBRICKS = new BulkRegistryObject<>(SubtypeHardenedBricks.values(), subtype -> BLOCKS.register(subtype.tag(), () -> switch (subtype) {
 
-		}
+                case base_wall, big_wall, polished_wall, smooth_wall -> new BlockCustomWall(subtype.hardness, subtype.resistance);
+                case base_slab, big_slab, polished_slab, smooth_slab -> new BlockCustomSlab(subtype.hardness / 2.0F, subtype.resistance / 2.0F);
+                case base_stairs, big_stairs, polished_stairs, smooth_stairs -> new BlockCustomStairs(() -> BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.valueOf(subtype.name().split("_")[0])).defaultBlockState(), subtype.hardness, subtype.resistance);
+                default -> new BlockCustomBricks(subtype.hardness, subtype.resistance);
+            }
+    ));
 
-		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
+    public static final BulkRegistryObject<Block, SubtypeConcrete> BLOCKS_CONCRETE = new BulkRegistryObject<>(SubtypeConcrete.values(), subtype -> BLOCKS.register(subtype.tag(), () -> switch (subtype) {
 
-			switch (wall) {
+                case bricks_wall, regular_wall, tile_wall -> new BlockCustomWall(subtype.hardness, subtype.resistance);
+                case bricks_slab, regular_slab, tile_slab -> new BlockCustomSlab(subtype.hardness / 2.0F, subtype.resistance / 2.0F);
+                case bricks_stairs, regular_stairs, tile_stairs -> new BlockCustomStairs(() -> BlastcraftBlocks.BLOCKS_CONCRETE.getValue(SubtypeConcrete.valueOf(subtype.name().split("_")[0])).defaultBlockState(), subtype.hardness, subtype.resistance);
+                default -> new BlockCustomBricks(subtype.hardness, subtype.resistance);
+            }
+    ));
+    public static final BulkRegistryObject<BlockCustomGlass, SubtypeWallingGlass> BLOCKS_WALLINGGLASS = new BulkRegistryObject<>(SubtypeWallingGlass.values(), subtype -> BLOCKS.register(subtype.tag(), () -> new BlockCustomGlass(subtype.hardness, subtype.resistance)));
+    public static final RegistryObject<PressurePlateBlock> BLOCK_GLASSPRESSUREPLATE = BLOCKS.register("glasspressureplate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS), BlockSetType.STONE));
+    public static final RegistryObject<BlockSpike> BLOCK_SPIKE = BLOCKS.register("spike", BlockSpike::new);
+    public static final RegistryObject<BlockSpikeFire> BLOCK_FIRESPIKE = BLOCKS.register("spikefire", BlockSpikeFire::new);
+    public static final RegistryObject<BlockSpikePoison> BLOCK_POISONSPIKE = BLOCKS.register("spikepoison", BlockSpikePoison::new);
 
-			case base_wall, big_wall, polished_wall, smooth_wall:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomWall(wall.hardness, wall.resistance)));
-				break;
-			case base_slab, big_slab, polished_slab, smooth_slab:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomSlab(wall.hardness / 2.0F, wall.resistance / 2.0F)));
-				break;
-			case base_stairs, big_stairs, polished_stairs, smooth_stairs:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomStairs(() -> BlastcraftBlocks.getBlock(SubtypeRawBlastproofWall.valueOf(wall.name().split("_")[0])).defaultBlockState(), wall.hardness, wall.resistance)));
-				break;
-			default:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomBricks(wall.hardness, wall.resistance)));
-			}
-
-		}
-
-		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
-
-			switch (wall) {
-
-			case base_wall, big_wall, polished_wall, smooth_wall:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomWall(wall.hardness, wall.resistance)));
-				break;
-			case base_slab, big_slab, polished_slab, smooth_slab:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomSlab(wall.hardness / 2.0F, wall.resistance / 2.0F)));
-				break;
-			case base_stairs, big_stairs, polished_stairs, smooth_stairs:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomStairs(() -> BlastcraftBlocks.getBlock(SubtypeCarbonPlatedWall.valueOf(wall.name().split("_")[0])).defaultBlockState(), wall.hardness, wall.resistance)));
-				break;
-			default:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomBricks(wall.hardness, wall.resistance)));
-			}
-
-		}
-
-		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
-
-			switch (wall) {
-
-			case base_wall, big_wall, polished_wall, smooth_wall:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomWall(wall.hardness, wall.resistance)));
-				break;
-			case base_slab, big_slab, polished_slab, smooth_slab:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomSlab(wall.hardness / 2.0F, wall.resistance / 2.0F)));
-				break;
-			case base_stairs, big_stairs, polished_stairs, smooth_stairs:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomStairs(() -> BlastcraftBlocks.getBlock(SubtypeHardenedBricks.valueOf(wall.name().split("_")[0])).defaultBlockState(), wall.hardness, wall.resistance)));
-				break;
-			default:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(wall, BLOCKS.register(wall.tag(), () -> new BlockCustomBricks(wall.hardness, wall.resistance)));
-			}
-
-		}
-
-		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
-			SUBTYPEBLOCKREGISTER_MAPPINGS.put(glass, BLOCKS.register(glass.tag(), () -> new BlockCustomGlass(glass.hardness, glass.resistance)));
-		}
-
-		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
-
-			switch (concrete) {
-
-			case bricks_wall, regular_wall, tile_wall:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(concrete, BLOCKS.register(concrete.tag(), () -> new BlockCustomWall(concrete.hardness, concrete.resistance)));
-				break;
-			case bricks_slab, regular_slab, tile_slab:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(concrete, BLOCKS.register(concrete.tag(), () -> new BlockCustomSlab(concrete.hardness / 2.0F, concrete.resistance / 2.0F)));
-				break;
-			case bricks_stairs, regular_stairs, tile_stairs:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(concrete, BLOCKS.register(concrete.tag(), () -> new BlockCustomStairs(() -> BlastcraftBlocks.getBlock(SubtypeConcrete.valueOf(concrete.name().split("_")[0])).defaultBlockState(), concrete.hardness, concrete.resistance)));
-				break;
-			default:
-				SUBTYPEBLOCKREGISTER_MAPPINGS.put(concrete, BLOCKS.register(concrete.tag(), () -> new BlockCustomBricks(concrete.hardness, concrete.resistance)));
-			}
-
-		}
-
-		BLOCKS.register("blastcompressor", () -> blockBlastCompressor = new GenericMachineBlock(TileBlastCompressor::new));
-		BLOCKS.register("camoflage", () -> blockCamoflage = new BlockCamoflage());
-		BLOCKS.register("glasspressureplate", () -> blockGlassPressurePlate = new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS), BlockSetType.STONE));
-		BLOCKS.register("spike", () -> blockSpike = new BlockSpike());
-		BLOCKS.register("spikefire", () -> blockSpikeFire = new BlockSpikeFire());
-		BLOCKS.register("spikepoison", () -> blockSpikePoison = new BlockSpikePoison());
-
-	}
-
-	public static Block[] getAllBlockForSubtype(ISubtype[] values) {
-		List<Block> list = new ArrayList<>();
-		for (ISubtype value : values) {
-			list.add(SUBTYPEBLOCKREGISTER_MAPPINGS.get(value).get());
-		}
-		return list.toArray(new Block[] {});
-	}
-
-	public static Block getBlock(ISubtype value) {
-		return SUBTYPEBLOCKREGISTER_MAPPINGS.get(value).get();
-	}
 
 }

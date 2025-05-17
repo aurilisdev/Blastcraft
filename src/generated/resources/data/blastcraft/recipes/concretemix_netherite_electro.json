@@ -1,6 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "electrodynamics"
+    }
+  ],
   "key": {
     "G": {
       "tag": "forge:gravel"

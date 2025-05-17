@@ -1,6 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "electrodynamics"
+      }
+    }
+  ],
   "key": {
     "C": {
       "item": "minecraft:cactus"
@@ -9,7 +18,7 @@
       "item": "minecraft:grass"
     },
     "P": {
-      "tag": "forge:plates/bronze"
+      "tag": "forge:ingots/copper"
     }
   },
   "pattern": [
