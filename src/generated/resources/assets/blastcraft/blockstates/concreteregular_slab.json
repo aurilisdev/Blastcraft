@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blastcraft:block/concreteregular_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/concreteregular"
+    },
+    "type=top": {
+      "model": "blastcraft:block/concreteregular_slab_top"
+    }
+  }
+}

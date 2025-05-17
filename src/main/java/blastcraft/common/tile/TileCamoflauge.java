@@ -1,11 +1,6 @@
 package blastcraft.common.tile;
 
-import blastcraft.registers.BlastcraftBlockTypes;
-import electrodynamics.prefab.properties.Property;
-import electrodynamics.prefab.properties.PropertyType;
-import electrodynamics.prefab.tile.GenericTile;
-import electrodynamics.prefab.tile.components.IComponentType;
-import electrodynamics.prefab.tile.components.type.ComponentPacketHandler;
+import blastcraft.registers.BlastcraftTiles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -13,25 +8,32 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import voltaic.prefab.properties.types.PropertyTypes;
+import voltaic.prefab.properties.variant.SingleProperty;
+import voltaic.prefab.tile.GenericTile;
+import voltaic.prefab.tile.components.type.ComponentPacketHandler;
 
 public class TileCamoflauge extends GenericTile {
 
-	public final Property<BlockState> camoflaugedBlock = property(new Property<>(PropertyType.Blockstate, "camoblock", Blocks.AIR.defaultBlockState()).onChange((prop, oldState) -> {
+	public final SingleProperty<BlockState> camoflaugedBlock = property(new SingleProperty<>(PropertyTypes.BLOCK_STATE, "camoblock", Blocks.AIR.defaultBlockState()).onChange((prop, oldState) -> {
+		if(level == null) {
+			return;
+		}
 		level.getChunkSource().getLightEngine().checkBlock(worldPosition);
-	}));
+	}).setShouldUpdateOnChange());
 
 	public TileCamoflauge(BlockPos worldPosition, BlockState blockState) {
-		super(BlastcraftBlockTypes.TILE_CAMOFLAGE.get(), worldPosition, blockState);
+		super(BlastcraftTiles.TILE_CAMOFLAGE.get(), worldPosition, blockState);
 		addComponent(new ComponentPacketHandler(this));
 	}
 
 	public void setCamoBlock(BlockState block) {
-		camoflaugedBlock.set(block);
+		camoflaugedBlock.setValue(block);
 		setChanged();
 	}
 
 	public BlockState getCamoBlock() {
-		return camoflaugedBlock.get();
+		return camoflaugedBlock.getValue();
 	}
 
 	public boolean isCamoAir() {
@@ -39,16 +41,7 @@ public class TileCamoflauge extends GenericTile {
 	}
 
 	@Override
-	public void onPlace(BlockState oldState, boolean isMoving) {
-		super.onPlace(oldState, isMoving);
-		if (!level.isClientSide) {
-			this.<ComponentPacketHandler>getComponent(IComponentType.PacketHandler).sendProperties();
-		}
-
-	}
-
-	@Override
-	public InteractionResult use(Player arg0, InteractionHand arg1, BlockHitResult arg2) {
+	public InteractionResult use(Player player, InteractionHand hand, BlockHitResult hit) {
 		return InteractionResult.PASS;
 	}
 }

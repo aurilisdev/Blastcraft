@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "tag": "forge:hardened_blocks/concretes"
+    "tag": "forge:hardened_blocks/solid_concretes"
   },
   "result": "blastcraft:concretetile"
 }

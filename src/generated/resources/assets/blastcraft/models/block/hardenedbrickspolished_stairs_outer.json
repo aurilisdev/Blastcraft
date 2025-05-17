@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "blastcraft:block/hardenedbricks/hardenedbrickspolished",
+    "side": "blastcraft:block/hardenedbricks/hardenedbrickspolished",
+    "top": "blastcraft:block/hardenedbricks/hardenedbrickspolished"
+  }
+}

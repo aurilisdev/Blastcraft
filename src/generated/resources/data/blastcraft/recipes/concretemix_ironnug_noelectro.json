@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "electrodynamics"
+      }
+    }
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gravel"
+    },
+    "M": {
+      "tag": "forge:nuggets/iron"
+    },
+    "S": {
+      "tag": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "GMG",
+    "SGS"
+  ],
+  "result": {
+    "count": 4,
+    "item": "blastcraft:concretemix"
+  }
+}

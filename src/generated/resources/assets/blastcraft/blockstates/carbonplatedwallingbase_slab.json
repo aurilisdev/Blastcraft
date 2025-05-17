@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blastcraft:block/carbonplatedwallingbase_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/carbonplatedwalling"
+    },
+    "type=top": {
+      "model": "blastcraft:block/carbonplatedwallingbase_slab_top"
+    }
+  }
+}

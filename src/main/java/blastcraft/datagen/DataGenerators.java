@@ -1,6 +1,6 @@
 package blastcraft.datagen;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.datagen.client.BlastcraftBlockStateProvider;
 import blastcraft.datagen.client.BlastcraftItemModelsProvider;
 import blastcraft.datagen.client.BlastcraftLangKeyProvider;
@@ -10,13 +10,13 @@ import blastcraft.datagen.server.BlastcraftFluidTagsProvider;
 import blastcraft.datagen.server.BlastcraftItemTagsProvider;
 import blastcraft.datagen.server.BlastcraftLootTablesProvider;
 import blastcraft.datagen.server.recipe.BlastcraftRecipeProvider;
-import electrodynamics.datagen.client.ElectrodynamicsLangKeyProvider.Locale;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import voltaic.datagen.utils.client.BaseLangKeyProvider.Locale;
 
-@Mod.EventBusSubscriber(modid = References.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Blastcraft.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
 	@SubscribeEvent

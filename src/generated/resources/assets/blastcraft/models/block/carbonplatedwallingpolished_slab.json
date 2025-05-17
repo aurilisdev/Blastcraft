@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "blastcraft:block/carbonplatedwall/carbonplatedwallingpolished",
+    "side": "blastcraft:block/carbonplatedwall/carbonplatedwallingpolished",
+    "top": "blastcraft:block/carbonplatedwall/carbonplatedwallingpolished"
+  }
+}
