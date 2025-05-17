@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import voltaic.common.recipe.VoltaicRecipeType;
 import voltaic.common.recipe.categories.item2item.Item2ItemRecipeSerializer;
 
-public class BlastCraftRecipies {
+public class BlastcraftRecipies {
 
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister.create(Registries.RECIPE_SERIALIZER, blastcraft.Blastcraft.ID);
 	public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, Blastcraft.ID);

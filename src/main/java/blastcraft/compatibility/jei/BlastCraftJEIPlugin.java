@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import blastcraft.Blastcraft;
-import blastcraft.registers.BlastCraftRecipies;
+import blastcraft.registers.BlastcraftRecipies;
 import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.compatibility.jei.recipecategories.item2item.specificmachines.BlastCompressorRecipeCategory;
 import blastcraft.registers.BlastcraftFluids;
@@ -46,7 +46,7 @@ public class BlastCraftJEIPlugin implements IModPlugin {
         RecipeManager recipeManager = world.getRecipeManager();
 
         // Blast Compressor
-        List<BlastCompressorRecipe> blastCompressorRecipes = recipeManager.getAllRecipesFor(BlastCraftRecipies.BLAST_COMPRESSOR_TYPE.get()).stream().map(val -> val.value()).toList();
+        List<BlastCompressorRecipe> blastCompressorRecipes = recipeManager.getAllRecipesFor(BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get()).stream().map(val -> val.value()).toList();
         registration.addRecipes(BlastCompressorRecipeCategory.RECIPE_TYPE, blastCompressorRecipes);
 
     }

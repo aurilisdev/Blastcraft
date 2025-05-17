@@ -14,8 +14,8 @@ public class UnifiedBlastcraftRegister {
 		BlastcraftTiles.BLOCK_ENTITY_TYPES.register(bus);
 		BlastcraftSounds.SOUNDS.register(bus);
 		BlastcraftCreativeTabs.CREATIVE_TABS.register(bus);
-		BlastCraftRecipies.RECIPE_TYPES.register(bus);
-		BlastCraftRecipies.RECIPE_SERIALIZER.register(bus);
+		BlastcraftRecipies.RECIPE_TYPES.register(bus);
+		BlastcraftRecipies.RECIPE_SERIALIZER.register(bus);
 	}
 
 	static {
