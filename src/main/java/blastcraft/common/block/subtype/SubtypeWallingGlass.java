@@ -1,6 +1,6 @@
 package blastcraft.common.block.subtype;
 
-import electrodynamics.api.ISubtype;
+import voltaic.api.ISubtype;
 
 /**
  * This is kept separate from the regular walling in case we want to change the hardness or resistance without affecting the actual blocks

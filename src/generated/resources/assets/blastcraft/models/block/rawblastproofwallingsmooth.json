@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "blastcraft:block/smooth/rawblastproofwallingsmooth"
+    "all": "blastcraft:block/rawblastproofwall/rawblastproofwallingsmooth"
   }
 }

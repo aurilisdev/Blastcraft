@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "blastcraft:blastproofwalling"
+    }
+  },
+  "result": {
+    "item": "blastcraft:blastproofwallingbase_stairs",
+    "count": 6
+  }
+}

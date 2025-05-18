@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "blastcraft:hardenedbrickssmooth"
+    "tag": "forge:hardened_blocks/smooth_solid_hardened_bricks"
   },
   "result": "blastcraft:hardenedbrickspolished",
   "count": 1

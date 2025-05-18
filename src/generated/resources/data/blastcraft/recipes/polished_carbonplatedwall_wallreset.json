@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:carbonplatedwallingpolished_wall"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:carbonplatedwallingpolished"
+  }
+}

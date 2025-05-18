@@ -21,5 +21,11 @@
   },
   "result": {
     "item": "blastcraft:blastcompressor"
-  }
+  },
+  "conditions": [
+    {
+      "modid": "electrodynamics",
+      "type": "forge:mod_loaded"
+    }
+  ]
 }

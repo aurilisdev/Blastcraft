@@ -7,10 +7,10 @@
   ],
   "key": {
     "C": {
-      "tag": "forge:hardened_blocks/concretes"
+      "tag": "forge:hardened_blocks/solid_concretes"
     },
     "H": {
-      "tag": "forge:hardened_blocks/hardened_bricks"
+      "tag": "forge:hardened_blocks/solid_hardened_bricks"
     }
   },
   "result": {

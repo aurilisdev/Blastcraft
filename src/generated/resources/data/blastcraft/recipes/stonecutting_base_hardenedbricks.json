@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "tag": "forge:hardened_blocks/hardened_bricks"
+    "tag": "forge:hardened_blocks/solid_hardened_bricks"
   },
   "result": "blastcraft:hardenedbricks",
   "count": 1
