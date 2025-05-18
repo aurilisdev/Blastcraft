@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:rawblastproofwallingbig_stairs"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:rawblastproofwallingbig"
+  }
+}

@@ -1,46 +1,109 @@
 package blastcraft.datagen.server;
 
-import blastcraft.References;
-import blastcraft.common.block.subtype.SubtypeWalling;
+import blastcraft.Blastcraft;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
+import blastcraft.common.block.subtype.SubtypeHardenedBricks;
+import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.tag.BlastcraftTags;
 import blastcraft.registers.BlastcraftBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlastcraftBlockTagsProvider extends BlockTagsProvider {
 
 	public BlastcraftBlockTagsProvider(DataGenerator pGenerator, ExistingFileHelper existingFileHelper) {
-		super(pGenerator, References.ID, existingFileHelper);
+		super(pGenerator, Blastcraft.ID, existingFileHelper);
 	}
 
 	@Override
 	protected void addTags() {
 
-		Builder<Block> blastproofWalls = tag(BlastcraftTags.Blocks.BLASTPROOF_WALLS);
+		tag(BlastcraftTags.Blocks.SOLID_BLASTPROOF_WALLS).add(
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base),
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big),
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished),
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth)
+		//
+		);
 
-		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.blastproofwalling)) {
-			blastproofWalls = blastproofWalls.add(block);
-		}
+		tag(BlastcraftTags.Blocks.SOLID_RAW_BLASTPROOF_WALLS).add(
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth)
+		//
+		);
 
-		Builder<Block> rawBlastproofWalls = tag(BlastcraftTags.Blocks.RAW_BLASTPROOF_WALLS);
+		tag(BlastcraftTags.Blocks.SOLID_CARBON_PLATED_WALLS).add(
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth)
+		//
+		);
 
-		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.rawblastproofwalling)) {
-			rawBlastproofWalls = rawBlastproofWalls.add(block);
-		}
+		tag(BlastcraftTags.Blocks.SOLID_HARDENED_BRICKS).add(
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth)
+		//
+		);
 
-		Builder<Block> carbonPlatedWalls = tag(BlastcraftTags.Blocks.CARBON_PLATED_WALLS);
-
-		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.carbonplatedwalling)) {
-			carbonPlatedWalls = carbonPlatedWalls.add(block);
-		}
-
-		Builder<Block> hardenedBricks = tag(BlastcraftTags.Blocks.HARDENED_BRICKS);
-
-		for (Block block : BlastcraftBlocks.getAllWalls(SubtypeWalling.hardenedbricks)) {
-			hardenedBricks = hardenedBricks.add(block);
-		}
+		tag(BlockTags.WALLS).add(
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_wall),
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_wall),
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_wall),
+				//
+				BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_wall),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_wall),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_wall),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_wall),
+				//
+				BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_wall),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_wall),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_wall),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_wall),
+				//
+				BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_wall),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_wall),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_wall),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_wall),
+				//
+				BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_wall)
+		//
+		);
 
 	}
 

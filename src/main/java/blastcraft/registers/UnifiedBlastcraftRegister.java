@@ -1,26 +1,22 @@
 package blastcraft.registers;
 
-import static blastcraft.registers.BlastcraftBlocks.blockBlastCompressor;
-
-import blastcraft.References;
-import electrodynamics.common.blockitem.BlockItemDescriptable;
-import electrodynamics.prefab.utilities.ElectroTextUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import voltaic.common.blockitem.BlockItemDescriptable;
+import voltaic.prefab.utilities.VoltaicTextUtils;
 
-@EventBusSubscriber(modid = References.ID, bus = Bus.MOD)
 public class UnifiedBlastcraftRegister {
 
 	public static void register(IEventBus bus) {
 		BlastcraftBlocks.BLOCKS.register(bus);
 		BlastcraftItems.ITEMS.register(bus);
-		BlastcraftBlockTypes.BLOCK_ENTITY_TYPES.register(bus);
+		BlastcraftTiles.BLOCK_ENTITY_TYPES.register(bus);
 		BlastcraftSounds.SOUNDS.register(bus);
+		BlastcraftRecipies.RECIPE_SERIALIZER.register(bus);
+		BlastcraftRecipies.init();
 	}
 
 	static {
-		BlockItemDescriptable.addDescription(() -> blockBlastCompressor, ElectroTextUtils.voltageTooltip(240));
+		BlockItemDescriptable.addDescription(() -> BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(), VoltaicTextUtils.voltageTooltip(240));
 	}
 
 }

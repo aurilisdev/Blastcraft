@@ -1,21 +1,18 @@
 package blastcraft.common.block;
 
-import blastcraft.common.tile.TileCamoflage;
+import blastcraft.common.tile.TileCamoflauge;
 import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.prefab.block.GenericEntityBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathType;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
@@ -28,177 +25,144 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import voltaic.prefab.block.GenericEntityBlock;
 
 public class BlockCamoflage extends GenericEntityBlock {
 
-	public static final BooleanProperty HASCAMOFLAUGE = BooleanProperty.create("isself");
-	public static final BooleanProperty ISWALKTHROUGHABLE = BooleanProperty.create("canwalk");
+    public BlockCamoflage() {
+        super(Properties.copy(Blocks.WHITE_WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
+    }
 
-	public BlockCamoflage() {
-		super(Properties.of(Material.WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
-	}
+    @Override
+    public BlockState getStateForPlacement(BlockItemUseContext pContext) {
+        return super.getStateForPlacement(pContext).setValue(BlastcraftBlockStates.HASCAMOFLAUGE, false).setValue(BlastcraftBlockStates.ISWALKTHROUGHABLE, false);
+    }
 
-	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext pContext) {
-		return super.getStateForPlacement(pContext).setValue(HASCAMOFLAUGE, false).setValue(ISWALKTHROUGHABLE, false);
-	}
+    @Override
+    public VoxelShape getVisualShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+        return VoxelShapes.empty();
+    }
 
-	@Override
-	public VoxelShape getVisualShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		return VoxelShapes.empty();
-	}
+    @Override
+    public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
+        return adjacentBlockState.is(this) || super.skipRendering(state, adjacentBlockState, side);
+    }
 
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
-		return adjacentBlockState.is(this) || super.skipRendering(state, adjacentBlockState, side);
-	}
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return state.getValue(BlastcraftBlockStates.ISWALKTHROUGHABLE) ? VoxelShapes.empty() : super.getShape(state, worldIn, pos, context);
+    }
 
-	@Override
-	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return state.getValue(ISWALKTHROUGHABLE) ? VoxelShapes.empty() : super.getShape(state, worldIn, pos, context);
-	}
+    @Override
+    public float getShadeBrightness(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return 1.0F;
+    }
 
-	@OnlyIn(Dist.CLIENT)
-	@Override
-	public float getShadeBrightness(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		return 1.0F;
-	}
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader level, BlockPos pos) {
+        if (!state.getValue(BlastcraftBlockStates.HASCAMOFLAUGE)) {
+            return false;
+        }
+        TileEntity tileentity = level.getBlockEntity(pos);
+        if (tileentity instanceof TileCamoflauge) {
+        	TileCamoflauge camo = (TileCamoflauge) tileentity;
+            if (camo.isCamoAir()) {
+                return false;
+            }
+            return camo.getCamoBlock().propagatesSkylightDown(level, pos);
+        }
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state, IBlockReader level, BlockPos pos) {
-		if (!state.getValue(HASCAMOFLAUGE)) {
-			return false;
-		}
+        return false;
+    }
 
-		TileEntity tile = level.getBlockEntity(pos);
-		if (tile instanceof TileCamoflage) {
-			TileCamoflage camo = (TileCamoflage) tile;
-			if (camo.isCamoAir()) {
-				return false;
-			}
-			return camo.getCamoBlock().getBlock().propagatesSkylightDown(camo.getCamoBlock(), level, pos);
-		}
+    @Override
+	public ActionResultType use(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hitResult) {
+    	ItemStack stack = player.getItemInHand(hand);
+        if (stack.isEmpty()) {
+            return super.use(state, level, pos, player, hand, hitResult);
+        }
+        TileEntity tileentity = level.getBlockEntity(pos);
+        // require block in hand and camo block
+        if (!(stack.getItem() instanceof BlockItem) || !(tileentity instanceof TileCamoflauge)) {
 
-		return false;
-	}
+        	return super.use(state, level, pos, player, hand, hitResult);
 
-	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+        }
+        Block block = ((BlockItem) stack.getItem()).getBlock();
 
-		ItemStack stack = player.getItemInHand(hand);
+        if (block == BlastcraftBlocks.BLOCK_CAMOFLAGE.get()) {
+        	return super.use(state, level, pos, player, hand, hitResult);
+        }
 
-		if (stack.isEmpty()) {
-			return super.use(state, world, pos, player, hand, hit);
-		}
+        BlockItemUseContext newCtx = new BlockItemUseContext(player, hand, stack, hitResult);
+        TileCamoflauge camo = (TileCamoflauge) tileentity;
 
-		TileEntity tile = world.getBlockEntity(pos);
-		
-		if (stack.getItem() instanceof BlockItem && tile instanceof TileCamoflage) {
-			TileCamoflage camo = (TileCamoflage) tile;
-			BlockItem blockItem = (BlockItem) stack.getItem();
-			
-			Block block = blockItem.getBlock();
+        if (state.getValue(BlastcraftBlockStates.HASCAMOFLAUGE)) {
 
-			if (block == BlastcraftBlocks.blockCamoflage) {
-				return super.use(state, world, pos, player, hand, hit);
-			}
+            if (camo.getCamoBlock().is(block)) {
+            	return super.use(state, level, pos, player, hand, hitResult);
+            }
+            if (!level.isClientSide) {
+                camo.setCamoBlock(block.getStateForPlacement(newCtx));
+                level.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                level.getChunkSource().getLightEngine().checkBlock(pos);
+            }
+            return ActionResultType.CONSUME;
+        }
+        if (!level.isClientSide) {
+            state = state.setValue(BlastcraftBlockStates.HASCAMOFLAUGE, true);
+            camo.setCamoBlock(block.getStateForPlacement(newCtx));
+            level.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+            level.setBlockAndUpdate(pos, state);
+            level.getChunkSource().getLightEngine().checkBlock(pos);
+        }
+        return ActionResultType.CONSUME;
+    }
 
-			BlockItemUseContext newCtx = new BlockItemUseContext(player, hand, stack, hit);
+    @Override
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(BlastcraftBlockStates.HASCAMOFLAUGE, BlastcraftBlockStates.ISWALKTHROUGHABLE);
+    }
 
-			if (state.getValue(HASCAMOFLAUGE)) {
+    @Override
+    public BlockRenderType getRenderShape(BlockState state) {
+        return state.getValue(BlastcraftBlockStates.HASCAMOFLAUGE) ? BlockRenderType.INVISIBLE : super.getRenderShape(state);
+    }
+    
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+    	return new TileCamoflauge();
+    }
 
-				if (camo.getCamoBlock().is(block)) {
-					return super.use(state, world, pos, player, hand, hit);
-				} else {
-					if (!world.isClientSide) {
-						camo.setCamoBlock(block.getStateForPlacement(newCtx));
-						world.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-						world.getChunkSource().getLightEngine().checkBlock(pos);
-					}
-					return ActionResultType.CONSUME;
-				}
-			} else {
+    @Override
+	public boolean isPathfindable(BlockState state, IBlockReader world, BlockPos pos, PathType pathComputationType) {
+        if (state.getValue(BlastcraftBlockStates.ISWALKTHROUGHABLE) || pathComputationType == PathType.WATER) {
+            return false;
+        }
+        return super.isPathfindable(state, world, pos, pathComputationType);
+    }
 
-				if (!world.isClientSide) {
-					state = state.setValue(HASCAMOFLAUGE, true);
-					camo.setCamoBlock(block.getStateForPlacement(newCtx));
-					world.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-					world.setBlockAndUpdate(pos, state);
-					world.getChunkSource().getLightEngine().checkBlock(pos);
-				}
-				return ActionResultType.CONSUME;
-			}
+    @Override
+    public void onPickup(ItemStack stack, BlockPos pos, PlayerEntity player) {
 
-		} else {
+        World world = player.level;
+        BlockState state = world.getBlockState(pos);
+        TileEntity tileentity = world.getBlockEntity(pos);
+        if (tileentity instanceof TileCamoflauge) {
+            ((TileCamoflauge) tileentity).setCamoBlock(Blocks.AIR.defaultBlockState());
+        }
 
-			return super.use(state, world, pos, player, hand, hit);
+        player.level.setBlockAndUpdate(pos, state.setValue(BlastcraftBlockStates.HASCAMOFLAUGE, false));
+    }
 
-		}
+    @Override
+    public void onRotate(ItemStack stack, BlockPos pos, PlayerEntity player) {
 
-	}
+        World world = player.level;
+        BlockState state = world.getBlockState(pos);
 
-	@Override
-	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-		super.createBlockStateDefinition(builder);
-		builder.add(HASCAMOFLAUGE, ISWALKTHROUGHABLE);
-	}
+        world.setBlockAndUpdate(pos, state.setValue(BlastcraftBlockStates.ISWALKTHROUGHABLE, !state.getValue(BlastcraftBlockStates.ISWALKTHROUGHABLE)));
 
-	@Override
-	public BlockRenderType getRenderShape(BlockState state) {
-		return state.getValue(HASCAMOFLAUGE) ? BlockRenderType.INVISIBLE : super.getRenderShape(state);
-	}
-
-	@Override
-	public TileEntity createTileEntity(BlockState arg0, IBlockReader arg1) {
-		return new TileCamoflage();
-	}
-
-	@Override
-	public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
-
-		if (state.getValue(ISWALKTHROUGHABLE)) {
-			return false;
-		}
-
-		TileEntity tile = worldIn.getBlockEntity(pos);
-		if (tile instanceof TileCamoflage) {
-			TileCamoflage camo = (TileCamoflage) tile;
-			if (camo.isCamoAir()) {
-				return super.isPathfindable(state, worldIn, pos, type);
-			} else {
-				return camo.getCamoBlock().isPathfindable(worldIn, pos, type);
-			}
-
-		}
-
-		return super.isPathfindable(state, worldIn, pos, type);
-	}
-
-	@Override
-	public void onPickup(ItemStack stack, BlockPos pos, PlayerEntity player) {
-
-		World world = player.level;
-		BlockState state = world.getBlockState(pos);
-
-		TileEntity tile = world.getBlockEntity(pos);
-		if (tile instanceof TileCamoflage) {
-			TileCamoflage camo = (TileCamoflage) tile;
-			camo.setCamoBlock(Blocks.AIR.defaultBlockState());
-		}
-
-		player.level.setBlockAndUpdate(pos, state.setValue(HASCAMOFLAUGE, false));
-	}
-
-	@Override
-	public void onRotate(ItemStack stack, BlockPos pos, PlayerEntity player) {
-
-		World world = player.level;
-		BlockState state = world.getBlockState(pos);
-
-		world.setBlockAndUpdate(pos, state.setValue(ISWALKTHROUGHABLE, !state.getValue(ISWALKTHROUGHABLE)));
-
-	}
+    }
 }

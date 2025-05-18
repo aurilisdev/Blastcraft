@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:hardenedbrickspolished_wall"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:hardenedbrickspolished"
+  }
+}

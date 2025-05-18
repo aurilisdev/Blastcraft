@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "carbonplatedwallingpolished_wall",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "blastcraft:carbonplatedwallingpolished_wall"
+        }
+      ]
+    }
+  ]
+}

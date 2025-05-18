@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "P",
+    "A"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:sticky_piston"
+    },
+    "A": {
+      "tag": "forge:ingots/gold"
+    },
+    "C": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "result": {
+    "item": "blastcraft:upgradeiteminput"
+  },
+  "conditions": [
+    {
+      "value": {
+        "modid": "electrodynamics",
+        "type": "forge:mod_loaded"
+      },
+      "type": "forge:not"
+    }
+  ]
+}

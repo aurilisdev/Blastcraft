@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "hardenedbricksbase_slab",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "blastcraft:hardenedbricksbase_slab"
+        }
+      ]
+    }
+  ]
+}

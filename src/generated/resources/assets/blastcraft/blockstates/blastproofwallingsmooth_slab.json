@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "blastcraft:block/blastproofwallingsmooth_slab_top"
+    },
+    "type=bottom": {
+      "model": "blastcraft:block/blastproofwallingsmooth_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/blastproofwallingsmooth"
+    }
+  }
+}

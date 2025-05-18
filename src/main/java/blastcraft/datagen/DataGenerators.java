@@ -1,20 +1,22 @@
 package blastcraft.datagen;
 
-import blastcraft.References;
+import blastcraft.Blastcraft;
 import blastcraft.datagen.client.BlastcraftBlockStateProvider;
+import blastcraft.datagen.client.BlastcraftItemModelsProvider;
 import blastcraft.datagen.client.BlastcraftLangKeyProvider;
 import blastcraft.datagen.client.BlastcraftSoundProvider;
 import blastcraft.datagen.server.BlastcraftBlockTagsProvider;
+import blastcraft.datagen.server.BlastcraftFluidTagsProvider;
 import blastcraft.datagen.server.BlastcraftItemTagsProvider;
 import blastcraft.datagen.server.BlastcraftLootTablesProvider;
 import blastcraft.datagen.server.recipe.BlastcraftRecipeProvider;
-import electrodynamics.datagen.client.ElectrodynamicsLangKeyProvider.Locale;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import voltaic.datagen.utils.client.BaseLangKeyProvider.Locale;
 
-@Mod.EventBusSubscriber(modid = References.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Blastcraft.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
 	@SubscribeEvent
@@ -27,12 +29,14 @@ public class DataGenerators {
 
 			generator.addProvider(blocks);
 			generator.addProvider(new BlastcraftItemTagsProvider(generator, blocks, event.getExistingFileHelper()));
+			generator.addProvider(new BlastcraftFluidTagsProvider(generator, event.getExistingFileHelper()));
 			generator.addProvider(new BlastcraftLootTablesProvider(generator));
 			generator.addProvider(new BlastcraftRecipeProvider(generator));
 
 		}
 		if (event.includeClient()) {
 			generator.addProvider(new BlastcraftBlockStateProvider(generator, event.getExistingFileHelper()));
+			generator.addProvider(new BlastcraftItemModelsProvider(generator, event.getExistingFileHelper()));
 			generator.addProvider(new BlastcraftLangKeyProvider(generator, Locale.EN_US));
 			generator.addProvider(new BlastcraftSoundProvider(generator, event.getExistingFileHelper()));
 		}

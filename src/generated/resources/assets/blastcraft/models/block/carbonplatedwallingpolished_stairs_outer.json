@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "blastcraft:block/carbonplatedwall/carbonplatedwallingpolished",
+    "bottom": "blastcraft:block/carbonplatedwall/carbonplatedwallingpolished",
+    "top": "blastcraft:block/carbonplatedwall/carbonplatedwallingpolished"
+  }
+}

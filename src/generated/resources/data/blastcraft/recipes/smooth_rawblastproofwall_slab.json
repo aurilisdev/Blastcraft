@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "blastcraft:rawblastproofwallingsmooth"
+    }
+  },
+  "result": {
+    "item": "blastcraft:rawblastproofwallingsmooth_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "blastcraft:hardenedbricks",
+    "blastcraft:hardenedbricksbig",
+    "blastcraft:hardenedbrickspolished",
+    "blastcraft:hardenedbrickssmooth"
+  ]
+}
