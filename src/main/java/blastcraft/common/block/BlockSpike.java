@@ -2,8 +2,8 @@ package blastcraft.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 public class BlockSpike extends Block {
 
 	public BlockSpike() {
-		super(Properties.of(Material.METAL).strength(1F).sound(SoundType.METAL).noOcclusion());
+		super(Properties.copy(Blocks.IRON_BLOCK).strength(1F).sound(SoundType.METAL).noOcclusion());
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class BlockSpike extends Block {
 		@Override
 		public void stepOn(World worldIn, BlockPos pos, Entity entityIn) {
 			if (entityIn instanceof LivingEntity) {
-				entityIn.setSecondsOnFire(10);
+				entityIn.setRemainingFireTicks(200);
 				entityIn.hurt(DamageSource.CACTUS, 1f);
 			}
 		}

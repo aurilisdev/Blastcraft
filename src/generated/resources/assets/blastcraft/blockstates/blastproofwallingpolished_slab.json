@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "blastcraft:block/blastproofwallingpolished_slab_top"
+    },
+    "type=bottom": {
+      "model": "blastcraft:block/blastproofwallingpolished_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/blastproofwallingpolished"
+    }
+  }
+}

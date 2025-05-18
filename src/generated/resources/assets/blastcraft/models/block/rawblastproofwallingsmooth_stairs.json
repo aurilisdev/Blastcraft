@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "blastcraft:block/rawblastproofwall/rawblastproofwallingsmooth",
+    "bottom": "blastcraft:block/rawblastproofwall/rawblastproofwallingsmooth",
+    "top": "blastcraft:block/rawblastproofwall/rawblastproofwallingsmooth"
+  }
+}

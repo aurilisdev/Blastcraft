@@ -1,6 +1,6 @@
 package blastcraft.common.tab;
 
-import blastcraft.common.block.subtype.SubtypeBrick;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
 import blastcraft.registers.BlastcraftBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -13,6 +13,6 @@ public class ItemGroupBlastcraft extends ItemGroup {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(BlastcraftBlocks.bricksMap.get(SubtypeBrick.base).get(0).get());
+		return new ItemStack(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base));
 	}
 }

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "blastcraft:rawblastproofwalling",
+    "blastcraft:rawblastproofwallingbig",
+    "blastcraft:rawblastproofwallingpolished",
+    "blastcraft:rawblastproofwallingsmooth"
+  ]
+}

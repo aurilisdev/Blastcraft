@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:carbonplatedwallingbase_slab"
+    },
+    {
+      "item": "blastcraft:carbonplatedwallingbase_slab"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:carbonplatedwalling"
+  }
+}

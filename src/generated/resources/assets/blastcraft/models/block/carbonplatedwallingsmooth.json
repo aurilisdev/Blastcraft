@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "blastcraft:block/smooth/carbonplatedwallingsmooth"
+    "all": "blastcraft:block/carbonplatedwall/carbonplatedwallingsmooth"
   }
 }

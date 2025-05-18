@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "blastcraft:hardenedbrickssmooth"
+    }
+  },
+  "result": {
+    "item": "blastcraft:hardenedbrickssmooth_slab",
+    "count": 6
+  }
+}

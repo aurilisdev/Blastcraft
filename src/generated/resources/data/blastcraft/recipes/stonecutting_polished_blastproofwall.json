@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "blastcraft:blastproofwallingsmooth"
+    "tag": "forge:hardened_blocks/smooth_solid_blastproof_walls"
   },
-  "result": "blastcraft:hardenedbrickspolished",
+  "result": "blastcraft:blastproofwallingpolished",
   "count": 1
 }
