@@ -1,41 +1,53 @@
 package blastcraft.datagen.server;
 
-import blastcraft.common.block.subtype.SubtypeBrick;
+import blastcraft.Blastcraft;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
+import blastcraft.common.block.subtype.SubtypeHardenedBricks;
+import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
-import blastcraft.registers.BlastcraftBlockTypes;
 import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.datagen.server.ElectrodynamicsLootTablesProvider;
+import blastcraft.registers.BlastcraftTiles;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
+import voltaic.datagen.utils.server.loottable.BaseLootTablesProvider;
 
-public class BlastcraftLootTablesProvider extends ElectrodynamicsLootTablesProvider {
+public class BlastcraftLootTablesProvider extends BaseLootTablesProvider {
 
-	public BlastcraftLootTablesProvider(DataGenerator generator) {
-		super(generator);
+	public BlastcraftLootTablesProvider(DataGenerator gen) {
+		super(gen, Blastcraft.ID);
 	}
 
 	@Override
 	protected void addTables() {
 
-		for (SubtypeBrick brick : SubtypeBrick.values()) {
-			for (RegistryObject<Block> reg : BlastcraftBlocks.bricksMap.get(brick)) {
-				addSimpleBlock(reg.get());
-			}
+		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
+			addSimpleBlock(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(wall));
+		}
+
+		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
+			addSimpleBlock(BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(wall));
+		}
+
+		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
+			addSimpleBlock(BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(wall));
+		}
+
+		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
+			addSimpleBlock(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(wall));
 		}
 
 		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
-			addSimpleBlock(BlastcraftBlocks.getBlock(glass));
+			addSimpleBlock(BlastcraftBlocks.BLOCKS_WALLINGGLASS.getValue(glass));
 		}
 
-		addSimpleBlock(BlastcraftBlocks.blockGlassPressurePlate);
-		addSimpleBlock(BlastcraftBlocks.blockCamoflage);
+		addSimpleBlock(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE);
+		addSimpleBlock(BlastcraftBlocks.BLOCK_CAMOFLAGE);
 
-		addSimpleBlock(BlastcraftBlocks.blockSpike);
-		addSimpleBlock(BlastcraftBlocks.blockSpikeFire);
-		addSimpleBlock(BlastcraftBlocks.blockSpikePoison);
+		addSimpleBlock(BlastcraftBlocks.BLOCK_SPIKE);
+		addSimpleBlock(BlastcraftBlocks.BLOCK_FIRESPIKE);
+		addSimpleBlock(BlastcraftBlocks.BLOCK_POISONSPIKE);
 
-		addIETable(BlastcraftBlocks.blockBlastCompressor, BlastcraftBlockTypes.TILE_BLASTCOMPRESSOR);
+		addMachineTable(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(), BlastcraftTiles.TILE_BLASTCOMPRESSOR, true, false, false, true, false);
 
 	}
 

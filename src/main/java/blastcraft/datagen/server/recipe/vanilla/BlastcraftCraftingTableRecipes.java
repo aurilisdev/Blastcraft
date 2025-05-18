@@ -2,17 +2,16 @@ package blastcraft.datagen.server.recipe.vanilla;
 
 import java.util.function.Consumer;
 
-import ballistix.common.tags.BallistixTags;
-import blastcraft.References;
-import blastcraft.common.block.subtype.SubtypeBrick;
-import blastcraft.common.block.subtype.SubtypeWalling;
+import blastcraft.Blastcraft;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
+import blastcraft.common.block.subtype.SubtypeHardenedBricks;
+import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.common.tag.BlastcraftTags;
-import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.common.tags.ElectrodynamicsTags;
-import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
-import electrodynamics.datagen.utils.recipe.ElectrodynamicsShapedCraftingRecipe;
-import electrodynamics.datagen.utils.recipe.ElectrodynamicsShapelessCraftingRecipe;
+import blastcraft.registers.BlastcraftItems;
+import electrodynamics.Electrodynamics;
+import electrodynamics.registers.ElectrodynamicsItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -20,316 +19,1295 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
+import voltaic.common.item.subtype.SubtypeItemUpgrade;
+import voltaic.common.tags.VoltaicTags;
+import voltaic.datagen.utils.server.recipe.AbstractRecipeGenerator;
+import voltaic.datagen.utils.server.recipe.CustomShapedCraftingRecipe;
+import voltaic.datagen.utils.server.recipe.CustomShapelessCraftingRecipe;
 
 public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
 
-	@Override
-	public void addRecipes(Consumer<FinishedRecipe> consumer) {
+    private static final ModLoadedCondition ELECTRO_LOADED = new ModLoadedCondition("electrodynamics");
+    private static final NotCondition ELECTRO_NOT_LOADED = new NotCondition(ELECTRO_LOADED);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.blockCamoflage.asItem(), 12)
-				//
-				.addPattern("WGW")
-				//
-				.addPattern("GWG")
-				//
-				.addPattern("WGW")
-				//
-				.addKey('W', ItemTags.WOOL)
-				//
-				.addKey('G', Tags.Items.GLASS)
-				//
-				.complete(References.ID, "camoflage", consumer);
+    @Override
+    public void addRecipes(Consumer<FinishedRecipe> output) {
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.blockGlassPressurePlate.asItem(), 1)
-				//
-				.addPattern("GG")
-				//
-				.addKey('G', Tags.Items.GLASS)
-				//
-				.complete(References.ID, "glass_pressureplate", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_CAMOFLAGE.get(), 12)
+                //
+                .addPattern("WGW")
+                //
+                .addPattern("GWG")
+                //
+                .addPattern("WGW")
+                //
+                .addKey('W', ItemTags.WOOL)
+                //
+                .addKey('G', Tags.Items.GLASS)
+                //
+                .complete(Blastcraft.ID, "camoflage", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.blockSpike.asItem(), 6)
-				//
-				.addPattern("CGC")
-				//
-				.addPattern("PPP")
-				//
-				.addKey('C', Items.CACTUS)
-				//
-				.addKey('G', Items.GRASS)
-				//
-				.addKey('P', ElectrodynamicsTags.Items.PLATE_BRONZE)
-				//
-				.complete(References.ID, "spikes_regular", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_GLASSPRESSUREPLATE.get(), 1)
+                //
+                .addPattern("GG")
+                //
+                .addKey('G', Tags.Items.GLASS)
+                //
+                .complete(Blastcraft.ID, "glass_pressureplate", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.blockSpikeFire.asItem(), 1)
-				//
-				.addIngredient(BlastcraftBlocks.blockSpike.asItem())
-				//
-				.addIngredient(Items.FIRE_CHARGE)
-				//
-				.complete(References.ID, "spikes_fire", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_SPIKE.get(), 6)
+                //
+                .addPattern("CGC")
+                //
+                .addPattern("PPP")
+                //
+                .addKey('C', Items.CACTUS)
+                //
+                .addKey('G', Items.GRASS)
+                //
+                .addKey('P', VoltaicTags.Items.PLATE_BRONZE)
+                //
+                .addConditions(ELECTRO_LOADED)
+                //
+                .complete(Blastcraft.ID, "spikes_regular_electro", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.blockSpikePoison.asItem(), 1)
-				//
-				.addIngredient(BlastcraftBlocks.blockSpike.asItem())
-				//
-				.addIngredient(Items.SPIDER_EYE)
-				//
-				.addConditions(new NotCondition(new ModLoadedCondition(ballistix.References.ID)))
-				//
-				.complete(References.ID, "spikes_poison_spidereye", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_SPIKE.get(), 6)
+                //
+                .addPattern("CGC")
+                //
+                .addPattern("PPP")
+                //
+                .addKey('C', Items.CACTUS)
+                //
+                .addKey('G', Items.GRASS)
+                //
+                .addKey('P', Tags.Items.INGOTS_COPPER)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Blastcraft.ID, "spikes_regular_noelectro", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.blockSpikePoison.asItem(), 1)
-				//
-				.addIngredient(BlastcraftBlocks.blockSpike.asItem())
-				//
-				.addIngredient(BallistixTags.Items.DUST_POISON)
-				//
-				.addConditions(new ModLoadedCondition(ballistix.References.ID))
-				//
-				.complete(References.ID, "spikes_poison_poisondust", consumer);
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEM_FIRESPIKE.get(), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEM_SPIKE.get())
+                //
+                .addIngredient(Items.FIRE_CHARGE)
+                //
+                .complete(Blastcraft.ID, "spikes_fire", output);
 
-		// BASE BRICKS
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEM_POISONSPIKE.get(), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEM_SPIKE.get())
+                //
+                .addIngredient(Items.SPIDER_EYE)
+                //
+                .addConditions(new NotCondition(new ModLoadedCondition(Blastcraft.BALLISTIX_ID)))
+                //
+                .complete(Blastcraft.ID, "spikes_poison_spidereye", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base).asItem(), 3)
-				//
-				.addPattern("CWC")
-				//
-				.addPattern("CWC")
-				//
-				.addPattern("CWC")
-				//
-				.addKey('W', BlastcraftTags.Items.BLASTPROOF_WALLS)
-				//
-				.addKey('C', ItemTags.COALS)
-				//
-				.complete(References.ID, "base_carbonplatedwalling", consumer);
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEM_POISONSPIKE.get(), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEM_SPIKE.get())
+                //
+                .addIngredient(BlastcraftTags.Items.DUST_POISON)
+                //
+                .addConditions(new ModLoadedCondition(Blastcraft.BALLISTIX_ID))
+                //
+                .complete(Blastcraft.ID, "spikes_poison_poisondust", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.base).asItem(), 6)
-				//
-				.addPattern("OBO")
-				//
-				.addPattern("OBO")
-				//
-				.addPattern("OBO")
-				//
-				.addKey('O', Tags.Items.OBSIDIAN)
-				//
-				.addKey('B', Items.BRICKS)
-				//
-				.complete(References.ID, "base_hardenedbricks_obsidian", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_SPEEDUPGRADE_ADVANCED.get(), 1)
+                //
+                .addPattern("PGP")
+                //
+                .addPattern("BWB")
+                //
+                .addPattern("CGC")
+                //
+                .addKey('P', Tags.Items.INGOTS_IRON)
+                //
+                .addKey('G', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                //
+                .addKey('B', ElectrodynamicsItems.ITEMS_UPGRADE.getValue(SubtypeItemUpgrade.basicspeed))
+                //
+                .addKey('W', Tags.Items.INGOTS_COPPER)
+                //
+                .addKey('C', Tags.Items.INGOTS_GOLD)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Electrodynamics.ID, "upgrade_advanced_speed", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.base).asItem(), 6)
-				//
-				.addPattern("CBC")
-				//
-				.addPattern("CBC")
-				//
-				.addPattern("CBC")
-				//
-				.addKey('C', ElectrodynamicsTags.Items.CONCRETES)
-				//
-				.addKey('B', Items.BRICKS)
-				//
-				.complete(References.ID, "base_hardenedbricks_concrete", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_SPEEDUPGRADE_BASIC.get(), 1)
+                //
+                .addPattern("PGP")
+                //
+                .addPattern("WWW")
+                //
+                .addPattern("CGC")
+                //
+                .addKey('P', Tags.Items.INGOTS_IRON)
+                //
+                .addKey('G', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                //
+                .addKey('W', Tags.Items.INGOTS_GOLD)
+                //
+                .addKey('C', Tags.Items.INGOTS_COPPER)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Electrodynamics.ID, "upgrade_basic_speed", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.base).asItem(), 3)
-				//
-				.addPattern("OHO")
-				//
-				.addPattern("OHO")
-				//
-				.addPattern("OHO")
-				//
-				.addKey('H', BlastcraftTags.Items.HARDENED_BRICKS)
-				//
-				.addKey('O', Tags.Items.OBSIDIAN)
-				//
-				.complete(References.ID, "base_rawblastproofwalling_obsidian", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_UPGRADEITEMINPUT.get(), 1)
+                //
+                .addPattern("C")
+                //
+                .addPattern("P")
+                //
+                .addPattern("A")
+                //
+                .addKey('A', Tags.Items.INGOTS_GOLD)
+                //
+                .addKey('C', Tags.Items.DUSTS_REDSTONE)
+                //
+                .addKey('P', Items.STICKY_PISTON)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Electrodynamics.ID, "upgrade_item_input", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.base).asItem(), 3)
-				//
-				.addPattern("CHC")
-				//
-				.addPattern("CHC")
-				//
-				.addPattern("CHC")
-				//
-				.addKey('H', BlastcraftTags.Items.HARDENED_BRICKS)
-				//
-				.addKey('C', ElectrodynamicsTags.Items.CONCRETES)
-				//
-				.complete(References.ID, "base_rawblastproofwalling_concrete", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_UPGRADEITEMOUTPUT.get(), 1)
+                //
+                .addPattern("C")
+                //
+                .addPattern("P")
+                //
+                .addPattern("A")
+                //
+                .addKey('A', Tags.Items.INGOTS_GOLD)
+                //
+                .addKey('C', Tags.Items.DUSTS_REDSTONE)
+                //
+                .addKey('P', Items.PISTON)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Electrodynamics.ID, "upgrade_item_output", output);
 
-		// BIG BRICKS
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_UPGRADERANGE.get(), 1)
+                //
+                .addPattern("PWP")
+                //
+                .addPattern("WBW")
+                //
+                .addPattern("PWP")
+                //
+                .addKey('P', Tags.Items.INGOTS_IRON)
+                //
+                .addKey('W', Tags.Items.INGOTS_COPPER)
+                //
+                .addKey('B', Tags.Items.DUSTS_REDSTONE)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Electrodynamics.ID, "upgrade_range", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.big).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.base)))
-				//
-				.complete(References.ID, "big_blastproofwalling", consumer);
+        addMachines(output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.big).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.base)))
-				//
-				.complete(References.ID, "big_rawblastproofwalling", consumer);
+        addHardenedBricks(output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.big).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base)))
-				//
-				.complete(References.ID, "big_carbonplatedwalling", consumer);
+        addRawBlastproofWalls(output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.big).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.base)))
-				//
-				.complete(References.ID, "big_hardenedbricks", consumer);
+        addBlastproofWalls(output);
 
-		// POLISHED BRICKS
+        addCarbonPlatedWalls(output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.polished).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.smooth)))
-				//
-				.complete(References.ID, "polished_blastproofwalling", consumer);
+        // GLASS BRICKS
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.polished).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.smooth)))
-				//
-				.complete(References.ID, "polished_rawblastproofwalling", consumer);
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_WALLINGGLASS.getValue(SubtypeWallingGlass.blastproofwalling), 1)
+                //
+                .addIngredient(Tags.Items.GLASS)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_BLASTPROOF_WALLS)
+                //
+                .complete(Blastcraft.ID, "glass_blastproofwalling", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.polished).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.smooth)))
-				//
-				.complete(References.ID, "polished_carbonplatedwalling", consumer);
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_WALLINGGLASS.getValue(SubtypeWallingGlass.rawblastproofwalling), 1)
+                //
+                .addIngredient(Tags.Items.GLASS)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS)
+                //
+                .complete(Blastcraft.ID, "glass_rawblastproofwalling", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.polished).asItem(), 4)
-				//
-				.addPattern("BB")
-				//
-				.addPattern("BB")
-				//
-				.addKey('B', new ItemStack(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.smooth)))
-				//
-				.complete(References.ID, "polished_hardenedbricks", consumer);
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_WALLINGGLASS.getValue(SubtypeWallingGlass.carbonplatedwalling), 1)
+                //
+                .addIngredient(Tags.Items.GLASS)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_CARBON_PLATED_WALLS)
+                //
+                .complete(Blastcraft.ID, "glass_carbonplatedwalling", output);
 
-		// GLASS BRICKS
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_WALLINGGLASS.getValue(SubtypeWallingGlass.hardenedbricks), 1)
+                //
+                .addIngredient(Tags.Items.GLASS)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_HARDENED_BRICKS)
+                //
+                .complete(Blastcraft.ID, "glass_hardenedbricks", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getBlock(SubtypeWallingGlass.blastproofwalling).asItem(), 1)
-				//
-				.addIngredient(Tags.Items.GLASS)
-				//
-				.addIngredient(BlastcraftTags.Items.BLASTPROOF_WALLS)
-				//
-				.complete(References.ID, "glass_blastproofwalling", consumer);
+    }
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getBlock(SubtypeWallingGlass.rawblastproofwalling).asItem(), 1)
-				//
-				.addIngredient(Tags.Items.GLASS)
-				//
-				.addIngredient(BlastcraftTags.Items.RAW_BLASTPROOF_WALLS)
-				//
-				.complete(References.ID, "glass_rawblastproofwalling", consumer);
+    private static void addMachines(Consumer<FinishedRecipe> output) {
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getBlock(SubtypeWallingGlass.carbonplatedwalling).asItem(), 1)
-				//
-				.addIngredient(Tags.Items.GLASS)
-				//
-				.addIngredient(BlastcraftTags.Items.CARBON_PLATED_WALLS)
-				//
-				.complete(References.ID, "glass_carbonplatedwalling", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEM_BLASTCOMPRESSOR.get(), 1)
+                //
+                .addPattern("SFS")
+                //
+                .addPattern("PCP")
+                //
+                .addPattern("SSS")
+                //
+                .addKey('S', VoltaicTags.Items.PLATE_STEEL)
+                //
+                .addKey('F', Items.FURNACE)
+                //
+                .addKey('P', Items.PISTON)
+                //
+                .addKey('C', VoltaicTags.Items.CIRCUITS_ADVANCED)
+                //
+                .addConditions(ELECTRO_LOADED)
+                //
+                .complete(Blastcraft.ID, "blastcompressor", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getBlock(SubtypeWallingGlass.hardenedbricks).asItem(), 1)
-				//
-				.addIngredient(Tags.Items.GLASS)
-				//
-				.addIngredient(BlastcraftTags.Items.HARDENED_BRICKS)
-				//
-				.complete(References.ID, "glass_hardenedbricks", consumer);
+    }
 
-		// RESET BRICKS
+    private static void addHardenedBricks(Consumer<FinishedRecipe> output) {
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.base).asItem(), 1)
-				//
-				.addIngredient(BlastcraftTags.Items.BLASTPROOF_WALLS)
-				//
-				.complete(References.ID, "reset_blastproofwalling", consumer);
+        // BASE BRICKS
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.base).asItem(), 1)
-				//
-				.addIngredient(BlastcraftTags.Items.RAW_BLASTPROOF_WALLS)
-				//
-				.complete(References.ID, "reset_rawblastproofwalling", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base), 6)
+                //
+                .addPattern("OBO")
+                //
+                .addPattern("OBO")
+                //
+                .addPattern("OBO")
+                //
+                .addKey('O', Tags.Items.OBSIDIAN)
+                //
+                .addKey('B', Items.BRICKS)
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_obsidian", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base).asItem(), 1)
-				//
-				.addIngredient(BlastcraftTags.Items.CARBON_PLATED_WALLS)
-				//
-				.complete(References.ID, "reset_carbonplatedwalling", consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base), 6)
+                //
+                .addPattern("CBC")
+                //
+                .addPattern("CBC")
+                //
+                .addPattern("CBC")
+                //
+                .addKey('C', BlastcraftTags.Items.SOLID_CONCRETES)
+                //
+                .addKey('B', Items.BRICKS)
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_concrete", output);
 
-		ElectrodynamicsShapelessCraftingRecipe.start(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.base).asItem(), 1)
-				//
-				.addIngredient(BlastcraftTags.Items.HARDENED_BRICKS)
-				//
-				.complete(References.ID, "reset_hardenedbricks", consumer);
-		
-		addMachines(consumer);
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base))
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_stairs", output);
 
-	}
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_stairs))
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_stairsreset", output);
 
-	private void addMachines(Consumer<FinishedRecipe> consumer) {
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base))
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_wall", output);
 
-		ElectrodynamicsShapedCraftingRecipe.start(BlastcraftBlocks.blockBlastCompressor.asItem(), 1)
-				//
-				.addPattern("SFS")
-				//
-				.addPattern("PCP")
-				//
-				.addPattern("SSS")
-				//
-				.addKey('S', ElectrodynamicsTags.Items.PLATE_STEEL)
-				//
-				.addKey('F', Items.FURNACE)
-				//
-				.addKey('P', Items.PISTON)
-				//
-				.addKey('C', ElectrodynamicsTags.Items.CIRCUITS_ADVANCED)
-				//
-				.complete(References.ID, "blastcompressor", consumer);
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_wall))
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_wallreset", output);
 
-	}
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base))
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base_slab))
+                //
+                .complete(Blastcraft.ID, "base_hardenedbricks_slabreset", output);
+
+        // BIG BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base)))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_stairs))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_wall))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.big_slab))
+                //
+                .complete(Blastcraft.ID, "big_hardenedbricks_slabreset", output);
+
+        // SMOOTH
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_hardenedbricks_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_stairs))
+                //
+                .complete(Blastcraft.ID, "smooth_hardenedbricks_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_hardenedbricks_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_wall))
+                //
+                .complete(Blastcraft.ID, "smooth_hardenedbricks_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_hardenedbricks_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth_slab))
+                //
+                .complete(Blastcraft.ID, "smooth_hardenedbricks_slabreset", output);
+
+        // POLISHED BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth)))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_stairs))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_wall))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.polished_slab))
+                //
+                .complete(Blastcraft.ID, "polished_hardenedbricks_slabreset", output);
+
+        // RESET BRICKS
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base), 1)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_HARDENED_BRICKS)
+                //
+                .complete(Blastcraft.ID, "reset_hardenedbricks", output);
+
+    }
+
+    private static void addRawBlastproofWalls(Consumer<FinishedRecipe> output) {
+
+        // BASE BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base), 3)
+                //
+                .addPattern("OHO")
+                //
+                .addPattern("OHO")
+                //
+                .addPattern("OHO")
+                //
+                .addKey('H', BlastcraftTags.Items.SOLID_HARDENED_BRICKS)
+                //
+                .addKey('O', Tags.Items.OBSIDIAN)
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwalling_obsidian", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base), 3)
+                //
+                .addPattern("CHC")
+                //
+                .addPattern("CHC")
+                //
+                .addPattern("CHC")
+                //
+                .addKey('H', BlastcraftTags.Items.SOLID_HARDENED_BRICKS)
+                //
+                .addKey('C', BlastcraftTags.Items.SOLID_CONCRETES)
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwalling_concrete", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base))
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_stairs))
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base))
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_wall))
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base))
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base_slab))
+                //
+                .complete(Blastcraft.ID, "base_rawblastproofwall_slabreset", output);
+
+        // BIG BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base)))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_stairs))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_wall))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.big_slab))
+                //
+                .complete(Blastcraft.ID, "big_rawblastproofwall_slabreset", output);
+
+        // SMOOTH
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_rawblastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_stairs))
+                //
+                .complete(Blastcraft.ID, "smooth_rawblastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_rawblastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_wall))
+                //
+                .complete(Blastcraft.ID, "smooth_rawblastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_rawblastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth_slab))
+                //
+                .complete(Blastcraft.ID, "smooth_rawblastproofwall_slabreset", output);
+
+        // POLISHED BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth)))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_stairs))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_wall))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.polished_slab))
+                //
+                .complete(Blastcraft.ID, "polished_rawblastproofwall_slabreset", output);
+
+        // RESET BRICKS
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS)
+                //
+                .complete(Blastcraft.ID, "reset_rawblastproofwalling", output);
+
+    }
+
+    private static void addBlastproofWalls(Consumer<FinishedRecipe> output) {
+
+        // BASE BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base))
+                //
+                .complete(Blastcraft.ID, "base_blastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_stairs))
+                //
+                .complete(Blastcraft.ID, "base_blastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base))
+                //
+                .complete(Blastcraft.ID, "base_blastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_wall))
+                //
+                .complete(Blastcraft.ID, "base_blastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base))
+                //
+                .complete(Blastcraft.ID, "base_blastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base_slab))
+                //
+                .complete(Blastcraft.ID, "base_blastproofwall_slabreset", output);
+
+        // BIG BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base)))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_stairs))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_wall))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.big_slab))
+                //
+                .complete(Blastcraft.ID, "big_blastproofwall_slabreset", output);
+
+        // SMOOTH
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_blastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_stairs))
+                //
+                .complete(Blastcraft.ID, "smooth_blastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_blastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_wall))
+                //
+                .complete(Blastcraft.ID, "smooth_blastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_blastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth_slab))
+                //
+                .complete(Blastcraft.ID, "smooth_blastproofwall_slabreset", output);
+
+        // POLISHED BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth)))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_stairs))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_wall))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.polished_slab))
+                //
+                .complete(Blastcraft.ID, "polished_blastproofwall_slabreset", output);
+
+        // RESET BRICKS
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base), 1)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_BLASTPROOF_WALLS)
+                //
+                .complete(Blastcraft.ID, "reset_blastproofwalling", output);
+
+    }
+
+    private static void addCarbonPlatedWalls(Consumer<FinishedRecipe> output) {
+
+        // BASE BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base), 3)
+                //
+                .addPattern("CWC")
+                //
+                .addPattern("CWC")
+                //
+                .addPattern("CWC")
+                //
+                .addKey('W', BlastcraftTags.Items.SOLID_BLASTPROOF_WALLS)
+                //
+                .addKey('C', ItemTags.COALS)
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base))
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_stairs))
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base))
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_wall))
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base))
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base_slab))
+                //
+                .complete(Blastcraft.ID, "base_carbonplatedwall_slabreset", output);
+
+        // BIG BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base)))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_stairs))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_wall))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.big_slab))
+                //
+                .complete(Blastcraft.ID, "big_carbonplatedwall_slabreset", output);
+
+        // SMOOTH
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_carbonplatedwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_stairs))
+                //
+                .complete(Blastcraft.ID, "smooth_carbonplatedwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_carbonplatedwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_wall))
+                //
+                .complete(Blastcraft.ID, "smooth_carbonplatedwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth))
+                //
+                .complete(Blastcraft.ID, "smooth_carbonplatedwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth_slab))
+                //
+                .complete(Blastcraft.ID, "smooth_carbonplatedwall_slabreset", output);
+
+        // POLISHED BRICKS
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished), 4)
+                //
+                .addPattern("BB")
+                //
+                .addPattern("BB")
+                //
+                .addKey('B', new ItemStack(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth)))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwalling", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_stairs), 6)
+                //
+                .addPattern("B  ")
+                //
+                .addPattern("BB ")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwall_stairs", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_stairs))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwall_stairsreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_wall), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwall_wall", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_wall))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwall_wallreset", output);
+
+        CustomShapedCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_slab), 6)
+                //
+                .addPattern("BBB")
+                //
+                .addKey('B', BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwall_slab", output);
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished), 1)
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_slab))
+                //
+                .addIngredient(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.polished_slab))
+                //
+                .complete(Blastcraft.ID, "polished_carbonplatedwall_slabreset", output);
+
+        // RESET BRICKS
+
+        CustomShapelessCraftingRecipe.start(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base), 1)
+                //
+                .addIngredient(BlastcraftTags.Items.SOLID_CARBON_PLATED_WALLS)
+                //
+                .complete(Blastcraft.ID, "reset_carbonplatedwalling", output);
+    }
 
 }

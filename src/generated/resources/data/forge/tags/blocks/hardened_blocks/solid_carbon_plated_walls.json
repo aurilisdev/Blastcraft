@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "blastcraft:carbonplatedwalling",
+    "blastcraft:carbonplatedwallingbig",
+    "blastcraft:carbonplatedwallingpolished",
+    "blastcraft:carbonplatedwallingsmooth"
+  ]
+}

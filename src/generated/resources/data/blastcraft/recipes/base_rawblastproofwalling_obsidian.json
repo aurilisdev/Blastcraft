@@ -7,7 +7,7 @@
   ],
   "key": {
     "H": {
-      "tag": "forge:hardened_blocks/hardened_bricks"
+      "tag": "forge:hardened_blocks/solid_hardened_bricks"
     },
     "O": {
       "tag": "forge:obsidian"

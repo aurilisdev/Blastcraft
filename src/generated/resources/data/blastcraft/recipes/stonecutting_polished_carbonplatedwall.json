@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "blastcraft:carbonplatedwallingsmooth"
+    "tag": "forge:hardened_blocks/smooth_solid_carbon_plated_walls"
   },
   "result": "blastcraft:carbonplatedwallingpolished",
   "count": 1

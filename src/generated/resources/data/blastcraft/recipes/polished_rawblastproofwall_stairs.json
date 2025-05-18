@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "blastcraft:rawblastproofwallingpolished"
+    }
+  },
+  "result": {
+    "item": "blastcraft:rawblastproofwallingpolished_stairs",
+    "count": 6
+  }
+}

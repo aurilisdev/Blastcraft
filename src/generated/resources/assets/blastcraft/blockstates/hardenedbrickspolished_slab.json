@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "blastcraft:block/hardenedbrickspolished_slab_top"
+    },
+    "type=bottom": {
+      "model": "blastcraft:block/hardenedbrickspolished_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/hardenedbrickspolished"
+    }
+  }
+}

@@ -2,66 +2,68 @@ package blastcraft.datagen.server.recipe.vanilla;
 
 import java.util.function.Consumer;
 
-import blastcraft.References;
-import blastcraft.common.block.subtype.SubtypeBrick;
-import blastcraft.common.block.subtype.SubtypeWalling;
-import blastcraft.registers.BlastcraftBlocks;
-import electrodynamics.datagen.utils.recipe.AbstractRecipeGenerator;
-import electrodynamics.datagen.utils.recipe.ElectrodynamicsCookingRecipe;
+import blastcraft.Blastcraft;
+import blastcraft.common.block.subtype.SubtypeBlastproofWall;
+import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
+import blastcraft.common.block.subtype.SubtypeHardenedBricks;
+import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
+import blastcraft.registers.BlastcraftItems;
 import net.minecraft.data.recipes.FinishedRecipe;
+import voltaic.datagen.utils.server.recipe.AbstractRecipeGenerator;
+import voltaic.datagen.utils.server.recipe.CustomCookingRecipe;
 
 public class BlastcraftSmeltingRecipes extends AbstractRecipeGenerator {
 
 	@Override
 	public void addRecipes(Consumer<FinishedRecipe> consumer) {
 
-		ElectrodynamicsCookingRecipe.smeltingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.smooth).asItem(), 0.1F, 200)
+		CustomCookingRecipe.smeltingRecipe(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth), 0.1F, 200)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base))
 				//
-				.complete(References.ID, "smooth_blastproofwalling_smelting", consumer);
+				.complete(Blastcraft.ID, "smooth_blastproofwalling_smelting", consumer);
 
-		ElectrodynamicsCookingRecipe.blastingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.smooth).asItem(), 0.1F, 100)
+		CustomCookingRecipe.blastingRecipe(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.smooth), 0.1F, 100)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.blastproofwalling, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base))
 				//
-				.complete(References.ID, "smooth_blastproofwalling_blasting", consumer);
+				.complete(Blastcraft.ID, "smooth_blastproofwalling_blasting", consumer);
 
-		ElectrodynamicsCookingRecipe.smeltingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.smooth).asItem(), 0.1F, 200)
+		CustomCookingRecipe.smeltingRecipe(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth), 0.1F, 200)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base))
 				//
-				.complete(References.ID, "smooth_rawblastproofwalling_smelting", consumer);
+				.complete(Blastcraft.ID, "smooth_rawblastproofwalling_smelting", consumer);
 
-		ElectrodynamicsCookingRecipe.blastingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.smooth).asItem(), 0.1F, 100)
+		CustomCookingRecipe.blastingRecipe(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.smooth), 0.1F, 100)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.rawblastproofwalling, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_RAW_BLASTPROOFWALL.getValue(SubtypeRawBlastproofWall.base))
 				//
-				.complete(References.ID, "smooth_rawblastproofwalling_blasting", consumer);
+				.complete(Blastcraft.ID, "smooth_rawblastproofwalling_blasting", consumer);
 
-		ElectrodynamicsCookingRecipe.smeltingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.smooth).asItem(), 0.1F, 200)
+		CustomCookingRecipe.smeltingRecipe(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth), 0.1F, 200)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base))
 				//
-				.complete(References.ID, "smooth_carbonplatedwalling_smelting", consumer);
+				.complete(Blastcraft.ID, "smooth_carbonplatedwalling_smelting", consumer);
 
-		ElectrodynamicsCookingRecipe.blastingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.smooth).asItem(), 0.1F, 100)
+		CustomCookingRecipe.blastingRecipe(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.smooth), 0.1F, 100)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.carbonplatedwalling, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_CARBONPLATEDWALL.getValue(SubtypeCarbonPlatedWall.base))
 				//
-				.complete(References.ID, "smooth_carbonplatedwalling_blasting", consumer);
+				.complete(Blastcraft.ID, "smooth_carbonplatedwalling_blasting", consumer);
 
-		ElectrodynamicsCookingRecipe.smeltingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.smooth).asItem(), 0.1F, 200)
+		CustomCookingRecipe.smeltingRecipe(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth), 0.1F, 200)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base))
 				//
-				.complete(References.ID, "smooth_hardenedbricks_smelting", consumer);
+				.complete(Blastcraft.ID, "smooth_hardenedbricks_smelting", consumer);
 
-		ElectrodynamicsCookingRecipe.blastingRecipe(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.smooth).asItem(), 0.1F, 100)
+		CustomCookingRecipe.blastingRecipe(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.smooth), 0.1F, 100)
 				//
-				.input(BlastcraftBlocks.getWallForType(SubtypeWalling.hardenedbricks, SubtypeBrick.base).asItem())
+				.input(BlastcraftItems.ITEMS_HARDENEDBRICKS.getValue(SubtypeHardenedBricks.base))
 				//
-				.complete(References.ID, "smooth_hardenedbricks_blasting", consumer);
+				.complete(Blastcraft.ID, "smooth_hardenedbricks_blasting", consumer);
 
 	}
 

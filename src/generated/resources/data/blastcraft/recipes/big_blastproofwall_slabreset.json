@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "blastcraft:blastproofwallingbig_slab"
+    },
+    {
+      "item": "blastcraft:blastproofwallingbig_slab"
+    }
+  ],
+  "result": {
+    "item": "blastcraft:blastproofwallingbig"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "blastcraft:block/rawblastproofwallingbase_slab_top"
+    },
+    "type=bottom": {
+      "model": "blastcraft:block/rawblastproofwallingbase_slab"
+    },
+    "type=double": {
+      "model": "blastcraft:block/rawblastproofwalling"
+    }
+  }
+}
