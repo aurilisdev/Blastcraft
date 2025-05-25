@@ -6,16 +6,12 @@ import blastcraft.common.block.subtype.SubtypeCarbonPlatedWall;
 import blastcraft.common.block.subtype.SubtypeHardenedBricks;
 import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import voltaic.Voltaic;
 import voltaic.api.registration.BulkRegistryObject;
 import voltaic.common.blockitem.BlockItemDescriptable;
-import voltaic.common.item.ItemUpgrade;
-import voltaic.common.item.subtype.SubtypeItemUpgrade;
 
 public class BlastcraftItems {
 
@@ -33,40 +29,5 @@ public class BlastcraftItems {
     public static final RegistryObject<BlockItemDescriptable> ITEM_SPIKE = ITEMS.register("spike", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_SPIKE.get(), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN));
     public static final RegistryObject<BlockItemDescriptable> ITEM_FIRESPIKE = ITEMS.register("spikefire", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_FIRESPIKE.get(), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN));
     public static final RegistryObject<BlockItemDescriptable> ITEM_POISONSPIKE = ITEMS.register("spikepoison", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_POISONSPIKE.get(), new Item.Properties(), () -> BlastcraftCreativeTabs.MAIN));
-
-    public static final RegistryObject<ItemUpgrade> ITEM_SPEEDUPGRADE_BASIC = ITEMS.register("upgradebasicspeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.basicspeed, () -> BlastcraftCreativeTabs.MAIN) {
-        @Override
-        public boolean allowdedIn(CreativeModeTab tab) {
-            return Voltaic.isElectroLoaded() ? false : super.allowdedIn(tab);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_SPEEDUPGRADE_ADVANCED = ITEMS.register("upgradeadvancedpeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.advancedspeed, () -> BlastcraftCreativeTabs.MAIN) {
-    	@Override
-        public boolean allowdedIn(CreativeModeTab tab) {
-            return Voltaic.isElectroLoaded() ? false : super.allowdedIn(tab);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADEITEMINPUT = ITEMS.register("upgradeiteminput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.iteminput, () -> BlastcraftCreativeTabs.MAIN) {
-    	@Override
-        public boolean allowdedIn(CreativeModeTab tab) {
-            return Voltaic.isElectroLoaded() ? false : super.allowdedIn(tab);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADEITEMOUTPUT = ITEMS.register("upgradeitemoutput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.itemoutput, () -> BlastcraftCreativeTabs.MAIN) {
-    	@Override
-        public boolean allowdedIn(CreativeModeTab tab) {
-            return Voltaic.isElectroLoaded() ? false : super.allowdedIn(tab);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADERANGE = ITEMS.register("upgraderange", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.range, () -> BlastcraftCreativeTabs.MAIN) {
-    	@Override
-        public boolean allowdedIn(CreativeModeTab tab) {
-            return Voltaic.isElectroLoaded() ? false : super.allowdedIn(tab);
-        }
-    });
 
 }
