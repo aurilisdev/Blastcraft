@@ -178,6 +178,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .complete(Blastcraft.ID, "concrete_regular_noelectro", output);
 
+        /*
         ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_SPEEDUPGRADE_ADVANCED.get(), 1)
                 //
                 .addPattern("PGP")
@@ -198,7 +199,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .addConditions(ELECTRO_NOT_LOADED)
                 //
-                .complete(Electrodynamics.ID, "upgrade_advanced_speed", output);
+                .complete(Electrodynamics.ID, "upgrade_advanced_speed_noelectro", output);
 
         ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_SPEEDUPGRADE_BASIC.get(), 1)
                 //
@@ -218,7 +219,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .addConditions(ELECTRO_NOT_LOADED)
                 //
-                .complete(Electrodynamics.ID, "upgrade_basic_speed", output);
+                .complete(Electrodynamics.ID, "upgrade_basic_speed_noelectro", output);
 
         ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_UPGRADEITEMINPUT.get(), 1)
                 //
@@ -236,7 +237,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .addConditions(ELECTRO_NOT_LOADED)
                 //
-                .complete(Electrodynamics.ID, "upgrade_item_input", output);
+                .complete(Electrodynamics.ID, "upgrade_item_input_noelectro", output);
 
         ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_UPGRADEITEMOUTPUT.get(), 1)
                 //
@@ -254,7 +255,7 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .addConditions(ELECTRO_NOT_LOADED)
                 //
-                .complete(Electrodynamics.ID, "upgrade_item_output", output);
+                .complete(Electrodynamics.ID, "upgrade_item_output_noelectro", output);
 
         ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_UPGRADERANGE.get(), 1)
                 //
@@ -272,7 +273,9 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .addConditions(ELECTRO_NOT_LOADED)
                 //
-                .complete(Electrodynamics.ID, "upgrade_range", output);
+                .complete(Electrodynamics.ID, "upgrade_range_noelectro", output);
+
+         */
 
         addMachines(output);
 
@@ -342,7 +345,27 @@ public class BlastcraftCraftingTableRecipes extends AbstractRecipeGenerator {
                 //
                 .addConditions(ELECTRO_LOADED)
                 //
-                .complete(Blastcraft.ID, "blastcompressor", output);
+                .complete(Blastcraft.ID, "blastcompressor_electro", output);
+
+        ShapedCraftingRecipeBuilder.start(BlastcraftItems.ITEM_BLASTCOMPRESSOR.get(), 1)
+                //
+                .addPattern("SFS")
+                //
+                .addPattern("PCP")
+                //
+                .addPattern("SSS")
+                //
+                .addKey('S', Tags.Items.INGOTS_IRON)
+                //
+                .addKey('F', Items.FURNACE)
+                //
+                .addKey('P', Items.PISTON)
+                //
+                .addKey('C', Tags.Items.INGOTS_GOLD)
+                //
+                .addConditions(ELECTRO_NOT_LOADED)
+                //
+                .complete(Blastcraft.ID, "blastcompressor_noelectro", output);
 
     }
 
