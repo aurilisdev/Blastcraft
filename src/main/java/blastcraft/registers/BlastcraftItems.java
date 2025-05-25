@@ -12,8 +12,6 @@ import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.prefab.utils.BlastcraftTextUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,13 +21,10 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import voltaic.Voltaic;
 import voltaic.api.creativetab.CreativeTabSupplier;
 import voltaic.api.registration.BulkRegistryObject;
 import voltaic.common.blockitem.BlockItemDescriptable;
 import voltaic.common.item.ItemDescriptable;
-import voltaic.common.item.ItemUpgrade;
-import voltaic.common.item.subtype.SubtypeItemUpgrade;
 
 public class BlastcraftItems {
 
@@ -50,56 +45,6 @@ public class BlastcraftItems {
     public static final RegistryObject<BlockItemDescriptable> ITEM_POISONSPIKE = ITEMS.register("spikepoison", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_POISONSPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
 
     public static final RegistryObject<Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties(), BlastcraftCreativeTabs.MAIN, BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.DARK_GRAY)));
-
-    public static final RegistryObject<ItemUpgrade> ITEM_SPEEDUPGRADE_BASIC = ITEMS.register("upgradebasicspeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.basicspeed, BlastcraftCreativeTabs.MAIN) {
-        @Override
-        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
-            if(Voltaic.isElectroLoaded()) {
-                return;
-            }
-            super.addCreativeModeItems(tab, items);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_SPEEDUPGRADE_ADVANCED = ITEMS.register("upgradeadvancedpeed", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.advancedspeed, BlastcraftCreativeTabs.MAIN) {
-        @Override
-        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
-            if(Voltaic.isElectroLoaded()) {
-                return;
-            }
-            super.addCreativeModeItems(tab, items);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADEITEMINPUT = ITEMS.register("upgradeiteminput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.iteminput, BlastcraftCreativeTabs.MAIN) {
-        @Override
-        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
-            if(Voltaic.isElectroLoaded()) {
-                return;
-            }
-            super.addCreativeModeItems(tab, items);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADEITEMOUTPUT = ITEMS.register("upgradeitemoutput", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.itemoutput, BlastcraftCreativeTabs.MAIN) {
-        @Override
-        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
-            if(Voltaic.isElectroLoaded()) {
-                return;
-            }
-            super.addCreativeModeItems(tab, items);
-        }
-    });
-
-    public static final RegistryObject<ItemUpgrade> ITEM_UPGRADERANGE = ITEMS.register("upgraderange", () -> new ItemUpgrade(new Item.Properties(), SubtypeItemUpgrade.range, BlastcraftCreativeTabs.MAIN) {
-        @Override
-        public void addCreativeModeItems(CreativeModeTab tab, List<ItemStack> items) {
-            if(Voltaic.isElectroLoaded()) {
-                return;
-            }
-            super.addCreativeModeItems(tab, items);
-        }
-    });
 
     @EventBusSubscriber(value = Dist.CLIENT, modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
     private static class BlastcraftCreativeRegistry {

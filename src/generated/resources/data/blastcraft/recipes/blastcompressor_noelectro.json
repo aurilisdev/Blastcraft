@@ -11,23 +11,26 @@
     }
   ],
   "key": {
-    "B": {
-      "tag": "forge:dusts/redstone"
+    "C": {
+      "tag": "forge:ingots/gold"
+    },
+    "F": {
+      "item": "minecraft:furnace"
     },
     "P": {
-      "tag": "forge:ingots/iron"
+      "item": "minecraft:piston"
     },
-    "W": {
-      "tag": "forge:ingots/copper"
+    "S": {
+      "tag": "forge:ingots/iron"
     }
   },
   "pattern": [
-    "PWP",
-    "WBW",
-    "PWP"
+    "SFS",
+    "PCP",
+    "SSS"
   ],
   "result": {
-    "item": "blastcraft:upgraderange"
+    "item": "blastcraft:blastcompressor"
   },
   "show_notification": false
 }
