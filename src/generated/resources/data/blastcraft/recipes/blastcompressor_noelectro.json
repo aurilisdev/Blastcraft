@@ -1,26 +1,26 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "PGP",
-    "WWW",
-    "CGC"
+    "SFS",
+    "PCP",
+    "SSS"
   ],
   "key": {
     "P": {
+      "item": "minecraft:piston"
+    },
+    "S": {
       "tag": "forge:ingots/iron"
     },
     "C": {
-      "tag": "forge:ingots/copper"
-    },
-    "G": {
-      "tag": "forge:storage_blocks/redstone"
-    },
-    "W": {
       "tag": "forge:ingots/gold"
+    },
+    "F": {
+      "item": "minecraft:furnace"
     }
   },
   "result": {
-    "item": "blastcraft:upgradebasicspeed"
+    "item": "blastcraft:blastcompressor"
   },
   "conditions": [
     {
