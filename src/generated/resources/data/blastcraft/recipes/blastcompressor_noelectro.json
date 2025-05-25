@@ -10,22 +10,25 @@
     }
   ],
   "key": {
-    "A": {
+    "C": {
       "tag": "forge:ingots/gold"
     },
-    "C": {
-      "tag": "forge:dusts/redstone"
+    "F": {
+      "item": "minecraft:furnace"
     },
     "P": {
-      "item": "minecraft:sticky_piston"
+      "item": "minecraft:piston"
+    },
+    "S": {
+      "tag": "forge:ingots/iron"
     }
   },
   "pattern": [
-    "C",
-    "P",
-    "A"
+    "SFS",
+    "PCP",
+    "SSS"
   ],
   "result": {
-    "item": "blastcraft:upgradeiteminput"
+    "item": "blastcraft:blastcompressor"
   }
 }

@@ -153,11 +153,11 @@ public class BlastcraftLangKeyProvider extends BaseLangKeyProvider {
                 addBlock(BlastcraftBlocks.BLOCK_POISONSPIKE, "Poison Spike");
 
                 addItem(BlastcraftItems.ITEM_CONCRETEMIX, "Blastcrete");
-                addItem(BlastcraftItems.ITEM_SPEEDUPGRADE_BASIC, "Basic Speed Upgrade");
-                addItem(BlastcraftItems.ITEM_SPEEDUPGRADE_ADVANCED, "Advanced Speed Upgrade");
-                addItem(BlastcraftItems.ITEM_UPGRADEITEMOUTPUT, "Auto-Ejector Upgrade");
-                addItem(BlastcraftItems.ITEM_UPGRADEITEMINPUT, "Auto-Injector Upgrade");
-                addItem(BlastcraftItems.ITEM_UPGRADERANGE, "Range Upgrade");
+                //addItem(BlastcraftItems.ITEM_SPEEDUPGRADE_BASIC, "Basic Speed Upgrade");
+                //addItem(BlastcraftItems.ITEM_SPEEDUPGRADE_ADVANCED, "Advanced Speed Upgrade");
+                //addItem(BlastcraftItems.ITEM_UPGRADEITEMOUTPUT, "Auto-Ejector Upgrade");
+                //addItem(BlastcraftItems.ITEM_UPGRADEITEMINPUT, "Auto-Injector Upgrade");
+                //addItem(BlastcraftItems.ITEM_UPGRADERANGE, "Range Upgrade");
 
                 addFluid(BlastcraftFluids.FLUID_CONCRETE, "Concrete Slurry");
 
