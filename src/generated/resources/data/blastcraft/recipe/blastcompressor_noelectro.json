@@ -11,29 +11,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "B": {
-      "item": "electrodynamics:upgradebasicspeed"
-    },
     "C": {
       "tag": "c:ingots/gold"
     },
-    "G": {
-      "tag": "c:storage_blocks/redstone"
+    "F": {
+      "item": "minecraft:furnace"
     },
     "P": {
-      "tag": "c:ingots/iron"
+      "item": "minecraft:piston"
     },
-    "W": {
-      "tag": "c:ingots/copper"
+    "S": {
+      "tag": "c:ingots/iron"
     }
   },
   "pattern": [
-    "PGP",
-    "BWB",
-    "CGC"
+    "SFS",
+    "PCP",
+    "SSS"
   ],
   "result": {
     "count": 1,
-    "id": "blastcraft:upgradeadvancedpeed"
+    "id": "blastcraft:blastcompressor"
   }
 }
