@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Objects;
 
 import blastcraft.Blastcraft;
-import blastcraft.registers.BlastcraftRecipies;
 import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.compatibility.jei.recipecategories.item2item.specificmachines.BlastCompressorRecipeCategory;
 import blastcraft.registers.BlastcraftFluids;
+import blastcraft.registers.BlastcraftRecipies;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.neoforge.NeoForgeTypes;

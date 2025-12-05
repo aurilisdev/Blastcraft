@@ -184,6 +184,7 @@ public class BlastcraftLangKeyProvider extends BaseLangKeyProvider {
 
                 addJei(BlastCompressorRecipe.RECIPE_GROUP, "Blast Compressor");
 
+                addConfiguration("common", "Common");
         }
 
     }

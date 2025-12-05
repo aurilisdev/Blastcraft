@@ -54,3 +54,5 @@ runServer.launch
 *.launch
 Icon
 runs
+
+desktop.ini

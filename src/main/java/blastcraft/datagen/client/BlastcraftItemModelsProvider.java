@@ -3,9 +3,7 @@ package blastcraft.datagen.client;
 import blastcraft.Blastcraft;
 import blastcraft.registers.BlastcraftItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import voltaic.common.item.subtype.SubtypeItemUpgrade;
 import voltaic.datagen.utils.client.BaseItemModelsProvider;
 
 public class BlastcraftItemModelsProvider extends BaseItemModelsProvider {
