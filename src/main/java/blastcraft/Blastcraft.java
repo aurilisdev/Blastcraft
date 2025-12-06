@@ -17,6 +17,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -32,8 +33,9 @@ public final class Blastcraft {
     public Blastcraft(IEventBus bus, ModContainer container) {
 	BlastcraftConfig.INSTANCE = new BlastcraftConfig();
 	container.registerConfig(ModConfig.Type.COMMON, BlastcraftConfig.INSTANCE.SPEC);
-	container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-
+	if (FMLEnvironment.dist == Dist.CLIENT) {
+	    container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+	}
 	BlastcraftBlockStates.init();
 	UnifiedBlastcraftRegister.register(bus);
     }
