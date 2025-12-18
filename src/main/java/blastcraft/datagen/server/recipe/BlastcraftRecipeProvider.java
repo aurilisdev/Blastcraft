@@ -15,6 +15,7 @@ public class BlastcraftRecipeProvider extends BaseRecipeProvider {
 		super(output);
 	}
 
+	@Override
 	public void addRecipes() {
 		generators.add(new BlastcraftCraftingTableRecipes());
 		generators.add(new BlastcraftSmeltingRecipes());

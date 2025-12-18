@@ -53,3 +53,5 @@ runData.launch
 runServer.launch
 *.launch
 Icon
+wrapper/ 
+desktop.ini 
