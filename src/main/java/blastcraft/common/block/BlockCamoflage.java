@@ -28,12 +28,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import voltaic.common.block.states.VoltaicMaterials;
 import voltaic.prefab.block.GenericEntityBlock;
 
 public class BlockCamoflage extends GenericEntityBlock {
 
     public BlockCamoflage() {
-        super(Blocks.WHITE_WOOL.properties().strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
+        super(VoltaicMaterials.wool().strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
     }
 
     @Override
