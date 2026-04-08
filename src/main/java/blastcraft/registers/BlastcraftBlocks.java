@@ -26,6 +26,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voltaic.api.registration.BulkDeferredHolder;
 import voltaic.common.block.BlockCustomGlass;
+import voltaic.common.block.states.VoltaicMaterials;
 import voltaic.common.block.voxelshapes.VoxelShapeProvider;
 import voltaic.prefab.block.GenericMachineBlock;
 
@@ -77,7 +78,7 @@ public class BlastcraftBlocks {
             }
     ));
     public static final BulkDeferredHolder<Block, BlockCustomGlass, SubtypeWallingGlass> BLOCKS_WALLINGGLASS = new BulkDeferredHolder<>(SubtypeWallingGlass.values(), subtype -> BLOCKS.register(subtype.tag(), () -> new BlockCustomGlass(subtype.hardness, subtype.resistance)));
-    public static final DeferredHolder<Block, PressurePlateBlock> BLOCK_GLASSPRESSUREPLATE = BLOCKS.register("glasspressureplate", () -> new PressurePlateBlock(BlockSetType.STONE, Blocks.GLASS.properties().noCollission().strength(0.5F).sound(SoundType.GLASS)));
+    public static final DeferredHolder<Block, PressurePlateBlock> BLOCK_GLASSPRESSUREPLATE = BLOCKS.register("glasspressureplate", () -> new PressurePlateBlock(BlockSetType.STONE, VoltaicMaterials.glass().noCollission().strength(0.5F).sound(SoundType.GLASS)));
     public static final DeferredHolder<Block, BlockSpike> BLOCK_SPIKE = BLOCKS.register("spike", BlockSpike::new);
     public static final DeferredHolder<Block, BlockSpikeFire> BLOCK_FIRESPIKE = BLOCKS.register("spikefire", BlockSpikeFire::new);
     public static final DeferredHolder<Block, BlockSpikePoison> BLOCK_POISONSPIKE = BLOCKS.register("spikepoison", BlockSpikePoison::new);
