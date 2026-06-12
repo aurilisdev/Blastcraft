@@ -7,7 +7,8 @@ import net.minecraft.world.level.block.state.BlockState;
 public class BlockCustomStairs extends StairBlock {
 
 	public BlockCustomStairs(BlockState state, float hardness, float resistance) {
-		super(state, Blocks.IRON_BLOCK.properties().requiresCorrectToolForDrops().strength(hardness, resistance));
+		super(state,
+				Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().strength(hardness, resistance));
 	}
 
 }

@@ -33,7 +33,7 @@ import voltaic.prefab.block.GenericEntityBlock;
 public class BlockCamoflage extends GenericEntityBlock {
 
     public BlockCamoflage() {
-        super(Blocks.WHITE_WOOL.properties().strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
+        super(Properties.ofFullCopy(Blocks.WHITE_WOOL).strength(0.3f, 1.0f).sound(SoundType.WOOL).isRedstoneConductor((a, b, c) -> false).noOcclusion());
     }
 
     @Override

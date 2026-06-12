@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -77,7 +78,7 @@ public class BlastcraftBlocks {
             }
     ));
     public static final BulkDeferredHolder<Block, BlockCustomGlass, SubtypeWallingGlass> BLOCKS_WALLINGGLASS = new BulkDeferredHolder<>(SubtypeWallingGlass.values(), subtype -> BLOCKS.register(subtype.tag(), () -> new BlockCustomGlass(subtype.hardness, subtype.resistance)));
-    public static final DeferredHolder<Block, PressurePlateBlock> BLOCK_GLASSPRESSUREPLATE = BLOCKS.register("glasspressureplate", () -> new PressurePlateBlock(BlockSetType.STONE, Blocks.GLASS.properties().noCollission().strength(0.5F).sound(SoundType.GLASS)));
+    public static final DeferredHolder<Block, PressurePlateBlock> BLOCK_GLASSPRESSUREPLATE = BLOCKS.register("glasspressureplate", () -> new PressurePlateBlock(BlockSetType.STONE, Properties.ofFullCopy(Blocks.GLASS).noCollission().strength(0.5F).sound(SoundType.GLASS)));
     public static final DeferredHolder<Block, BlockSpike> BLOCK_SPIKE = BLOCKS.register("spike", BlockSpike::new);
     public static final DeferredHolder<Block, BlockSpikeFire> BLOCK_FIRESPIKE = BLOCKS.register("spikefire", BlockSpikeFire::new);
     public static final DeferredHolder<Block, BlockSpikePoison> BLOCK_POISONSPIKE = BLOCKS.register("spikepoison", BlockSpikePoison::new);

@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BlockSpike extends Block {
 
 	public BlockSpike() {
-		super(Blocks.IRON_BLOCK.properties().strength(1F).sound(SoundType.METAL).noOcclusion());
+		super(Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(1F).sound(SoundType.METAL).noOcclusion());
 	}
 
 	@Override
