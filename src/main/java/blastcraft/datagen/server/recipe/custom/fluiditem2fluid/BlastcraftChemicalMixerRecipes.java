@@ -13,21 +13,22 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class BlastcraftChemicalMixerRecipes extends ElectrodynamicsChemicalMixerRecipes {
 
-	public BlastcraftChemicalMixerRecipes() {
-		super(Blastcraft.ID);
-	}
+    public BlastcraftChemicalMixerRecipes() {
+	super(Blastcraft.ID);
+    }
 
-	@Override
-	public void addRecipes(Consumer<FinishedRecipe> consumer) {
+    @Override
+    public void addRecipes(Consumer<FinishedRecipe> consumer) {
 
-		newRecipe(new FluidStack(BlastcraftFluids.FLUID_CONCRETE.get(), 5000), 0, CHEMICALMIXER_REQUIRED_TICKS, CHEMICALMIXER_USAGE_PER_TICK, "concrete_slurry")
-				//
-				.addFluidTagInput(FluidTags.WATER, 1000)
-				//
-				.addItemStackInput(new ItemStack(BlastcraftItems.ITEM_CONCRETEMIX.get()))
-				//
-				.complete(consumer);
+	newRecipe(new FluidStack(BlastcraftFluids.FLUID_CONCRETE.get(), 5000), 0, CHEMICALMIXER_REQUIRED_TICKS,
+		CHEMICALMIXER_USAGE_PER_TICK, "concrete_slurry")
+		//
+		.addFluidTagInput(FluidTags.WATER, 1000)
+		//
+		.addItemStackInput(new ItemStack(BlastcraftItems.ITEM_CONCRETEMIX.get()))
+		//
+		.complete(consumer);
 
-	}
+    }
 
 }

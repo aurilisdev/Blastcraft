@@ -22,36 +22,36 @@ import voltaic.prefab.configuration.ConfigurationHandler;
 @EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
 public class Blastcraft {
 
-	public static final String ID = "blastcraft";
-	public static final String NAME = "Blastcraft";
+    public static final String ID = "blastcraft";
+    public static final String NAME = "Blastcraft";
 
-	public static final String BALLISTIX_ID = "ballistix";
+    public static final String BALLISTIX_ID = "ballistix";
 
-	public Blastcraft() {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		ConfigurationHandler.registerConfig(BlastcraftConstants.class);
-		BlastcraftBlockStates.init();
-		UnifiedBlastcraftRegister.register(bus);
-	}
+    public Blastcraft() {
+	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+	ConfigurationHandler.registerConfig(BlastcraftConstants.class);
+	BlastcraftBlockStates.init();
+	UnifiedBlastcraftRegister.register(bus);
+    }
 
-	@SubscribeEvent
-	public static void onCommonSetup(FMLCommonSetupEvent event) {
-		BlastcraftTags.init();
-	}
+    @SubscribeEvent
+    public static void onCommonSetup(FMLCommonSetupEvent event) {
+	BlastcraftTags.init();
+    }
 
-	@SubscribeEvent
-	@OnlyIn(Dist.CLIENT)
-	public static void onClientSetup(FMLClientSetupEvent event) {
-		event.enqueueWork(() -> {
-			BlastcraftClientRegister.setup();
-		});
-	}
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void onClientSetup(FMLClientSetupEvent event) {
+	event.enqueueWork(() -> {
+	    BlastcraftClientRegister.setup();
+	});
+    }
 
-	@SubscribeEvent
-	public static void onLoadEvent(FMLLoadCompleteEvent event) {
-	}
+    @SubscribeEvent
+    public static void onLoadEvent(FMLLoadCompleteEvent event) {
+    }
 
-	public static final ResourceLocation rl(String path) {
-		return new ResourceLocation(Blastcraft.ID, path);
-	}
+    public static final ResourceLocation rl(String path) {
+	return new ResourceLocation(Blastcraft.ID, path);
+    }
 }

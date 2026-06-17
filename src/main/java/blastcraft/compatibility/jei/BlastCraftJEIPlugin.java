@@ -29,31 +29,35 @@ import net.minecraftforge.registries.RegistryObject;
 public class BlastCraftJEIPlugin implements IModPlugin {
 
     public static final ResourceLocation ID = Blastcraft.rl("jei");
+
     @Override
     public ResourceLocation getPluginUid() {
-        return ID;
+	return ID;
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE, BlastCompressorRecipeCategory.RECIPE_TYPE);
+	registration.addRecipeCatalyst(BlastCompressorRecipeCategory.INPUT_MACHINE,
+		BlastCompressorRecipeCategory.RECIPE_TYPE);
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        Minecraft mc = Minecraft.getInstance();
-        ClientLevel world = Objects.requireNonNull(mc.level);
-        RecipeManager recipeManager = world.getRecipeManager();
+	Minecraft mc = Minecraft.getInstance();
+	ClientLevel world = Objects.requireNonNull(mc.level);
+	RecipeManager recipeManager = world.getRecipeManager();
 
-        // Blast Compressor
-        List<BlastCompressorRecipe> blastCompressorRecipes = recipeManager.getAllRecipesFor(BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get());
-        registration.addRecipes(BlastCompressorRecipeCategory.RECIPE_TYPE, blastCompressorRecipes);
+	// Blast Compressor
+	List<BlastCompressorRecipe> blastCompressorRecipes = recipeManager
+		.getAllRecipesFor(BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get());
+	registration.addRecipes(BlastCompressorRecipeCategory.RECIPE_TYPE, blastCompressorRecipes);
 
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-        registration.addRecipeCategories(new BlastCompressorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+	registration
+		.addRecipeCategories(new BlastCompressorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -63,11 +67,11 @@ public class BlastCraftJEIPlugin implements IModPlugin {
 
     @Override
     public void registerExtraIngredients(IExtraIngredientRegistration registration) {
-        List<FluidStack> fluids = new ArrayList<>();
-        for (RegistryObject<? extends Fluid> fluid : BlastcraftFluids.FLUIDS.getEntries()) {
-            fluids.add(new FluidStack(fluid.get(), 1000));
-        }
-        registration.addExtraIngredients(ForgeTypes.FLUID_STACK, fluids);
+	List<FluidStack> fluids = new ArrayList<>();
+	for (RegistryObject<? extends Fluid> fluid : BlastcraftFluids.FLUIDS.getEntries()) {
+	    fluids.add(new FluidStack(fluid.get(), 1000));
+	}
+	registration.addExtraIngredients(ForgeTypes.FLUID_STACK, fluids);
     }
 
 }

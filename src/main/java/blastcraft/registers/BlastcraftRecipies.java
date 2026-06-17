@@ -12,16 +12,20 @@ import voltaic.common.recipe.categories.item2item.Item2ItemRecipeSerializer;
 
 public class BlastcraftRecipies {
 
-	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Blastcraft.ID);
-	public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, Blastcraft.ID);
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister
+	    .create(ForgeRegistries.RECIPE_SERIALIZERS, Blastcraft.ID);
+    public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister
+	    .create(ForgeRegistries.RECIPE_TYPES, Blastcraft.ID);
 
-	/* RECIPE TYPES */
+    /* RECIPE TYPES */
 
-	// ITEM2ITEM
-	public static final RegistryObject<RecipeType<BlastCompressorRecipe>> BLAST_COMPRESSOR_TYPE = RECIPE_TYPES.register(BlastCompressorRecipe.RECIPE_GROUP, VoltaicRecipeType::new);
+    // ITEM2ITEM
+    public static final RegistryObject<RecipeType<BlastCompressorRecipe>> BLAST_COMPRESSOR_TYPE = RECIPE_TYPES
+	    .register(BlastCompressorRecipe.RECIPE_GROUP, VoltaicRecipeType::new);
 
-	/* RECIPE SERIALIZERS */
+    /* RECIPE SERIALIZERS */
 
-	// O2O
-	public static final RegistryObject<RecipeSerializer<?>> BLAST_COMPRESSOR_SERIALIZER = RECIPE_SERIALIZER.register(BlastCompressorRecipe.RECIPE_GROUP, () -> new Item2ItemRecipeSerializer<>(BlastCompressorRecipe::new));
+    // O2O
+    public static final RegistryObject<RecipeSerializer<?>> BLAST_COMPRESSOR_SERIALIZER = RECIPE_SERIALIZER.register(
+	    BlastCompressorRecipe.RECIPE_GROUP, () -> new Item2ItemRecipeSerializer<>(BlastCompressorRecipe::new));
 }

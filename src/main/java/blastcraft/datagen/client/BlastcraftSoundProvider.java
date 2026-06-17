@@ -8,13 +8,13 @@ import voltaic.datagen.utils.client.BaseSoundProvider;
 
 public class BlastcraftSoundProvider extends BaseSoundProvider {
 
-	public BlastcraftSoundProvider(PackOutput output, ExistingFileHelper helper) {
-		super(output, helper, Blastcraft.ID);
-	}
+    public BlastcraftSoundProvider(PackOutput output, ExistingFileHelper helper) {
+	super(output, helper, Blastcraft.ID);
+    }
 
-	@Override
-	public void registerSounds() {
-		add(BlastcraftSounds.SOUND_BLASTCOMPRESSOR);
-	}
+    @Override
+    public void registerSounds() {
+	add(BlastcraftSounds.SOUND_BLASTCOMPRESSOR);
+    }
 
 }

@@ -11,18 +11,18 @@ import voltaic.datagen.utils.server.recipe.BaseRecipeProvider;
 
 public class BlastcraftRecipeProvider extends BaseRecipeProvider {
 
-	public BlastcraftRecipeProvider(PackOutput output) {
-		super(output);
-	}
+    public BlastcraftRecipeProvider(PackOutput output) {
+	super(output);
+    }
 
-	@Override
-	public void addRecipes() {
-		generators.add(new BlastcraftCraftingTableRecipes());
-		generators.add(new BlastcraftSmeltingRecipes());
-		generators.add(new BlastcraftStonecuttingRecipes());
-		generators.add(new BlastcraftBlastCompressorRecipes());
-		generators.add(new BlastcraftChemicalMixerRecipes());
-		generators.add(new BlastcraftChemicalCrystallizerRecipes());
-	}
+    @Override
+    public void addRecipes() {
+	generators.add(new BlastcraftCraftingTableRecipes());
+	generators.add(new BlastcraftSmeltingRecipes());
+	generators.add(new BlastcraftStonecuttingRecipes());
+	generators.add(new BlastcraftBlastCompressorRecipes());
+	generators.add(new BlastcraftChemicalMixerRecipes());
+	generators.add(new BlastcraftChemicalCrystallizerRecipes());
+    }
 
 }

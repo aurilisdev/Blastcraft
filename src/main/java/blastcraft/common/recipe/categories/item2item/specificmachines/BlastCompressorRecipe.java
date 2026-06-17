@@ -16,21 +16,23 @@ import voltaic.common.recipe.recipeutils.ProbableItem;
 
 public class BlastCompressorRecipe extends Item2ItemRecipe {
 
-	public static final String RECIPE_GROUP = "blast_compressor_recipe";
-	public static final ResourceLocation RECIPE_ID = Blastcraft.rl(RECIPE_GROUP);
+    public static final String RECIPE_GROUP = "blast_compressor_recipe";
+    public static final ResourceLocation RECIPE_ID = Blastcraft.rl(RECIPE_GROUP);
 
-	public BlastCompressorRecipe(ResourceLocation id, List<CountableIngredient> inputs, ItemStack output, double experience, int ticks, double usagePerTick, List<ProbableItem> itemBiproducts, List<ProbableFluid> fluidBiproducts, List<ProbableGas> gasBiproducts) {
-		super(id, inputs, output, experience, ticks, usagePerTick, itemBiproducts, fluidBiproducts, gasBiproducts);
-	}
+    public BlastCompressorRecipe(ResourceLocation id, List<CountableIngredient> inputs, ItemStack output,
+	    double experience, int ticks, double usagePerTick, List<ProbableItem> itemBiproducts,
+	    List<ProbableFluid> fluidBiproducts, List<ProbableGas> gasBiproducts) {
+	super(id, inputs, output, experience, ticks, usagePerTick, itemBiproducts, fluidBiproducts, gasBiproducts);
+    }
 
-	@Override
-	public RecipeSerializer<?> getSerializer() {
-		return BlastcraftRecipies.BLAST_COMPRESSOR_SERIALIZER.get();
-	}
+    @Override
+    public RecipeSerializer<?> getSerializer() {
+	return BlastcraftRecipies.BLAST_COMPRESSOR_SERIALIZER.get();
+    }
 
-	@Override
-	public RecipeType<?> getType() {
-		return BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get();
-	}
+    @Override
+    public RecipeType<?> getType() {
+	return BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get();
+    }
 
 }

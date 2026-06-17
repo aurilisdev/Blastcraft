@@ -12,9 +12,10 @@ import voltaic.prefab.utilities.math.Color;
 
 public class BlastcraftFluids {
 
-	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Blastcraft.ID);
+    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Blastcraft.ID);
 
-	public static final RegistryObject<FluidNonPlaceable> FLUID_CONCRETE = FLUIDS.register("fluidconcrete", () -> new FluidNonPlaceable(() -> Items.AIR, new SimpleWaterBasedFluidType(Blastcraft.ID, "fluidconcrete", "concrete", Color.WHITE)));
-
+    public static final RegistryObject<FluidNonPlaceable> FLUID_CONCRETE = FLUIDS.register("fluidconcrete",
+	    () -> new FluidNonPlaceable(() -> Items.AIR,
+		    new SimpleWaterBasedFluidType(Blastcraft.ID, "fluidconcrete", "concrete", Color.WHITE)));
 
 }

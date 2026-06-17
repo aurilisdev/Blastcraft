@@ -15,16 +15,15 @@ import voltaic.client.guidebook.ScreenGuidebook;
 @EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD, value = { Dist.CLIENT })
 public class BlastcraftClientRegister {
 
-	public static void setup() {
-		ScreenGuidebook.addGuidebookModule(new ModuleBlastcraft());
-	}
+    public static void setup() {
+	ScreenGuidebook.addGuidebookModule(new ModuleBlastcraft());
+    }
 
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void registerEntities(EntityRenderersEvent.RegisterRenderers event) {
+	event.registerBlockEntityRenderer(BlastcraftTiles.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
 
-	@SubscribeEvent
-	@OnlyIn(Dist.CLIENT)
-	public static void registerEntities(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerBlockEntityRenderer(BlastcraftTiles.TILE_CAMOFLAGE.get(), RenderCamoflage::new);
-
-	}
+    }
 
 }

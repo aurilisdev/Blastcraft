@@ -9,18 +9,20 @@ import voltaic.client.render.AbstractTileRenderer;
 
 public class RenderCamoflage extends AbstractTileRenderer<TileCamoflauge> {
 
-	public RenderCamoflage(BlockEntityRendererProvider.Context context) {
-		super(context);
+    public RenderCamoflage(BlockEntityRendererProvider.Context context) {
+	super(context);
+    }
+
+    @Override
+    public void render(TileCamoflauge tile, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn,
+	    int combinedLightIn, int combinedOverlayIn) {
+
+	if (tile.isCamoAir()) {
+	    return;
 	}
 
-	@Override
-	public void render(TileCamoflauge tile, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int combinedLightIn, int combinedOverlayIn) {
-
-		if (tile.isCamoAir()) {
-			return;
-		}
-
-		minecraft().getBlockRenderer().renderSingleBlock(tile.getCamoBlock(), matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
-	}
+	minecraft().getBlockRenderer().renderSingleBlock(tile.getCamoBlock(), matrixStackIn, bufferIn, combinedLightIn,
+		combinedOverlayIn);
+    }
 
 }

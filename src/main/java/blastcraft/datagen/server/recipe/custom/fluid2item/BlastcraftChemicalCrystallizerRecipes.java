@@ -12,19 +12,20 @@ import net.minecraft.world.item.ItemStack;
 
 public class BlastcraftChemicalCrystallizerRecipes extends ElectrodynamicsChemicalCrystallizerRecipes {
 
-	public BlastcraftChemicalCrystallizerRecipes() {
-		super(Blastcraft.ID);
-	}
+    public BlastcraftChemicalCrystallizerRecipes() {
+	super(Blastcraft.ID);
+    }
 
-	@Override
-	public void addRecipes(Consumer<FinishedRecipe> consumer) {
+    @Override
+    public void addRecipes(Consumer<FinishedRecipe> consumer) {
 
-		newRecipe(new ItemStack(BlastcraftItems.ITEMS_CONCRETE.getValue(SubtypeConcrete.regular)), 0, CHEMICALCRYSTALLIZER_REQUIRED_TICKS, CHEMICALCRYSTALLIZER_USAGE_PER_TICK, "concrete_regular")
-				//
-				.addFluidTagInput(BlastcraftTags.Fluids.CONCRETE, 1000)
-				//
-				.complete(consumer);
+	newRecipe(new ItemStack(BlastcraftItems.ITEMS_CONCRETE.getValue(SubtypeConcrete.regular)), 0,
+		CHEMICALCRYSTALLIZER_REQUIRED_TICKS, CHEMICALCRYSTALLIZER_USAGE_PER_TICK, "concrete_regular")
+		//
+		.addFluidTagInput(BlastcraftTags.Fluids.CONCRETE, 1000)
+		//
+		.complete(consumer);
 
-	}
+    }
 
 }
