@@ -30,41 +30,79 @@ public class BlastcraftItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Blastcraft.ID);
 
-    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeHardenedBricks> ITEMS_HARDENEDBRICKS = new BulkDeferredHolder<>(SubtypeHardenedBricks.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
-    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeConcrete> ITEMS_CONCRETE = new BulkDeferredHolder<>(SubtypeConcrete.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CONCRETE.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
-    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeRawBlastproofWall> ITEMS_RAW_BLASTPROOFWALL = new BulkDeferredHolder<>(SubtypeRawBlastproofWall.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
-    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeBlastproofWall> ITEMS_BLASTPROOFWALL = new BulkDeferredHolder<>(SubtypeBlastproofWall.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
-    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeCarbonPlatedWall> ITEMS_CARBONPLATEDWALL = new BulkDeferredHolder<>(SubtypeCarbonPlatedWall.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
-    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeWallingGlass> ITEMS_WALLINGGLASS = new BulkDeferredHolder<>(SubtypeWallingGlass.values(), subtype -> ITEMS.register(subtype.tag(), () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_WALLINGGLASS.getValue(subtype), new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeHardenedBricks> ITEMS_HARDENEDBRICKS = new BulkDeferredHolder<>(
+	    SubtypeHardenedBricks.values(),
+	    subtype -> ITEMS.register(subtype.tag(),
+		    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(subtype),
+			    new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeConcrete> ITEMS_CONCRETE = new BulkDeferredHolder<>(
+	    SubtypeConcrete.values(),
+	    subtype -> ITEMS.register(subtype.tag(),
+		    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CONCRETE.getValue(subtype),
+			    new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeRawBlastproofWall> ITEMS_RAW_BLASTPROOFWALL = new BulkDeferredHolder<>(
+	    SubtypeRawBlastproofWall.values(),
+	    subtype -> ITEMS.register(subtype.tag(),
+		    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(subtype),
+			    new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeBlastproofWall> ITEMS_BLASTPROOFWALL = new BulkDeferredHolder<>(
+	    SubtypeBlastproofWall.values(),
+	    subtype -> ITEMS.register(subtype.tag(),
+		    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(subtype),
+			    new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeCarbonPlatedWall> ITEMS_CARBONPLATEDWALL = new BulkDeferredHolder<>(
+	    SubtypeCarbonPlatedWall.values(),
+	    subtype -> ITEMS.register(subtype.tag(),
+		    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(subtype),
+			    new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
+    public static final BulkDeferredHolder<Item, BlockItemDescriptable, SubtypeWallingGlass> ITEMS_WALLINGGLASS = new BulkDeferredHolder<>(
+	    SubtypeWallingGlass.values(),
+	    subtype -> ITEMS.register(subtype.tag(),
+		    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCKS_WALLINGGLASS.getValue(subtype),
+			    new Item.Properties(), BlastcraftCreativeTabs.MAIN)));
 
-    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_BLASTCOMPRESSOR = ITEMS.register("blastcompressor", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
-    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_CAMOFLAGE = ITEMS.register("camoflage", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_CAMOFLAGE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
-    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_GLASSPRESSUREPLATE = ITEMS.register("glasspressureplate", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
-    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_SPIKE = ITEMS.register("spike", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_SPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
-    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_FIRESPIKE = ITEMS.register("spikefire", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_FIRESPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
-    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_POISONSPIKE = ITEMS.register("spikepoison", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_POISONSPIKE.get(), new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_BLASTCOMPRESSOR = ITEMS
+	    .register("blastcompressor", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(),
+		    new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_CAMOFLAGE = ITEMS.register("camoflage",
+	    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_CAMOFLAGE.get(), new Item.Properties(),
+		    BlastcraftCreativeTabs.MAIN));
+    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_GLASSPRESSUREPLATE = ITEMS.register(
+	    "glasspressureplate", () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE.get(),
+		    new Item.Properties(), BlastcraftCreativeTabs.MAIN));
+    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_SPIKE = ITEMS.register("spike",
+	    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_SPIKE.get(), new Item.Properties(),
+		    BlastcraftCreativeTabs.MAIN));
+    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_FIRESPIKE = ITEMS.register("spikefire",
+	    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_FIRESPIKE.get(), new Item.Properties(),
+		    BlastcraftCreativeTabs.MAIN));
+    public static final DeferredHolder<Item, BlockItemDescriptable> ITEM_POISONSPIKE = ITEMS.register("spikepoison",
+	    () -> new BlockItemDescriptable(BlastcraftBlocks.BLOCK_POISONSPIKE.get(), new Item.Properties(),
+		    BlastcraftCreativeTabs.MAIN));
 
-    public static final DeferredHolder<Item, Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix", () -> new ItemDescriptable(new Item.Properties(), BlastcraftCreativeTabs.MAIN, BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.DARK_GRAY)));
+    public static final DeferredHolder<Item, Item> ITEM_CONCRETEMIX = ITEMS.register("concretemix",
+	    () -> new ItemDescriptable(new Item.Properties(), BlastcraftCreativeTabs.MAIN,
+		    BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.DARK_GRAY)));
 
     @EventBusSubscriber(value = Dist.CLIENT, modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
     private static class BlastcraftCreativeRegistry {
 
-        @SubscribeEvent
-        public static void registerItems(BuildCreativeModeTabContentsEvent event) {
+	@SubscribeEvent
+	public static void registerItems(BuildCreativeModeTabContentsEvent event) {
 
-            ITEMS.getEntries().forEach(reg -> {
+	    ITEMS.getEntries().forEach(reg -> {
 
-                CreativeTabSupplier supplier = (CreativeTabSupplier) reg.get();
+		CreativeTabSupplier supplier = (CreativeTabSupplier) reg.get();
 
-                if (supplier.hasCreativeTab() && supplier.isAllowedInCreativeTab(event.getTab())) {
-                    List<ItemStack> toAdd = new ArrayList<>();
-                    supplier.addCreativeModeItems(event.getTab(), toAdd);
-                    event.acceptAll(toAdd);
-                }
+		if (supplier.hasCreativeTab() && supplier.isAllowedInCreativeTab(event.getTab())) {
+		    List<ItemStack> toAdd = new ArrayList<>();
+		    supplier.addCreativeModeItems(event.getTab(), toAdd);
+		    event.acceptAll(toAdd);
+		}
 
-            });
+	    });
 
-        }
+	}
 
     }
 

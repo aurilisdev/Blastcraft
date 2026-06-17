@@ -26,30 +26,34 @@ import voltaic.datagen.utils.client.BaseLangKeyProvider;
 @EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
-	@SubscribeEvent
-	public static void gatherData(GatherDataEvent event) {
+    @SubscribeEvent
+    public static void gatherData(GatherDataEvent event) {
 
-		DataGenerator generator = event.getGenerator();
+	DataGenerator generator = event.getGenerator();
 
-		PackOutput output = generator.getPackOutput();
+	PackOutput output = generator.getPackOutput();
 
-		ExistingFileHelper helper = event.getExistingFileHelper();
+	ExistingFileHelper helper = event.getExistingFileHelper();
 
-		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+	CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-		if (event.includeServer()) {
+	if (event.includeServer()) {
 
-			generator.addProvider(true, new LootTableProvider(output, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(BlastcraftLootTablesProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
-			generator.addProvider(true, new BlastcraftRecipeProvider(output, lookupProvider));
-			BlastcraftTagsProvider.addTagProviders(generator, output, lookupProvider, helper);
+	    generator.addProvider(true,
+		    new LootTableProvider(output, Collections.emptySet(),
+			    List.of(new LootTableProvider.SubProviderEntry(BlastcraftLootTablesProvider::new,
+				    LootContextParamSets.BLOCK)),
+			    lookupProvider));
+	    generator.addProvider(true, new BlastcraftRecipeProvider(output, lookupProvider));
+	    BlastcraftTagsProvider.addTagProviders(generator, output, lookupProvider, helper);
 
-		}
-		if (event.includeClient()) {
-			generator.addProvider(true, new BlastcraftBlockStateProvider(output, helper));
-			generator.addProvider(true, new BlastcraftItemModelsProvider(output, helper));
-			generator.addProvider(true, new BlastcraftLangKeyProvider(output, BaseLangKeyProvider.Locale.EN_US));
-			generator.addProvider(true, new BlastcraftSoundProvider(output, helper));
-		}
 	}
+	if (event.includeClient()) {
+	    generator.addProvider(true, new BlastcraftBlockStateProvider(output, helper));
+	    generator.addProvider(true, new BlastcraftItemModelsProvider(output, helper));
+	    generator.addProvider(true, new BlastcraftLangKeyProvider(output, BaseLangKeyProvider.Locale.EN_US));
+	    generator.addProvider(true, new BlastcraftSoundProvider(output, helper));
+	}
+    }
 
 }

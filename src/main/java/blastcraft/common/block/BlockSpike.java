@@ -17,40 +17,40 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BlockSpike extends Block {
 
-	public BlockSpike() {
-		super(Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(1F).sound(SoundType.METAL).noOcclusion());
-	}
+    public BlockSpike() {
+	super(Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(1F).sound(SoundType.METAL).noOcclusion());
+    }
 
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-		return Shapes.box(0, 0, 0, 1, 4.0 / 16.0, 1);
-	}
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+	return Shapes.box(0, 0, 0, 1, 4.0 / 16.0, 1);
+    }
 
+    @Override
+    public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
+	if (entityIn instanceof LivingEntity) {
+	    entityIn.hurt(entityIn.damageSources().cactus(), 2f);
+	}
+    }
+
+    public static class BlockSpikeFire extends BlockSpike {
 	@Override
 	public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
-		if (entityIn instanceof LivingEntity) {
-			entityIn.hurt(entityIn.damageSources().cactus(), 2f);
-		}
+	    if (entityIn instanceof LivingEntity) {
+		entityIn.setRemainingFireTicks(200);
+		entityIn.hurt(entityIn.damageSources().cactus(), 1f);
+	    }
 	}
+    }
 
-	public static class BlockSpikeFire extends BlockSpike {
-		@Override
-		public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
-			if (entityIn instanceof LivingEntity) {
-				entityIn.setRemainingFireTicks(200);
-				entityIn.hurt(entityIn.damageSources().cactus(), 1f);
-			}
-		}
+    public static class BlockSpikePoison extends BlockSpike {
+	@Override
+	public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
+	    if (entityIn instanceof LivingEntity l) {
+		l.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
+		entityIn.hurt(entityIn.damageSources().cactus(), 1f);
+	    }
 	}
-
-	public static class BlockSpikePoison extends BlockSpike {
-		@Override
-		public void stepOn(Level worldIn, BlockPos pos, BlockState state, Entity entityIn) {
-			if (entityIn instanceof LivingEntity l) {
-				l.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
-				entityIn.hurt(entityIn.damageSources().cactus(), 1f);
-			}
-		}
-	}
+    }
 
 }

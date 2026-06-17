@@ -18,31 +18,31 @@ import voltaic.datagen.utils.server.recipe.AbstractRecipeGenerator;
 
 public class BlastcraftRecipeProvider extends RecipeProvider {
 
-	public final List<AbstractRecipeGenerator> GENERATORS = new ArrayList<>();
+    public final List<AbstractRecipeGenerator> GENERATORS = new ArrayList<>();
 
     @SuppressWarnings("unused")
-	private final CompletableFuture<HolderLookup.Provider> lookupProvider;
+    private final CompletableFuture<HolderLookup.Provider> lookupProvider;
 
-	public BlastcraftRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-		super(output, lookupProvider);
-		this.lookupProvider = lookupProvider;
-		addRecipes();
-	}
+    public BlastcraftRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+	super(output, lookupProvider);
+	this.lookupProvider = lookupProvider;
+	addRecipes();
+    }
 
-	public void addRecipes() {
-		GENERATORS.add(new BlastcraftCraftingTableRecipes());
-		GENERATORS.add(new BlastcraftSmeltingRecipes());
-		GENERATORS.add(new BlastcraftStonecuttingRecipes());
-		GENERATORS.add(new BlastcraftBlastCompressorRecipes());
-		GENERATORS.add(new BlastcraftChemicalMixerRecipes());
-		GENERATORS.add(new BlastcraftChemicalCrystallizerRecipes());
-	}
+    public void addRecipes() {
+	GENERATORS.add(new BlastcraftCraftingTableRecipes());
+	GENERATORS.add(new BlastcraftSmeltingRecipes());
+	GENERATORS.add(new BlastcraftStonecuttingRecipes());
+	GENERATORS.add(new BlastcraftBlastCompressorRecipes());
+	GENERATORS.add(new BlastcraftChemicalMixerRecipes());
+	GENERATORS.add(new BlastcraftChemicalCrystallizerRecipes());
+    }
 
-	@Override
-	protected void buildRecipes(RecipeOutput output) {
-		for (AbstractRecipeGenerator generator : GENERATORS) {
-			generator.addRecipes(output);
-		}
+    @Override
+    protected void buildRecipes(RecipeOutput output) {
+	for (AbstractRecipeGenerator generator : GENERATORS) {
+	    generator.addRecipes(output);
 	}
+    }
 
 }

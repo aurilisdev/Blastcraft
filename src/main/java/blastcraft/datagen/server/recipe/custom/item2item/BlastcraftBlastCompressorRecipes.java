@@ -21,28 +21,31 @@ public class BlastcraftBlastCompressorRecipes extends AbstractRecipeGenerator {
     private final String modID;
 
     public BlastcraftBlastCompressorRecipes(String modID) {
-        this.modID = modID;
+	this.modID = modID;
     }
 
     public BlastcraftBlastCompressorRecipes() {
-        this(Blastcraft.ID);
+	this(Blastcraft.ID);
     }
 
     @Override
     public void addRecipes(RecipeOutput output) {
 
-        newRecipe(new ItemStack(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base)), 0.1F, 220, 100, "blastproofwalling", modID)
-                //
-                .addItemTagInput(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS, 1)
-                //
-                .addItemBiproduct(new ProbableItem(new ItemStack(Items.GUNPOWDER), 0.3))
-                //
-                .save(output);
+	newRecipe(new ItemStack(BlastcraftItems.ITEMS_BLASTPROOFWALL.getValue(SubtypeBlastproofWall.base)), 0.1F, 220,
+		100, "blastproofwalling", modID)
+		//
+		.addItemTagInput(BlastcraftTags.Items.SOLID_RAW_BLASTPROOF_WALLS, 1)
+		//
+		.addItemBiproduct(new ProbableItem(new ItemStack(Items.GUNPOWDER), 0.3))
+		//
+		.save(output);
 
     }
 
-    public Item2ItemBuilder<BlastCompressorRecipe> newRecipe(ItemStack stack, float xp, int ticks, double usagePerTick, String name, String group) {
-        return new Item2ItemBuilder<>(BlastCompressorRecipe::new, stack, BaseRecipeBuilder.RecipeCategory.ITEM_2_ITEM, modID, "blast_compressor/" + name, group, xp, ticks, usagePerTick);
+    public Item2ItemBuilder<BlastCompressorRecipe> newRecipe(ItemStack stack, float xp, int ticks, double usagePerTick,
+	    String name, String group) {
+	return new Item2ItemBuilder<>(BlastCompressorRecipe::new, stack, BaseRecipeBuilder.RecipeCategory.ITEM_2_ITEM,
+		modID, "blast_compressor/" + name, group, xp, ticks, usagePerTick);
     }
 
 }

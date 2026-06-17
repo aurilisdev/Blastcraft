@@ -12,19 +12,20 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public class BlastcraftChemicalMixerRecipes extends ElectrodynamicsChemicalMixerRecipes {
 
     public BlastcraftChemicalMixerRecipes() {
-        super(Blastcraft.ID);
+	super(Blastcraft.ID);
     }
 
     @Override
     public void addRecipes(RecipeOutput output) {
 
-        newRecipe(new FluidStack(BlastcraftFluids.FLUID_CONCRETE.get(), 5000), 0, CHEMICALMIXER_REQUIRED_TICKS, CHEMICALMIXER_USAGE_PER_TICK, "concrete_slurry", modID)
-                //
-                .addFluidTagInput(FluidTags.WATER, 1000)
-                //
-                .addItemStackInput(new ItemStack(BlastcraftItems.ITEM_CONCRETEMIX.get()))
-                //
-                .save(output);
+	newRecipe(new FluidStack(BlastcraftFluids.FLUID_CONCRETE.get(), 5000), 0, CHEMICALMIXER_REQUIRED_TICKS,
+		CHEMICALMIXER_USAGE_PER_TICK, "concrete_slurry", modID)
+		//
+		.addFluidTagInput(FluidTags.WATER, 1000)
+		//
+		.addItemStackInput(new ItemStack(BlastcraftItems.ITEM_CONCRETEMIX.get()))
+		//
+		.save(output);
 
     }
 

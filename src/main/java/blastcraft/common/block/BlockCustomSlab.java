@@ -5,8 +5,8 @@ import net.minecraft.world.level.block.SlabBlock;
 
 public class BlockCustomSlab extends SlabBlock {
 
-	public BlockCustomSlab(float hardness, float resistance) {
-		super(Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().strength(hardness, resistance));
-	}
+    public BlockCustomSlab(float hardness, float resistance) {
+	super(Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().strength(hardness, resistance));
+    }
 
 }

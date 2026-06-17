@@ -17,51 +17,52 @@ import voltaic.datagen.utils.server.loottable.BaseLootTablesProvider;
 
 public class BlastcraftLootTablesProvider extends BaseLootTablesProvider {
 
-	public BlastcraftLootTablesProvider(HolderLookup.Provider provider) {
-		super(Blastcraft.ID, provider);
+    public BlastcraftLootTablesProvider(HolderLookup.Provider provider) {
+	super(Blastcraft.ID, provider);
+    }
+
+    @Override
+    protected void generate() {
+
+	for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
+	    addSimpleBlock(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(wall));
 	}
 
-	@Override
-	protected void generate() {
-
-		for (SubtypeBlastproofWall wall : SubtypeBlastproofWall.values()) {
-			addSimpleBlock(BlastcraftBlocks.BLOCKS_BLASTPROOFWALL.getValue(wall));
-		}
-
-		for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
-			addSimpleBlock(BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(wall));
-		}
-
-		for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
-			addSimpleBlock(BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(wall));
-		}
-
-		for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
-			addSimpleBlock(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(wall));
-		}
-
-		for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
-			addSimpleBlock(BlastcraftBlocks.BLOCKS_WALLINGGLASS.getValue(glass));
-		}
-
-		for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
-			addSimpleBlock(BlastcraftBlocks.BLOCKS_CONCRETE.getValue(concrete));
-		}
-
-		addSimpleBlock(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE);
-		addSimpleBlock(BlastcraftBlocks.BLOCK_CAMOFLAGE);
-
-		addSimpleBlock(BlastcraftBlocks.BLOCK_SPIKE);
-		addSimpleBlock(BlastcraftBlocks.BLOCK_FIRESPIKE);
-		addSimpleBlock(BlastcraftBlocks.BLOCK_POISONSPIKE);
-
-		addMachineTable(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(), BlastcraftTiles.TILE_BLASTCOMPRESSOR, true, false, false, true, false);
-
+	for (SubtypeRawBlastproofWall wall : SubtypeRawBlastproofWall.values()) {
+	    addSimpleBlock(BlastcraftBlocks.BLOCKS_RAW_BLASTPROOFWALL.getValue(wall));
 	}
 
-	@Override
-	public List<Block> getExcludedBlocks() {
-		return List.of();
+	for (SubtypeCarbonPlatedWall wall : SubtypeCarbonPlatedWall.values()) {
+	    addSimpleBlock(BlastcraftBlocks.BLOCKS_CARBONPLATEDWALL.getValue(wall));
 	}
+
+	for (SubtypeHardenedBricks wall : SubtypeHardenedBricks.values()) {
+	    addSimpleBlock(BlastcraftBlocks.BLOCKS_HARDENEDBRICKS.getValue(wall));
+	}
+
+	for (SubtypeWallingGlass glass : SubtypeWallingGlass.values()) {
+	    addSimpleBlock(BlastcraftBlocks.BLOCKS_WALLINGGLASS.getValue(glass));
+	}
+
+	for (SubtypeConcrete concrete : SubtypeConcrete.values()) {
+	    addSimpleBlock(BlastcraftBlocks.BLOCKS_CONCRETE.getValue(concrete));
+	}
+
+	addSimpleBlock(BlastcraftBlocks.BLOCK_GLASSPRESSUREPLATE);
+	addSimpleBlock(BlastcraftBlocks.BLOCK_CAMOFLAGE);
+
+	addSimpleBlock(BlastcraftBlocks.BLOCK_SPIKE);
+	addSimpleBlock(BlastcraftBlocks.BLOCK_FIRESPIKE);
+	addSimpleBlock(BlastcraftBlocks.BLOCK_POISONSPIKE);
+
+	addMachineTable(BlastcraftBlocks.BLOCK_BLASTCOMPRESSOR.get(), BlastcraftTiles.TILE_BLASTCOMPRESSOR, true, false,
+		false, true, false);
+
+    }
+
+    @Override
+    public List<Block> getExcludedBlocks() {
+	return List.of();
+    }
 
 }

@@ -5,8 +5,8 @@ import net.minecraft.world.level.block.Blocks;
 
 public class BlockCustomBricks extends Block {
 
-	public BlockCustomBricks(float hardness, float resistance) {
-		super(Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().strength(hardness, resistance));
-	}
+    public BlockCustomBricks(float hardness, float resistance) {
+	super(Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().strength(hardness, resistance));
+    }
 
 }
