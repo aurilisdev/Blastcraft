@@ -2,10 +2,8 @@ package blastcraft.datagen.client;
 
 import blastcraft.Blastcraft;
 import blastcraft.registers.BlastcraftItems;
-import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import voltaic.common.item.subtype.SubtypeItemUpgrade;
 import voltaic.datagen.utils.client.BaseItemModelsProvider;
 
 public class BlastcraftItemModelsProvider extends BaseItemModelsProvider {
