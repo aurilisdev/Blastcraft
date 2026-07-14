@@ -1,8 +1,8 @@
 package blastcraft.registers;
 
-import blastcraft.Blastcraft;
 import com.google.common.collect.Sets;
 
+import blastcraft.Blastcraft;
 import blastcraft.common.tile.TileBlastCompressor;
 import blastcraft.common.tile.TileCamoflauge;
 import net.minecraft.world.level.block.entity.BlockEntityType;

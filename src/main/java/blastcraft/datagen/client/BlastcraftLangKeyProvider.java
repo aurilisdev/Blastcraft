@@ -8,7 +8,6 @@ import blastcraft.common.block.subtype.SubtypeRawBlastproofWall;
 import blastcraft.common.block.subtype.SubtypeWallingGlass;
 import blastcraft.common.recipe.categories.item2item.specificmachines.BlastCompressorRecipe;
 import blastcraft.registers.BlastcraftBlocks;
-import blastcraft.registers.BlastcraftItems;
 import blastcraft.registers.BlastcraftSounds;
 import net.minecraft.data.DataGenerator;
 import voltaic.datagen.utils.client.BaseLangKeyProvider;

@@ -77,12 +77,8 @@ public class BlockCamoflage extends GenericEntityBlock {
     @Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
     	ItemStack stack = player.getItemInHand(hand);
-        if (stack.isEmpty()) {
-            return super.use(state, level, pos, player, hand, hitResult);
-        }
-
         // require block in hand and camo block
-        if (!(stack.getItem() instanceof BlockItem blockItem) || !(level.getBlockEntity(pos) instanceof TileCamoflauge camo)) {
+        if (stack.isEmpty() || !(stack.getItem() instanceof BlockItem blockItem) || !(level.getBlockEntity(pos) instanceof TileCamoflauge camo)) {
 
         	return super.use(state, level, pos, player, hand, hitResult);
 

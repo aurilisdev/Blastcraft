@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,7 +27,6 @@ import voltaic.api.registration.BulkRegistryObject;
 import voltaic.common.block.BlockCustomGlass;
 import voltaic.common.block.voxelshapes.VoxelShapeProvider;
 import voltaic.prefab.block.GenericMachineBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class BlastcraftBlocks {
 
