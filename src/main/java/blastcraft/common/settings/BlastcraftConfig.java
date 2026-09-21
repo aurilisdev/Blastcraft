@@ -3,7 +3,7 @@ package blastcraft.common.settings;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class BlastcraftConfig {
-    public static BlastcraftConfig INSTANCE;
+    private static BlastcraftConfig INSTANCE = new BlastcraftConfig();
 
     public ModConfigSpec SPEC;
 
@@ -12,5 +12,9 @@ public class BlastcraftConfig {
 	builder.push("common");
 	builder.pop();
 	SPEC = builder.build();
+    }
+
+    public static BlastcraftConfig getInstance() {
+	return INSTANCE;
     }
 }

@@ -7,28 +7,27 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import voltaic.prefab.properties.types.PropertyTypes;
 import voltaic.prefab.properties.variant.SingleProperty;
 import voltaic.prefab.tile.GenericTile;
-import voltaic.prefab.tile.components.type.ComponentPacketHandler;
 
 public class TileCamoflauge extends GenericTile {
 
-    public final SingleProperty<BlockState> camoflaugedBlock = property(
-	    new SingleProperty<>(PropertyTypes.BLOCK_STATE, "camoblock", Blocks.AIR.defaultBlockState())
-		    .onChange((prop, oldState) -> {
-			if (level == null) {
-			    return;
-			}
-			level.getChunkSource().getLightEngine().checkBlock(worldPosition);
-		    }).setShouldUpdateOnChange());
+    public final SingleProperty<BlockState> camoflaugedBlock = property(new SingleProperty<>(getPropertyManager(),
+	    PropertyTypes.BLOCK_STATE, "camoblock", Blocks.AIR.defaultBlockState()).onChange((prop, oldState) -> {
+		Level level = getLevel();
+		if (level == null) {
+		    return;
+		}
+		level.getChunkSource().getLightEngine().checkBlock(worldPosition);
+	    }).setShouldUpdateOnChange());
 
     public TileCamoflauge(BlockPos worldPosition, BlockState blockState) {
 	super(BlastcraftTiles.TILE_CAMOFLAGE.get(), worldPosition, blockState);
-	addComponent(new ComponentPacketHandler(this));
     }
 
     public void setCamoBlock(BlockState block) {
@@ -45,12 +44,13 @@ public class TileCamoflauge extends GenericTile {
     }
 
     @Override
-    public InteractionResult useWithoutItem(Player player, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(Level level, Player player, BlockHitResult hit) {
 	return InteractionResult.PASS;
     }
 
     @Override
-    public ItemInteractionResult useWithItem(ItemStack used, Player player, InteractionHand hand, BlockHitResult hit) {
+    public ItemInteractionResult useWithItem(Level level, ItemStack used, Player player, InteractionHand hand,
+	    BlockHitResult hit) {
 	return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 }

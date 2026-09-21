@@ -1,5 +1,7 @@
 package blastcraft.common.block;
 
+import javax.annotation.Nullable;
+
 import com.mojang.serialization.MapCodec;
 
 import blastcraft.common.tile.TileCamoflauge;
@@ -38,8 +40,12 @@ public class BlockCamoflage extends GenericEntityBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-	return super.getStateForPlacement(pContext).setValue(BlastcraftBlockStates.HASCAMOFLAUGE, false)
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
+	BlockState stateForPlacement = super.getStateForPlacement(pContext);
+	if (stateForPlacement == null)
+	    return null;
+
+	return stateForPlacement.setValue(BlastcraftBlockStates.HASCAMOFLAUGE, false)
 		.setValue(BlastcraftBlockStates.ISWALKTHROUGHABLE, false);
     }
 
@@ -99,13 +105,18 @@ public class BlockCamoflage extends GenericEntityBlock {
 
 	BlockPlaceContext newCtx = new BlockPlaceContext(player, hand, stack, hitResult);
 
+	BlockState stateForPlacement = block.getStateForPlacement(newCtx);
+	if (stateForPlacement == null) {
+	    return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+	}
+
 	if (state.getValue(BlastcraftBlockStates.HASCAMOFLAUGE)) {
 
 	    if (camo.getCamoBlock().is(block)) {
 		return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
 	    }
 	    if (!level.isClientSide) {
-		camo.setCamoBlock(block.getStateForPlacement(newCtx));
+		camo.setCamoBlock(stateForPlacement);
 		level.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundSource.BLOCKS,
 			1.0F, 1.0F);
 		level.getChunkSource().getLightEngine().checkBlock(pos);
@@ -114,7 +125,7 @@ public class BlockCamoflage extends GenericEntityBlock {
 	}
 	if (!level.isClientSide) {
 	    state = state.setValue(BlastcraftBlockStates.HASCAMOFLAUGE, true);
-	    camo.setCamoBlock(block.getStateForPlacement(newCtx));
+	    camo.setCamoBlock(stateForPlacement);
 	    level.playSound(null, pos, block.defaultBlockState().getSoundType().getPlaceSound(), SoundSource.BLOCKS,
 		    1.0F, 1.0F);
 	    level.setBlockAndUpdate(pos, state);
@@ -129,6 +140,7 @@ public class BlockCamoflage extends GenericEntityBlock {
 	builder.add(BlastcraftBlockStates.HASCAMOFLAUGE, BlastcraftBlockStates.ISWALKTHROUGHABLE);
     }
 
+    @SuppressWarnings("null")
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
 	return null;
@@ -141,7 +153,7 @@ public class BlockCamoflage extends GenericEntityBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 	return new TileCamoflauge(pos, state);
     }
 

@@ -31,8 +31,7 @@ public final class Blastcraft {
     public static final String BALLISTIX_ID = "ballistix";
 
     public Blastcraft(IEventBus bus, ModContainer container) {
-	BlastcraftConfig.INSTANCE = new BlastcraftConfig();
-	container.registerConfig(ModConfig.Type.COMMON, BlastcraftConfig.INSTANCE.SPEC);
+	container.registerConfig(ModConfig.Type.COMMON, BlastcraftConfig.getInstance().SPEC);
 	if (FMLEnvironment.dist == Dist.CLIENT) {
 	    container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 	}
@@ -48,9 +47,7 @@ public final class Blastcraft {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void onClientSetup(FMLClientSetupEvent event) {
-	event.enqueueWork(() -> {
-	    BlastcraftClientRegister.setup();
-	});
+	event.enqueueWork(() -> { BlastcraftClientRegister.setup(); });
     }
 
     @SubscribeEvent

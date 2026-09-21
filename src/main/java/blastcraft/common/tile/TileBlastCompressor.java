@@ -6,6 +6,7 @@ import blastcraft.registers.BlastcraftTiles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import voltaic.common.inventory.container.ContainerO2OProcessor;
 import voltaic.prefab.sound.ITickableSound;
@@ -16,7 +17,6 @@ import voltaic.prefab.tile.components.type.ComponentContainerProvider;
 import voltaic.prefab.tile.components.type.ComponentElectrodynamic;
 import voltaic.prefab.tile.components.type.ComponentForgeEnergy;
 import voltaic.prefab.tile.components.type.ComponentInventory;
-import voltaic.prefab.tile.components.type.ComponentPacketHandler;
 import voltaic.prefab.tile.components.type.ComponentProcessor;
 import voltaic.prefab.tile.components.type.ComponentTickable;
 import voltaic.prefab.utilities.BlockEntityUtils;
@@ -28,7 +28,6 @@ public class TileBlastCompressor extends GenericTile implements ITickableSound {
 
     public TileBlastCompressor(BlockPos worldPosition, BlockState blockState) {
 	super(BlastcraftTiles.TILE_BLASTCOMPRESSOR.get(), worldPosition, blockState);
-	addComponent(new ComponentPacketHandler(this));
 	addComponent(new ComponentTickable(this).tickClient(this::tickClient));
 	addComponent(new ComponentElectrodynamic(this, false, true).voltage(VoltaicCapabilities.DEFAULT_VOLTAGE * 2)
 		.setInputDirections(BlockEntityUtils.MachineDirection.BACK));
@@ -44,16 +43,16 @@ public class TileBlastCompressor extends GenericTile implements ITickableSound {
 			BlockEntityUtils.MachineDirection.LEFT)
 		.validUpgrades(ContainerO2OProcessor.VALID_UPGRADES).valid(machineValidator()));
 	addComponent(new ComponentProcessor(this)
-		.canProcess((component, procNumber) -> component.canProcessItem2ItemRecipe(procNumber,
+		.canProcess((component, level, procNumber) -> component.canProcessItem2ItemRecipe(level, procNumber,
 			BlastcraftRecipies.BLAST_COMPRESSOR_TYPE.get()))
 		.process(ComponentProcessor::processItem2ItemRecipe));
 	addComponent(new ComponentContainerProvider("blastcompressor", this)
 		.createMenu((id, player) -> new ContainerO2OProcessor(id, player,
-			getComponent(IComponentType.Inventory), getCoordsArray())));
+			requireComponent(IComponentType.Inventory), getCoordsArray())));
 	addComponent(new ComponentForgeEnergy(this));
     }
 
-    protected void tickClient(ComponentTickable tickable) {
+    protected void tickClient(Level level, ComponentTickable tickable) {
 	boolean running = shouldPlaySound();
 	if (running && level.random.nextDouble() < 0.15) {
 	    Direction direction = getFacing();
@@ -81,12 +80,12 @@ public class TileBlastCompressor extends GenericTile implements ITickableSound {
 
     @Override
     public boolean shouldPlaySound() {
-	return this.<ComponentProcessor>getComponent(IComponentType.Processor).isActive(0);
+	return this.<ComponentProcessor>requireComponent(IComponentType.Processor).isActive(0);
     }
 
     @Override
-    public int getComparatorSignal() {
-	return this.<ComponentProcessor>getComponent(IComponentType.Processor).isActive(0) ? 15 : 0;
+    public int getComparatorSignal(Level level) {
+	return this.<ComponentProcessor>requireComponent(IComponentType.Processor).isActive(0) ? 15 : 0;
     }
 
 }

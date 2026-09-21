@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+@SuppressWarnings("null")
 public class BlastcraftTiles {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister
 	    .create(Registries.BLOCK_ENTITY_TYPE, Blastcraft.ID);

@@ -10,7 +10,10 @@ import voltaic.api.ISubtype;
  *
  */
 public enum SubtypeWallingGlass implements ISubtype {
-    blastproofwalling(50, 12500), rawblastproofwalling(2, 50), carbonplatedwalling(85, 18000), hardenedbricks(10, 4000);
+    blastproofwalling(50, 12500),
+    rawblastproofwalling(2, 50),
+    carbonplatedwalling(85, 18000),
+    hardenedbricks(10, 4000);
 
     public final float hardness;
     public final float resistance;
