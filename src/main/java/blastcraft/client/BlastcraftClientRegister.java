@@ -16,7 +16,7 @@ import voltaic.client.misc.SWBFClientExtensions;
 import voltaic.common.fluid.SimpleWaterBasedFluidType;
 
 @OnlyIn(Dist.CLIENT)
-@EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD, value = { Dist.CLIENT })
+@EventBusSubscriber(modid = Blastcraft.ID, value = { Dist.CLIENT })
 public class BlastcraftClientRegister {
 
     public static void setup() {

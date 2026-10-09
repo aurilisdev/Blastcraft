@@ -22,7 +22,7 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(Blastcraft.ID)
-@EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Blastcraft.ID)
 public final class Blastcraft {
 
     public static final String ID = "blastcraft";

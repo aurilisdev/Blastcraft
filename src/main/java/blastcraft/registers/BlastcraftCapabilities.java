@@ -9,7 +9,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import voltaic.prefab.tile.GenericTile;
 import voltaic.registers.VoltaicCapabilities;
 
-@EventBusSubscriber(modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Blastcraft.ID)
 public class BlastcraftCapabilities {
 
     @SubscribeEvent

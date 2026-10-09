@@ -84,7 +84,7 @@ public class BlastcraftItems {
 	    () -> new ItemDescriptable(new Item.Properties(), BlastcraftCreativeTabs.MAIN,
 		    BlastcraftTextUtils.tooltip("concretemix").withStyle(ChatFormatting.DARK_GRAY)));
 
-    @EventBusSubscriber(value = Dist.CLIENT, modid = Blastcraft.ID, bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(value = Dist.CLIENT, modid = Blastcraft.ID)
     private static class BlastcraftCreativeRegistry {
 
 	@SubscribeEvent
