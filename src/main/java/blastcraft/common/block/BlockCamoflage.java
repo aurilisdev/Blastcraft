@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -184,6 +185,14 @@ public class BlockCamoflage extends GenericEntityBlock {
 
 	Level world = player.level();
 	BlockState state = world.getBlockState(pos);
+
+	if (!player.isShiftKeyDown() && state.getValue(BlastcraftBlockStates.HASCAMOFLAUGE)
+		&& world.getBlockEntity(pos) instanceof TileCamoflauge camo && !camo.isCamoAir()
+		&& player.pick(player.blockInteractionRange() + 1.0, 1.0F, false) instanceof BlockHitResult hit
+		&& hit.getType() == HitResult.Type.BLOCK && hit.getBlockPos().equals(pos)) {
+	    camo.toggleGlassFace(hit.getDirection());
+	    return;
+	}
 
 	world.setBlockAndUpdate(pos, state.setValue(BlastcraftBlockStates.ISWALKTHROUGHABLE,
 		!state.getValue(BlastcraftBlockStates.ISWALKTHROUGHABLE)));

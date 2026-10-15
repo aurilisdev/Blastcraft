@@ -2,6 +2,7 @@ package blastcraft.common.tile;
 
 import blastcraft.registers.BlastcraftTiles;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -26,6 +27,10 @@ public class TileCamoflauge extends GenericTile {
 		level.getChunkSource().getLightEngine().checkBlock(worldPosition);
 	    }).setShouldUpdateOnChange());
 
+    public final SingleProperty<Integer> glassFaces = property(
+	    new SingleProperty<>(getPropertyManager(), PropertyTypes.INTEGER, "glassfaces", 0)
+		    .setShouldUpdateOnChange());
+
     public TileCamoflauge(BlockPos worldPosition, BlockState blockState) {
 	super(BlastcraftTiles.TILE_CAMOFLAGE.get(), worldPosition, blockState);
     }
@@ -37,6 +42,15 @@ public class TileCamoflauge extends GenericTile {
 
     public BlockState getCamoBlock() {
 	return camoflaugedBlock.getValue();
+    }
+
+    public boolean isGlassFace(Direction dir) {
+	return (glassFaces.getValue() & (1 << dir.ordinal())) != 0;
+    }
+
+    public void toggleGlassFace(Direction dir) {
+	glassFaces.setValue(glassFaces.getValue() ^ (1 << dir.ordinal()));
+	setChanged();
     }
 
     public boolean isCamoAir() {
